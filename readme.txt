@@ -11,3 +11,4 @@ Aidan Arrowood
 Margo Osborne
 Daniel Xiao
 Ying Yao
+Angel Dixon

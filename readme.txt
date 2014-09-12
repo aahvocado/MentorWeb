@@ -1,6 +1,6 @@
 MentorWeb readme
 
-MentorWeb is a web based application made for Georgia Tech students to better find mentors allowing them to better get a grasp of Georgia Tech campus and lifestyle and academic problems.
+MentorWeb is a web based application made for Georgia Tech students to better find mentors allowing them to better get a grasp of Georgia Tech campus and lifestyle and academic problems. 
 
 -how to use goes here-
 
@@ -8,6 +8,9 @@ MentorWeb is a web based application made for Georgia Tech students to better fi
 Thanks,
 
 Aidan Arrowood
+Angel Dixon
 Margo Osborne
 Daniel Xiao
 Ying Yao
+
+Joe LeDoux

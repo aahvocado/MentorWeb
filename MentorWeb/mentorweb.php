@@ -1,6 +1,15 @@
 <?php
 	include 'db_helper.php';
 	
+	function addUser() {
+		global $_USER;
+		$user = $_USER["uid"];
+		$dbQuery = sprintf("INSERT INTO User (username, first_name) 
+			VALUES ($user, $_USER)");
+		$result = getDBResultAffected($dbQuery);
+		echo json_encode($result);
+	}
+
 	function listMatches() {
 		$dbQuery = sprintf("SELECT mentorId,menteeId,semester FROM matches");
 		$result = getDBResultsArray($dbQuery);

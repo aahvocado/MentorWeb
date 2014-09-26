@@ -4,6 +4,24 @@
 		<![CDATA[This is an API to interact with MentorWeb database]]>
 	</description>
 
+	<command id='add-user' security='protected'>
+		<description><![CDATA[This API lets you interact with the MentorWeb database]]></description>
+		
+		<index>
+			<description><![CDATA[This is how you can get a listing of all users]]></description>
+			
+			<action file='mentorweb.php'><![CDATA[addUser();]]></action>
+		</index>
+		<command id='match' security='protected'>
+			<index><!-- index specicifies what happens when get is called with no parameters -->
+				<action file='mentorweb.php'><![CDATA[addUser();]]></action>
+			</index>
+			<get>
+				<action file='mentorweb.php'><![CDATA[addUser();]]></action>
+			</get>
+		</command>
+	</command>
+
 	<command id='user' security='protected'>
 		<description><![CDATA[This API lets you interact with the MentorWeb database]]></description>
 		

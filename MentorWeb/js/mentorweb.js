@@ -25,6 +25,29 @@ $(function() {
 		$('#users_list').listview('refresh');
 	});
 
+	// MentorWeb Homepage
+	$('#content').bind('pagebeforeshow', function (event, ui) {
+		console.log("users page before show");
+		// $(".user_list_row").remove();
+		$.ajax({
+			url: "api/user",
+			dataType: "json",
+	        async: false,
+	        success: function(data, textStatus, jqXHR) {
+				console.log(data);
+	        	//Add user to the User table in database
+	        	$user = $.url().fparam("user_id");
+	        	$.get('/user', function(user)  {
+					console.log("current user is " + user);
+				});
+	        	$("#user_list_row_template" ).tmpl( data ).appendTo( "#users_list" );
+	        },
+	        error: ajaxError
+		});
+		
+		$('#users_list').listview('refresh');
+	});
+
 	//Bind to the create so the page gets updated with the listing
 	$('#list_comments_page').bind('pagebeforeshow',function(event, ui){
 		console.log('pagebeforeshow');

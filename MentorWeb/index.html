@@ -25,6 +25,7 @@
   </head>
 
   <body>
+    <!-- Always can see nav bar -->
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
@@ -52,15 +53,40 @@
         <h1>MentorWeb</h1>
         <p class="lead">MentorWeb is a web based application made for Georgia Tech students to better find mentors allowing them to better get a grasp of Georgia Tech campus and lifestyle and academic problems. </p>
       </div>
-
     </div><!-- /.container -->
+
+    <div id="content" data-role="content">
+      <ul id="comments_list" data-role="listview" data-inset="true" data-filter="true" data-theme="c" data-divider-theme="b">
+        <script id="comment_list_row_template" type="text/x-jquery-tmpl">
+          <li class="comment_list_row" id="comment_${id}">
+            <a href='#edit_comment_page&comment_id=${id}' data-transition="slide">
+              <h1>${comment}</h1>
+            </a>
+          </li>
+        </script>
+      </ul>
+    </div>
+  
+      <div id="content" data-role="content">
+        <ul id="users_list" data-role="listview" data-inset="true" data-filter="true" data-theme="c" data-divider-theme="b">
+          <script id="user_list_row_template" type="text/x-jquery-tmpl">
+            <li class="user_list_row" id="user_${user}">
+              <a href='#list_user_comments_page&user_id=${user}' data-transition="slide">
+                <h1>${user}</h1>
+              </a>
+            </li>
+          </script>
+        </ul>
+      </div>
+    </div>
+  
 
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="dist/js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
 

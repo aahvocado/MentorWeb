@@ -1,0 +1,19 @@
+.nav{
+	font-size: 20px;
+	height: 90vh;
+	width: 30vh;
+	background-color: #EBF5FF;
+}
+
+.header{
+	height: 10vh;
+	width:100%;
+	background-color: #B8DBFF;
+}
+
+.body{
+	position:relative;
+	/*margin-left:250px;*/
+	margin-left: 20%;
+	margin-right: 3%;
+}

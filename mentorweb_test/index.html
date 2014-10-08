@@ -16,6 +16,7 @@
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="assets/js/ie-emulation-modes-warning.js"></script>
+    <script src="scripts/dw_loader.js"></script>
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -32,21 +33,52 @@
     <!-- nav bar -->
     <div class="nav-menu" role="navigation">
       <ul class="nav nav-pills nav-stacked navbar-left">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Profile</a></li>
-        <li><a href="#">Search</a></li>
-        <li><a href="#">Contact</a></li>
-        <li><a href="#">Logout</a></li>
+
+        <li><a href="home.html" target="buffer"
+          onclick="return dw_Loader.load(this.href, 
+            'ifrm', // iframe id
+            'ifrmDiv', // id of div where iframe contents displayed
+            ifrmCallback // function to call after contents transferred to div
+            )">Home</a></li>
+
+        <li><a href="profile_view.html" target="buffer"
+          onclick="return dw_Loader.load(this.href, 
+            'ifrm', // iframe id
+            'ifrmDiv', // id of div where iframe contents displayed
+            ifrmCallback // function to call after contents transferred to div
+            )">Profile</a></li>
+
+         <li><a href="search.html" target="buffer"
+          onclick="return dw_Loader.load(this.href, 
+            'ifrm', // iframe id
+            'ifrmDiv', // id of div where iframe contents displayed
+            ifrmCallback // function to call after contents transferred to div
+            )">Search</a></li>
+
+          <li><a href="contact.html" target="buffer"
+          onclick="return dw_Loader.load(this.href, 
+            'ifrm', // iframe id
+            'ifrmDiv', // id of div where iframe contents displayed
+            ifrmCallback // function to call after contents transferred to div
+            )">Contact</a></li>
+
+          <li><a href="logout.html" target="buffer"
+          onclick="return dw_Loader.load(this.href, 
+            'ifrm', // iframe id
+            'ifrmDiv', // id of div where iframe contents displayed
+            ifrmCallback // function to call after contents transferred to div
+            )">Logout</a></li>
+
+
+
       </ul>
     </div>
     <!--body with info-->
-    <div class="body">
-      <div class="starter-template">
-      </br></br></br>
-        <h1>MentorWeb</h1>
-        <p class="lead">MentorWeb is a web based application made for Georgia Tech students to better find mentors allowing them to better get a grasp of Georgia Tech campus and lifestyle and academic problems. </p>
-      </div>
-    </div>
+    <div id="display"></div>
+    <iframe id="buffer" name="buffer" src="home.html" onload="dw_Loader.display()"></iframe>
+
+    
+    
   </div><!-- /.container -->
 
 

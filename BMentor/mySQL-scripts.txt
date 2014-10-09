@@ -1,0 +1,11 @@
+INSERT INTO Admin (Username, LastName, FirstName)
+VALUES ('mosborne8', 'Osborne', 'Margo')
+
+CREATE TABLE Mentee
+(
+ID int NOT NULL AUTO_INCREMENT,
+Username varchar(255) NOT NULL,
+LastName varchar(255),
+FirstName varchar(255),
+PRIMARY KEY (ID)
+)

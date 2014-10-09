@@ -1,0 +1,391 @@
+      <form action="form.php" method="post">
+
+         <div data-role="fieldcontain">
+            <label for="first_name">First name:</label>
+            <input type="text" name="first_name" id="first_name" value="" placeholder="First name"/>
+            <label for="last_name">Last name:</label>
+            <input type="text" name="last_name" id="last_name" value="" placeholder="Last name"/>
+            <label for="email">Email:</label>
+            <input type="text" name="email" id="email" value="" placeholder="youremail@gatech.edu"/>
+            <label for="phone_number">Phone number:</label>
+            <input type="text" name="phone_number" id="phone_number" value="" placeholder="404-133-7331"/>
+         </div>
+         <div class="small_break"></div>
+         <label for="comm_method">Preffered Communication Method:</label>
+         <select name="comm_method" id="comm_method">
+            <option value="phone">Cell phone</option>
+            <option value="email">Email</option>
+         </select>
+      <!-- Mentee -->
+
+      <!--Mentor -->
+         <div class="small_break"></div>
+         <fieldset data-role="controlgroup">
+            <legend>
+               Are you a first generation college student (that is, your parents have not completed a achelor's degree at a 4-year college or university)?
+            </legend>
+         <input type="radio" name="radio-choice" id="radio-choice-1" value="yes" />
+         <label for="radio-choice-1">Yes</label>
+         <input type="radio" name="radio-choice" id="radio-choice-2" value="no"  />
+         <label for="radio-choice-2">No</label>
+         </fieldset>
+
+         <div class="small_break"></div>
+         <fieldset data-role="controlgroup">
+            <legend>
+               Did you transfer to the BME department from another major at Georgia Tech or from another institution?
+            </legend>
+         <input type="radio" name="radio-choice" id="radio-choice-1" value="yes"/>
+         <label for="radio-choice-1">Yes</label>
+         <input type="radio" name="radio-choice" id="radio-choice-2" value="no"  />
+         <label for="radio-choice-2">No</label>
+         </fieldset>
+
+         <div class="small_break"></div>
+         <label for="previous_major">What was your previous major at Georgia Tech?</label>
+         <input type="text" name="pervious_major" id="previous_major" value="" placeholder="previous major"/>
+         
+         <div class="small_break"></div>
+         <fieldset data-role="controlgroup" class="ui-corner-all ui-controlgroup ui-controlgroup-vertical">
+            <div role="heading" class="ui-controlgroup-label">Were you, or are you, part of any of the following programs? Check all that apply.</div>
+            <div class="ui-controlgroup-controls">
+
+            <div class="ui-checkbox">
+               <input type="checkbox" name="radio-pet" id="presidents_program" value="choice-1">
+               <label for="presidents_program" data-corners="true" data-shadow="false" data-iconshadow="true" data-wrapperels="span" data-icon="radio-off" data-theme="c" class="ui-btn ui-btn-icon-left ui-corner-top ui-radio-off ui-btn-up-c">
+                  <span class="ui-btn-inner ui-corner-top">
+                     <span class="ui-btn-text">
+                        Pesident's Scholarship Program
+                     </span>
+                     <span class="ui-icon ui-icon-shadow ui-icon-radio-off">&nbsp;
+                     </span>
+                  </span>
+               </label>
+            </div>
+
+            <div class="ui-checkbox">
+               <input type="checkbox" name="radio-pet" id="honors_program" value="choice-1">
+               <label for="honors_program" data-corners="true" data-shadow="false" data-iconshadow="true" data-wrapperels="span" data-icon="radio-off" data-theme="c" class="ui-btn ui-btn-icon-left ui-corner-top ui-radio-off ui-btn-up-c">
+                  <span class="ui-btn-inner ui-corner-top">
+                     <span class="ui-btn-text">
+                        Honors Program
+                     </span>
+                     <span class="ui-icon ui-icon-shadow ui-icon-radio-off">&nbsp;
+                     </span>
+                  </span>
+               </label>
+            </div>
+
+            <div class="ui-checkbox">
+               <input type="checkbox" name="radio-pet" id="grand_challenges" value="choice-1">
+               <label for="grand_challenges" data-corners="true" data-shadow="false" data-iconshadow="true" data-wrapperels="span" data-icon="radio-off" data-theme="c" class="ui-btn ui-btn-icon-left ui-corner-top ui-radio-off ui-btn-up-c">
+                  <span class="ui-btn-inner ui-corner-top">
+                     <span class="ui-btn-text">
+                        Grand Challenges
+                     </span>
+                     <span class="ui-icon ui-icon-shadow ui-icon-radio-off">&nbsp;
+                     </span>
+                  </span>
+               </label>
+            </div>
+         </div>
+
+      <div class="small_break"></div>
+      </fieldset>
+         <div role="heading" class="ui-controlgroup-label">
+            Which breadth track(s) do you expect to compelete? For each track that you expect to ompleete, write "yes" and then elaborate (e.g., for research option, which lab(s) have you worked in, for minor/ceertificat, what si the name of ht eminor / certificate you plan to complete, etc)
+         </div>
+         <div data-role="fieldcontain">
+            <label for="Pre-health">Pre-health</label>
+            <input type="text" name="Pre-health" id="Pre-health" value="" placeholder=""/>
+
+            <label for="research_option">Research option</label>
+            <input type="text" name="research_option" id="research_option" value="" placeholder=""/>
+
+            <label for="minor">Minor</label>
+            <input type="text" name="minor" id="minor" value="" placeholder=""/>
+
+            <label for="certificate">Certificate</label>
+            <input type="text" name="certificate" id="certificate" value="" placeholder=""/>
+
+            <label for="not_sure">I'm not sure</label>
+            <input type="text" name="not_sure" id="not_sure" value="" placeholder=""/>
+         </div>
+      </fieldset>
+
+         <div class="small_break"></div>
+         <label for="depth_focus">What is your BME depth focus?</label>
+         <select name="depth_focus" id="depth_focus">
+            <option value="cell_phone">Neuroengineering</option>
+            <option value="email">Biomemchanics</option>
+            <option value="cell_phone">Biomaterials/tissue engineering</option>
+            <option value="email">Medical Imaging</option>
+            <option value="cell_phone">I'm tring a little bit of everything</option>
+            <option value="email">Other</option>
+         </select>
+
+         <div class="small_break"></div>
+         <fieldset data-role="controlgroup" class="ui-corner-all ui-controlgroup ui-controlgroup-vertical">
+            <div role="heading" class="ui-controlgroup-label">
+               Have you participated in a significant way in any ofthe following BME student organizations?
+            </div>
+            <div class="ui-controlgroup-controls">
+
+            <div class="ui-checkbox">
+               <input type="checkbox" name="radio-pet" id="aemb" value="aemb">
+               <label for="aemb" data-corners="true" data-shadow="false" data-iconshadow="true" data-wrapperels="span" data-icon="radio-off" data-theme="c" class="ui-btn ui-btn-icon-left ui-corner-top ui-radio-off ui-btn-up-c">
+                  <span class="ui-btn-inner ui-corner-top">
+                     <span class="ui-btn-text">
+                        Alpha Eta Mu (AEMB)
+                     </span>
+                  <span class="ui-icon ui-icon-shadow ui-icon-radio-off">&nbsp;
+                     </span>
+                  </span>
+               </label>
+            </div>
+
+            <div class="ui-checkbox">
+               <input type="checkbox" name="radio-pet" id="bmes" value="choice-1">
+               <label for="bmes" data-corners="true" data-shadow="false" data-iconshadow="true" data-wrapperels="span" data-icon="radio-off" data-theme="c" class="ui-btn ui-btn-icon-left ui-corner-top ui-radio-off ui-btn-up-c">
+                  <span class="ui-btn-inner ui-corner-top">
+                     <span class="ui-btn-text">
+                        Biomedical Engineering Society
+                     </span>
+                     <span class="ui-icon ui-icon-shadow ui-icon-radio-off">&nbsp;
+                     </span>
+                  </span>
+               </label>
+            </div>
+
+            <div class="ui-checkbox">
+               <input type="checkbox" name="radio-pet" id="bmed_Futures" value="choice-1">
+               <label for="bmed_Futures" data-corners="true" data-shadow="false" data-iconshadow="true" data-wrapperels="span" data-icon="radio-off" data-theme="c" class="ui-btn ui-btn-icon-left ui-corner-top ui-radio-off ui-btn-up-c">
+                  <span class="ui-btn-inner ui-corner-top">
+                     <span class="ui-btn-text">
+                        BMED Futures
+                     </span>
+                     <span class="ui-icon ui-icon-shadow ui-icon-radio-off">&nbsp;
+                     </span>
+                  </span>
+               </label>
+            </div>
+
+            <div class="ui-checkbox">
+               <input type="checkbox" name="radio-pet" id="ewh" value="choice-1">
+               <label for="ewh" data-corners="true" data-shadow="false" data-iconshadow="true" data-wrapperels="span" data-icon="radio-off" data-theme="c" class="ui-btn ui-btn-icon-left ui-corner-top ui-radio-off ui-btn-up-c">
+                  <span class="ui-btn-inner ui-corner-top">
+                     <span class="ui-btn-text">
+                        Engineering World Health
+                     </span>
+                     <span class="ui-icon ui-icon-shadow ui-icon-radio-off">&nbsp;
+                     </span>
+                  </span>
+               </label>
+            </div>
+
+            <div class="ui-checkbox">
+               <input type="checkbox" name="radio-pet" id="mdea" value="choice-1">
+               <label for="mdea" data-corners="true" data-shadow="false" data-iconshadow="true" data-wrapperels="span" data-icon="radio-off" data-theme="c" class="ui-btn ui-btn-icon-left ui-corner-top ui-radio-off ui-btn-up-c">
+                  <span class="ui-btn-inner ui-corner-top">
+                     <span class="ui-btn-text">
+                        Medical Device Entrepreneurship Association (MDEA)
+                     </span>
+                     <span class="ui-icon ui-icon-shadow ui-icon-radio-off">&nbsp;
+                     </span>
+                  </span>
+               </label>
+            </div>
+
+            <div class="ui-checkbox">
+               <input type="checkbox" name="radio-pet" id="pioneer" value="choice-1">
+               <label for="pioneer" data-corners="true" data-shadow="false" data-iconshadow="true" data-wrapperels="span" data-icon="radio-off" data-theme="c" class="ui-btn ui-btn-icon-left ui-corner-top ui-radio-off ui-btn-up-c">
+                  <span class="ui-btn-inner ui-corner-top">
+                     <span class="ui-btn-text">
+                        Pioneer
+                     </span>
+                     <span class="ui-icon ui-icon-shadow ui-icon-radio-off">&nbsp;
+                     </span>
+                  </span>
+               </label>
+            </div>
+
+            <div class="small_break"></div>
+            <label for="other_orgs">Other:</label>
+               <input type="text" name="other_orgs" id="other_orgs" value="" placeholder="Other ogranizations"/>
+
+         </div>
+
+      <div class="small_break"></div>
+      </fieldset>
+
+         <fieldset data-role="controlgroup" class="ui-corner-all ui-controlgroup ui-controlgroup-vertical">
+            <div role="heading" class="ui-controlgroup-label">
+               Have you had, or do you plan to have, any academic international experiences? (eg., international plan, work abroad, medical mission trips, GT-Lorraine).
+            </div>
+            <div class="ui-controlgroup-controls">
+
+            <div class="ui-checkbox">
+               <input type="checkbox" name="radio-pet" id="international_plan" value="aemb">
+               <label for="international_plan" data-corners="true" data-shadow="false" data-iconshadow="true" data-wrapperels="span" data-icon="radio-off" data-theme="c" class="ui-btn ui-btn-icon-left ui-corner-top ui-radio-off ui-btn-up-c">
+                  <span class="ui-btn-inner ui-corner-top">
+                     <span class="ui-btn-text">
+                        International plan
+                     </span>
+                  <span class="ui-icon ui-icon-shadow ui-icon-radio-off">&nbsp;
+                     </span>
+                  </span>
+               </label>
+            </div>
+
+            <div class="ui-checkbox">
+               <input type="checkbox" name="radio-pet" id="study_abroad" value="choice-1">
+               <label for="study_abroad" data-corners="true" data-shadow="false" data-iconshadow="true" data-wrapperels="span" data-icon="radio-off" data-theme="c" class="ui-btn ui-btn-icon-left ui-corner-top ui-radio-off ui-btn-up-c">
+                  <span class="ui-btn-inner ui-corner-top">
+                     <span class="ui-btn-text">
+                        Study abroad
+                     </span>
+                     <span class="ui-icon ui-icon-shadow ui-icon-radio-off">&nbsp;
+                     </span>
+                  </span>
+               </label>
+            </div>
+
+            <div class="ui-checkbox">
+               <input type="checkbox" name="radio-pet" id="work_abroad" value="choice-1" >
+               <label for="work_abroad" data-corners="true" data-shadow="false" data-iconshadow="true" data-wrapperels="span" data-icon="radio-off" data-theme="c" class="ui-btn ui-btn-icon-left ui-corner-top ui-radio-off ui-btn-up-c">
+                  <span class="ui-btn-inner ui-corner-top">
+                     <span class="ui-btn-text">
+                        Work Abroad
+                     </span>
+                     <span class="ui-icon ui-icon-shadow ui-icon-radio-off">&nbsp;
+                     </span>
+                  </span>
+               </label>
+            </div>
+
+            <div class="ui-checkbox">
+               <input type="checkbox" name="radio-pet" id="research_abroad" value="choice-1" >
+               <label for="research_abroad" data-corners="true" data-shadow="false" data-iconshadow="true" data-wrapperels="span" data-icon="radio-off" data-theme="c" class="ui-btn ui-btn-icon-left ui-corner-top ui-radio-off ui-btn-up-c">
+                  <span class="ui-btn-inner ui-corner-top">
+                     <span class="ui-btn-text">
+                        Research abroad
+                     </span>
+                     <span class="ui-icon ui-icon-shadow ui-icon-radio-off">&nbsp;
+                     </span>
+                  </span>
+               </label>
+            </div>
+
+            <div class="ui-checkbox">
+               <input type="checkbox" name="radio-pet" id="volunteer_abroad" value="choice-1" >
+               <label for="volunteer_abroad" data-corners="true" data-shadow="false" data-iconshadow="true" data-wrapperels="span" data-icon="radio-off" data-theme="c" class="ui-btn ui-btn-icon-left ui-corner-top ui-radio-off ui-btn-up-c">
+                  <span class="ui-btn-inner ui-corner-top">
+                     <span class="ui-btn-text">
+                        Volunteer abroad
+                     </span>
+                     <span class="ui-icon ui-icon-shadow ui-icon-radio-off">&nbsp;
+                     </span>
+                  </span>
+               </label>
+            </div>
+
+            <div class="small_break"></div>
+            <label for="intl_experiences">Please feel free to elaborate and/or list other international expreiencces not listed above:</label>
+               <input type="text" name="intl_experiences" id="intl_experiences" value="" placeholder="Other ogranizations"/>
+
+         </div>
+      </fieldset>
+
+         <div class="small_break"></div>
+         <fieldset data-role="controlgroup" class="ui-corner-all ui-controlgroup ui-controlgroup-vertical">
+            <div role="heading" class="ui-controlgroup-label">
+               Have you participated in any of the following career development programs?
+            </div>
+            <div class="ui-controlgroup-controls">
+
+            <div class="ui-checkbox">
+               <input type="checkbox" name="radio-pet" id="co-op" value="aemb" >
+               <label for="co-op" data-corners="true" data-shadow="false" data-iconshadow="true" data-wrapperels="span" data-icon="radio-off" data-theme="c" class="ui-btn ui-btn-icon-left ui-corner-top ui-radio-off ui-btn-up-c">
+                  <span class="ui-btn-inner ui-corner-top">
+                     <span class="ui-btn-text">
+                        Co-op
+                     </span>
+                  <span class="ui-icon ui-icon-shadow ui-icon-radio-off">&nbsp;
+                     </span>
+                  </span>
+               </label>
+            </div>
+
+            <div class="ui-checkbox">
+               <input type="checkbox" name="radio-pet" id="internship" value="choice-1" >
+               <label for="internship" data-corners="true" data-shadow="false" data-iconshadow="true" data-wrapperels="span" data-icon="radio-off" data-theme="c" class="ui-btn ui-btn-icon-left ui-corner-top ui-radio-off ui-btn-up-c">
+                  <span class="ui-btn-inner ui-corner-top">
+                     <span class="ui-btn-text">
+                        Internship
+                     </span>
+                     <span class="ui-icon ui-icon-shadow ui-icon-radio-off">&nbsp;
+                     </span>
+                  </span>
+               </label>
+            </div>
+
+            <div class="ui-checkbox">
+               <input type="checkbox" name="radio-pet" id="shadow_medical" value="choice-1" >
+               <label for="shadow_medical" data-corners="true" data-shadow="false" data-iconshadow="true" data-wrapperels="span" data-icon="radio-off" data-theme="c" class="ui-btn ui-btn-icon-left ui-corner-top ui-radio-off ui-btn-up-c">
+                  <span class="ui-btn-inner ui-corner-top">
+                     <span class="ui-btn-text">
+                        Shadow in a medical environment
+                     </span>
+                     <span class="ui-icon ui-icon-shadow ui-icon-radio-off">&nbsp;
+                     </span>
+                  </span>
+               </label>
+            </div>
+
+            <div class="small_break"></div>
+            <label for="career_dev_details">
+               Please feel free to elaborate and/or list other career development experiences not listed above
+            </label>
+            <input type="text" name="career_dev_details" id="career_dev_details" value="" placeholder="Other ogranizations"/>
+
+         </div>
+
+      <div class="small_break"></div>
+      </fieldset>
+
+         <fieldset data-role="controlgroup">
+            <legend>
+               After you graduate from Georgia Tecch, what do you plan to do?
+            </legend>
+         <input type="radio" name="radio-choice" id="radio-choice-1" value="yes" />
+         <label for="radio-choice-1">Yes</label>
+         <input type="radio" name="radio-choice" id="radio-choice-2" value="no"  />
+         <label for="radio-choice-2">No</label>
+
+         <div class="small_break"></div>
+         <label for="future_plans_details">
+            Please feel free to provide more specifics about your future career goals (such as, if you checked industry above, what kind of industry job particularly interests you right now, etc)
+         </label>
+         <input type="text" name="future_plans_details" id="future_plans_details" value="" placeholder=""/>
+
+      </fieldset>
+
+<!--          <div class="ui-block-b">
+   <div data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-icon="null" data-iconpos="null" data-theme="a" class="ui-btn ui-shadow ui-btn-corner-all ui-submit ui-btn-up-a" aria-disabled="false">
+      <button type="button" id="reg_submit_button" data-theme="a" class="ui-btn-hidden" aria-disabled="false">Submit
+      </button>
+   </div>
+</div> -->
+      <a id="reg_submit_button" href="#register" data-direction="reverse" data-icon="plus" data-theme="g" class="ui-btn-right ui-btn ui-shadow ui-btn-corner-all ui-btn-icon-left ui-btn-up-g" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span">
+         <span class="ui-btn-inner ui-btn-corner-all">
+            <span class="ui-btn-text">
+               Submit
+            </span>
+            <span class="ui-icon ui-icon-plus ui-icon-shadow">&nbsp;</span>
+         </span>
+      </a>
+
+
+
+
+      </form>

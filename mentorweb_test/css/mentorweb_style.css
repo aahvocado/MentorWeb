@@ -14,11 +14,11 @@
 .body{
 	position:relative;
 	/*margin-left:250px;*/
-	margin-left: 20%;
+	margin-left: 3%;
 	margin-right: 3%;
 }
 
 iframe{
-	width: 80%;
-	height: 800px;
+	width: 80.5%;
+	height: 100vh;
 }

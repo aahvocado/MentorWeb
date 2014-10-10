@@ -29,50 +29,47 @@
      <!-- header thing -->
     <div class="header">
       <li class="title">MentorWeb</li>
+      <p id="secret"></p>
     </div>
     <!-- nav bar -->
     <div class="nav-menu" role="navigation">
       <ul class="nav nav-pills nav-stacked navbar-left">
 
         <li><a href="home.html" target="buffer"
-          onclick="return dw_Loader.load(this.href, 
-            'ifrm', // iframe id
-            'ifrmDiv', // id of div where iframe contents displayed
-            ifrmCallback // function to call after contents transferred to div
-            )">Home</a></li>
+          onclick="loadWebPage(this.href)">Home</a></li>
 
         <li><a href="profile_view.html" target="buffer"
-          onclick="return dw_Loader.load(this.href, 
-            'ifrm', // iframe id
-            'ifrmDiv', // id of div where iframe contents displayed
-            ifrmCallback // function to call after contents transferred to div
-            )">Profile</a></li>
+          onclick="loadWebPage(this.href)">Profile</a></li>
 
          <li><a href="search.html" target="buffer"
-          onclick="return dw_Loader.load(this.href, 
-            'ifrm', // iframe id
-            'ifrmDiv', // id of div where iframe contents displayed
-            ifrmCallback // function to call after contents transferred to div
-            )">Search</a></li>
+          onclick="loadWebPage(this.href)">Search</a></li>
 
           <li><a href="contact.html" target="buffer"
-          onclick="return dw_Loader.load(this.href, 
-            'ifrm', // iframe id
-            'ifrmDiv', // id of div where iframe contents displayed
-            ifrmCallback // function to call after contents transferred to div
-            )">Contact</a></li>
+          onclick="loadWebPage(this.href)">Contact</a></li>
 
           <li><a href="logout.html" target="buffer"
-          onclick="return dw_Loader.load(this.href, 
-            'ifrm', // iframe id
-            'ifrmDiv', // id of div where iframe contents displayed
-            ifrmCallback // function to call after contents transferred to div
-            )">Logout</a></li>
+          onclick="loadWebPage(this.href)">Logout</a></li>
 
-
+          <!-- <li><button onclick="secretButton()">secret</button></li> -->
 
       </ul>
     </div>
+
+
+    
+    <script>//scripts woo
+      function loadWebPage(hreference){
+        document.getElementById("secret").innerHTML = "I got this "+hreference;
+        return dw_Loader.load(hreference, 
+            'ifrm', // iframe id
+            'ifrmDiv', // id of div where iframe contents displayed
+            ifrmCallback // function to call after contents transferred to div
+        )
+      }
+      function secretButton(){
+        document.getElementById("secret").innerHTML = "Hello World";
+      }
+    </script>
     <!--body with info-->
     <div id="display"></div>
     <iframe id="buffer" name="buffer" src="home.html" onload="dw_Loader.display()"></iframe>

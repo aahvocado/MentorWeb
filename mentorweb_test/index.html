@@ -41,16 +41,16 @@
         <li><a href="profile_view.html" target="buffer"
           onclick="loadWebPage(this.href)">Profile</a></li>
 
-         <li><a href="search.html" target="buffer"
-          onclick="loadWebPage(this.href)">Search</a></li>
+        <li><a href="search.html" target="buffer"
+        onclick="loadWebPage(this.href)"> Search</a></li>
 
-          <li><a href="contact.html" target="buffer"
-          onclick="loadWebPage(this.href)">Contact</a></li>
+        <li><a href="contact.html" target="buffer"
+        onclick="loadWebPage(this.href)">Contact</a></li>
 
-          <li><a href="logout.html" target="buffer"
-          onclick="loadWebPage(this.href)">Logout</a></li>
+        <li><a href="logout.html" target="buffer"
+        onclick="loadWebPage(this.href)">Logout</a></li>
 
-          <!-- <li><button onclick="secretButton()">secret</button></li> -->
+        <!-- <li><button onclick="secretButton()">secret</button></li> -->
 
       </ul>
     </div>
@@ -67,12 +67,15 @@
         )
       }
       function secretButton(){
-        document.getElementById("secret").innerHTML = "Hello World";
+        var iframe = document.getElementById('buffer');
+        var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+
+        document.getElementById("secret").innerHTML = "Hello World " + iframedoc;
       }
     </script>
     <!--body with info-->
     <div id="display"></div>
-    <iframe id="buffer" name="buffer" src="home.html" onload="dw_Loader.display()"></iframe>
+    <iframe id="buffer" name="buffer" src="home.html" onload="dw_Loader.display()" frameBorder = "0"></iframe>
 
     
     

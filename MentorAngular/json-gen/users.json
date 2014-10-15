@@ -1,0 +1,272 @@
+[
+  {
+    "index": 0,
+    "uid": "{{{surname()}}",
+    "firstName": "Mollie",
+    "lastName": "Carter",
+    "email": "mcarter@gatech.edu",
+    "phone": 8695103417,
+    "commMethod": "email"
+  },
+  {
+    "index": 1,
+    "uid": "{{{surname()}}",
+    "firstName": "Eunice",
+    "lastName": "Mosley",
+    "email": "emosley@gatech.edu",
+    "phone": 9285992394,
+    "commMethod": "phone"
+  },
+  {
+    "index": 2,
+    "uid": "{{{surname()}}",
+    "firstName": "Jessica",
+    "lastName": "Lott",
+    "email": "jlott@gatech.edu",
+    "phone": 9764973216,
+    "commMethod": "email"
+  },
+  {
+    "index": 3,
+    "uid": "{{{surname()}}",
+    "firstName": "Hendrix",
+    "lastName": "Vazquez",
+    "email": "hvazquez@gatech.edu",
+    "phone": 9554872503,
+    "commMethod": "email"
+  },
+  {
+    "index": 4,
+    "uid": "{{{surname()}}",
+    "firstName": "Corine",
+    "lastName": "Spears",
+    "email": "cspears@gatech.edu",
+    "phone": 8844622810,
+    "commMethod": "phone"
+  },
+  {
+    "index": 5,
+    "uid": "{{{surname()}}",
+    "firstName": "Talley",
+    "lastName": "Snider",
+    "email": "tsnider@gatech.edu",
+    "phone": 9344472122,
+    "commMethod": "phone"
+  },
+  {
+    "index": 6,
+    "uid": "{{{surname()}}",
+    "firstName": "Cornelia",
+    "lastName": "Atkins",
+    "email": "catkins@gatech.edu",
+    "phone": 9414502393,
+    "commMethod": "email"
+  },
+  {
+    "index": 7,
+    "uid": "{{{surname()}}",
+    "firstName": "William",
+    "lastName": "Adams",
+    "email": "wadams@gatech.edu",
+    "phone": 9304673030,
+    "commMethod": "phone"
+  },
+  {
+    "index": 8,
+    "uid": "{{{surname()}}",
+    "firstName": "Kirk",
+    "lastName": "Jacobson",
+    "email": "kjacobson@gatech.edu",
+    "phone": 9455963041,
+    "commMethod": "email"
+  },
+  {
+    "index": 9,
+    "uid": "{{{surname()}}",
+    "firstName": "Walls",
+    "lastName": "Conner",
+    "email": "wconner@gatech.edu",
+    "phone": 8985403153,
+    "commMethod": "phone"
+  },
+  {
+    "index": 10,
+    "uid": "{{{surname()}}",
+    "firstName": "Reynolds",
+    "lastName": "Whitehead",
+    "email": "rwhitehead@gatech.edu",
+    "phone": 8634932259,
+    "commMethod": "email"
+  },
+  {
+    "index": 11,
+    "uid": "{{{surname()}}",
+    "firstName": "Molly",
+    "lastName": "Duffy",
+    "email": "mduffy@gatech.edu",
+    "phone": 8735983154,
+    "commMethod": "email"
+  },
+  {
+    "index": 12,
+    "uid": "{{{surname()}}",
+    "firstName": "Pauline",
+    "lastName": "Noble",
+    "email": "pnoble@gatech.edu",
+    "phone": 9905843454,
+    "commMethod": "phone"
+  },
+  {
+    "index": 13,
+    "uid": "{{{surname()}}",
+    "firstName": "Ayers",
+    "lastName": "Short",
+    "email": "ashort@gatech.edu",
+    "phone": 8885283126,
+    "commMethod": "phone"
+  },
+  {
+    "index": 14,
+    "uid": "{{{surname()}}",
+    "firstName": "Kim",
+    "lastName": "Reese",
+    "email": "kreese@gatech.edu",
+    "phone": 8044762806,
+    "commMethod": "email"
+  },
+  {
+    "index": 15,
+    "uid": "{{{surname()}}",
+    "firstName": "Robertson",
+    "lastName": "Massey",
+    "email": "rmassey@gatech.edu",
+    "phone": 9534922352,
+    "commMethod": "phone"
+  },
+  {
+    "index": 16,
+    "uid": "{{{surname()}}",
+    "firstName": "Amelia",
+    "lastName": "Morgan",
+    "email": "amorgan@gatech.edu",
+    "phone": 9804263169,
+    "commMethod": "phone"
+  },
+  {
+    "index": 17,
+    "uid": "{{{surname()}}",
+    "firstName": "Irene",
+    "lastName": "Thomas",
+    "email": "ithomas@gatech.edu",
+    "phone": 9844402246,
+    "commMethod": "phone"
+  },
+  {
+    "index": 18,
+    "uid": "{{{surname()}}",
+    "firstName": "Holly",
+    "lastName": "Stevens",
+    "email": "hstevens@gatech.edu",
+    "phone": 8644922072,
+    "commMethod": "phone"
+  },
+  {
+    "index": 19,
+    "uid": "{{{surname()}}",
+    "firstName": "Mathis",
+    "lastName": "Wong",
+    "email": "mwong@gatech.edu",
+    "phone": 9564662451,
+    "commMethod": "email"
+  },
+  {
+    "index": 20,
+    "uid": "{{{surname()}}",
+    "firstName": "Marva",
+    "lastName": "Velez",
+    "email": "mvelez@gatech.edu",
+    "phone": 9834672239,
+    "commMethod": "phone"
+  },
+  {
+    "index": 21,
+    "uid": "{{{surname()}}",
+    "firstName": "June",
+    "lastName": "May",
+    "email": "jmay@gatech.edu",
+    "phone": 9865743476,
+    "commMethod": "email"
+  },
+  {
+    "index": 22,
+    "uid": "{{{surname()}}",
+    "firstName": "Wolfe",
+    "lastName": "Robbins",
+    "email": "wrobbins@gatech.edu",
+    "phone": 8304433819,
+    "commMethod": "phone"
+  },
+  {
+    "index": 23,
+    "uid": "{{{surname()}}",
+    "firstName": "Deidre",
+    "lastName": "Bolton",
+    "email": "dbolton@gatech.edu",
+    "phone": 8285463133,
+    "commMethod": "email"
+  },
+  {
+    "index": 24,
+    "uid": "{{{surname()}}",
+    "firstName": "Gilliam",
+    "lastName": "Malone",
+    "email": "gmalone@gatech.edu",
+    "phone": 9655433702,
+    "commMethod": "email"
+  },
+  {
+    "index": 25,
+    "uid": "{{{surname()}}",
+    "firstName": "Young",
+    "lastName": "Fry",
+    "email": "yfry@gatech.edu",
+    "phone": 8545253007,
+    "commMethod": "email"
+  },
+  {
+    "index": 26,
+    "uid": "{{{surname()}}",
+    "firstName": "Mccormick",
+    "lastName": "Benjamin",
+    "email": "mbenjamin@gatech.edu",
+    "phone": 8434083316,
+    "commMethod": "phone"
+  },
+  {
+    "index": 27,
+    "uid": "{{{surname()}}",
+    "firstName": "Tracey",
+    "lastName": "Hatfield",
+    "email": "thatfield@gatech.edu",
+    "phone": 9344033182,
+    "commMethod": "email"
+  },
+  {
+    "index": 28,
+    "uid": "{{{surname()}}",
+    "firstName": "Nolan",
+    "lastName": "Best",
+    "email": "nbest@gatech.edu",
+    "phone": 8005763111,
+    "commMethod": "phone"
+  },
+  {
+    "index": 29,
+    "uid": "{{{surname()}}",
+    "firstName": "Barber",
+    "lastName": "Fernandez",
+    "email": "bfernandez@gatech.edu",
+    "phone": 9665333146,
+    "commMethod": "email"
+  }
+]

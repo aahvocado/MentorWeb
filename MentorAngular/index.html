@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Angular Demo</title>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+   <link rel="stylesheet" href="css/isotope-style.css">
+   <link rel="stylesheet" href="css/style.css">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script> 
+
+<!--   <script src="js/jquery-2.1.0.min.js"></script>
+  <script src="lib/angular/angular.min.js"></script>
+  <script src="lib/angular/angular-route.min.js"></script>
+  <script src="lib/angular/angular-animate.min.js"></script>
+  <script src="lib/isotope/jquery.isotope.js"></script>
+  <script src="lib/angular-isotope/angular-isotope.js"></script> -->
+
+
+
+  <!-- SemanticUI -->
+  <link rel="stylesheet" href="css/semanticui/semantic.css">
+
+<!--   <link rel="stylesheet" href="css/semanticui/message.min.css">
+  <link rel="stylesheet" href="css/semanticui/button.min.css">
+  <link rel="stylesheet" type="text/css" href="css/semanticui/icon.min.css">
+  <link rel="stylesheet" type="text/css" href="css/semanticui/basic.icon.min.css">
+  <link rel="stylesheet" href="css/semanticui/form.min.css">
+  <link rel="stylesheet" href="css/semanticui/grid.min.css">
+  <link rel="stylesheet" href="css/semanticui/menu.min.css">
+  <link rel="stylesheet" href="css/semanticui/table.min.css">
+  <link rel="stylesheet" href="css/semanticui/input.min.css">
+  <link rel="stylesheet" href="css/semanticui/dropdown.min.css">
+  <link rel="stylesheet" href="css/semanticui/item.min.css">
+
+  // <script src="js/semanticui/dropdown.min.js"></script>
+  // <script src="js/semanticui/sidebar.min.js"></script>
+  // <script src="js/semanticui/behavior/api.min.js"></script>
+  // <script src="js/semanticui/behavior/colorize.min.js"></script>
+  // <script src="js/semanticui/behavior/state.min.js"></script>
+  // <script src="js/semanticui/behavior/form.min.js"></script> -->
+  <!--   <script src="js/semanticui/semantic.min.js"></script> -->
+</head>
+<body ng-app="myApp">
+
+  <!--[if lt IE 7]>
+      <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+  <![endif]-->
+
+  <!--[if lt IE 9]>
+      <script src="scripts/vendor/es5-shim.min.js"></script>
+      <script src="scripts/vendor/json3.min.js"></script>
+  <![endif]-->
+
+  
+
+  <!-- Other Scripts -->
+  <script>
+    var addToList = function(number) {
+      var s=angular.element('#isotopeContainer').scope();
+      s.count = s.count || 0;
+      var newItem={name:'add', number:number || s.count--, date: Date.now(), class:'purple'};
+      s.$apply(s.xList.push(newItem));
+    };
+    var addLastItem = function() {
+      s.lastNumber = s.lastNumber || [];
+      addToList(s.lastNumber.shift());
+    };
+    var removeItem = function(elem) {
+      if (!Array.prototype.filter) return;
+      var s=angular.element('#isotopeContainer').scope();
+      var number = $(elem).find(".number").attr("number");
+      var items = s.xList.filter(function( obj ) {
+        return +obj.number != +number;
+      });
+      s.lastNumber = s.lastNumber || [];
+      s.lastNumber.unshift(number);
+      s.$apply(s.xList = items);
+    };
+  </script>
+<!--   // <script src="js/jquery-2.1.0.min.js"></script> -->
+
+  <script src="lib/angular/angular.min.js"></script>
+  <script src="lib/angular/angular-route.min.js"></script>
+  <script src="lib/angular/angular-animate.min.js"></script>
+  <script src="lib/isotope/jquery.isotope.min.js"></script>
+  <script src="lib/angular-isotope/angular-isotope.min.js"></script>
+
+  <script src="js/semanticui/semantic.js"></script>
+  <script src="js/welcome.js"></script>
+<!--   // <script src="js/app-ang-iso.js"></script> -->
+  // <script src="js/app.js"></script>
+  <script src="js/controllers.js"></script>
+  <script src="js/test.js"></script>
+
+
+<div class="main" ng-view></div>
+</body>
+</html>

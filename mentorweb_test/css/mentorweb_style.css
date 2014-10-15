@@ -14,11 +14,29 @@
 .body{
 	position:relative;
 	/*margin-left:250px;*/
-	margin-left: 20%;
+	margin-left: 3%;
 	margin-right: 3%;
 }
 
 iframe{
 	width: 80%;
-	height: 800px;
+	height: 100vh;
+}
+
+.button{
+   background: transparent;
+   color: #fff;
+
+   
+   margin-right: 10px;
+   border-radius: 5px;
+}
+
+.button:hover {
+   cursor: hand; cursor:pointer; 
+   color: #586B7E;
+
+   background: #fff;
+   border-radius: 5px;
+   border-color:  #fff;
 }

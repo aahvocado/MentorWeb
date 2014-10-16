@@ -10,6 +10,10 @@ myApp.config(['$routeProvider', function($routeProvider) {
     templateUrl: 'partials/welcome.html',
     controller: 'WelcomeController'
   }).
+  when('/fork', {
+    templateUrl: 'partials/fork.html',
+    controller: 'ForkController'
+  }).
   when('/register', {
     templateUrl: 'partials/register.html',
     controller: 'RegisterController'

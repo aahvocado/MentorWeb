@@ -6,7 +6,7 @@ $(document).ready(function(){
  		$.ajax({
       'async': false,
       'global': false,
-      'url': "http://dev.m.gatech.edu/d/aarrowood3/w/mentoringweb-ng/content/api/welcome",
+      'url': "api/welcome",
       'dataType': "json",
       'success': function (dataReq) {
           data = dataReq;

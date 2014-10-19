@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding = "utf-8" ?>
 <widget title="Comments" security="protected">
+    <library name="jquery"/>
+    <library name="jquery.url"/> 
     
-    <html file="partial/fork.html"/>
+    <html file="partials/fork.html"/>
 	<javascript file="js/welcome.js"/>
     
     <manifest>

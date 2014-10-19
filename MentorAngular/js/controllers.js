@@ -1,18 +1,18 @@
-var appControllers = angular.module('appControllers', ['ngAnimate', 'iso.directives']);
+var appControllers = angular.module('appControllers', ['ngAnimate']);
 
 appControllers.controller('WelcomeController', ['$scope', '$http', function($scope, $http) {
-  $http.get('js/data.json').success(function(data) {
-    $scope.apps = data;
-    $scope.appOrder = 'name';
-  });
 
   $(document).on('click', '.welcome .welcome-message .button', function() {
-    window.location.replace("https://login.gatech.edu/cas/login?service=http%3A%2F%2Fdev.m.gatech.edu%2Fd%2Faarrowood3%2Fw%2Fmentoringweb-ng%2Fcontent%2F")
+    window.location.replace("https://login.gatech.edu/cas/login?service=http%3A%2F%2Fdev.m.gatech.edu%2Fd%2Faarrowood3%2Fw%2Fmentorangular%2Fcontent%2F")
   })
 }]);
 
+appControllers.controller('ForkController', ['$scope', '$http', function($scope, $http) {
+
+}]);
+
 appControllers.controller('UserController', ['$scope', '$http', function($scope, $http) {
-  $http.get('http://dev.m.gatech.edu/d/aarrowood3/w/mentoringweb-ng/content/api/welcome').success(function(data) {
+  $http.get('api/welcome').success(function(data) {
     $scope.user = data['username'];
     $scope.userType = data['userType'];
   });
@@ -45,7 +45,7 @@ appControllers.controller('RegisterController', ['$scope', '$http', function($sc
     console.log("Reg Button");
     console.log($('#comm_method')[0].value);
     $.ajax({
-      url: "http://dev.m.gatech.edu/d/aarrowood3/w/mentoringweb/content/api/register",
+      url: "api/register",
       dataType: "json",
           async: false,
       data: {'regForm':{'firstName': $('#first_name')[0].value,

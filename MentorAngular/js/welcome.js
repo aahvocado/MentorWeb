@@ -1,6 +1,6 @@
 $(document).ready(function(){
 	console.log("link check");
-	//$.getJSON('http://dev.m.gatech.edu/d/aarrowood3/w/mentoringweb/content/api/welcome', function(data) {
+	//$.getJSON('http://dev.m.gatech.edu/d/mosborne8/w/mentoringweb/content/api/welcome', function(data) {
   //window.location.replace("index.html#/loading");
  		var data = "";
  		$.ajax({
@@ -13,8 +13,6 @@ $(document).ready(function(){
           console.log(dataReq);
       }
     });
-
-
 
  		console.log(data);
 

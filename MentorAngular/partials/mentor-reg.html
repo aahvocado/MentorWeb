@@ -4,47 +4,47 @@
 	    Mentor Registration
    	</div>
 		<h1>It seems you do not have an account</h1>
-		<h2>What would you like to be?</h2>
 
-	<div class="ui error form segment">
+	<div class="ui error form segment" ng-controller="RegisterMentorController">
 	  <div class="two fields">
 	    <div class="field">
 	      <label>First Name</label>
-	      <input id="first_name" placeholder="First Name" type="text">
+	      <input type="text" id="first_name" ng-model="fname" required placeholder="First Name">
+      Required!</span><br>
 	    </div>
 	    <div class="field">
 	      <label>Last Name</label>
-	      <input id="last_name" placeholder="Last Name" type="text">
+	      <input type="text" id="last_name" ng-model="lname" placeholder="Last Name">
 	    </div>
 	  </div>
 	  <div class="field">
 	    <label>Email</label>
-	    <input id="email" placeholder="username@gatech.edu" type="text">
+	    <input type="text" id="email" ng-model="email" placeholder="username@gatech.edu">
 	  </div>
 	  <div class="field">
 	    <label>Phone Number</label>
-	    <input id="phone_number" placeholder="xxx-xxx-xxxx" type="text">
+	    <input type="text" id="phone_number" ng-model="phone" placeholder="xxx-xxx-xxxx">
 	  </div>
 	  <div class="field">
 	    <label>Communication Method</label>
 	    <div class="ui fluid selection dropdown">
 	      <div class="text">Select</div>
 	      <i class="dropdown icon"></i>
-	      <input id="comm_method" type="hidden" name="gender">
+	      <input type="hidden" id="comm_method" ng-model="pref_comm" name="gender">
 	      <div class="menu">
-	        <div class="item" data-value="phone">Cell Phone</div>
+	        <div class="item" data-value="phone">Phone</div>
 	        <div class="item" data-value="email">Email</div>
 	      </div>
 	    </div>
 	  </div>
 
-	  <div class="inline field">
+	 <!--  <div class="inline field">
 	    <div class="ui checkbox">
 	      <input type="checkbox">
 	      <label>I agree to the Terms and Conditions</label>
 	    </div>
-	  </div>
-	  <div id="reg_submit_button" class="ui blue submit button">Submit</div>
+	  </div> -->
+	  <div id="reg_submit_button" class="ui blue submit button" ng-click="addMentor()">Submit</div>
 	</div>
 
 	</div>

@@ -1,5 +1,17 @@
 <?php
 	include 'db_helper.php';
+	header("Access-Control-Allow-Origin: *");
+	header("Content-Type: application/json; charset=UTF-8");
+
+	switch($_GET['action']) {
+		case 'addMentor' :
+		addMentor();
+		break;
+
+		case 'getMentor' :
+		getMentor();
+		break;
+	}
 
 	function welcome() {
 		global $_USER;
@@ -47,11 +59,10 @@
 	 	 header("Content-type: application/json");
 	 	 //echo var_dump($userinfo);
 	 	 echo json_encode($userInfo);
-	}
+	}//end welcome
 
 	function submitRegForm($form) {
 		global $_USER;
-
 
 		$dbQuery = sprintf("INSERT INTO User (username, last_name, first_name, phone_num, email, pref_communication)
 												VALUES ('%s', '%s', '%s', '%u', '%s', '%s')",
@@ -59,15 +70,32 @@
 												$form['phoneNumber'], $form['email'], $form['commMethod']);
 		$result = getDBRegInserted($dbQuery);
 
-		// $dbQuery = sprintf("first_name = $form['firstName'],
-		//  last_name=$form['lastName'], phone_num=$form['phoneNumber'], email=$form['email'],
-		//   pref_communication=$form['commMethod']");
-
 		header("Content-type: application/json");
 		echo json_encode($result);
-	}
+	}//end submitRegForm
 
-		function genFauxUsers($form) {
+	function addMentor($form) {
+		global $_USER;	
+		$data = json_decode(file_get_contents("php://input"));
+		echo "here: ";
+		echo $data;
+		echo "end";
+		$fname = mysql_real_escape_string($data->fname);//mysqli_real_escape_string($connection, $data->fname);
+		$lname = mysql_real_escape_string($data->lname);
+		$phone = mysql_real_escape_string($data->phone);
+		$email = mysql_real_escape_string($data->email);
+		$pref_comm = mysql_real_escape_string($data->pref_comm);
+		$dbQuery = sprintf("INSERT INTO User (username, last_name, first_name, phone_num, email, pref_communication)
+					VALUES ('%s', '%s', '%s','%s','%s','%s')", $_USER['uid'], $lname, $fname,$phone,$email,$pref_comm);
+		$result = getDBRegInserted($dbQuery);
+
+		//header("Content-type: application/json");
+		// print_r($json);
+		echo json_encode($result);
+		
+	}//end addMentor
+
+	function genFauxUsers($form) {
 		global $_USER;
 
 		//$form = json_decode($form);
@@ -88,7 +116,7 @@
 		header("Content-type: application/json");
 		//echo $form;
 		echo json_encode($count);
-	}
+	}//end genFauxUsers
 	
 	function listComments() {
 		global $_USER;

@@ -16,15 +16,15 @@ myApp.config(['$routeProvider', function($routeProvider) {
   }).
   when('/register', {
     templateUrl: 'partials/register.html',
-    controller: 'RegisterController'
+    controller: ''
   }).
   when('/menteeReg', {
     templateUrl: 'partials/mentee-reg.html',
-    controller: 'RegisterController'
+    controller: 'RegisterMentorController'//change to Mentee when
   }).
   when('/mentorReg', {
     templateUrl: 'partials/mentor-reg.html',
-    controller: 'RegisterController'
+    controller: 'RegisterMentorController'
   }).
 
   when('/homescreen', {

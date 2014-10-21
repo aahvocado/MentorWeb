@@ -12,19 +12,19 @@
 		</index>
 	</command>
 
-	<command id='registerMentor' security='protected'>
+	<command id='registerMentor' security='public'>
 		<description><![CDATA[This simple API welcomes users to the homepage]]></description>
 
 		<index>
 			<description><![CDATA[This is how new users submit the registration form to create a new profile]]></description>
 
-			<action file='db.php'><![CDATA[addMentor($_POST['regForm']);]]></action>
+			<action file='db.php'><![CDATA[addMentor($_POST);]]></action>
 		</index>
 
 		<post>
 			<description><![CDATA[This is how new users submit the registration form to create a new profile]]></description>
 
-			<action file='db.php'><![CDATA[addMentor($_POST['regForm']);]]></action>
+			<action file='db.php'><![CDATA[addMentor($_POST);]]></action>
 		</post>
 	</command>
 

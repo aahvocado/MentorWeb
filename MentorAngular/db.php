@@ -1,7 +1,7 @@
 <?php
 	include 'db_helper.php';
 	header("Access-Control-Allow-Origin: *");
-	header("Content-Type: application/json; charset=UTF-8");
+	// header("Content-Type: application/json; charset=UTF-8");
 
 	switch($_GET['action']) {
 		case 'addMentor' :
@@ -74,23 +74,19 @@
 		echo json_encode($result);
 	}//end submitRegForm
 
-	function addMentor($form) {
+	function addMentor() {
 		global $_USER;	
-		$data = json_decode(file_get_contents("php://input"));
-		echo "here: ";
-		echo $data;
-		echo "end";
-		$fname = mysql_real_escape_string($data->fname);//mysqli_real_escape_string($connection, $data->fname);
-		$lname = mysql_real_escape_string($data->lname);
-		$phone = mysql_real_escape_string($data->phone);
-		$email = mysql_real_escape_string($data->email);
-		$pref_comm = mysql_real_escape_string($data->pref_comm);
+		// $data = file_get_contents("php://input");
+		$fname = mysql_real_escape_string($_POST['fname']);//$data->fname);
+		$lname = mysql_real_escape_string($_POST['lname']);
+		$phone = mysql_real_escape_string($_POST['phone']);
+		$email = mysql_real_escape_string($_POST['email']);
+		$pref_comm = mysql_real_escape_string($_POST['pref_comm']);
 		$dbQuery = sprintf("INSERT INTO User (username, last_name, first_name, phone_num, email, pref_communication)
 					VALUES ('%s', '%s', '%s','%s','%s','%s')", $_USER['uid'], $lname, $fname,$phone,$email,$pref_comm);
 		$result = getDBRegInserted($dbQuery);
-
-		//header("Content-type: application/json");
-		// print_r($json);
+		// //header("Content-type: application/json");
+		// // print_r($json);
 		echo json_encode($result);
 		
 	}//end addMentor

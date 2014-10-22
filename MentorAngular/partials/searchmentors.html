@@ -26,11 +26,23 @@
             <div class="btn-group" opt-kind ok-key="filter" >
               <button type='button' class='btn btn-default active' ok-sel="*">Show All</button>
               <button type='button' class='btn btn-default' ok-sel=".purple">Purple</button>
-              <button type='button' class='btn btn-default' ok-sel=".orange">Orange</button>
+              <button type='button' class='btn btn-default ' ok-sel=".orange">Orange</button>
               <button type='button' class='btn btn-default' ok-sel=".blue">Blue</button>
               <button type='button' class='btn btn-default' ok-sel=".green">Green</button>
               <button type='button' class='btn btn-default' ok-sel=":not(.blue)">Not Blue</button>
               <button type='button' class='btn btn-default' ok-sel="#extra">Extra Only</button>
+            </div>
+
+            <div class="btn-group" opt-filter-menu ok-key="filter" >
+              <button type='button' class='btn btn-default active' ok-sel="*">Show All</button>
+              <button type='button' class='btn btn-default' ok-sel=".purple">Purple</button>
+              <button type='button' class='btn btn-default ' ok-sel=".orange">Orange</button>
+              <button type='button' class='btn btn-default' ok-sel=".blue">Blue</button>
+              <button type='button' class='btn btn-default' ok-sel=".green">Green</button>
+              <button type='button' class='btn btn-default' ok-sel=":not(.blue)">Not Blue</button>
+              <button type='button' class='btn btn-default' ok-sel="#extra">Extra Only</button>
+            </div>
+
             </div>
           </div>
         </div>
@@ -39,9 +51,9 @@
           <div class="col-md-6">
             <h4>Selector and Value-Based Sort</h4>
             <div class="btn-group" opt-kind ok-key="sortBy">
-              <button type="button" class="btn btn-default" ok-sel=".name">Name</button>
+              <button type="button" class="btn btn-default" ok-sel=".color">Color</button>
               <button type="button" class="btn btn-default active" ok-sel="[number]" ok-type="integer">Number</button>
-              <button type="button" class="btn btn-default" ok-sel="[date]" ok-type="integer">Date</button>
+              <button type="button" class="btn btn-default" ok-sel=".name">Date</button>
             </div>
           </div>
           <div class="col-md-6">
@@ -51,75 +63,80 @@
         </div>
 
 		<div class="view">
-      <div class="filter">
+      <div id="filter-menu" opt-filter-menu ok-key="filter"class="ui basic vertical accordion menu">
 
-      	<div class="ui accordion">
+      	<div class="ui item">
 				  <div class="title">
 				    <i class="dropdown icon"></i>
 				    Communication Method
 				  </div>
-				  <div class="content">
+				  <div ok-filter-group="comm-method" class="content">
 				    <div class="ui form">
 						  <div class="grouped inline fields">
 						    <div class="field">
-						      <div class="ui radio checkbox" opt-kind ok-key="filter">
-						        <input type="radio" name="comm-methods" class='btn btn-default' ok-sel=".green"/>
-						        <label>Phone</label>
+						      <div class="ui radio checkbox">
+						        <input type="radio" name="comm-methods" ></input>
+						        <label ok-sel=".phone">Phone</label>
 						      </div>
 						    </div>
 						    <div class="field">
-						      <div class="ui radio checkbox" opt-kind ok-key="filter">
-						        <input type="radio" name="comm-methods" class='btn btn-default' ok-sel=".purple"/>
-						        <label>Email</label>
+						      <div class="ui radio checkbox">
+						        <input type="radio" name="comm-methods" ></input>
+						        <label ok-sel=".email">Email</label>
 						      </div>
 						    </div>
 						  </div>
 						</div>
 				  </div>
 				</div>
-				<div class="ui accordion">
+				<div class="ui item">
 				  <div class="title">
 				    <i class="dropdown icon"></i>
-				    What kinds of dogs are there?
+				    Other Functions
 				  </div>
-				  <div class="content">
-				    <p>There are many breeds of dogs. Each breed varies in size and temperament. Owners often select a breed of dog that they find to be compatible with their own lifestyle and desires from a companion.</p>
+				  <div ok-filter-group="num" class="content">
+            <div class="ui buttons">
+  				    <button type='button' class='ui button' ok-sel="greaterThan50">> 20</button>
+              <button type='button' class='ui button' ok-sel="even">Even</button>
+            </div>
 				  </div>
 				</div>
-				<div class="ui accordion">
+				<div class="ui item">
 					<div class="title">
 				    <i class="dropdown icon"></i>
-				    What kinds of dogs are there?
+				    Colors
 				  </div>
-					<div class="content">
-				  	<div class="ui buttons" opt-kind ok-key="filter" >
-              <button type='button' class='ui button active' ok-sel="*">Show All</button>
-              <button type='button' class='ui button default' ok-sel=".purple">Purple</button>
+					<div ok-filter-group="color" class="content">
+				  	<div class="ui buttons">
+              <button type='button' class='ui button' ok-sel=".color-1">color 1</button>
+              <button type='button' class='ui button' ok-sel=".color-2">color 2</button>
+              <button type='button' class='ui button' ok-sel=".color-3">color 3</button>
+              <button type='button' class='ui button' ok-sel=".color-4">color 4</button>
           	</div>
           </div>
 			</div>
 		</div>
 
    
-			<div class="isotope-container">
+			<div class="isotope-container ui">
         <!-- ISOTOPECONTAINER -->
           <ul id="isotopeContainer" isotope-container ng-cloak class="ng-cloak">
-            <li ng-repeat="x in xList" isotope-item class="kindling {{x.class}}" onClick="removeItem(this)">
-               <div class="symbol">{{x.name}}</div>
-               <div class="weight" date="{{x.date}}">{{x.date | date}}</div>
-               <div class="number" number="{{x.number}}">{{x.number}}</div>
+            <li ng-repeat="user in userData" isotope-item class="kindling {{user.commMethod}} {{user.color}}" ng-click="miniProfileSet(user)">
+               <div class="symbol">{{user.firstName.substring(0,1) + user.lastName.substring(0,1).toLowerCase();}}</div>
+               <!-- <div class="weight" date="{{x.date}}">{{x.date | date}}</div> -->
+               <div class="number" user-id={{user.index}} number="{{user.index}}">{{user.index}}</div>
             </li>
 
-            <li id="extra" isotope-item class="kindling green">
-               <div class="symbol">extra</div>
-               <div class="weight" date="1360313309421">{{'1360313309421' | date}}</div>
-               <div class="number" number="20">Twenty</div>
+            <li id="extra" isotope-item class="kindling email">
+               <div class="symbol">Aa</div>
+<!--                <div class="weight" date="1360313309421">{{'1360313309421' | date}}</div> -->
+               <div class="number" number="20">20</div>
             </li>
 	    </div>
 
-
-
-			<div class="mentor-profile">
+			<div class="mentor-profile ui" ng-model="miniProfileData">
+        <p>Name: {{miniProfileData.firstName + " " + miniProfileData.lastName}}</p>
+        <p>Email: {{miniProfileData.email}}</p>
 			</div>
 		</div>
 

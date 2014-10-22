@@ -41,7 +41,7 @@ body{
     background-repeat: repeat;
 }
 
-.top-bar {
+.top-bar{
   width: 100vw;
   position: fixed;
   z-index: 1;

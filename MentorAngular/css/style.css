@@ -29,7 +29,19 @@ time, mark, audio, video {
 html, body {
   height: 100%;
   width: 100%;
-  font-family: 'Open Sans', sans-serif; }
+  font-family: 'Open Sans', sans-serif;
+}
+
+body{
+    background-image:url("light_honeycomb_2X.png");
+    background-repeat: repeat;
+}
+
+.top-bar{
+  width: 100vw;
+  position: fixed;
+  z-index: 1;
+}
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Open Sans', sans-serif;

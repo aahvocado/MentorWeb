@@ -3,6 +3,24 @@ $color-2: #B189C3;
 $color-3: #B6E763;
 $color-4: #EBF233; //yellow
 
+$bgColor: #00b5ad;
+$bgDimensionsX: 720;
+$bgDimensionsY: 286;
+$bgScrollSpeed: 60s;
+$bgScrollSpeedX: (1 * $bgDimensionsX) * 1px;
+$bgScrollSpeedY: (3 * $bgDimensionsY) * 1px;
+
+$borderRadius: 0.325em;
+$borderRadBig: 5px;
+$topHeight: 100px;
+$footerHeight: 100px;
+
+//Search Mentors
+$sideMenuMargin: 50px;
+$testTubeBorderRadius: 15em;
+$testTubeMinHeight: 400px;
+$stampSize: 110px;
+
 
 @font-face {
   font-family: 'Icons';
@@ -32,24 +50,74 @@ time, mark, audio, video {
   border: 0;
   // font: inherit;
   // position: inherit;
+  z-index: inherit;
   font-size: 100%;
   vertical-align: baseline; }
 
 html, body {
-  height: 100%;
+  position: relative;
+  min-height: 100vh;
+  height: auto;
+  overflow: auto;
   width: 100%;
   font-family: 'Open Sans', sans-serif;
+  background-color: $bgColor;
+  display: block;
+  z-index: -2;
 }
 
-body{
-    background-image:url("light_honeycomb_2X.png");
-    background-repeat: repeat;
+// body{
+//     background-image:url("light_honeycomb_2X.png");
+//     background-repeat: repeat;
+// }
+
+.background-holder {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
 }
 
-.top-bar{
+body #background{
+    position: relative;
+    float: right;
+    clear: both;
+    float: inherit;
+    background: url(../images/BrainyBackground3.png) repeat;
+    z-index: 1;
+    width: 200%;
+    height: 200%;
+    -webkit-animation: backdrop_roll linear $bgScrollSpeed infinite;
+    -moz-animation: backdrop_roll linear $bgScrollSpeed infinite;
+    -ms-animation: backdrop_roll linear $bgScrollSpeed infinite;
+    -o-animation: backdrop_roll linear $bgScrollSpeed infinite;
+    animation: backdrop_roll linear $bgScrollSpeed infinite;
+}
+@-webkit-keyframes backdrop_roll { from { right: 0px; bottom: 0px;} to { right: $bgScrollSpeedX; bottom: $bgScrollSpeedY;} }
+@-moz-keyframes backdrop_roll { from { right: 0px; bottom: 0px;} to { right: $bgScrollSpeedX; bottom: $bgScrollSpeedY;} }
+@-ms-keyframes backdrop_roll { from { right: 0px; bottom: 0px;} to { right: $bgScrollSpeedX; bottom: $bgScrollSpeedY;} }
+@-o-keyframes backdrop_roll { from { right: 0px; bottom: 0px;} to { right: $bgScrollSpeedX; bottom: $bgScrollSpeedY;} }
+@keyframes backdrop_roll { from { right: 0px; bottom: 0px;} to { right: $bgScrollSpeedX; bottom: $bgScrollSpeedY;} }
+
+nav {
   width: 100vw;
-  position: fixed;
-  z-index: 1;
+  position: relative;
+  z-index: 200;
+}
+
+.top-bar.ui.menu{
+  width: 95vw;
+  position: relative;
+  margin: 0 auto;
+  border-radius: 0px 0px $borderRadBig $borderRadBig;
+}
+
+.footer  {
+  height: 100%;
+  min-height: $footerHeight;
+  display: block;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -59,10 +127,10 @@ h1, h2, h3, h4, h5, h6 {
   text-shadow: 1px 1px rgb(255,255,255);
 }
 
-a p {
-  color: #145266;
-  font-family: 'Open Sans', sans-serif;
-}
+// a p {
+//   color: #145266;
+//   font-family: 'Open Sans', sans-serif;
+// }
 
 .main.ng-scope {
   height: 100%;
@@ -72,6 +140,7 @@ a p {
 .page {
   height: 100%;
   width: 100%;
+  padding-top: $topHeight;
 }
 
 .header {
@@ -111,6 +180,7 @@ a p {
 .searchmentors {
   height: 100%;
   width: 100%;
+  z-index: 100;
 }
 
 .searchmentors .view {
@@ -126,7 +196,7 @@ a p {
   position: relative;
   vertical-align: top;
   display: inline-block;
-  margin: -2px;
+  margin: -3px;
 }
 
 /*.searchmentor .view .ui.message {
@@ -145,22 +215,66 @@ a p {
   // height: 100%;
   min-width: 250px;
   background-color: #eee;
-  border-radius: 0.325em 0 0 0.325em;
+  border-radius: $borderRadius 0 0 $borderRadius;
+  z-index: 100;
+  margin-top: $sideMenuMargin;
 }
 
 .searchmentors .isotope-container {
-  width: 50%;
-  height: 100%;
+  width: 45%;
+  min-height: $testTubeMinHeight;
   background-color: #ddd;
-  border-radius: 0 0 0.325em 0.325em;
+  border-radius: 0 0 $testTubeBorderRadius $testTubeBorderRadius;
+  z-index: 200;
+}
+.searchmentors .isotope-tttl {
+  position: absolute;
+  top: 0px;
+  left: -50px;
+  height: 50px;
+  width: 50px;
+  z-index: 200;
+}
+
+.searchmentors .isotope-tttr {
+  position: absolute;
+  top: 0px;
+  right: -50px;
+  height: 50px;
+  width: 50px;
+  z-index: 200;
+}
+
+#stamp {
+  width: $stampSize;
+  height: $stampSize;
+  transform: none !important;
+  top: none !important;
+}
+
+#stamp.bottom-left {
+  position: absolute;
+  bottom: 0px !important;
+  left: 0px !important;
+}
+
+#stamp.bottom-right {
+  position: absolute;
+  bottom: 0px !important;
+  right: 0px !important;
 }
 
 .searchmentors .view .mentor-profile {
   width: 30%;
-  height: 100%;
   min-width: 240px;
   background-color: #eee;
-  border-radius: 0 0.325em 0 0.325em;
+  border-radius: 0px $borderRadBig $borderRadBig 0px;
+  z-index: 100;
+  margin-top: $sideMenuMargin;
+}
+
+.searchmentors .view .mentor-profile .content {
+  padding: 15px;
 }
 
 #isotope-container {

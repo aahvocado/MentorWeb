@@ -383,8 +383,16 @@ angular.module("iso.directives")
           //create filter string
           var filterFields = optionSet.find(activeSelector);
 
+          option["stamp"] = "#stamp";
+          option["itemSelector"] = ".kindling";
+          option["masonry"] = { "columnWidth": 120 };
           option[optKey] = filterFunction;
-          console.log("options: " + option[optKey]);
+          console.log("options: " + option);
+          var output = '';
+          for (var property in option) {
+            output += property + ': ' + option[property]+'; ';
+          }
+          console.log(output);
           return option;
         }
       };
@@ -402,9 +410,6 @@ angular.module("iso.directives")
         var selItem;
         event.preventDefault();
         selItem = angular.element(event.target);
-        if (selItem.hasClass(activeClass)) {
-          return false;
-        }
         //optionSet.find(activeSelector).removeClass(activeClass);
         //evaluate each field separately
         //var filterFields = optionSet.find("[ok-filter-field]");
@@ -412,10 +417,15 @@ angular.module("iso.directives")
         var filterGroupElem = selItem.closest("[ok-filter-group]");
         var filterGroup = filterGroupElem.attr('ok-filter-group');
         // set filter for group
-        filters[ filterGroup ] = selItem.attr('ok-sel');
+        if (selItem.hasClass(activeClass)) {
+          selItem.removeClass(activeClass);
+          filters[ filterGroup ] = "";
+        } else {
+          filters[ filterGroup ] = selItem.attr('ok-sel');
+          filterGroupElem.find(activeSelector).removeClass(activeClass);
+          selItem.addClass(activeClass);
+        }
         console.log("filter field:" + filterGroup);
-        filterGroupElem.find(activeSelector).removeClass(activeClass);
-        selItem.addClass(activeClass);
         emitOption(createOptions(selItem));
         return false;
       };

@@ -1,66 +1,5 @@
 
-<section class="searchmentors">
-    <div ng-init=
-      "xList=[
-      {name:'a', number:'1', date:'1360413309421', class:'purple'}
-      ,{name:'b', number:'5', date:'1360213309421', class:'orange'}
-      ,{name:'c', number:'10', date:'1360113309421', class:'blue'}
-      ,{name:'d', number:'2', date:'1360113309421', class:'green'}
-      ,{name:'e', number:'6', date:'1350613309421', class:'green'}
-      ,{name:'f', number:'21', date:'1350613309421', class:'orange'}
-      ,{name:'g', number:'3', date:'1340613309421', class:'blue'}
-      ,{name:'h', number:'7', date:'1330613309001', class:'purple'}
-      ,{name:'i', number:'22', date:'1360412309421', class:'blue'}
-      ] ">
-    </div>
-        <div class="row">
-          <h1>Angular-Isotope Example <small>Basic</small></h1>
-          <h4>
-            <a href="https://github.com/mankindsoftware" target="_blank">Mark Allen Hall - Mankind Software</a>
-          </h4>
-        </div>
-
-<!--         <div class="row">
-          <div class="col-md-12">
-            <h4>Selector-Based Filter</h4>
-            <div class="btn-group" opt-kind ok-key="filter" >
-              <button type='button' class='btn btn-default active' ok-sel="*">Show All</button>
-              <button type='button' class='btn btn-default' ok-sel=".purple">Purple</button>
-              <button type='button' class='btn btn-default ' ok-sel=".orange">Orange</button>
-              <button type='button' class='btn btn-default' ok-sel=".blue">Blue</button>
-              <button type='button' class='btn btn-default' ok-sel=".green">Green</button>
-              <button type='button' class='btn btn-default' ok-sel=":not(.blue)">Not Blue</button>
-              <button type='button' class='btn btn-default' ok-sel="#extra">Extra Only</button>
-            </div>
-
-            <div class="btn-group" opt-filter-menu ok-key="filter" >
-              <button type='button' class='btn btn-default active' ok-sel="*">Show All</button>
-              <button type='button' class='btn btn-default' ok-sel=".purple">Purple</button>
-              <button type='button' class='btn btn-default ' ok-sel=".orange">Orange</button>
-              <button type='button' class='btn btn-default' ok-sel=".blue">Blue</button>
-              <button type='button' class='btn btn-default' ok-sel=".green">Green</button>
-              <button type='button' class='btn btn-default' ok-sel=":not(.blue)">Not Blue</button>
-              <button type='button' class='btn btn-default' ok-sel="#extra">Extra Only</button>
-            </div>
-
-            </div>
-          </div>
-        </div>
-  
-        <div class="row">
-          <div class="col-md-6">
-            <h4>Selector and Value-Based Sort</h4>
-            <div class="btn-group" opt-kind ok-key="sortBy">
-              <button type="button" class="btn btn-default" ok-sel=".color">Color</button>
-              <button type="button" class="btn btn-default active" ok-sel="[number]" ok-type="integer">Number</button>
-              <button type="button" class="btn btn-default" ok-sel=".name">Date</button>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <h4>Click an Item to Remove</small></h4>
-            <button type='button' class='btn btn-default' onClick="addToList()">Add item to array</button>
-          </div>
-        </div> -->
+<section class="searchmentors page">
 
 		<div class="view">
       <div id="filter-menu" opt-filter-menu ok-key="filter"class="ui basic vertical accordion menu">
@@ -119,9 +58,17 @@
 
    
 			<div class="isotope-container ui">
+        <!-- Test tube rim -->
+        <div class="isotope-tttl">
+          <img src="images/TestTubeTopLeft.png">
+        </div>
+        <div class="isotope-tttr">
+           <img src="images/TestTubeTopRight.png">
+        </div>
+
         <!-- ISOTOPECONTAINER -->
           <ul id="isotopeContainer" isotope-container ng-cloak class="ng-cloak">
-            <li ng-repeat="user in userData" isotope-item class="kindling {{user.commMethod}} {{user.color}}" ng-click="miniProfileSet(user)">
+            <li ng-repeat="user in userData track by user.index" isotope-item class="kindling {{user.commMethod}} {{user.color}}" ng-click="miniProfileSet(user)">
                <div class="symbol">{{user.firstName.substring(0,1) + user.lastName.substring(0,1).toLowerCase();}}</div>
                <!-- <div class="weight" date="{{x.date}}">{{x.date | date}}</div> -->
                <div class="number" user-id={{user.index}} number="{{user.index}}">{{user.index}}</div>
@@ -129,14 +76,22 @@
 
             <li id="extra" isotope-item class="kindling email">
                <div class="symbol">Aa</div>
-<!--                <div class="weight" date="1360313309421">{{'1360313309421' | date}}</div> -->
                <div class="number" number="20">20</div>
             </li>
+
+        <!-- Stamps for bottom of test tube -->
+        <div id="stamp" class="stamp bottom-left"></div>
+        <div id="stamp" class="stamp bottom-right"></div>
 	    </div>
 
-			<div class="mentor-profile ui" ng-model="miniProfileData">
-        <p>Name: {{miniProfileData.firstName + " " + miniProfileData.lastName}}</p>
-        <p>Email: {{miniProfileData.email}}</p>
+			<div class="mentor-profile ui menu" ng-model="miniProfileData">
+        <a class="star ui corner label">
+          <i class="star icon"></i>
+        </a>
+        <div class="content ui item">
+          <div class="name">Name: {{miniProfileData.firstName + " " + miniProfileData.lastName}}</div>
+          <p>Email: {{miniProfileData.email}}</p>
+        </div>
 			</div>
 		</div>
 

@@ -39,12 +39,18 @@
 </head>
 <body ng-app="myApp" ><!-- style="height:1000px" -->
 
- <nav class="top-bar ui menu"> 
+  <div class="background-holder">
+    <div id="background"></div>
+  </div>
+
+  <nav>
+    <div class="top-bar ui menu"> 
       <a class="active item" href="#/welcome"> BMEntor </button>
       <a class="item" href="#/register"> Profile </button>
       <a class="item" href="#/searchmentors"> Search </button>
       <a class="item" href="#/contact"> Contact </button>
       <a class="item" href="#/logout"> Log Out </button></a>
+    </div>
   </nav>
   
   <!--[if lt IE 7]>
@@ -95,13 +101,19 @@
 <!--   // <script src="js/app-ang-iso.js"></script> -->
   <script src="js/app.js"></script>
   <script src="js/controllers.js"></script>
-  <script src="js/test.js"></script>
   <!-- daniel's test stuff -->
   <script src="js/jquery.backstretch.min.js"></script>
   <script>
           // $.backstretch("media/pot-holder.jpg");
   </script>
+  <script type="text/javascript">
+  //   $(function(){
+  //     $('body').children().wrapAll("<div class='wrapper'>");
+  //   });
+  </script>
   
 <div class="main" ng-view></div>
+<div class="footer"></div>
+
 </body>
 </html>

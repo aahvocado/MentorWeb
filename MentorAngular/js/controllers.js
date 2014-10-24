@@ -1,5 +1,39 @@
 var appControllers = angular.module('appControllers', ['ngAnimate', 'ngResource']);
 
+appControllers.directive('dropdown', function ($timeout) {
+    return {
+        restrict: "C",
+        link: function (scope, elm, attr) {
+            $timeout(function () {
+                $(elm).dropdown().dropdown('setting', {
+                    onChange: function (value) {
+                        scope.$parent[attr.ngModel] = value;
+                        console.log(value);
+                        scope.$parent.$apply();
+                    }
+                });
+            }, 0);
+        }
+    };
+});
+
+appControllers.directive('checkbox', function ($timeout) {
+    return {
+        restrict: "C",
+        link: function (scope, elm, attr) {
+            $timeout(function () {
+                $(elm).checkbox().checkbox('setting', {
+                    onEnable: function (value) {
+                        scope.$parent[attr.ngModel] = value;
+                        console.log(value);
+                        scope.$parent.$apply();
+                    }
+                });
+            }, 0);
+        }
+    };
+});
+
 appControllers.controller('WelcomeController', ['$scope', '$http', function($scope, $http) {
 
   $(document).on('click', '.welcome .welcome-message .button', function() {
@@ -40,6 +74,49 @@ appControllers.controller('SearchController', ['$scope', '$http', function($scop
 
 appControllers.controller('RegisterMentorController', ['$scope', '$http', function($scope, $http) {
   $('.ui.dropdown').dropdown();
+  $('.ui.radio.checkbox').checkbox();
+  $scope.containers = [{
+        id: 1,
+        name: 'Phone'
+    }, {
+        id: 2,
+        name: 'Email'
+    }];
+
+  $scope.dfocusVals = [{
+    id:1,
+    name: 'Neuroengineering'
+  }, {
+    id:2,
+    name: 'Cardiovascular Systems'
+  }, {
+    id:3, 
+    name: 'Biomechanics'
+  }, {
+    id:4,
+    name: 'Biomaterials/Tissue Engineering'
+  }, {
+    id:5, 
+    name: 'Medical Imaging'
+  }, {
+    id:6,
+    name: 'Some of Everything'
+  }, {
+    id:7,
+    name: 'Other'
+  }];
+    
+
+//   $scope.$watch('other_depth_focus', function (mVal) {
+//     if (angular.isUndefined($scope.depth_focus)) return;
+
+//     if (mVal === 'other') {
+//         $scope.other_depth_focus = $scope.other_depth_foucs;
+//     } else {
+//         $scope.other_depth_focus = null;
+//     }
+// });
+
   $scope.addMentor = function() {
     $.ajax({
       url: "api/registerMentor",
@@ -49,14 +126,14 @@ appControllers.controller('RegisterMentorController', ['$scope', '$http', functi
              'lname': $scope.lname,
              'email': $scope.email,
              'phone':$scope.phone,
-             'pref_comm': $scope.pref_comm
+             'pref_comm': $scope.prefComm.name
             },
       type: 'POST'
       // error: ajaxError
     });
-  }
+  };
+  
 }]);
-
 
 appControllers.controller('ListController', ['$scope', '$http', function($scope, $http) {
   $http.get('js/data.json').success(function(data) {

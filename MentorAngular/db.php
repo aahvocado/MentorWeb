@@ -1,7 +1,6 @@
 <?php
 	include 'db_helper.php';
 	header("Access-Control-Allow-Origin: *");
-	// header("Content-Type: application/json; charset=UTF-8");
 
 	switch($_GET['action']) {
 		case 'addMentor' :

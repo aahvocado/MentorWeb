@@ -66,22 +66,23 @@
            <img src="images/TestTubeTopRight.png">
         </div>
 
+                  <!-- Stamps for bottom of test tube -->
+          <div id="stamp" class="corner-stamp stamp bottom-left "></div>
+          <div id="stamp" class="corner-stamp stamp bottom-right "></div>
+
         <!-- ISOTOPECONTAINER -->
-          <ul id="isotopeContainer" isotope-container ng-cloak class="ng-cloak">
-            <li ng-repeat="user in userData track by user.index" isotope-item class="kindling {{user.commMethod}} {{user.color}}" ng-click="miniProfileSet(user)">
-               <div class="symbol">{{user.firstName.substring(0,1) + user.lastName.substring(0,1).toLowerCase();}}</div>
-               <!-- <div class="weight" date="{{x.date}}">{{x.date | date}}</div> -->
-               <div class="number" user-id={{user.index}} number="{{user.index}}">{{user.index}}</div>
-            </li>
+        <ul id="isotopeContainer" isotope-container ng-cloak class="ng-cloak">
+          <li ng-repeat="user in userData track by user.index" isotope-item class="kindling {{user.commMethod}} {{user.color}}" ng-click="miniProfileSet(user)">
+             <div class="symbol">{{user.firstName.substring(0,1) + user.lastName.substring(0,1).toLowerCase();}}</div>
+             <!-- <div class="weight" date="{{x.date}}">{{x.date | date}}</div> -->
+             <div class="number" user-id={{user.index}} number="{{user.index}}">{{user.index}}</div>
+          </li>
 
-            <li id="extra" isotope-item class="kindling email">
-               <div class="symbol">Aa</div>
-               <div class="number" number="20">20</div>
-            </li>
-
-        <!-- Stamps for bottom of test tube -->
-        <div id="stamp" class="stamp bottom-left"></div>
-        <div id="stamp" class="stamp bottom-right"></div>
+          <li id="extra" isotope-item class="kindling email">
+             <div class="symbol">Aa</div>
+             <div class="number" number="20">20</div>
+          </li>
+        </ul>
 	    </div>
 
 			<div class="mentor-profile ui menu" ng-model="miniProfileData">

@@ -219,16 +219,16 @@ h1, h2, h3, h4, h5, h6 {
 #stamp {
   width: 110px;
   height: 110px;
+  float: left;
   transform: none !important;
-  top: none !important; }
+  top: none !important;
+  background-color: #eee; }
 
 #stamp.bottom-left {
-  position: absolute;
   bottom: 0px !important;
   left: 0px !important; }
 
 #stamp.bottom-right {
-  position: absolute;
   bottom: 0px !important;
   right: 0px !important; }
 

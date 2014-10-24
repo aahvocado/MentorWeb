@@ -80,6 +80,7 @@ angular.module("iso.controllers", ["iso.config", "iso.services"])
                 } else {
                     instance.option( options );
                     instance._init( callback );
+                    //instance.stamp($('#stamp'));
                 }
            }
         }
@@ -102,6 +103,7 @@ angular.module("iso.controllers", ["iso.config", "iso.services"])
     $scope.updateOptions = function(option) {
       if (isotopeContainer) {
         isotopeContainer.isotope(option);
+        console.log("stamped");
       } else {
         optionsStore.store(option);
       }
@@ -384,8 +386,9 @@ angular.module("iso.directives")
           var filterFields = optionSet.find(activeSelector);
 
           option["stamp"] = "#stamp";
-          option["itemSelector"] = ".kindling";
-          option["masonry"] = { "columnWidth": 120 };
+          option["itemSelector"] = ".isotope-item";
+          option["masonry"] = { "columnWidth": 120,
+                                "cornerStampSelector": '.corner-stamp' };
           option[optKey] = filterFunction;
           console.log("options: " + option);
           var output = '';
@@ -401,7 +404,6 @@ angular.module("iso.directives")
 
       emitOption = function(option) {
         optionsStore.store(option);
-        
         return scope.$emit(optPublish, option);
       };
 

@@ -6,87 +6,80 @@
 		<h1>Please fill out your profile information so mentees can find you based on similar interests. Note that all of this informaition is required for you to fill out, but no one will see your contact information, or name, except your mentee when you are matched. </h1>
 
 	<div class="ui error form segment" ng-controller="RegisterMentorController">
+	<h4 class="ui header">Contact Information</h4>
 	  <div class="two fields">
 	    <div class="field">
 	      <label>First Name</label>
-	      <input type="text" id="first_name" ng-model="fname" required placeholder="First Name">
+	      <input type="text" id="first_name" ng-model="form.fname" placeholder="First Name">
 	    </div>
 	    <div class="field">
 	      <label>Last Name</label>
-	      <input type="text" id="last_name" ng-model="lname" placeholder="Last Name">
+	      <input type="text" id="last_name" ng-model="form.lname" placeholder="Last Name">
 	    </div>
 	  </div>
 	  <div class="field">
 	    <label>Email</label>
-	    <input type="email" id="email" ng-model="email" placeholder="username@gatech.edu">
+	    <input type="text" id="email" ng-model="form.email" placeholder="username@gatech.edu">
 	  </div>
 	  <div class="field">
 	    <label>Phone Number</label>
-	    <input type="text" id="phone_number" ng-model="phone" placeholder="xxx-xxx-xxxx">
+	    <input type="text" id="phone_number" ng-model="form.phone" placeholder="xxx-xxx-xxxx">
 	  </div>
+	  <!-- DROP DOWN EXAMPLE <div class="field">
+	  	<label>Preferred Communication Method</label>
+	  	<select ng-model="form.prefComm" ng-options="container.name for container in containers">
+	  		<option value="">Select</option>
+	  	</select>
+	  </div> -->
 	  <div class="field">
 	  	<label>Preferred Communication Method</label>
-	    <div class="ui selection dropdown" ng-model="prefComm">
-	        <div class="text">Select</div>	<i class="dropdown icon"></i>	
-	        <div class="menu transition hidden">
-	            <div class="item active">Select</div>
-	            <div data-value="{{container}}" class="item" ng-repeat="container in containers">{{container.name}}</div>
-	        </div>
-	    </div>
-    	</div>
-	  	
-	  	<div class="field">
-	  	<label>Depth Focus</label>
-
-	  	<div class="field" ng-repeat="dv in dfocusVals">
-	  	<div class="field">
-	  	<div class="ui radio checkbox" ng-model="dfocus">
-		  	<input type="radio" name="dfocus" ng-value="{{dv}}" value="{{dv}}">
-		  	<label>{{dv.name}}</label>
+	  	<div class="field" ng-repeat="comm in comms" ng-click="newValue(comm.name, 'prefComm')">
+	  		<div class="ui radio checkbox">
+			  	<input type="radio" name="prefComm" ng-model="form.prefComm" value="{{comm.name}}"/>
+			  	<label>{{comm.name}}</label>
+			</div>
 		</div>
-		</div>
-		</div>
-
-		<!-- <div class="field">
-		  	<div class="ui radio checkbox">
-		  		<input type="radio" name="depth_focus" ng-model="dfocus" ng-value="cardiovascularSystems">
-		  		<label>Cardiovascular Systems</label>
-		  	</div>
-	  	</div>
-	  	<div class="field">
-		  	<div class="ui radio checkbox">
-		  		<input type="radio" name="depth_focus" ng-model="dfocus" value="biomechanics">
-		  		<label>Biomechanics</label>
-		  	</div>
-	  	</div>
-	  	<div class="field">
-		  	<div class="ui radio checkbox">
-		  		<input type="radio" name="depth_focus" ng-model="dfocus" value="biomaterials">
-		  		<label>Biomaterials/tissue Engineering</label>
-		  	</div>
-		</div>
-		<div class="field">
-	  	<div class="ui radio checkbox">
-	  		<input type="radio" name="depth_focus" ng-model="dfocus" value="medicalImaging">
-	  		<label>Medical Imaging</label>
-	  	</div>
-	  	</div>
-	  	<div class="field">
-		  	<div class="ui radio checkbox">
-		  		<input type="radio" name="depth_focus" ng-model="dfocus" value="everything">
-		  		<label>Some of Everything</label>
-		  	</div>
-	  	</div>
-	  	<div class="field">
-		  	<div class="ui radio checkbox">
-		  		<input type="radio" name="depth_focus" ng-model="dfocus" value="other">
-		  		<label>Other</label>
-		  	</div>
-	  	</div> -->
-	  	<div class="field" ng-show="dfocus == 'other'">
-	      	<input type="text" id="odfocus" ng-model="dfocus" required placeholder="Please Specifiy">
-	    </div>
 	  </div>
+
+	  <div class="ui section divider"></div>
+	  <h4 class="ui header">Demographic Information</h4>
+
+	  <div class="field">
+	  	<label>Gender</label>
+	  	<div class="field" ng-repeat="gen in genders" ng-click="newValue(gen.name, 'gender')">
+	  		<div class="ui radio checkbox">
+			  	<input type="radio" name="gender" ng-model="form.gender" value="{{gen.name}}"/>
+			  	<label>{{gen.name}}</label>
+			</div>
+		</div>
+	  </div>
+
+	 <!--http://stackoverflow.com/questions/14514461/how-can-angularjs-bind-to-list-of-checkbox-values -->
+	 <div class="field">
+	  <label>Ethnicity</label>
+	  <div class="field" ng-repeat="eth in ethnicities">
+	  <div class="ui checkbox">
+	  	<input type="checkbox" name="selectedEthn[]" value="{{eth}}" ng-checked="form.ethnicity.indexOf(eth) > -1">
+	  	<label ng-click="toggleSelection(eth)">{{eth.name}}</label>
+	  </div>
+	</div>
+	 </div>
+
+		<div class="field">
+	  	<label>Depth Focus</label>
+	  	<div class="field" ng-repeat="val in dfocusVals" ng-click="newValue(val.name, 'dfocus')">
+	  		<div class="ui radio checkbox">
+			  	<input type="radio" name="dfocus" ng-model="form.dfocus" value="{{val.name}}"/>
+			  	<label>{{val.name}}</label>
+			</div>
+		</div>
+		</div>
+
+	  	<div class="field">
+	  	<div ng-show="form.dfocus == 'Other'">
+	      	<input type="text" id="dfocusother" ng-model="form.dfocusother" placeholder="Please Specify" ng-model-options="{ updateOn: 'blur' }">
+	    </div>
+		</div>
 	  <div id="reg_submit_button" class="ui blue submit button" ng-click="addMentor()">Submit</div>
 	</div>
 

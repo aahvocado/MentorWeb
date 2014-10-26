@@ -76,17 +76,44 @@
 	function addMentor() {
 		global $_USER;	
 		// $data = file_get_contents("php://input");
+		$user = $_USER['uid'];
 		$fname = mysql_real_escape_string($_POST['fname']);//$data->fname);
 		$lname = mysql_real_escape_string($_POST['lname']);
 		$phone = mysql_real_escape_string($_POST['phone']);
 		$email = mysql_real_escape_string($_POST['email']);
 		$pref_comm = mysql_real_escape_string($_POST['pref_comm']);
-		$dbQuery = sprintf("INSERT INTO User (username, last_name, first_name, phone_num, email, pref_communication)
+		$gender = mysql_real_escape_string($_POST['gender']);
+		$ethnicity = mysql_real_escape_string($_POST['ethnicity']);
+		$depth_focus = mysql_real_escape_string($_POST['dfocus']);
+		$depth_focus_desc = mysql_real_escape_string($_POST['dfocusother']);
+
+		
+		$userQuery = sprintf("INSERT INTO User (username, last_name, first_name, phone_num, email, pref_communication)
 					VALUES ('%s', '%s', '%s','%s','%s','%s')", $_USER['uid'], $lname, $fname,$phone,$email,$pref_comm);
-		$result = getDBRegInserted($dbQuery);
+		$uresult = getDBRegInserted($userQuery);
+
+
+		$mentorQuery = sprintf("INSERT INTO Mentor (username, gender, ethnicity, opt_in, depth_focus, depth_focus_desc) 
+			VALUES ('%s', '%s', %s', '%s', '%s', '%s')", $user, $gender, $ethnicity, $opt_in, $depth_focus, $depth_focus_desc);
+				// $post_grad_plan, $post_grad_plan_desc, $expec_graduation, $transfer_from_outside, 
+				// $institution_name, $transfer_from_within, $prev_major, $international_student, 
+				// $first_gen_college_student, $live_before_tech, $live_on_campus_fall, 
+				// $live_on_campus_spring, $undergrad_research, $undergrad_research_lab_worked, 
+				// $undergrad_research_num_semesters, $home_country, $personal_hobby, );
+
+
+			// , 
+			// post_grad_plan, post_grad_plan_desc, expec_graduation, transfer_from_outside, institution_name, 
+			// transfer_from_within, prev_major, international_student, first_gen_college_student, live_before_tech, 
+			// live_on_campus_fall, live_on_campus_spring, undergrad_research, undergrad_research_lab_worked, 
+			// undergrad_research_num_semesters, home_country, personal_hobby
+				// '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s',
+			 // '%s', '%s', '%s', '%s', '%s', '%s', '%s'
+		$mresult = getDBRegInserted($mentorQuery);
+
 		// //header("Content-type: application/json");
 		// // print_r($json);
-		echo json_encode($result);
+		echo json_encode($uresult+$mresult);
 		
 	}//end addMentor
 

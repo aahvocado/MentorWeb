@@ -15,7 +15,8 @@ myApp.config(['$routeProvider', function($routeProvider) {
     controller: 'ForkController'
   }).
   when('/register', {
-    templateUrl: 'partials/register.html'
+    templateUrl: 'partials/register.html',
+    controller: ''
   }).
   when('/menteeReg', {
     templateUrl: 'partials/mentee-reg.html',

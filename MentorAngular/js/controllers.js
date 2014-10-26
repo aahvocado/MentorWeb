@@ -1,39 +1,5 @@
 var appControllers = angular.module('appControllers', ['ngAnimate', 'ngResource']);
 
-appControllers.directive('dropdown', function ($timeout) {
-    return {
-        restrict: "C",
-        link: function (scope, elm, attr) {
-            $timeout(function () {
-                $(elm).dropdown().dropdown('setting', {
-                    onChange: function (value) {
-                        scope.$parent[attr.ngModel] = value;
-                        console.log(value);
-                        scope.$parent.$apply();
-                    }
-                });
-            }, 0);
-        }
-    };
-});
-
-appControllers.directive('checkbox', function ($timeout) {
-    return {
-        restrict: "C",
-        link: function (scope, elm, attr) {
-            $timeout(function () {
-                $(elm).checkbox().checkbox('setting', {
-                    onEnable: function (value) {
-                        scope.$parent[attr.ngModel] = value;
-                        console.log(value);
-                        scope.$parent.$apply();
-                    }
-                });
-            }, 0);
-        }
-    };
-});
-
 appControllers.controller('WelcomeController', ['$scope', '$http', function($scope, $http) {
 
   $(document).on('click', '.welcome .welcome-message .button', function() {
@@ -72,10 +38,13 @@ appControllers.controller('SearchController', ['$scope', '$http', function($scop
   
 }]);
 
-appControllers.controller('RegisterMentorController', ['$scope', '$http', function($scope, $http) {
-  $('.ui.dropdown').dropdown();
+appControllers.controller('RegisterMentorController', ['$scope', '$http', '$filter', function($scope, $http, $filter) {
+  // $('.ui.dropdown').dropdown();
   $('.ui.radio.checkbox').checkbox();
-  $scope.containers = [{
+  $('.ui.checkbox').checkbox();
+
+  $scope.form = { dfocus: '-', ethnicity: [] };
+  $scope.comms = [{
         id: 1,
         name: 'Phone'
     }, {
@@ -83,38 +52,91 @@ appControllers.controller('RegisterMentorController', ['$scope', '$http', functi
         name: 'Email'
     }];
 
+  $scope.genders = [{
+      id: 1,
+      name: 'Female'
+  }, {
+      id: 2,
+      name: 'Male'
+  }];
+
+  $scope.ethnicities = [{
+      id: 1,
+      name: 'American Indian or Alaskan Native'
+  }, {
+      id: 2,
+      name: 'Asian or Pacific Islander'
+  }, {
+      id: 3,
+      name: 'Black or African American'
+  }, {
+      id: 4,
+      name: 'Hispanic or Latino'
+  }, {
+      id: 5,
+      name: 'White/Caucasian'
+  }];
+
+  $scope.toggleSelection = function toggleSelection (eth) {
+    var idx = $scope.form.ethnicity.indexOf(eth)
+
+    if(idx > -1) {
+      $scope.form.ethnicity.splice(idx, 1);
+    }
+    else {
+      $scope.form.ethnicity.push(eth);
+    }
+  }
+
   $scope.dfocusVals = [{
     id:1,
-    name: 'Neuroengineering'
+    name: "Neuroengineering"
   }, {
     id:2,
-    name: 'Cardiovascular Systems'
+    name: "Cardiovascular Systems"
   }, {
     id:3, 
-    name: 'Biomechanics'
+    name: "Biomechanics"
   }, {
     id:4,
-    name: 'Biomaterials/Tissue Engineering'
+    name: "Biomaterials/Tissue Engineering"
   }, {
     id:5, 
-    name: 'Medical Imaging'
+    name: "Medical Imaging"
   }, {
     id:6,
-    name: 'Some of Everything'
+    name: "Some of Everything"
   }, {
     id:7,
-    name: 'Other'
+    name: "Other",
+    other: ""
   }];
-    
 
-//   $scope.$watch('other_depth_focus', function (mVal) {
-//     if (angular.isUndefined($scope.depth_focus)) return;
+ // $scope.selected = function (s, ind) {
+ //      console.log('s', s);
+ //        $scope.form.ethnicity = $filter('filter')($scope.ethnicities, {id: ind});
+ //  }
 
-//     if (mVal === 'other') {
-//         $scope.other_depth_focus = $scope.other_depth_foucs;
-//     } else {
-//         $scope.other_depth_focus = null;
-//     }
+  $scope.newValue = function(value, attr) {
+    console.log('new value', value);
+    $scope.form[attr] = value;
+
+    if (value == "Other" && attr == "dfocus") {
+      $scope.form.dfocus.other= $scope.form.dfocusother;
+    } else if (value != "Other" && attr == "dfocus") {
+      $scope.form.dfocusother = null;
+    }
+
+  }
+
+  // $scope.$watch('form.dfocus', function (mVal) {
+  //   if (angular.isUndefined($scope.form.dfocus)) return;
+  //   $scope.form.dfocus = mVal;
+  //   if (mVal === 'Other') {
+  //       $scope.form.dfocus = $scope.form.dfocusother;
+  //   } else {
+  //       $scope.form.dfocusother = null;
+  //   }
 // });
 
   $scope.addMentor = function() {
@@ -122,11 +144,14 @@ appControllers.controller('RegisterMentorController', ['$scope', '$http', functi
       url: "api/registerMentor",
       dataType: "json",
           async: false,
-      data: {'fname': $scope.fname,
-             'lname': $scope.lname,
-             'email': $scope.email,
-             'phone':$scope.phone,
-             'pref_comm': $scope.prefComm.name
+      data: {'fname': $scope.form.fname,
+             'lname': $scope.form.lname,
+             'email': $scope.form.email,
+             'phone':$scope.form.phone,
+             'pref_comm': $scope.form.prefComm,//use this if drop down $scope.form.prefComm.name,
+             'dfocus': $scope.form.dfocus,
+             'dfocusother': $scope.form.dfocusother,
+             'gender': $scope.form.gender
             },
       type: 'POST'
       // error: ajaxError

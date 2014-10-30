@@ -2,9 +2,9 @@ var appControllers = angular.module('appControllers', ['ngAnimate', 'ngResource'
 
 appControllers.controller('WelcomeController', ['$scope', '$http', function($scope, $http) {
 
-  $(document).on('click', '.welcome .welcome-message .button', function() {
+  $scope.go = function() {
     window.location.replace("https://login.gatech.edu/cas/login?service=http%3A%2F%2Fdev.m.gatech.edu%2Fd%2Fmosborne8%2Fw%2FMentorAngular%2Fcontent%2F")
-  })
+  };
 }]);
 
 appControllers.controller('ForkController', ['$scope', '$http', function($scope, $http) {
@@ -38,12 +38,174 @@ appControllers.controller('SearchController', ['$scope', '$http', function($scop
   
 }]);
 
-appControllers.controller('RegisterMentorController', ['$scope', '$http', '$filter', function($scope, $http, $filter) {
+appControllers.controller('RegisterController', ['$scope', '$http', '$location', function($scope, $http, $location) {
+  $scope.go = function( path ) {
+    $location.path(path);
+  };
+}]);
+
+appControllers.controller('RegisterMenteeController', ['$scope', '$http', '$filter', '$location', function($scope, $http, $filter, $location) {
+  $('.ui.radio.checkbox').checkbox();
+  $('.ui.checkbox').checkbox();
+  $scope.form = { 
+      dfocus: '', 
+      honor_program: [],
+      breadth_track:[],
+      bme_organization: [],
+      tutor_teacher_program: [],
+      bme_academ_exp: [],
+      international_experience: [],
+      career_dev_program: []
+  };
+
+  $scope.breadthTracks = [{
+    id:1,
+    name:'Pre-health',
+    desc: ''
+  }, {
+    id:2,
+    name:'Research Option',
+    desc:''
+  }, {
+    id:3, 
+    name:'Minor',
+    desc:''
+  }, {
+    id:4, 
+    name:'Certificate',
+    desc:''
+  }, {
+    id:5, 
+    name:'Not Sure',
+    desc:''
+  }];
+
+  $scope.dfocusVals = [{
+    id:1,
+    name: "Neuroengineering"
+  }, {
+    id:2,
+    name: "Cardiovascular Systems"
+  }, {
+    id:3, 
+    name: "Biomechanics"
+  }, {
+    id:4,
+    name: "Biomaterials/Tissue Engineering"
+  }, {
+    id:5, 
+    name: "Medical Imaging"
+  }, {
+    id:6,
+    name: "Some of Everything"
+  }, {
+    id:7,
+    name: "Other",
+    other: ""
+  }];
+
+  $scope.internationalPrograms = [{
+    id:1, 
+    name:'International Plan'
+  }, {
+    id:2, 
+    name:'Study Abroad'
+  }, {
+    id:3, 
+    name:'Work Abroad'
+  }, {
+    id:4,
+    name:'Research Abroad'
+  }, {
+    id:5, 
+    name:'Volunteer Abroad'
+  }];
+
+   $scope.carrerDevPrograms = [{
+    id:1,
+    name:'Co-op'
+  }, {
+    id:2, 
+    name:'Internship'
+  }, {
+    id:1,
+    name:'Shadowing in a Medical Environment'
+  }];
+
+  $scope.toggleSelection = function toggleSelection (opt, attr) {
+    var idx = $scope.form[attr].indexOf(opt)
+    if(idx > -1) {
+      $scope.form[attr].splice(idx, 1);
+    }
+    else {
+      $scope.form[attr].push(opt);
+    }
+  };
+
+  $scope.addMentee = function() {
+    $.ajax({
+      url: "api/mentee",
+      dataType: "json",
+          async: false,
+      data: {'fname': $scope.form.fname,
+             'lname': $scope.form.lname,
+             'email': $scope.form.email,
+             'phone':$scope.form.phone,
+             'pref_comm': $scope.form.prefComm,
+             'dfocus': $scope.form.dfocus,
+             'dfocusother': $scope.form.dfocusother,//need
+             'international_student': $scope.form.international_student,
+             'expec_graduation': $scope.form.expec_graduation,//need
+             'breadth_track': $scope.form.breadth_track,//modify table
+             'undergrad_research': $scope.form.undergrad_research,//need
+             'undergrad_research_desc':$scope.form.undergrad_research_desc,//need
+             'bme_organization': $scope.form.bme_organization,//need make another table
+             'tutor_teacher_program': $scope.form.tutor_teacher_program,//need make antoher table
+             'international_experience': $scope.form.international_experience,
+             'international_experience_desc':$scope.form.international_experience_desc,//need
+             'career_dev_program': $scope.form.career_dev_program,//modify table
+             'career_dev_program_desc': $scope.form.career_dev_program_desc,//modify table
+             'post_grad_plan': $scope.form.post_grad_plan,
+             'post_grad_plan_desc': $scope.form.post_grad_plan_desc,
+             'personal_hobby': $scope.form.personal_hobby//need
+            },
+      type: 'POST'
+      // error: ajaxError
+    });
+  };
+
+}]);
+
+
+appControllers.controller('RegisterMentorController', ['$scope', '$http', '$filter', '$location', 
+  function($scope, $http, $filter, $location) {
   // $('.ui.dropdown').dropdown();
   $('.ui.radio.checkbox').checkbox();
   $('.ui.checkbox').checkbox();
 
-  $scope.form = { dfocus: '-', ethnicity: [] };
+  $scope.form = { 
+      dfocus: '-', 
+      ethnicity: [],
+      honor_program: [],
+      breadth_track:[],
+      bme_organization: [],
+      mentee_mentor_organization: [],
+      tutor_teacher_program: [],
+      bme_academ_exp: [],
+      international_experience: [],
+      career_dev_program: []
+  };
+
+  $scope.yesno = [{
+      id:1,
+      name: 'Yes',
+      value: true
+  }, {
+      id:2, 
+      name: 'No',
+      value: false
+  }];
+
   $scope.comms = [{
         id: 1,
         name: 'Phone'
@@ -77,17 +239,6 @@ appControllers.controller('RegisterMentorController', ['$scope', '$http', '$filt
       name: 'White/Caucasian'
   }];
 
-  $scope.toggleSelection = function toggleSelection (eth) {
-    var idx = $scope.form.ethnicity.indexOf(eth)
-
-    if(idx > -1) {
-      $scope.form.ethnicity.splice(idx, 1);
-    }
-    else {
-      $scope.form.ethnicity.push(eth);
-    }
-  }
-
   $scope.dfocusVals = [{
     id:1,
     name: "Neuroengineering"
@@ -112,46 +263,239 @@ appControllers.controller('RegisterMentorController', ['$scope', '$http', '$filt
     other: ""
   }];
 
- // $scope.selected = function (s, ind) {
- //      console.log('s', s);
- //        $scope.form.ethnicity = $filter('filter')($scope.ethnicities, {id: ind});
- //  }
+  $scope.breadthTracks = [{
+    id:1,
+    name:'Pre-health',
+    desc: ''
+  }, {
+    id:2,
+    name:'Research Option',
+    desc:''
+  }, {
+    id:3, 
+    name:'Minor',
+    desc:''
+  }, {
+    id:4, 
+    name:'Certificate',
+    desc:''
+  }, {
+    id:5, 
+    name:'Not Sure',
+    desc:''
+  }];
+
+  $scope.honorPrograms = [{
+    id:1,
+    name: 'President\'s Scholarship Program'
+  }, {
+    id:2,
+    name: 'Honors Program'
+  }, {
+    id:3,
+    name: 'Grand Challenges'
+  }];
+
+  $scope.bmeOrganizations = [{
+    id:1,
+    name:'Alpha Eta Mu (AEMB)'
+  }, {
+    id:2,
+    name:'Biomedical Engineering Society (BMES)'
+  }, {
+    id:3,
+    name:'Biomedical Research & Opportunities Society (BROS)'
+  }, {
+    id:4, 
+    name:'BMED Futures'
+  }, {
+    id:5, 
+    name:'Engineering World Health (EWH)'
+  }, {
+    id:6, 
+    name:'Medical Device Entrepreneurship Association (MDEA)'
+  }, {
+    id:7, 
+    name:'Pioneer'
+  }];
+
+  $scope.menteeMentorOrgs =[{
+    id:1,
+    name:'Mentor Jackets'
+  }, {
+    id:2,
+    name:'M&M Mentoring'
+  }, {
+    id:3, 
+    name:'Ceismic Academic Mentoring'
+  }, {
+    id:4, 
+    name:'Office of Minority Education (OMED) Mentor'
+  }, {
+    id:5,
+    name:'BMED 1000 Mentor'
+  }];
+
+  $scope.tutorTeachPrograms = [{
+    id:1, 
+    name:'PLUS Leader (Center for Academic Success)'
+  }, {
+    id:2, 
+    name:'1 On 1 Tutoring'
+  }, {
+    id:3, 
+    name:'Tutoring in BME with a Student Organization'
+  }, {
+    id:4, 
+    name:'Ad Hoc Tutoring (That You Arranged on Your Own)'
+  }, {
+    id:5,
+    name:'BMED 1300 Co-Facilitator'
+  }, {
+    id:6, 
+    name:'Undergraduate Grader or Teaching Assistant for a BME Course'
+  }];
+
+  $scope.bmeAcademicPrograms = [{
+    id:1,
+    name:'Inventure Prize'
+  }, {
+    id:2,
+    name:'Design Expo'
+  }, {
+    id:3,
+    name:'Multidisciplinary Capstone Design Course'
+  }, {
+    id:4, 
+    name:'The Clinical Observation and Design Experience (CODE) Course  (BMED 4813)'
+  }];
+
+  $scope.internationalPrograms = [{
+    id:1, 
+    name:'International Plan'
+  }, {
+    id:2, 
+    name:'Study Abroad'
+  }, {
+    id:3, 
+    name:'Work Abroad'
+  }, {
+    id:4,
+    name:'Research Abroad'
+  }, {
+    id:5, 
+    name:'Volunteer Abroad'
+  }];
+
+  $scope.carrerDevPrograms = [{
+    id:1,
+    name:'Co-op'
+  }, {
+    id:2, 
+    name:'Internship'
+  }, {
+    id:1,
+    name:'Shadowing in a Medical Environment'
+  }];
+
+  $scope.postGradPlans = [{
+    id:1,
+    name:'Industry'
+  }, {
+    id:2,
+    name:'Pursue Professional Degree in Healthcare'
+  }, {
+    id:3, 
+    name:'Graduate School'
+  }, {
+    id:4, 
+    name:'Entrepreneur'
+  }, {
+    id:5,
+    name:'I\'m Not Sure'
+  }, {
+    id:6,
+    name:'Other'
+  }];
+
+  $scope.toggleSelection = function toggleSelection (opt, attr) {
+    var idx = $scope.form[attr].indexOf(opt)
+    if(idx > -1) {
+      $scope.form[attr].splice(idx, 1);
+    }
+    else {
+      $scope.form[attr].push(opt);
+    }
+  };
 
   $scope.newValue = function(value, attr) {
     console.log('new value', value);
     $scope.form[attr] = value;
-
     if (value == "Other" && attr == "dfocus") {
-      $scope.form.dfocus.other= $scope.form.dfocusother;
+      $scope.form.dfocusother = $scope.form.dfocusother; //left side was $scope.form.dfocus.other
     } else if (value != "Other" && attr == "dfocus") {
       $scope.form.dfocusother = null;
     }
-
+    if (value && attr == "transfer_from_within") {
+      $scope.form.transfer_from_outside = false;
+      $scope.form.institution_name = null;
+    } else if (value && attr == "transfer_from_outside") {
+      $scope.form.transfer_from_within = false;
+      $scope.form.prev_major = null;
+    }
+    if (value !="Yes" && attr == "majorHelper") {
+      $scope.form.other_major = null;
+    }
+    if (!value && attr == "undergrad_research") {
+      $scope.form.undergrad_research_desc = null;
+    } 
   }
-
-  // $scope.$watch('form.dfocus', function (mVal) {
-  //   if (angular.isUndefined($scope.form.dfocus)) return;
-  //   $scope.form.dfocus = mVal;
-  //   if (mVal === 'Other') {
-  //       $scope.form.dfocus = $scope.form.dfocusother;
-  //   } else {
-  //       $scope.form.dfocusother = null;
-  //   }
-// });
 
   $scope.addMentor = function() {
     $.ajax({
-      url: "api/registerMentor",
+      url: "api/mentor",
       dataType: "json",
           async: false,
       data: {'fname': $scope.form.fname,
              'lname': $scope.form.lname,
              'email': $scope.form.email,
              'phone':$scope.form.phone,
-             'pref_comm': $scope.form.prefComm,//use this if drop down $scope.form.prefComm.name,
+             'pref_comm': $scope.form.prefComm,
              'dfocus': $scope.form.dfocus,
              'dfocusother': $scope.form.dfocusother,
-             'gender': $scope.form.gender
+             'gender': $scope.form.gender,
+             'ethnicity': $scope.form.ethnicity,
+             'live_before_tech': $scope.form.live_before_tech,
+             'live_on_campus': $scope.form.live_on_campus,
+             'first_gen_college_student': $scope.form.first_gen_college_student,
+             'transfer_from_within': $scope.form.transfer_from_within,
+             'prev_major': $scope.form.prev_major,
+             'transfer_from_outside': $scope.form.transfer_from_outside,
+             'institution_name': $scope.form.institution_name,
+             'international_student': $scope.form.international_student,
+             'home_country': $scope.form.home_country,
+             'expec_graduation': $scope.form.expec_graduation,
+             'honor_program': $scope.form.honor_program,
+             'other_major': $scope.form.other_major,
+             'breadth_track': $scope.form.breadth_track,
+             'undergrad_research': $scope.form.undergrad_research,
+             'undergrad_research_desc':$scope.form.undergrad_research_desc,
+             'other_organization':$scope.form.other_organization, 
+             'bme_organization': $scope.form.bme_organization,
+             'bme_organization_other': $scope.form.bme_organization_other,
+             'mentee_mentor_organization': $scope.form.mentee_mentor_organization,
+             'mentee_mentor_organization_other': $scope.form.mentee_mentor_organization_other,
+             'tutor_teacher_program': $scope.form.tutor_teacher_program,
+             'tutor_teacher_program_desc': $scope.form.tutor_teacher_program_desc,
+             'bme_academ_exp': $scope.form.bme_academ_exp,
+             'bme_academ_exp_desc': $scope.form.bme_academ_exp_desc,
+             'international_experience': $scope.form.international_experience,
+             'international_experience_desc':$scope.form.international_experience_desc,
+             'career_dev_program': $scope.form.career_dev_program,
+             'career_dev_program_desc': $scope.form.career_dev_program_desc,
+             'post_grad_plan': $scope.form.post_grad_plan,
+             'post_grad_plan_desc': $scope.form.post_grad_plan_desc,
+             'personal_hobby': $scope.form.personal_hobby
             },
       type: 'POST'
       // error: ajaxError

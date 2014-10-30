@@ -1,12 +1,16 @@
 <section class="mentee-register page">
 	<div class="mentee-register-message ui message">
-	  <div class="header">
+	 <div class="ui huge header">
 	    Mentee Registration
-  	</div>
-		<h1>It seems you do not have an account</h1>
-		<h2>What would you like to be?</h2>
+   	</div>
+   	<a class="ui right aligned" ng-click="go('/homescreen')">Skip for now</a>
+	<div class="ui error form segment" ng-controller="RegisterMenteeController">
+	<div class="field">
+	<h1>*Note: MentorWeb will not use your information for any other reason than for your own keeping. All mentors are available for you from the beginning. YOU have the freedom to choose your mentor.</h1>
+	</div>
+	<h2 class="ui inverted black block header">Basic Information</h2>
 
-	<div class="ui error form segment">
+	<div class="ui form segment">
 	  <div class="two fields">
 	    <div class="field">
 	      <label>First Name</label>
@@ -38,12 +42,6 @@
 	    </div>
 	  </div>
 
-	  <div class="inline field">
-	    <div class="ui checkbox">
-	      <input type="checkbox">
-	      <label>I agree to the Terms and Conditions</label>
-	    </div>
-	  </div>
 	  <div id="reg_submit_button" class="ui blue submit button">Submit</div>
 	</div>
 

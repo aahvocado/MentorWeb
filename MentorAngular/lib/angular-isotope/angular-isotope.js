@@ -25,13 +25,26 @@ angular.module("iso.controllers", ["iso.config", "iso.services"])
 .controller("angularIsotopeController", [
   "iso.config", "iso.topics", "$scope", "$timeout", "optionsStore", function(config, topics, $scope, $timeout, optionsStore) {
     "use strict";
-    var buffer, initEventHandler, isoMode, isotopeContainer, methodHandler, onLayoutEvent, optionsHandler, postInitialized, scope;
+    var buffer, initEventHandler, isoMode, isotopeContainer, methodHandler, onLayoutEvent, optionsHandler, postInitialized, scope, qsRegex;
     onLayoutEvent = "isotope.onLayout";
     postInitialized = false;
     isotopeContainer = null;
     buffer = [];
     scope = "";
     isoMode = "";
+    qsRegex = "";
+
+      var filterFns = {
+        greaterThan50: function() {
+          var number = $(this).find('.number').text();
+          return parseInt( number, 10 ) > 20;
+        },
+        even: function() {
+          var number = $(this).find('.number').text();
+          return parseInt( number, 10 ) % 2 === 0;
+        }
+      };
+
     $scope.$on(onLayoutEvent, function(event) {});
     $scope.layoutEventEmit = function($elems, instance) {
       return $timeout(function() {
@@ -62,8 +75,8 @@ angular.module("iso.controllers", ["iso.config", "iso.services"])
     $scope.init = function(isoInit) {
       optionsStore.storeInit(isoInit);
       isotopeContainer = isoInit.element;
-      initEventHandler($scope.$on, isoInit.isoOptionsEvent || topics.MSG_OPTIONS, optionsHandler);
-      initEventHandler($scope.$on, isoInit.isoMethodEvent || topics.MSG_METHOD, methodHandler);
+      //initEventHandler($scope.$on, isoInit.isoOptionsEvent || topics.MSG_OPTIONS, optionsHandler);
+      //initEventHandler($scope.$on, isoInit.isoMethodEvent || topics.MSG_METHOD, methodHandler);
       $scope.isoMode = isoInit.isoMode || "addItems";
       return $timeout(function() {
         var opts = optionsStore.retrieve();
@@ -97,11 +110,15 @@ angular.module("iso.controllers", ["iso.config", "iso.services"])
     };
     $scope.refreshIso = function() {
       if (postInitialized) {
-        return isotopeContainer.isotope();
+              console.log("refreshEvent");
+          return isotopeContainer.isotope( 'reloadItems' );
+          console.log("refreshEventDone");
+        //return isotopeContainer.isotope();
       }
     };
     $scope.updateOptions = function(option) {
       if (isotopeContainer) {
+        console.log("yo");
         isotopeContainer.isotope(option);
         console.log("stamped");
       } else {
@@ -331,14 +348,14 @@ angular.module("iso.directives")
     };
   }
 )
-.directive("optFilterMenu", ['optionsStore', 'iso.topics', function(optionsStore, topics) {
+.directive("optFilterMenu", ['iso.config','optionsStore', 'iso.topics', function(config, optionsStore, topics) {
   return {
     restrict: "A",
     controller: "isoSortByDataController",
     link: function(scope, element, attrs) {
       var createSortByDataMethods, createOptions, doOption, emitOption, 
       optKey, optPublish, methPublish, optionSet, determineAciveClass, 
-      activeClass, activeSelector, active, filters;
+      activeClass, activeSelector, active, filters, qsRegex;
 
       filters = {};
       optionSet = $(element);
@@ -385,17 +402,17 @@ angular.module("iso.directives")
           //create filter string
           var filterFields = optionSet.find(activeSelector);
 
-          option["stamp"] = "#stamp";
-          option["itemSelector"] = ".isotope-item";
-          option["masonry"] = { "columnWidth": 120,
-                                "cornerStampSelector": '.corner-stamp' };
+          // option["stamp"] = "#stamp";
+          // option["itemSelector"] = ".isotope-item";
+          // option["masonry"] = { "columnWidth": 120,
+          //                       "cornerStampSelector": '.corner-stamp' };
           option[optKey] = filterFunction;
           console.log("options: " + option);
-          var output = '';
-          for (var property in option) {
-            output += property + ': ' + option[property]+'; ';
-          }
-          console.log(output);
+          //var output = '';
+          // for (var property in option) {
+          //   output += property + ': ' + option[property]+'; ';
+          // }
+          //console.log(output);
           return option;
         }
       };
@@ -447,11 +464,25 @@ angular.module("iso.directives")
         var isMatched = true;
         var $this = $(this);
         
+        var i=0;
         for ( var prop in filters ) {
           var filter = filters[ prop ];
-          // use function if it matches
+          // use function if it matches.
           filter = filterFns[ filter ] || filter;
           // test each filter
+           //console.log(qsRegex);
+          var regexCheck = false;
+          var regReturn = (qsRegex ? ($(this).text().match( qsRegex )) : true);
+          if (regReturn !== null) {
+            if (regReturn.length !== 0) {
+              regexCheck = true;
+            } else {
+              regexCheck = false;
+            }
+          }
+
+          console.log("regexCheck: " + regexCheck);
+          console.log(JSON.stringify(filter, null, 4));
           if ( filter ) {
             isMatched = isMatched && $(this).is( filter );
           }
@@ -460,8 +491,23 @@ angular.module("iso.directives")
             break;
           }
         }
+        isMatched = isMatched && regexCheck;
         return isMatched;
       };
+
+      function debounce(fn, threshold ) {
+        var timeout;
+        return function debounced() {
+          if ( timeout ) {
+            clearTimeout( timeout );
+          }
+          function delayed() {
+            fn();
+            timeout = null;
+          }
+          timeout = setTimeout( delayed, threshold || 100 );
+        }
+      }
 
       determineActiveClass();
       
@@ -471,6 +517,45 @@ angular.module("iso.directives")
         var opts = createOptions(active);
         optionsStore.store(opts);
       }
+
+      $.fn.pressEnter = function(fn) {  
+
+    return this.each(function() {  
+        $(this).bind('enterPress', fn);
+        $(this).keyup(function(e){
+            if(e.keyCode == 13)
+            {
+              $(this).trigger("enterPress");
+            }
+        })
+    });  
+ }; 
+
+      // Text Input
+      var filterTextInput = $("[ok-text-input]");
+
+      if (filterTextInput.length !== 0) {
+          //$("[opt-filter-menu]").on('keyup', "[ok-text-input]", function(event) { //keyup
+            filterTextInput.pressEnter(function(event) {
+            var evt = event;
+             //debounce(function() {
+              console.log("yo");
+              qsRegex = new RegExp( filterTextInput.val(), 'gi' );
+              //scope.$emit(config.refreshEvent);
+              doOption(evt);
+              console.log("keypress");
+             //}, 200 );
+          });
+      }
+        //filterTextInput.keyup( debounce(function() {
+          // console.log("filterTextInput: " + filterTextInput.val());
+      //     qsRegex = new RegExp( filterTextInput.val(), 'gi' );
+      //     //scope.$emit(config.refreshEvent);
+      //     //scope.$emit("isotope.onLayout");
+      //     doOption(event);
+      //     console.log("keypress");
+      //   }, 200 ) );
+      // }
 
       return optionSet.on("click", "[ok-sel]", function(event) {
         return doOption(event);

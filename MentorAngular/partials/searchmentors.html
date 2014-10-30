@@ -1,60 +1,68 @@
 
 <section class="searchmentors page">
 
-		<div class="view">
-      <div id="filter-menu" opt-filter-menu ok-key="filter"class="ui basic vertical accordion menu">
+<div class="view">
+  <div opt-filter-menu ok-key="filter" class="ui vertical menu">
+  <div class="item">
+    <div class="ui small icon input">
+      <input id="filterTextInput" ok-text-input ng-model="query" placeholder="Search for artists" autofocus>
+      <i class="search icon"></i>
+    </div>
+  </div>
+    <div id="filter-menu" class="ui basic vertical accordion menu">
 
-      	<div class="ui item">
-				  <div class="title">
-				    <i class="dropdown icon"></i>
-				    Communication Method
-				  </div>
-				  <div ok-filter-group="comm-method" class="content">
-				    <div class="ui form">
-						  <div class="grouped inline fields">
-						    <div class="field">
-						      <div class="ui radio checkbox">
-						        <input type="radio" name="comm-methods" ></input>
-						        <label ok-sel=".phone">Phone</label>
-						      </div>
-						    </div>
-						    <div class="field">
-						      <div class="ui radio checkbox">
-						        <input type="radio" name="comm-methods" ></input>
-						        <label ok-sel=".email">Email</label>
-						      </div>
-						    </div>
-						  </div>
-						</div>
-				  </div>
-				</div>
-				<div class="ui item">
-				  <div class="title">
-				    <i class="dropdown icon"></i>
-				    Other Functions
-				  </div>
-				  <div ok-filter-group="num" class="content">
-            <div class="ui buttons">
-  				    <button type='button' class='ui button' ok-sel="greaterThan50">> 20</button>
-              <button type='button' class='ui button' ok-sel="even">Even</button>
-            </div>
-				  </div>
-				</div>
-				<div class="ui item">
-					<div class="title">
-				    <i class="dropdown icon"></i>
-				    Colors
-				  </div>
-					<div ok-filter-group="color" class="content">
-				  	<div class="ui buttons">
-              <button type='button' class='ui button' ok-sel=".color-1">color 1</button>
-              <button type='button' class='ui button' ok-sel=".color-2">color 2</button>
-              <button type='button' class='ui button' ok-sel=".color-3">color 3</button>
-              <button type='button' class='ui button' ok-sel=".color-4">color 4</button>
-          	</div>
-          </div>
+    	<div class="ui item">
+			  <div class="title">
+			    <i class="dropdown icon"></i>
+			    Communication Method
+			  </div>
+			  <div ok-filter-group="comm-method" class="content">
+			    <div class="ui form">
+					  <div class="grouped inline fields">
+					    <div class="field">
+					      <div class="ui radio checkbox">
+					        <input type="radio" name="comm-methods" ></input>
+					        <label ok-sel=".phone">Phone</label>
+					      </div>
+					    </div>
+					    <div class="field">
+					      <div class="ui radio checkbox">
+					        <input type="radio" name="comm-methods" ></input>
+					        <label ok-sel=".email">Email</label>
+					      </div>
+					    </div>
+					  </div>
+					</div>
+			  </div>
 			</div>
+			<div class="ui item">
+			  <div class="title">
+			    <i class="dropdown icon"></i>
+			    Other Functions
+			  </div>
+			  <div ok-filter-group="num" class="content">
+          <div class="ui buttons">
+				    <button type='button' class='ui button' ok-sel="greaterThan50">> 20</button>
+            <button type='button' class='ui button' ok-sel="even">Even</button>
+          </div>
+			  </div>
+			</div>
+			<div class="ui item">
+				<div class="title">
+			    <i class="dropdown icon"></i>
+			    Colors
+			  </div>
+				<div ok-filter-group="color" class="content">
+			  	<div class="ui buttons">
+            <button type='button' class='ui button' ok-sel=".color-1">color 1</button>
+            <button type='button' class='ui button' ok-sel=".color-2">color 2</button>
+            <button type='button' class='ui button' ok-sel=".color-3">color 3</button>
+            <button type='button' class='ui button' ok-sel=".color-4">color 4</button>
+        	</div>
+        </div>
 		</div>
+	</div>
+</div>
 
    
 			<div class="isotope-container ui">
@@ -67,12 +75,12 @@
         </div>
 
                   <!-- Stamps for bottom of test tube -->
-          <div id="stamp" class="corner-stamp stamp bottom-left "></div>
-          <div id="stamp" class="corner-stamp stamp bottom-right "></div>
-
+<!--           <div id="stamp" class="corner-stamp stamp bottom-left "></div>
+<div id="stamp" class="corner-stamp stamp bottom-right "></div> -->
+        <!-- track by user.index -->
         <!-- ISOTOPECONTAINER -->
         <ul id="isotopeContainer" isotope-container ng-cloak class="ng-cloak">
-          <li ng-repeat="user in userData track by user.index" isotope-item class="kindling {{user.commMethod}} {{user.color}}" ng-click="miniProfileSet(user)">
+          <li ng-repeat="user in userData" isotope-item class="kindling {{user.commMethod}} {{user.color}}" ng-click="miniProfileSet(user)">
              <div class="symbol">{{user.firstName.substring(0,1) + user.lastName.substring(0,1).toLowerCase();}}</div>
              <!-- <div class="weight" date="{{x.date}}">{{x.date | date}}</div> -->
              <div class="number" user-id={{user.index}} number="{{user.index}}">{{user.index}}</div>

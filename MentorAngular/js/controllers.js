@@ -26,15 +26,18 @@ appControllers.controller('LoadingController', ['$scope', '$http', function($sco
 }]);
 
 appControllers.controller('SearchController', ['$scope', '$http', function($scope, $http) {
-  $('.ui.checkbox')
-    .checkbox()
-  ;
-    $('.ui.accordion')
-    .accordion()
-  ;
-  // $http.get('json-gen/users.json').success(function(data) {
-  //   $scope.userdata = data;
-  // });
+  $('.ui.checkbox').checkbox();
+  $('.ui.accordion').accordion();
+
+  $http.get('json-gen/users.json').success(function(data) {
+    $scope.userData = data;
+    $scope.miniProfileData = $scope.userData[0];
+  });
+
+  $scope.miniProfileSet = function(userData) {
+    console.log("yo " + userData.firstName);
+    $scope.miniProfileData = userData;
+  }
   
 }]);
 

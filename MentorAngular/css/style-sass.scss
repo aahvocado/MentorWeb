@@ -1,4 +1,25 @@
+$color-1: #C52A79;
+$color-2: #B189C3;
+$color-3: #B6E763;
+$color-4: #EBF233; //yellow
 
+$bgColor: #00b5ad;
+$bgDimensionsX: 720;
+$bgDimensionsY: 286;
+$bgScrollSpeed: 60s;
+$bgScrollSpeedX: (1 * $bgDimensionsX) * 1px;
+$bgScrollSpeedY: (3 * $bgDimensionsY) * 1px;
+
+$borderRadius: 0.325em;
+$borderRadBig: 5px;
+$topHeight: 100px;
+$footerHeight: 100px;
+
+//Search Mentors
+$sideMenuMargin: 50px;
+$testTubeBorderRadius: 15em;
+$testTubeMinHeight: 400px;
+$stampSize: 110px;
 
 
 @font-face {
@@ -27,28 +48,89 @@ time, mark, audio, video {
   margin: 0;
   padding: 0;
   border: 0;
-  font: inherit;
-  position: inherit;
+  // font: inherit;
+  // position: inherit;
+  z-index: inherit;
   font-size: 100%;
   vertical-align: baseline; }
 
 html, body {
-  height: 100%;
+  position: relative;
+  min-height: 100vh;
+  height: auto;
+  overflow: auto;
   width: 100%;
   font-family: 'Open Sans', sans-serif;
+  background-color: $bgColor;
+  display: block;
+  z-index: -2;
+}
+
+// body{
+//     background-image:url("light_honeycomb_2X.png");
+//     background-repeat: repeat;
+// }
+
+.background-holder {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+body #background{
+    position: relative;
+    float: right;
+    clear: both;
+    float: inherit;
+    background: url(../images/BrainyBackground3.png) repeat;
+    z-index: 1;
+    width: 200%;
+    height: 200%;
+    -webkit-animation: backdrop_roll linear $bgScrollSpeed infinite;
+    -moz-animation: backdrop_roll linear $bgScrollSpeed infinite;
+    -ms-animation: backdrop_roll linear $bgScrollSpeed infinite;
+    -o-animation: backdrop_roll linear $bgScrollSpeed infinite;
+    animation: backdrop_roll linear $bgScrollSpeed infinite;
+}
+@-webkit-keyframes backdrop_roll { from { right: 0px; bottom: 0px;} to { right: $bgScrollSpeedX; bottom: $bgScrollSpeedY;} }
+@-moz-keyframes backdrop_roll { from { right: 0px; bottom: 0px;} to { right: $bgScrollSpeedX; bottom: $bgScrollSpeedY;} }
+@-ms-keyframes backdrop_roll { from { right: 0px; bottom: 0px;} to { right: $bgScrollSpeedX; bottom: $bgScrollSpeedY;} }
+@-o-keyframes backdrop_roll { from { right: 0px; bottom: 0px;} to { right: $bgScrollSpeedX; bottom: $bgScrollSpeedY;} }
+@keyframes backdrop_roll { from { right: 0px; bottom: 0px;} to { right: $bgScrollSpeedX; bottom: $bgScrollSpeedY;} }
+
+nav {
+  width: 100vw;
+  position: relative;
+  z-index: 200;
+}
+
+.top-bar.ui.menu{
+  width: 95vw;
+  position: relative;
+  margin: 0 auto;
+  border-radius: 0px 0px $borderRadBig $borderRadBig;
+}
+
+.footer  {
+  height: 100%;
+  min-height: $footerHeight;
+  display: block;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Open Sans', sans-serif;
   font-weight: normal;
   color: #475b62;
-  text-shadow: 1px 1px rgb(255,255,255, 1);
+  text-shadow: 1px 1px rgb(255,255,255);
 }
 
-a p {
-  color: #145266;
-  font-family: 'Open Sans', sans-serif;
-}
+// a p {
+//   color: #145266;
+//   font-family: 'Open Sans', sans-serif;
+// }
 
 .main.ng-scope {
   height: 100%;
@@ -58,6 +140,7 @@ a p {
 .page {
   height: 100%;
   width: 100%;
+  padding-top: $topHeight;
 }
 
 .header {
@@ -66,8 +149,8 @@ a p {
 }
 
 .page>.ui.message  {
-	margin: 0 auto;
-	width: 60%;
+  margin: 0 auto;
+  width: 60%;
   top: 35px;
 }
 
@@ -94,6 +177,13 @@ a p {
 
 /* Mentor Search */
 
+.searchmentors {
+  height: 100%;
+  width: 100%;
+  min-width: 1035px;
+  z-index: 100;
+}
+
 .searchmentors .view {
   position: relative;
   width: 95%;
@@ -106,39 +196,123 @@ a p {
 .searchmentors .view > div {
   position: relative;
   vertical-align: top;
+  display: inline-block;
+  margin: -3px;
 }
 
-.searchmentor .view .ui.message {
+/*.searchmentor .view .ui.message {
   height: 90%;
-}
+}*/
 
 .searchmentors .nav {
   width: 15%;
   height: 100%;
   min-width: 90px;
-  display: inline-block;
   background-color: #ddd;
 }
 
-.searchmentors .filter {
-  width: 25%;
-  height: 100%;
-  min-width: 160px;
-  display: inline-block;
-  background-color: #ddd;
+.searchmentors #filter-menu {
+  width: 20%;
+  // height: 100%;
+  min-width: 250px;
+  background-color: #eee;
+  border-radius: $borderRadius 0 0 $borderRadius;
+  z-index: 100;
+  margin-top: $sideMenuMargin;
 }
 
 .searchmentors .isotope-container {
-  width: 50%;
-  height: 100%;
-  display: inline-block;
+  width: 45%;
+  min-height: $testTubeMinHeight;
   background-color: #ddd;
+  border-radius: 0 0 $testTubeBorderRadius $testTubeBorderRadius;
+  z-index: 200;
+}
+.searchmentors .isotope-tttl {
+  position: absolute;
+  top: 0px;
+  left: -50px;
+  height: 50px;
+  width: 50px;
+  z-index: 200;
+}
+
+.searchmentors .isotope-tttr {
+  position: absolute;
+  top: 0px;
+  right: -50px;
+  height: 50px;
+  width: 50px;
+  z-index: 200;
+}
+
+#stamp {
+  width: $stampSize;
+  height: $stampSize;
+  float: left;
+  transform: none !important;
+  top: none !important;
+  background-color: #eee;
+}
+
+#stamp.bottom-left {
+  // position: absolute;
+  bottom: 0px !important;
+  left: 0px !important;
+}
+
+#stamp.bottom-right {
+  // position: absolute;
+  bottom: 0px !important;
+  right: 0px !important;
 }
 
 .searchmentors .view .mentor-profile {
   width: 30%;
-  height: 100%;
   min-width: 240px;
-  display: inline-block;
-  background-color: #ddd;
+  background-color: #eee;
+  border-radius: 0px $borderRadBig $borderRadBig 0px;
+  z-index: 100;
+  margin-top: $sideMenuMargin;
 }
+
+.searchmentors .view .mentor-profile .content {
+  padding: 15px;
+}
+
+#isotope-container {
+  width: 600px;
+}
+#container{border:1px solid #666;padding:5px;margin-bottom:20px}
+
+.kindling.color-1 {background-color: $color-1;}
+.kindling.color-2 {background-color: $color-2;}
+.kindling.color-3 {background-color: $color-3;}
+.kindling.color-4 {background-color: $color-4;}
+
+.kindling {
+  text-decoration: none;
+  margin: 2px;
+}
+.kindling{width:110px;height:110px;margin:5px;float:left;overflow:hidden;position:relative;background:#888;color:#222;-webkit-border-top-right-radius:1.2em;-moz-border-radius-topright:1.2em;border-top-right-radius:1.2em}
+.kindling.alkali{background:#F00;background:red}
+.kindling.alkaline-earth{background:#F80;background:#f90}
+.kindling.lanthanoid{background:#FF0;background:#cf0}
+.kindling.actinoid{background:#0F0;background:#3f0}
+.kindling.transition{background:#0F8;background:#0f6}
+.kindling.post-transition{background:#0FF;background:cyan}
+.kindling.metalloid{background:#08F;background:#06f}
+.kindling.other.nonmetal{background:#00F;background:#30f}
+.kindling.halogen{background:#F0F;background:#c0f}
+.kindling.noble-gas{background:#F08;background:#f09}
+.kindling.purple{background:#CC00FF}
+.kindling.orange{background:#FF9900}
+.kindling.blue{background:#0099FF}
+.kindling.green{background:#CCFF00}
+.kindling *{position:absolute;margin:0}
+.kindling .symbol{left:0.2em;top:0.6em;font-size:3.2em;line-height:1.0em;color:#FFF}
+.kindling.large .symbol{font-size:4.5em}
+.kindling.fake .symbol{color:#000}
+.kindling .name{left:0.5em;bottom:1.6em;font-size:1.05em}
+.kindling .weight{font-size:0.9em;left:0.5em;bottom:0.5em}
+.kindling .number{font-size:1.25em;font-weight:bold;color:rgba(0,0,0,0.5);right:0.5em;top:0.5em}

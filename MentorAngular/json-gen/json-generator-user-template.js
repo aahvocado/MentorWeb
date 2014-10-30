@@ -12,7 +12,8 @@
       return (this.firstName.substring(0,1) + this.lastName + '@gatech.edu');
     },
     phoneNumber: '+1 {{phone()}}',
-    commMethod: '{{random("phone", "email")}}'
+    commMethod: '{{random("phone", "email")}}',
+    color: '{{random("color-1", "color-2", "color-3", "color-4")}}'
   }
 ]
 
@@ -20,7 +21,7 @@
     var myData = data;
     console.log(myData);
     $.ajax({
-      url: "http://dev.m.gatech.edu/d/mosborne8/w/mentoringweb-ng/content/api/gen_faux_users",
+      url: "http://dev.m.gatech.edu/d/aarrowood3/w/mentoringweb-ng/content/api/gen_faux_users",
       dataType: "json",
           async: false,
       data: myData,

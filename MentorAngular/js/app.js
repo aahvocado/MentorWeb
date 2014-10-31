@@ -26,6 +26,10 @@ myApp.config(['$routeProvider', function($routeProvider) {
     templateUrl: 'partials/mentor-reg.html',
     controller: 'RegisterMentorController'
   }).
+  when('/mentorAlias', {
+    templateUrl: 'partials/mentor-alias.html',
+    controller: 'MentorAliasController'
+  }).
   when('/homescreen', {
     templateUrl: 'partials/homescreen.html',
     controller: 'UserController'

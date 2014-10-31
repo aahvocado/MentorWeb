@@ -1,13 +1,13 @@
 <section class="mentor-register page">
-	<div class="mentor-register-message ui message">
+	<div class="mentor-register-message ui message" ng-controller="RegisterMentorController">
 	 <div class="ui huge header">
 	    Mentor Registration
    	</div>
    		<h1>We estimate it will take you 5-10 minutes to complete the rest of this registration, depending on the length of your responses to the open-ended questions.</h1><br/>
 		<h1>Please fill out your profile information so mentees can find you based on similar interests. Note that all of this informaition is required for you to fill out, but no one will see your contact information, or name, except your mentee when you are matched. </h1>
 
-	<div class="ui error form segment" ng-controller="RegisterMentorController">
-	<h2 class="ui inverted black block header">Basic Information</h2>
+	<div class="ui error form segment">
+	<h2 class="ui inverted black block header">Basic Information</h2><br/>
 	  <div class="two fields">
 	    <div class="field">
 	      <div class="ui tiny header">First Name</div>
@@ -110,8 +110,10 @@
 	    <div class="ui tiny header">What is your home country?</div>
 	  		<input type="text" id="home_country" ng-model="form.phone" placeholder="Please Specify">
 	  </div>
+	</div>
 
-	  <h2 class="ui inverted black block header">Demographic Information</h2>
+	<div class="ui error form segment">
+	  <h2 class="ui inverted black block header">Demographic Information</h2><br/>
 	  <p>Your ethnicity will NOT be used for the mentor-mentee matching process. It is only intended to provide the program managers information about the demographics of the program's participants.</p>
 	  <p>Your gender, if you specify here, will be provided during the mentor-mentee matching process because sometimes mentees specifically look for a mentor of a certain gender.</p>
 	  <p><i>Answering these two questions is optional</i> and you are not required to answer the questions to serve as a mentor. </p>
@@ -136,20 +138,22 @@
 	  </div>
 		</div>
 	 </div>
+	</div>
 
-	<h2 class="ui inverted black block header">Academics</h2>
+	<div class="ui error form segment">
+	<h2 class="ui inverted black block header">Academics</h2><br/>
 
-		<div class="field">
-			<div class="ui tiny header">Expected Graduation Semester</div>
-	      <input type="text" id="expec_graduation" ng-model="form.expec_graduation" placeholder="Spring 2014">
-	  </div>
+ 	<div class="field">
+		<div class="ui tiny header">Expected Graduation Semester</div>
+      <input type="text" id="expec_graduation" ng-model="form.expec_graduation" placeholder="Spring 2014">
+  	</div>
 
-		<div class="field">
-	  	<div class="ui tiny header">Were you, or are you, part of any of the following programs? Check all that apply.</div>
-	  		<div class="field" ng-repeat="opt in honorPrograms">
-	  			<div class="ui checkbox">
-	  				<input type="checkbox" name="selectedHonorProgram[]" value="{{opt}}" ng-checked="form.honor_program.indexOf(opt) > -1">
-	  				<label ng-click="toggleSelection(opt, 'honor_program')">{{opt.name}}</label>
+	<div class="field">
+  	<div class="ui tiny header">Were you, or are you, part of any of the following programs? Check all that apply.</div>
+  		<div class="field" ng-repeat="opt in honorPrograms">
+  			<div class="ui checkbox">
+  				<input type="checkbox" name="selectedHonorProgram[]" value="{{opt}}" ng-checked="form.honor_program.indexOf(opt) > -1">
+  				<label ng-click="toggleSelection(opt, 'honor_program')">{{opt.name}}</label>
 	  </div>
 		</div>
 	 	</div>	  
@@ -172,15 +176,15 @@
 		</div>
 
 		<div class="field">
-	  <div class="ui tiny header">Which breadth track(s) do you expect to complete? For each track you select, please elaborate. For example, for Research Option, which lab(s) have you worked in, for Minor/Certificate, what is the name of your minor/certificate, etc.</div>
-	  <div class="field" ng-repeat="opt in breadthTracks">
-	  <div class="ui checkbox">
-	  	<input type="checkbox" name="selectedBreadthTrack[]" value="{{opt}}" ng-checked="form.breadth_track.indexOf(opt) > -1">
-	  	<label ng-click="toggleSelection(opt, 'breadth_track')">{{opt.name}}</label>
-	  </div>
-	  <input type="text" ng-click="print()" ng-show="form.breadth_track.indexOf(opt) > -1" name="description" ng-model-options="{ updateOn: 'change' }" ng-model="opt.desc" placeholder="Please Elaborate">
+		  <div class="ui tiny header">Which breadth track(s) do you expect to complete? For each track you select, please elaborate. For example, for Research Option, which lab(s) have you worked in, for Minor/Certificate, what is the name of your minor/certificate, etc.</div>
+		  <div class="field" ng-repeat="opt in breadthTracks">
+		  <div class="ui checkbox">
+		  	<input type="checkbox" name="selectedBreadthTrack[]" value="{{opt}}" ng-checked="form.breadth_track.indexOf(opt) > -1">
+		  	<label ng-click="toggleSelection(opt, 'breadth_track')">{{opt.name}}</label>
+		  </div>
+		  <input type="text" ng-click="print()" ng-show="form.breadth_track.indexOf(opt) > -1" name="description" ng-model-options="{ updateOn: 'change' }" ng-model="opt.desc" placeholder="Please Elaborate">
+			</div>
 		</div>
-	 </div>
 
 		<div class="field">
 	  	<div class="ui tiny header">Depth Focus</div>
@@ -200,7 +204,7 @@
 		<div class="field">
 	    <div class="ui tiny header">Have you worked as an undergraduate researcher (other than for the research option, which was asked about earlier)?</div>
 	    <div class="field">
-	  		<div class="ui radio checkbox">
+	  			<div class="ui radio checkbox">
 			  	<input type="radio" name="undergrad_research" ng-model="form.undergrad_research" ng-value="true"/>
 			  	<label ng-click="newValue(true, 'undergrad_research')">Yes</label>
 				</div>
@@ -208,17 +212,31 @@
 		  		<div ng-show="form.undergrad_research == true">
 		  		<div class="ui tiny header">What lab(s) and for how many semesters have you worked?</div>
 		      	<input type="text" id="undergrad_research_desc" ng-model="form.undergrad_research_desc" placeholder="Research Lab 1 for 1 Semesters, Research Lab 2 for 2 Semesters" ng-model-options="{ updateOn: 'blur' }">
-		    </div>
+		    	</div>
 				</div>
 				<div class="ui radio checkbox">
 			  	<input type="radio" name="undergrad_research" ng-model="form.undergrad_research" ng-value="false"/>
 			  	<label ng-click="newValue(false, 'undergrad_research')">No</label>
 				</div>
-			</div>
+		</div>
 	  </div>
 
+	  <div class="field">
+	  	<div class="ui tiny header">After you graduate from Georgia Tech, what do you plan to do?</div>
+	  	<div class="field" ng-repeat="opt in postGradPlans" ng-click="newValue(opt.name, 'post_grad_plan')">
+	  		<div class="ui radio checkbox">
+			  	<input type="radio" name="post_grad_plan" ng-model="form.post_grad_plan" value="{{opt.name}}"/>
+			  	<label>{{opt.name}}</label>
+			</div>
+		</div>
+  		<label>Please feel free to provide more specifics about your future career goals (such as, if you checked Industry above, what kind of industry job particularly interests you right now, etc.).</label>
+      	<input type="text" id="post_grad_plan_desc" ng-model="form.post_grad_plan_desc" placeholder="Please Specify" ng-model-options="{ updateOn: 'blur' }">
+	 </div>
 
-	<h2 class="ui inverted black block header">Prior Involvement and Experiences</h2>
+	 </div>
+	
+	<div class="ui error form segment">
+	<h2 class="ui inverted black block header">Prior Involvement and Experiences</h2><br/>
 
 	<div class="field">
 	    <div class="ui tiny header">Please list up to three organizations you are involved in on campus in order of importance/level of involvement.</div>
@@ -310,24 +328,15 @@
 	 </div>
 
 	 <div class="field">
-	  	<div class="ui tiny header">After you graduate from Georgia Tech, what do you plan to do?</div>
-	  	<div class="field" ng-repeat="opt in postGradPlans" ng-click="newValue(opt.name, 'post_grad_plan')">
-	  		<div class="ui radio checkbox">
-			  	<input type="radio" name="post_grad_plan" ng-model="form.post_grad_plan" value="{{opt.name}}"/>
-			  	<label>{{opt.name}}</label>
-			</div>
-		</div>
-  		<label>Please feel free to provide more specifics about your future career goals (such as, if you checked Industry above, what kind of industry job particularly interests you right now, etc.).</label>
-      	<input type="text" id="post_grad_plan_desc" ng-model="form.post_grad_plan_desc" placeholder="Please Specify" ng-model-options="{ updateOn: 'blur' }">
-	 </div>
-
-	 <div class="field">
 	  	<div class="ui tiny header">What personal interests or hobbies would you like to share with your prospective mentees (if any)?</div>
       	<input type="text" id="personal_hobby" ng-model="form.personal_hobby" placeholder="Please Specify" ng-model-options="{ updateOn: 'blur' }">
 	 </div>
+	
+	</div>
 
 
-	  <div id="reg_submit_button" class="ui blue submit button" ng-click="addMentor()">Submit</div>
+	<div id="reg_submit_button" class="ui blue submit button" ng-click="addMentor(); go('/mentorAlias')">Next</div>
+<!-- addMentor() -->
 	</div>
 
   <script>

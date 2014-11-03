@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding = "utf-8" ?>
+<widget title="MentorWeb" security="protected">
+    <library name="jquery"/>
+    <library name="jquery.url"/> 
+    
+    <html file="partials/fork.html"/>
+	<javascript file="js/welcome.js"/>
+    
+    <manifest>
+    	<text><![CDATA[
+NETWORK:
+*
+    	]]></text>
+    </manifest>
+</widget>

@@ -8,10 +8,6 @@
  * http://opensource.org/licenses/MIT
  *
  */
-
- /*custom*/
-
-
 /*******************************
            Breadcrumb
 *******************************/
@@ -1423,7 +1419,7 @@ body > .ui.grid {
 ---------------*/
 .ui.menu {
   margin: 1rem 0rem;
-  background-color: #07b6ad;
+  background-color: #FFFFFF;
   font-size: 0px;
   font-weight: normal;
   -webkit-box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.1);
@@ -1465,6 +1461,7 @@ body > .ui.grid {
   -webkit-transition: opacity 0.2s ease, background 0.2s ease, -webkit-box-shadow 0.2s ease;
   -moz-transition: opacity 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
   transition: opacity 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+    background-color: #07b6ad;
 
 }
 /*--------------
@@ -1473,8 +1470,7 @@ body > .ui.grid {
 /* Text Color */
 .ui.menu .item,
 .ui.menu .item > a:not(.button) {
-  /*color: rgba(255, 0, 0, 0.75);*/
-  color: white;
+  color: rgba(0, 0, 0, 0.75);
 }
 .ui.menu .item .item,
 .ui.menu .item .item > a:not(.button) {
@@ -1520,6 +1516,7 @@ body > .ui.grid {
 
 }
 .ui.menu .menu {
+    background-color: #07b6ad;
 
   margin: 0em;
 }
@@ -2833,7 +2830,7 @@ body > .ui.grid {
   margin: 1em 0em;
   height: auto;
   background-color: #EFEFEF;
-  padding: 5em;
+  padding: 1em;
   line-height: 1.33;
   color: rgba(0, 0, 0, 0.6);
   -webkit-transition: opacity 0.1s ease, color 0.1s ease, background 0.1s ease, -webkit-box-shadow 0.1s ease;

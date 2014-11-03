@@ -32,7 +32,7 @@ html, body {
   overflow: auto;
   width: 100%;
   font-family: 'Open Sans', sans-serif;
-  background-color: #00b5ad;
+  background-color: #f2f2f3;
   display: block;
   z-index: -2; }
 
@@ -104,22 +104,69 @@ nav {
   position: relative;
   z-index: 200; }
 
+.item {
+/*  background-color: #07b6ad;
+*/  font-size: 50px;
+}
+
+/*dialog box*/
+.ui.message{
+  text-align: center;
+  margin-top: 50px;
+  background-color: #FFF;
+}
+
+/*generic level fonts*/
+h1, h2, h3, h4, h5, h6 {
+font-family: 'Francois One', sans-serif;
+  font-weight: normal;
+  color: #475b62;
+  text-shadow: 1px 1px white; }
+
+/*specific fonts*/
+h1{
+  font-family: 'Francois One', sans-serif;
+  font-size: 40px;
+}
+h2{
+  font-family: 'Roboto', sans-serif;
+  font-size: 22px;
+}
+
 .top-bar.ui.menu {
   width: 95vw;
   position: relative;
   margin: 0 auto;
-  border-radius: 0px 0px 5px 5px; }
+  border-radius: 0px 0px 5px 5px; 
+  /*background-color: #07b6ad;*/
+}
+
+.logo.item{
+  width: 200px;
+  background-color: white;
+}
+.logo.item img{
+   width:50px;
+}
+
+.main.logo{
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 1em;
+}
+.main.logo img{
+  width:250px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
 
 .footer {
   height: 100%;
   min-height: 100px;
   display: block; }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Open Sans', sans-serif;
-  font-weight: normal;
-  color: #475b62;
-  text-shadow: 1px 1px white; }
+
 
 .main.ng-scope {
   height: 100%;
@@ -128,7 +175,8 @@ h1, h2, h3, h4, h5, h6 {
 .page {
   height: 100%;
   width: 100%;
-  padding-top: 100px; }
+  padding-top: 100px; 
+}
 
 .header {
   color: #475b62;

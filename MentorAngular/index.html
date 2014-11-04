@@ -29,7 +29,7 @@
 
   <nav>
     <div class="ui menu"> 
-      <a class="ui logo item" href="#/welcome"> <img src="images/logo.png"> </button>
+      <a class="ui logo item" href="#/welcome"> <img src="images/logo-tiny.png"> </button>
       <a class="item" href="#/register"> Profile </button>      
       <a class="item" href="#/wishlist"> Wishlist </button>
       <a class="item" href="#/searchmentors"> Search Mentors </button>
@@ -100,6 +100,22 @@
   
 <div class="main" ng-view></div>
 <div class="footer"></div>
+<script>
+  var nav = $('nav');
+  nav.on("click", ".item", function(event) {
+    var selItem;
+      event.preventDefault();
+      selItem = angular.element(event.target);
+      var activeClass = "active";
+      var activeSelector = "." + activeClass;
+      if (selItem.hasClass(activeClass)) {
+        return false;
+      }
+      nav.find(activeSelector).removeClass(activeClass);
+      selItem.addClass(activeClass);
+      console.log("button click");
+  });
+</script>
 
 </body>
 </html>

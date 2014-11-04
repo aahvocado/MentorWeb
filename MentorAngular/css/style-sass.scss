@@ -4,6 +4,7 @@ $color-3: #B6E763;
 $color-4: #EBF233; //yellow
 
 $fgColor: #ebebeb;
+$fgColor2: #fefefe;
 $bgColor: #e0e0e0; //00b5ad+
 $bgColor2: #07b6ad;
 $bgDimensionsX: 720;
@@ -11,6 +12,7 @@ $bgDimensionsY: 286;
 $bgScrollSpeed: 60s;
 $bgScrollSpeedX: (1 * $bgDimensionsX) * 1px;
 $bgScrollSpeedY: (3 * $bgDimensionsY) * 1px;
+$menuTextColor: #999999;
 
 $borderRadius: 0.325em;
 $borderRadBig: 5px;
@@ -18,6 +20,10 @@ $topHeight: 100px;
 $footerHeight: 100px;
 
 //Search Mentors
+$menuSpacingRightMargin: 15px;
+$cardSize: 100px;
+$cardTextSize: 2.8em;
+$cardBorderRad: 0em;
 $sideMenuMargin: 50px;
 $testTubeBorderRadius: 0.325em;
 $testTubeMinHeight: 400px;
@@ -33,6 +39,7 @@ $stampSize: 110px;
 }
 
 /* Reset Styles */
+/* Global Styles */
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -142,6 +149,35 @@ nav {
 //   /*background-color: #07b6ad;*/
 // }
 
+.ui.menu .item{
+  height: 2.6em;
+  /*padding: .8em .9em;*/
+}
+
+.ui.menu > .ui.logo.item {
+  width: 150px;
+  padding: 0px;
+  background-color: white;
+}
+.ui.menu > .ui.logo img{
+  height: 40px;
+  vertical-align: center;
+}
+
+.ui.button{
+  font-family: 'Roboto', sans-serif;
+  border-radius: 5px;
+  color: white;
+  background-color: #19D1FF;
+}
+
+.ui.button:hover{
+  color: white;
+  background-color: #5EDFFF;
+}
+
+/* Nav Menu */
+
 #nav-menu {
   background-color: $bgColor2;
   margin: 0 auto;
@@ -149,16 +185,17 @@ nav {
 
 .logo.item{
   width: 200px;
-  background-color: $fgColor;
+  background-color: $fgColor2;
 }
 .logo.item img{
-   width:50px;
+   //width:50px;
+   height: 100%;
 }
 
 .main.logo{
   margin-left: auto;
   margin-right: auto;
-  padding-top: 1em;
+  //padding-top: 1em;
 }
 .main.logo img{
   width:250px;
@@ -210,6 +247,82 @@ nav {
   font-family: 'Open Sans', sans-serif;
 }
 
+/* Welcome Partial */
+
+.top-bar.ui.menu {
+  width: 95vw;
+  position: relative;
+  margin: 0 auto;
+  border-radius: 0px 0px 5px 5px; 
+  /*background-color: #07b6ad;*/
+}
+
+.welcome.page > .ui.message{
+  width:60%;
+  background-color: #fff;
+}
+
+.welcome.header{
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  padding-top: 1em;
+
+}
+.welcome.header img{
+  width:180px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* REGISTER */
+.registration.page > .ui.message{
+  margin: 0px;
+  background-color: #07b6ad;
+  width: 100vw;
+
+}
+.registration.page > .welcome.header h3{
+  text-shadow: 1px 1px white;
+  color: black;
+}
+.registration.page > .ui.message h2{
+  color: white;
+}
+.custom.columns{
+  height: 10em;
+}
+.custom.columns #left-col{
+  float:left;
+  margin-left: 25%;
+  width: 22%;
+}
+.custom.columns #right-col{
+  float:right;
+  margin-right:25%;
+  width: 22%;
+}
+.register.column h4{
+  color: white;
+}
+.register.column h5{
+  color: white;
+  font-style: normal;
+}
+.register.column > .button{
+
+  margin-left: auto;
+  margin-right: auto;
+
+
+  color: gray;
+  background-color: #E6E6E6;
+  border-radius: 0px;
+}
+
+/*  Loading Partial */
+
 .loading .loading-message img {
   display: block;
   margin: 0 auto;
@@ -226,7 +339,7 @@ nav {
 .searchmentors {
   height: 100%;
   width: 100%;
-  min-width: 1035px;
+  min-width: 1200px;
   z-index: 100;
 }
 
@@ -243,7 +356,7 @@ nav {
   position: relative;
   vertical-align: top;
   display: inline-block;
-  margin: -3px;
+  margin-left: -3px;
 }
 
 /*.searchmentor .view .ui.message {
@@ -264,7 +377,19 @@ nav {
   background-color: $fgColor;
   border-radius: $borderRadius 0 0 $borderRadius;
   z-index: 100;
-  margin-top: $sideMenuMargin;
+  margin: 0 $menuSpacingRightMargin 0 0;
+}
+
+.searchmentors #filter-menu .item {
+  background-color: $fgColor;
+}
+
+.searchmentors #filter-menu .accordion {
+  width: 600px;
+}
+
+.searchmentors #filter-text-input {
+  background-color: $fgColor2;
 }
 
 .searchmentors .isotope-container {
@@ -273,6 +398,8 @@ nav {
   background-color: $fgColor;
   border-radius: 0 0 $testTubeBorderRadius $testTubeBorderRadius;
   z-index: 200;
+  margin: 0 $menuSpacingRightMargin 0 0;
+  padding: 10px;
 }
 .searchmentors .isotope-tttl {
   position: absolute;
@@ -314,19 +441,20 @@ nav {
 }
 
 .searchmentors .view .mentor-profile {
-  width: 30%;
-  min-width: 240px;
+  min-width: 200px;
+  width: 28%;
   background-color: #eee;
   border-radius: 0px $borderRadBig $borderRadBig 0px;
   z-index: 100;
-  margin-top: $sideMenuMargin;
+  margin-top: 0;
 }
 
 .searchmentors .view .mentor-profile .content {
   padding: 15px;
+  color: $menuTextColor;
 }
 
-#isotope-container {
+#isotope-container { //Angular ul ng-repeat
   width: 600px;
 }
 #container{border:1px solid #666;padding:5px;margin-bottom:20px}
@@ -340,7 +468,8 @@ nav {
   text-decoration: none;
   margin: 2px;
 }
-.kindling{width:110px;height:110px;margin:5px;float:left;overflow:hidden;position:relative;background:#888;color:#222;-webkit-border-top-right-radius:1.2em;-moz-border-radius-topright:1.2em;border-top-right-radius:1.2em}
+.kindling{width:$cardSize;height:$cardSize;margin:5px;float:left;overflow:hidden;position:relative;background:#888;color:#222;
+          -webkit-border-top-right-radius:$cardBorderRad;-moz-border-radius-topright:$cardBorderRad;border-top-right-radius:$cardBorderRad}
 .kindling.alkali{background:#F00;background:red}
 .kindling.alkaline-earth{background:#F80;background:#f90}
 .kindling.lanthanoid{background:#FF0;background:#cf0}
@@ -356,7 +485,7 @@ nav {
 .kindling.blue{background:#0099FF}
 .kindling.green{background:#CCFF00}
 .kindling *{position:absolute;margin:0}
-.kindling .symbol{left:0.2em;top:0.6em;font-size:3.2em;line-height:1.0em;color:#FFF}
+.kindling .symbol{left:0.2em;top:0.6em;font-size:$cardTextSize;line-height:1.0em;color:#FFF}
 .kindling.large .symbol{font-size:4.5em}
 .kindling.fake .symbol{color:#000}
 .kindling .name{left:0.5em;bottom:1.6em;font-size:1.05em}

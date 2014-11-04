@@ -5,6 +5,7 @@
   src: url("fonts/icons.eot?#iefix") format("embedded-opentype"), url("fonts/icons.ttf") format("truetype"), url("fonts/icons.svg#svgFontName") format("svg");
   /* Legacy iOS */ }
 /* Reset Styles */
+/* Global Styles */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -66,21 +67,44 @@ nav {
   position: relative;
   z-index: 200; }
 
+.ui.menu .item {
+  height: 2.6em;
+  /*padding: .8em .9em;*/ }
+
+.ui.menu > .ui.logo.item {
+  width: 150px;
+  padding: 0px;
+  background-color: white; }
+
+.ui.menu > .ui.logo img {
+  height: 40px;
+  vertical-align: center; }
+
+.ui.button {
+  font-family: 'Roboto', sans-serif;
+  border-radius: 5px;
+  color: white;
+  background-color: #19D1FF; }
+
+.ui.button:hover {
+  color: white;
+  background-color: #5EDFFF; }
+
+/* Nav Menu */
 #nav-menu {
   background-color: #07b6ad;
   margin: 0 auto; }
 
 .logo.item {
   width: 200px;
-  background-color: #ebebeb; }
+  background-color: #fefefe; }
 
 .logo.item img {
-  width: 50px; }
+  height: 100%; }
 
 .main.logo {
   margin-left: auto;
-  margin-right: auto;
-  padding-top: 1em; }
+  margin-right: auto; }
 
 .main.logo img {
   width: 250px;
@@ -119,6 +143,71 @@ nav {
 .visible {
   font-family: 'Open Sans', sans-serif; }
 
+/* Welcome Partial */
+.top-bar.ui.menu {
+  width: 95vw;
+  position: relative;
+  margin: 0 auto;
+  border-radius: 0px 0px 5px 5px;
+  /*background-color: #07b6ad;*/ }
+
+.welcome.page > .ui.message {
+  width: 60%;
+  background-color: #fff; }
+
+.welcome.header {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  padding-top: 1em; }
+
+.welcome.header img {
+  width: 180px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto; }
+
+/* REGISTER */
+.registration.page > .ui.message {
+  margin: 0px;
+  background-color: #07b6ad;
+  width: 100vw; }
+
+.registration.page > .welcome.header h3 {
+  text-shadow: 1px 1px white;
+  color: black; }
+
+.registration.page > .ui.message h2 {
+  color: white; }
+
+.custom.columns {
+  height: 10em; }
+
+.custom.columns #left-col {
+  float: left;
+  margin-left: 25%;
+  width: 22%; }
+
+.custom.columns #right-col {
+  float: right;
+  margin-right: 25%;
+  width: 22%; }
+
+.register.column h4 {
+  color: white; }
+
+.register.column h5 {
+  color: white;
+  font-style: normal; }
+
+.register.column > .button {
+  margin-left: auto;
+  margin-right: auto;
+  color: gray;
+  background-color: #E6E6E6;
+  border-radius: 0px; }
+
+/*  Loading Partial */
 .loading .loading-message img {
   display: block;
   margin: 0 auto; }
@@ -132,7 +221,7 @@ nav {
 .searchmentors {
   height: 100%;
   width: 100%;
-  min-width: 1035px;
+  min-width: 1200px;
   z-index: 100; }
 
 .searchmentors .view {
@@ -147,7 +236,7 @@ nav {
   position: relative;
   vertical-align: top;
   display: inline-block;
-  margin: -3px; }
+  margin-left: -3px; }
 
 /*.searchmentor .view .ui.message {
   height: 90%;
@@ -164,14 +253,25 @@ nav {
   background-color: #ebebeb;
   border-radius: 0.325em 0 0 0.325em;
   z-index: 100;
-  margin-top: 50px; }
+  margin: 0 15px 0 0; }
+
+.searchmentors #filter-menu .item {
+  background-color: #ebebeb; }
+
+.searchmentors #filter-menu .accordion {
+  width: 600px; }
+
+.searchmentors #filter-text-input {
+  background-color: #fefefe; }
 
 .searchmentors .isotope-container {
   width: 45%;
   min-height: 400px;
   background-color: #ebebeb;
   border-radius: 0 0 0.325em 0.325em;
-  z-index: 200; }
+  z-index: 200;
+  margin: 0 15px 0 0;
+  padding: 10px; }
 
 .searchmentors .isotope-tttl {
   position: absolute;
@@ -206,15 +306,16 @@ nav {
   right: 0px !important; }
 
 .searchmentors .view .mentor-profile {
-  width: 30%;
-  min-width: 240px;
+  min-width: 200px;
+  width: 28%;
   background-color: #eee;
   border-radius: 0px 5px 5px 0px;
   z-index: 100;
-  margin-top: 50px; }
+  margin-top: 0; }
 
 .searchmentors .view .mentor-profile .content {
-  padding: 15px; }
+  padding: 15px;
+  color: #999999; }
 
 #isotope-container {
   width: 600px; }
@@ -241,17 +342,17 @@ nav {
   margin: 2px; }
 
 .kindling {
-  width: 110px;
-  height: 110px;
+  width: 100px;
+  height: 100px;
   margin: 5px;
   float: left;
   overflow: hidden;
   position: relative;
   background: #888;
   color: #222;
-  -webkit-border-top-right-radius: 1.2em;
-  -moz-border-radius-topright: 1.2em;
-  border-top-right-radius: 1.2em; }
+  -webkit-border-top-right-radius: 0em;
+  -moz-border-radius-topright: 0em;
+  border-top-right-radius: 0em; }
 
 .kindling.alkali {
   background: #F00;
@@ -312,7 +413,7 @@ nav {
 .kindling .symbol {
   left: 0.2em;
   top: 0.6em;
-  font-size: 3.2em;
+  font-size: 2.8em;
   line-height: 1.0em;
   color: #FFF; }
 

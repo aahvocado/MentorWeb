@@ -11,7 +11,12 @@
       // Email tag is deprecated, because now you can produce an email as simple as this:
       return (this.firstName.substring(0,1) + this.lastName + '@gatech.edu');
     },
-    phoneNumber: '+1 {{phone()}}',
+    breadtTrack: '{{random("Pre-Health", "Research", "Minor", "Certificate")}}',
+    depthFocus: '{{random("Neuroengineering", "Cardiovascular Systems", "Biomechanics",
+                          "Biomaterials", "Medical Imaging")}}',
+    gender: '{{random("Female", "Male")}}',
+    academicIntExp: '{{random("Studied Abroad", "Transfer from China", "Transfer from Germany")}}',
+    futurePlans: '{{random("Graduate Studies", "Industry")}}'
     commMethod: '{{random("phone", "email")}}',
     color: '{{random("color-1", "color-2", "color-3", "color-4")}}'
   }
@@ -29,3 +34,24 @@
           error: ajaxError
     });
   });
+
+
+  //Old
+  [
+  '{{repeat(0, 30)}}',
+  {
+    index: '{{index()}}',
+    firstName: '{{firstName()}}',
+    lastName: '{{surname()}}',
+    uid: function (tags) {
+      return (this.firstName.substring(0,1) + this.lastName);
+    },
+    email: function (tags) {
+      // Email tag is deprecated, because now you can produce an email as simple as this:
+      return (this.firstName.substring(0,1) + this.lastName + '@gatech.edu');
+    },
+    phoneNumber: '+1 {{phone()}}',
+    commMethod: '{{random("phone", "email")}}',
+    color: '{{random("color-1", "color-2", "color-3", "color-4")}}'
+  }
+]

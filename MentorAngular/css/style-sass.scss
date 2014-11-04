@@ -3,7 +3,9 @@ $color-2: #B189C3;
 $color-3: #B6E763;
 $color-4: #EBF233; //yellow
 
-$bgColor: #00b5ad;
+$fgColor: #ebebeb;
+$bgColor: #e0e0e0; //00b5ad+
+$bgColor2: #07b6ad;
 $bgDimensionsX: 720;
 $bgDimensionsY: 286;
 $bgScrollSpeed: 60s;
@@ -17,7 +19,7 @@ $footerHeight: 100px;
 
 //Search Mentors
 $sideMenuMargin: 50px;
-$testTubeBorderRadius: 15em;
+$testTubeBorderRadius: 0.325em;
 $testTubeMinHeight: 400px;
 $stampSize: 110px;
 
@@ -66,12 +68,30 @@ html, body {
   z-index: -2;
 }
 
+/*generic level fonts*/
+h1, h2, h3, h4, h5, h6 {
+font-family: 'Francois One', sans-serif;
+  font-weight: normal;
+  color: #475b62;
+  text-shadow: 1px 1px white; }
+
+/*specific fonts*/
+h1{
+  font-family: 'Francois One', sans-serif;
+  font-size: 40px;
+}
+h2{
+  font-family: 'Roboto', sans-serif;
+  font-size: 22px;
+}
+
 // body{
 //     background-image:url("light_honeycomb_2X.png");
 //     background-repeat: repeat;
 // }
 
 .background-holder {
+  background-color: $bgColor;
   position: absolute;
   top: 0;
   width: 100%;
@@ -80,26 +100,26 @@ html, body {
   z-index: -1;
 }
 
-body #background{
-    position: relative;
-    float: right;
-    clear: both;
-    float: inherit;
-    background: url(../images/BrainyBackground3.png) repeat;
-    z-index: 1;
-    width: 200%;
-    height: 200%;
-    -webkit-animation: backdrop_roll linear $bgScrollSpeed infinite;
-    -moz-animation: backdrop_roll linear $bgScrollSpeed infinite;
-    -ms-animation: backdrop_roll linear $bgScrollSpeed infinite;
-    -o-animation: backdrop_roll linear $bgScrollSpeed infinite;
-    animation: backdrop_roll linear $bgScrollSpeed infinite;
-}
-@-webkit-keyframes backdrop_roll { from { right: 0px; bottom: 0px;} to { right: $bgScrollSpeedX; bottom: $bgScrollSpeedY;} }
-@-moz-keyframes backdrop_roll { from { right: 0px; bottom: 0px;} to { right: $bgScrollSpeedX; bottom: $bgScrollSpeedY;} }
-@-ms-keyframes backdrop_roll { from { right: 0px; bottom: 0px;} to { right: $bgScrollSpeedX; bottom: $bgScrollSpeedY;} }
-@-o-keyframes backdrop_roll { from { right: 0px; bottom: 0px;} to { right: $bgScrollSpeedX; bottom: $bgScrollSpeedY;} }
-@keyframes backdrop_roll { from { right: 0px; bottom: 0px;} to { right: $bgScrollSpeedX; bottom: $bgScrollSpeedY;} }
+// body #background{
+//     position: relative;
+//     float: right;
+//     clear: both;
+//     float: inherit;
+//     //background: url(../images/BrainyBackground3.png) repeat;
+//     z-index: 1;
+//     width: 200%;
+//     height: 200%;
+//     -webkit-animation: backdrop_roll linear $bgScrollSpeed infinite;
+//     -moz-animation: backdrop_roll linear $bgScrollSpeed infinite;
+//     -ms-animation: backdrop_roll linear $bgScrollSpeed infinite;
+//     -o-animation: backdrop_roll linear $bgScrollSpeed infinite;
+//     animation: backdrop_roll linear $bgScrollSpeed infinite;
+// }
+// @-webkit-keyframes backdrop_roll { from { right: 0px; bottom: 0px;} to { right: $bgScrollSpeedX; bottom: $bgScrollSpeedY;} }
+// @-moz-keyframes backdrop_roll { from { right: 0px; bottom: 0px;} to { right: $bgScrollSpeedX; bottom: $bgScrollSpeedY;} }
+// @-ms-keyframes backdrop_roll { from { right: 0px; bottom: 0px;} to { right: $bgScrollSpeedX; bottom: $bgScrollSpeedY;} }
+// @-o-keyframes backdrop_roll { from { right: 0px; bottom: 0px;} to { right: $bgScrollSpeedX; bottom: $bgScrollSpeedY;} }
+// @keyframes backdrop_roll { from { right: 0px; bottom: 0px;} to { right: $bgScrollSpeedX; bottom: $bgScrollSpeedY;} }
 
 nav {
   width: 100vw;
@@ -107,24 +127,50 @@ nav {
   z-index: 200;
 }
 
-.top-bar.ui.menu{
-  width: 95vw;
-  position: relative;
+// .top-bar.ui.menu{
+//   width: 95vw;
+//   position: relative;
+//   margin: 0 auto;
+//   border-radius: 0px 0px $borderRadBig $borderRadBig;
+// }
+
+// .top-bar.ui.menu {
+//   width: 95vw;
+//   position: relative;
+//   margin: 0 auto;
+//   border-radius: 0px 0px 5px 5px; 
+//   /*background-color: #07b6ad;*/
+// }
+
+#nav-menu {
+  background-color: $bgColor2;
   margin: 0 auto;
-  border-radius: 0px 0px $borderRadBig $borderRadBig;
+}
+
+.logo.item{
+  width: 200px;
+  background-color: $fgColor;
+}
+.logo.item img{
+   width:50px;
+}
+
+.main.logo{
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 1em;
+}
+.main.logo img{
+  width:250px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .footer  {
   height: 100%;
   min-height: $footerHeight;
   display: block;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Open Sans', sans-serif;
-  font-weight: normal;
-  color: #475b62;
-  text-shadow: 1px 1px rgb(255,255,255);
 }
 
 // a p {
@@ -208,14 +254,14 @@ h1, h2, h3, h4, h5, h6 {
   width: 15%;
   height: 100%;
   min-width: 90px;
-  background-color: #ddd;
+  background-color: $fgColor;
 }
 
 .searchmentors #filter-menu {
   width: 20%;
   // height: 100%;
   min-width: 250px;
-  background-color: #eee;
+  background-color: $fgColor;
   border-radius: $borderRadius 0 0 $borderRadius;
   z-index: 100;
   margin-top: $sideMenuMargin;
@@ -224,7 +270,7 @@ h1, h2, h3, h4, h5, h6 {
 .searchmentors .isotope-container {
   width: 45%;
   min-height: $testTubeMinHeight;
-  background-color: #ddd;
+  background-color: $fgColor;
   border-radius: 0 0 $testTubeBorderRadius $testTubeBorderRadius;
   z-index: 200;
 }

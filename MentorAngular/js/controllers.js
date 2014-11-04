@@ -26,18 +26,15 @@ appControllers.controller('LoadingController', ['$scope', '$http', function($sco
 }]);
 
 appControllers.controller('SearchController', ['$scope', '$http', function($scope, $http) {
-  $('.ui.checkbox').checkbox();
-  $('.ui.accordion').accordion();
-
-  $http.get('json-gen/users.json').success(function(data) {
-    $scope.userData = data;
-    $scope.miniProfileData = $scope.userData[0];
-  });
-
-  $scope.miniProfileSet = function(userData) {
-    console.log("yo " + userData.firstName);
-    $scope.miniProfileData = userData;
-  }
+  $('.ui.checkbox')
+    .checkbox()
+  ;
+    $('.ui.accordion')
+    .accordion()
+  ;
+  // $http.get('json-gen/users.json').success(function(data) {
+  //   $scope.userdata = data;
+  // });
   
 }]);
 
@@ -52,7 +49,6 @@ appControllers.controller('RegisterMenteeController', ['$scope', '$http', '$filt
   $('.ui.checkbox').checkbox();
   $scope.form = { 
       dfocus: '', 
-      honor_program: [],
       breadth_track:[],
       bme_organization: [],
       tutor_teacher_program: [],
@@ -60,6 +56,24 @@ appControllers.controller('RegisterMenteeController', ['$scope', '$http', '$filt
       international_experience: [],
       career_dev_program: []
   };
+
+   $scope.comms = [{
+        id: 1,
+        name: 'Phone'
+    }, {
+        id: 2,
+        name: 'Email'
+    }];
+
+   $scope.yesno = [{
+      id:1,
+      name: 'Yes',
+      value: true
+    }, {
+      id:2, 
+      name: 'No',
+      value: false
+    }];
 
   $scope.breadthTracks = [{
     id:1,
@@ -124,7 +138,81 @@ appControllers.controller('RegisterMenteeController', ['$scope', '$http', '$filt
     name:'Volunteer Abroad'
   }];
 
-   $scope.carrerDevPrograms = [{
+  $scope.bmeOrganizations = [{
+    id:1,
+    name:'Alpha Eta Mu (AEMB)'
+  }, {
+    id:2,
+    name:'Biomedical Engineering Society (BMES)'
+  }, {
+    id:3,
+    name:'Biomedical Research & Opportunities Society (BROS)'
+  }, {
+    id:4, 
+    name:'BMED Futures'
+  }, {
+    id:5, 
+    name:'Engineering World Health (EWH)'
+  }, {
+    id:6, 
+    name:'Medical Device Entrepreneurship Association (MDEA)'
+  }, {
+    id:7, 
+    name:'Pioneer'
+  }];
+
+  $scope.tutorTeachPrograms = [{
+    id:1, 
+    name:'PLUS Leader (Center for Academic Success)'
+  }, {
+    id:2, 
+    name:'1 On 1 Tutoring'
+  }, {
+    id:3, 
+    name:'Tutoring in BME with a Student Organization'
+  }, {
+    id:4, 
+    name:'Ad Hoc Tutoring (That You Arranged on Your Own)'
+  }, {
+    id:5,
+    name:'BMED 1300 Co-Facilitator'
+  }, {
+    id:6, 
+    name:'Undergraduate Grader or Teaching Assistant for a BME Course'
+  }];
+
+  $scope.bmeAcademicPrograms = [{
+    id:1,
+    name:'Inventure Prize'
+  }, {
+    id:2,
+    name:'Design Expo'
+  }, {
+    id:3,
+    name:'Multidisciplinary Capstone Design Course'
+  }, {
+    id:4, 
+    name:'The Clinical Observation and Design Experience (CODE) Course  (BMED 4813)'
+  }];
+
+  $scope.internationalPrograms = [{
+    id:1, 
+    name:'International Plan'
+  }, {
+    id:2, 
+    name:'Study Abroad'
+  }, {
+    id:3, 
+    name:'Work Abroad'
+  }, {
+    id:4,
+    name:'Research Abroad'
+  }, {
+    id:5, 
+    name:'Volunteer Abroad'
+  }];
+
+  $scope.carrerDevPrograms = [{
     id:1,
     name:'Co-op'
   }, {
@@ -133,6 +221,26 @@ appControllers.controller('RegisterMenteeController', ['$scope', '$http', '$filt
   }, {
     id:1,
     name:'Shadowing in a Medical Environment'
+  }];
+
+  $scope.postGradPlans = [{
+    id:1,
+    name:'Industry'
+  }, {
+    id:2,
+    name:'Pursue Professional Degree in Healthcare'
+  }, {
+    id:3, 
+    name:'Graduate School'
+  }, {
+    id:4, 
+    name:'Entrepreneur'
+  }, {
+    id:5,
+    name:'I\'m Not Sure'
+  }, {
+    id:6,
+    name:'Other'
   }];
 
   $scope.toggleSelection = function toggleSelection (opt, attr) {
@@ -144,6 +252,32 @@ appControllers.controller('RegisterMenteeController', ['$scope', '$http', '$filt
       $scope.form[attr].push(opt);
     }
   };
+  $scope.toggleSelection = function toggleSelection (opt, attr) {
+    var idx = $scope.form[attr].indexOf(opt)
+    if(idx > -1) {
+      $scope.form[attr].splice(idx, 1);
+    }
+    else {
+      $scope.form[attr].push(opt);
+    }
+  };
+
+  $scope.newValue = function(value, attr) {
+    console.log('new value', value);
+    $scope.form[attr] = value;
+    if (value == "Other" && attr == "dfocus") {
+      $scope.form.dfocusother = $scope.form.dfocusother; //left side was $scope.form.dfocus.other
+    } else if (value != "Other" && attr == "dfocus") {
+      $scope.form.dfocusother = null;
+    }
+    if (value && attr == "transfer_from_within") {
+      $scope.form.transfer_from_outside = false;
+      $scope.form.institution_name = null;
+    } else if (value && attr == "transfer_from_outside") {
+      $scope.form.transfer_from_within = false;
+      $scope.form.prev_major = null;
+    }
+  }
 
   $scope.addMentee = function() {
     $.ajax({
@@ -156,25 +290,34 @@ appControllers.controller('RegisterMenteeController', ['$scope', '$http', '$filt
              'phone':$scope.form.phone,
              'pref_comm': $scope.form.prefComm,
              'dfocus': $scope.form.dfocus,
-             'dfocusother': $scope.form.dfocusother,//need
+             'dfocusother': $scope.form.dfocusother,
              'international_student': $scope.form.international_student,
-             'expec_graduation': $scope.form.expec_graduation,//need
-             'breadth_track': $scope.form.breadth_track,//modify table
-             'undergrad_research': $scope.form.undergrad_research,//need
-             'undergrad_research_desc':$scope.form.undergrad_research_desc,//need
-             'bme_organization': $scope.form.bme_organization,//need make another table
-             'tutor_teacher_program': $scope.form.tutor_teacher_program,//need make antoher table
+             'freshman': $scope.form.freshman,
+             'transfer_from_within': $scope.form.transfer_from_within,
+             'prev_major': $scope.form.prev_major,
+             'transfer_from_outside': $scope.form.transfer_from_outside,
+             'institution_name': $scope.form.institution_name,
+             'expec_graduation': $scope.form.expec_graduation,
+             '$other_major': $scope.form.other_major,
+             'breadth_track': $scope.form.breadth_track,
+             'undergrad_research': $scope.form.undergrad_research,
+             'bme_academ_exp': $scope.form.bme_academ_exp,
+             'bme_organization': $scope.form.bme_organization,
+             'tutor_teacher_program': $scope.form.tutor_teacher_program,
              'international_experience': $scope.form.international_experience,
-             'international_experience_desc':$scope.form.international_experience_desc,//need
-             'career_dev_program': $scope.form.career_dev_program,//modify table
-             'career_dev_program_desc': $scope.form.career_dev_program_desc,//modify table
+             'career_dev_program': $scope.form.career_dev_program,
+             'career_dev_program_desc': $scope.form.career_dev_program_desc,
              'post_grad_plan': $scope.form.post_grad_plan,
              'post_grad_plan_desc': $scope.form.post_grad_plan_desc,
-             'personal_hobby': $scope.form.personal_hobby//need
+             'personal_hobby': $scope.form.personal_hobby
             },
       type: 'POST'
       // error: ajaxError
     });
+  };
+
+   $scope.go = function( path ) {
+    $location.path(path);
   };
 
 }]);
@@ -458,7 +601,7 @@ appControllers.controller('RegisterMentorController', ['$scope', '$http', '$filt
     $.ajax({
       url: "api/mentor",
       dataType: "json",
-          async: false,
+      async: false,
       data: {'fname': $scope.form.fname,
              'lname': $scope.form.lname,
              'email': $scope.form.email,
@@ -504,7 +647,31 @@ appControllers.controller('RegisterMentorController', ['$scope', '$http', '$filt
       // error: ajaxError
     });
   };
+
+   $scope.go = function( path ) {
+    $location.path(path);
+  };
   
+}]);
+
+appControllers.controller('MentorAliasController', ['$scope', '$http', '$location', function($scope, $http, $location) {
+   
+     $scope.generate = function() {
+    $.ajax({
+      url: "api/mentor",
+      dataType: "json",
+          async: false,
+      data: {'alias': $scope.f 
+            },
+      type: 'POST'
+      // error: ajaxError
+    });
+  };
+
+   $scope.go = function( path ) {
+    $location.path(path);
+  };
+
 }]);
 
 appControllers.controller('ListController', ['$scope', '$http', function($scope, $http) {

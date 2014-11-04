@@ -1,7 +1,6 @@
 var appControllers = angular.module('appControllers', ['ngAnimate', 'ngResource']);
 
 appControllers.controller('WelcomeController', ['$scope', '$http', function($scope, $http) {
-
   $scope.go = function() {
     window.location.replace("https://login.gatech.edu/cas/login?service=http%3A%2F%2Fdev.m.gatech.edu%2Fd%2Fmosborne8%2Fw%2FMentorAngular%2Fcontent%2F")
   };

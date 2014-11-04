@@ -118,54 +118,50 @@ nav {
 
 /*generic level fonts*/
 h1, h2, h3, h4, h5, h6 {
-font-family: 'Francois One', sans-serif;
-  font-weight: normal;
+font-family: 'Roboto', sans-serif;
+  font-weight: 100;
   color: #475b62;
-  text-shadow: 1px 1px white; }
+  /*text-shadow: 1px 1px white;*/
+}
 
-/*specific fonts*/
+/*For giant headers*/
 h1{
   font-family: 'Francois One', sans-serif;
-  font-size: 40px;
+  font-size: 38px;
+  text-align: center;
 }
+/*For text below the giant header*/
 h2{
   font-family: 'Roboto', sans-serif;
   font-size: 22px;
+  font-weight: 400;
+}
+/*For the thin font style*/
+h3{
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
+  font-size: 24px;
+}
+/*For the slighty bigger thin sub button description*/
+h4{
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
+  font-size: 14px;
+  text-align: center;
+}
+/*For the t hin sub button description*/
+h5{
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
+  font-size: 12px;
 }
 
-.top-bar.ui.menu {
-  width: 95vw;
-  position: relative;
-  margin: 0 auto;
-  border-radius: 0px 0px 5px 5px; 
-  /*background-color: #07b6ad;*/
-}
 
-.logo.item{
-  width: 200px;
-  background-color: white;
-}
-.logo.item img{
-   width:50px;
-}
-
-.main.logo{
-  margin-left: auto;
-  margin-right: auto;
-  padding-top: 1em;
-}
-.main.logo img{
-  width:250px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
+/* ... */
 .footer {
   height: 100%;
   min-height: 100px;
   display: block; }
-
 
 
 .main.ng-scope {
@@ -175,7 +171,6 @@ h2{
 .page {
   height: 100%;
   width: 100%;
-  padding-top: 100px; 
 }
 
 .header {
@@ -184,8 +179,9 @@ h2{
 
 .page > .ui.message {
   margin: 0 auto;
-  width: 60%;
-  top: 35px; }
+  /*width: 60%;*/
+  top: 35px; 
+}
 
 .welcome .welcome-message .button {
   margin: 0 auto;
@@ -413,3 +409,104 @@ h2{
   color: rgba(0, 0, 0, 0.5);
   right: 0.5em;
   top: 0.5em; }
+
+
+/* WELCOME */
+.top-bar.ui.menu {
+  width: 95vw;
+  position: relative;
+  margin: 0 auto;
+  border-radius: 0px 0px 5px 5px; 
+  /*background-color: #07b6ad;*/
+}
+
+.welcome.page > .ui.message{
+  width:60%;
+  background-color: #fff;
+}
+
+.ui.menu .item{
+  height: 2.6em;
+  /*padding: .8em .9em;*/
+}
+
+.ui.menu > .ui.logo.item {
+  width: 150px;
+  padding: 0px;
+  background-color: white;
+}
+.ui.menu > .ui.logo img{
+  height: 40px;
+  vertical-align: center;
+}
+
+.ui.button{
+  font-family: 'Roboto', sans-serif;
+  border-radius: 5px;
+  color: white;
+  background-color: #19D1FF;
+}
+
+.ui.button:hover{
+  color: white;
+  background-color: #5EDFFF;
+}
+
+.welcome.header{
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  padding-top: 1em;
+
+}
+.welcome.header img{
+  width:180px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* REGISTER */
+.registration.page > .ui.message{
+  margin: 0px;
+  background-color: #07b6ad;
+  width: 100vw;
+
+}
+.registration.page > .welcome.header h3{
+  text-shadow: 1px 1px white;
+  color: black;
+}
+.registration.page > .ui.message h2{
+  color: white;
+}
+.custom.columns{
+  height: 10em;
+}
+.custom.columns #left-col{
+  float:left;
+  margin-left: 25%;
+  width: 22%;
+}
+.custom.columns #right-col{
+  float:right;
+  margin-right:25%;
+  width: 22%;
+}
+.register.column h4{
+  color: white;
+}
+.register.column h5{
+  color: white;
+  font-style: normal;
+}
+.register.column > .button{
+
+  margin-left: auto;
+  margin-right: auto;
+
+
+  color: gray;
+  background-color: #E6E6E6;
+  border-radius: 0px;
+}

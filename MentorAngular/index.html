@@ -19,8 +19,7 @@
   <link rel="stylesheet" href="css/style.css">
   <!-- google fonts -->
   <link href='http://fonts.googleapis.com/css?family=Francois+One' rel='stylesheet' type='text/css'>
-  <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
-
+  <link href='http://fonts.googleapis.com/css?family=Roboto:400,100' rel='stylesheet' type='text/css'>
 </head>
 <body ng-app="myApp" ><!-- style="height:1000px" -->
 
@@ -30,26 +29,17 @@
 
   <nav>
     <div class="ui menu"> 
-      <a class="logo item" href="#/welcome"> <img src="images/logo.png"> </button>
-      <a class="item" href="#/register"> Profile </button>
-      <a class="item" href="#/searchmentors"> Search </button>
+      <a class="ui logo item" href="#/welcome"> <img src="images/logo.png"> </button>
+      <a class="item" href="#/register"> Profile </button>      
+      <a class="item" href="#/wishlist"> Wishlist </button>
+      <a class="item" href="#/searchmentors"> Search Mentors </button>
       <a class="item" href="#/contact"> Contact </button>
-      <a class="item" href="#/logout"> Log Out </button></a>
+      <a class="right align item" href="#/logout"> Log Out </button></a>
     </div>
   </nav>
-  
-  <!--[if lt IE 7]>
-      <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
-  <![endif]-->
-
-  <!--[if lt IE 9]>
-      <script src="scripts/vendor/es5-shim.min.js"></script>
-      <script src="scripts/vendor/json3.min.js"></script>
-  <![endif]-->
-
   <!-- Other Scripts -->
   <script>
-
+    //
     var addToList = function(number) {
       var s=angular.element('#isotopeContainer').scope();
       s.count = s.count || 0;
@@ -71,6 +61,7 @@
       s.lastNumber.unshift(number);
       s.$apply(s.xList = items);
     };
+
   </script>
 
   <script src="js/jquery-2.1.0.min.js"></script>
@@ -87,15 +78,24 @@
 <!--   // <script src="js/app-ang-iso.js"></script> -->
   <script src="js/app.js"></script>
   <script src="js/controllers.js"></script>
-  <!-- daniel's test stuff -->
-  <script src="js/jquery.backstretch.min.js"></script>
-  <script>
-          // $.backstretch("media/pot-holder.jpg");
-  </script>
+  <!-- daniel's stuff -->
+  <script src="js/jquery.address.js"></script>
+  <script src="lib/angular-isotope/angular-isotope.js"></script>
   <script type="text/javascript">
-  //   $(function(){
-  //     $('body').children().wrapAll("<div class='wrapper'>");
-  //   });
+    var nav = $('nav');
+     nav.on("click", ".item", function(event) {
+       var selItem;
+       event.preventDefault();
+       selItem = angular.element(event.target);
+       var activeClass = "active";
+       var activeSelector = "." + activeClass;
+       if (selItem.hasClass(activeClass)) {
+         return false;
+       }
+       nav.find(activeSelector).removeClass(activeClass);
+       selItem.addClass(activeClass);
+       console.log("button click "+selItem);
+     });
   </script>
   
 <div class="main" ng-view></div>

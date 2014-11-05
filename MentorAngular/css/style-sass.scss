@@ -12,7 +12,8 @@ $bgDimensionsY: 286;
 $bgScrollSpeed: 60s;
 $bgScrollSpeedX: (1 * $bgDimensionsX) * 1px;
 $bgScrollSpeedY: (3 * $bgDimensionsY) * 1px;
-$menuTextColor: #999999;
+$menuTextColor: #666666;
+$menuTextColor2: #a9a9a9;
 
 $borderRadius: 0.325em;
 $borderRadBig: 5px;
@@ -149,32 +150,6 @@ nav {
 //   /*background-color: #07b6ad;*/
 // }
 
-.ui.menu .item{
-  height: 2.6em;
-  /*padding: .8em .9em;*/
-}
-
-.ui.menu > .ui.logo.item {
-  width: 150px;
-  padding: 0px;
-  background-color: white;
-}
-.ui.menu > .ui.logo img{
-  height: 40px;
-  vertical-align: center;
-}
-
-.ui.button{
-  font-family: 'Roboto', sans-serif;
-  border-radius: 5px;
-  color: white;
-  background-color: #19D1FF;
-}
-
-.ui.button:hover{
-  color: white;
-  background-color: #5EDFFF;
-}
 
 /* Nav Menu */
 
@@ -202,6 +177,33 @@ nav {
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+
+#nav-menu .item{
+  height: 2.6em;
+  /*padding: .8em .9em;*/
+}
+
+#nav-menu > .ui.logo.item {
+  width: 150px;
+  padding: 0px;
+  background-color: white;
+}
+#nav-menu > .ui.logo img{
+  height: 40px;
+  vertical-align: center;
+}
+
+.ui.button{
+  font-family: 'Roboto', sans-serif;
+  border-radius: 5px;
+  color: white;
+  background-color: #19D1FF;
+}
+
+.ui.button:hover{
+  color: white;
+  background-color: #5EDFFF;
 }
 
 .footer  {
@@ -345,10 +347,11 @@ nav {
 
 .searchmentors .view {
   position: relative;
-  width: 95%;
+  width: 100%;
   height: 100%;
   display: block;
   margin: 0 auto;
+  padding: 0 20px;
   top: 35px;
 }
 
@@ -399,7 +402,7 @@ nav {
   border-radius: 0 0 $testTubeBorderRadius $testTubeBorderRadius;
   z-index: 200;
   margin: 0 $menuSpacingRightMargin 0 0;
-  padding: 10px;
+  padding: 15px;
 }
 .searchmentors .isotope-tttl {
   position: absolute;
@@ -454,7 +457,40 @@ nav {
   color: $menuTextColor;
 }
 
-#isotope-container { //Angular ul ng-repeat
+.searchmentors .view .mentor-profile .p-pic {
+  height: 100%;
+  width: 100%;
+  margin-bottom: 40px;
+  display: block;
+  position: relative;
+}
+
+.searchmentors .view .mentor-profile .p-pic > div {
+  float: none;
+}
+
+.searchmentors .mentor-profile .p-label {
+  color: $menuTextColor2;
+  font-size: 14px;
+  padding: 0 0 0 0px;
+  margin-bottom: 6px;
+}
+
+.searchmentors .mentor-profile .p-field {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+#wishlist-add-button {
+  margin-top: 30px;
+  margin-bottom: 10px;
+  background-color: $bgColor;
+  color: $menuTextColor;
+  text-transform: none;
+  font-weight: normal;
+}
+
+#isotopeContainer { //Angular ul ng-repeat
   width: 600px;
 }
 #container{border:1px solid #666;padding:5px;margin-bottom:20px}
@@ -464,30 +500,40 @@ nav {
 .kindling.color-3 {background-color: $color-3;}
 .kindling.color-4 {background-color: $color-4;}
 
-.kindling {
+#isotopeContainer .kindling {
   text-decoration: none;
-  margin: 2px;
+  margin: 3px;
 }
+
+#isotopeContainer .kindling .like {
+  opacity: 0.5;
+  //right: -0.5em;
+}
+#isotopeContainer .kindling .like:after {
+  position: absolute;
+  //content: "";
+  right: 0em;
+  top: 0em;
+  z-index: -1;
+  width: 0em;
+  height: 0em;
+  border-top: 0em solid transparent;
+  border-right: 0em solid transparent; //2.2em
+  border-bottom: 0em solid transparent;
+  border-left: 0em solid transparent;
+  border-right-color: inherit;
+  -webkit-transition: border-color 0.2s ease;
+  -moz-transition: border-color 0.2s ease;
+  transition: border-color 0.2s ease;
+}
+
+#isotopeContainer .kindling .icon {
+  margin: 0.5em 0em 0em 0.5em;
+}
+
 .kindling{width:$cardSize;height:$cardSize;margin:5px;float:left;overflow:hidden;position:relative;background:#888;color:#222;
           -webkit-border-top-right-radius:$cardBorderRad;-moz-border-radius-topright:$cardBorderRad;border-top-right-radius:$cardBorderRad}
-.kindling.alkali{background:#F00;background:red}
-.kindling.alkaline-earth{background:#F80;background:#f90}
-.kindling.lanthanoid{background:#FF0;background:#cf0}
-.kindling.actinoid{background:#0F0;background:#3f0}
-.kindling.transition{background:#0F8;background:#0f6}
-.kindling.post-transition{background:#0FF;background:cyan}
-.kindling.metalloid{background:#08F;background:#06f}
-.kindling.other.nonmetal{background:#00F;background:#30f}
-.kindling.halogen{background:#F0F;background:#c0f}
-.kindling.noble-gas{background:#F08;background:#f09}
-.kindling.purple{background:#CC00FF}
-.kindling.orange{background:#FF9900}
-.kindling.blue{background:#0099FF}
-.kindling.green{background:#CCFF00}
 .kindling *{position:absolute;margin:0}
 .kindling .symbol{left:0.2em;top:0.6em;font-size:$cardTextSize;line-height:1.0em;color:#FFF}
-.kindling.large .symbol{font-size:4.5em}
-.kindling.fake .symbol{color:#000}
 .kindling .name{left:0.5em;bottom:1.6em;font-size:1.05em}
-.kindling .weight{font-size:0.9em;left:0.5em;bottom:0.5em}
 .kindling .number{font-size:1.25em;font-weight:bold;color:rgba(0,0,0,0.5);right:0.5em;top:0.5em}

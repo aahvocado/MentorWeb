@@ -11,10 +11,28 @@ var appControllers = angular.module('appControllers', ['ngAnimate', 'ngResource'
             }
         });
     };
+})
+.directive('ngClassAlt', function() {
+  return {
+    restrict: 'A',
+    scope: {
+      ngClassAlt: '=ngClassAlt'
+    },
+    link: function(scope, elm, attrs) {
+      scope.$watch('ngClassAlt', function (newVal) {
+        _.each(scope.ngClassAlt, function(val, key) {
+          if(val)
+            elm.addClass(key);
+          else
+            elm.removeClass(key);
+        });
+      }, true);
+    }
+  };
 });
 
 appControllers.controller('WelcomeController', ['$scope', '$http', function($scope, $http) {
-  
+
   $scope.go = function() {
     window.location.replace("https://login.gatech.edu/cas/login?service=http%3A%2F%2Fdev.m.gatech.edu%2Fd%2Faarrowood3%2Fw%2FMentorAngular%2Fcontent%2F")
   };
@@ -53,7 +71,8 @@ appControllers.controller('SearchController', ['$scope', '$http', function($scop
   });
 
   $scope.miniProfileSet = function(user) {
-    console.log("yo " + user.firstName);
+    //console.log("yo ");
+    //console.log(user);
     $scope.miniProfileData = user;
   }
   

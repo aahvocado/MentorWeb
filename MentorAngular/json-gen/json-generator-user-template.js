@@ -12,11 +12,10 @@
       return (this.firstName.substring(0,1) + this.lastName + '@gatech.edu');
     },
     breadtTrack: '{{random("Pre-Health", "Research", "Minor", "Certificate")}}',
-    depthFocus: '{{random("Neuroengineering", "Cardiovascular Systems", "Biomechanics",
-                          "Biomaterials", "Medical Imaging")}}',
+    depthFocus: '{{random("Neuroengineering", "Cardiovascular Systems", "Biomechanics",                          "Biomaterials", "Medical Imaging")}}',
     gender: '{{random("Female", "Male")}}',
     academicIntExp: '{{random("Studied Abroad", "Transfer from China", "Transfer from Germany")}}',
-    futurePlans: '{{random("Graduate Studies", "Industry")}}'
+    futurePlans: '{{random("Graduate Studies", "Industry")}}',
     commMethod: '{{random("phone", "email")}}',
     color: '{{random("color-1", "color-2", "color-3", "color-4")}}'
   }

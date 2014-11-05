@@ -80,10 +80,13 @@
         <!-- track by user.index -->
         <!-- ISOTOPECONTAINER -->
         <ul id="isotopeContainer" isotope-container ng-cloak class="ng-cloak">
-          <li ng-repeat="user in userData" isotope-item class="kindling {{user.commMethod}} {{user.color}}" ng-click="miniProfileSet(user)">
+          <li ng-repeat="user in userData" isotope-item class="kindling {{user.breadthTrack}} {{user.depthFocus}} {{user.gender}} {{user.academicIntExp}} {{user.futurePlans}} {{user.commMethod}} {{user.color}}" ng-click="miniProfileSet(user)">
+            <a class="like ui corner label">
+              <i class="star icon"></i>
+            </a>
              <div class="symbol">{{user.firstName.substring(0,1) + user.lastName.substring(0,1).toLowerCase();}}</div>
              <!-- <div class="weight" date="{{x.date}}">{{x.date | date}}</div> -->
-             <div class="number" user-id={{user.index}} number="{{user.index}}">{{user.index}}</div>
+             <!-- <div class="number" user-id={{user.index}} number="{{user.index}}">{{user.index}}</div> -->
           </li>
 
           <li id="extra" isotope-item class="kindling email">
@@ -94,12 +97,34 @@
 	    </div>
 
 			<div class="mentor-profile ui menu" ng-model="miniProfileData">
-        <a class="star ui corner label">
-          <i class="star icon"></i>
-        </a>
         <div class="content ui item">
-          <div class="name">Name: {{miniProfileData.firstName + " " + miniProfileData.lastName}}</div>
-          <p>Email: {{miniProfileData.email}}</p>
+          <!-- <div class="name">Name: {{miniProfileData.firstName + " " + miniProfileData.lastName}}</div>
+          <p>Email: {{miniProfileData.email}}</p> -->
+          <div class="p-pic">
+            <div class="kindling" ng-class="miniProfileData.color">
+              <div class="symbol">{{miniProfileData.firstName.substring(0,1) + miniProfileData.lastName.substring(0,1).toLowerCase();}}</div>
+            </div>
+          </div>
+
+          <div class="p-label">Breadth track</div>
+          <div class="breadth-track p-field"> {{miniProfileData.breadthTrack}}</div>
+          <div class="p-label">Depth focus</div>
+          <div class="depth-focus p-field"> {{miniProfileData.depthFocus}}</div>
+          <div class="p-label">Gender</div>
+          <div class="gender p-field"> {{miniProfileData.gender}}</div>
+          <div class="p-label">Academic International Experience</div>
+          <div class="academic-int-exp p-field"> {{miniProfileData.academicIntExp}}</div>
+          <div class="p-label">Future Plans</div>
+          <div class="future-plans p-field"> {{miniProfileData.futurePlans}}</div>
+
+          <div class="profile-link">
+            <a>See full profile >></a>
+          </div>
+
+          <div id="wishlist-add-button" class="ui toggle button">
+            Add to Wishlist
+          </div>
+
         </div>
 			</div>
 		</div>

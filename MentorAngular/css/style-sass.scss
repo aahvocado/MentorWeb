@@ -80,7 +80,8 @@ h1, h2, h3, h4, h5, h6 {
 font-family: 'Francois One', sans-serif;
   font-weight: normal;
   color: #475b62;
-  text-shadow: 1px 1px white; }
+  /*text-shadow: 1px 1px white; */
+}
 
 /*specific fonts*/
 h1{
@@ -90,6 +91,25 @@ h1{
 h2{
   font-family: 'Roboto', sans-serif;
   font-size: 22px;
+}
+/*For the thin font style*/
+h3{
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
+  font-size: 24px;
+}
+
+/*For the slighty bigger thin sub button description*/
+h4{
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
+  font-size: 14px;
+}
+/*For the thin sub button description*/
+h5{
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
+  font-size: 12px;
 }
 
 // body{
@@ -288,33 +308,36 @@ nav {
   color: black;
 }
 .registration.page > .ui.message h2{
+  text-align: center;
   color: white;
 }
-.custom.columns{
+.registration.page > .ui.message h4{
+  text-align: center;
+  color: white;
+}
+.custom.cols{
   height: 10em;
 }
-.custom.columns #left-col{
+.custom.cols #left-col{
   float:left;
   margin-left: 25%;
   width: 22%;
 }
-.custom.columns #right-col{
+.custom.cols #right-col{
   float:right;
   margin-right:25%;
   width: 22%;
 }
-.register.column h4{
+.register.col h4{
   color: white;
 }
-.register.column h5{
+.register.col h5{
   color: white;
   font-style: normal;
 }
-.register.column > .button{
-
+.register.col > .button{
   margin-left: auto;
   margin-right: auto;
-
 
   color: gray;
   background-color: #E6E6E6;

@@ -50,6 +50,13 @@
 		</post>
 	</command>
 
+	<command id="wishlist" security='protected'>
+		<description><![CDATA[This command allows mentees to add/remove mentors from their wishlist]]></description>
+
+		<post>
+			<action file='db.php'><![CDATA[addToWishlist($_POST);]]></action>
+		</post>
+
 	<command id='user' security='protected'>
 		<description><![CDATA[This simple API lets you add and remove comments]]></description>
 		

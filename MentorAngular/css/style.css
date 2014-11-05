@@ -370,9 +370,6 @@ nav {
   text-decoration: none;
   margin: 3px; }
 
-#isotopeContainer .kindling .like {
-  opacity: 0.5; }
-
 #isotopeContainer .kindling .like:after {
   position: absolute;
   right: 0em;
@@ -391,6 +388,9 @@ nav {
 
 #isotopeContainer .kindling .icon {
   margin: 0.5em 0em 0em 0.5em; }
+
+.searchmentors .favorited {
+  color: white; }
 
 .kindling {
   width: 100px;

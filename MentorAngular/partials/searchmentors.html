@@ -82,7 +82,7 @@
         <ul id="isotopeContainer" isotope-container ng-cloak class="ng-cloak">
           <li ng-repeat="user in userData" isotope-item class="kindling {{user.breadthTrack}} {{user.depthFocus}} {{user.gender}} {{user.academicIntExp}} {{user.futurePlans}} {{user.commMethod}} {{user.color}}" ng-click="miniProfileSet(user)">
             <a class="like ui corner label">
-              <i class="star icon"></i>
+              <i class="star icon" ng-class="user.favorited"></i>
             </a>
              <div class="symbol">{{user.firstName.substring(0,1) + user.lastName.substring(0,1).toLowerCase();}}</div>
              <!-- <div class="weight" date="{{x.date}}">{{x.date | date}}</div> -->
@@ -121,8 +121,10 @@
             <a>See full profile >></a>
           </div>
 
-          <div id="wishlist-add-button" class="ui toggle button">
-            Add to Wishlist
+          <div ng-bind-html="wishButton"></div>
+
+          <div id="wishlist-add-button" class="ui toggle button" ng-click="wishButton.fn()">
+            {{wishButton.contentText}}
           </div>
 
         </div>

@@ -316,6 +316,21 @@
 		//echo $form;
 		echo json_encode($count);
 	}//end genFauxUsers
+
+	function addToWishlist($mentorUsername) {
+		global $_USER;
+
+		$dbQuery = sprintf("SELECT mentor FROM Wishlist WHERE username = '%s'",
+												$mentorUsername['uid']);
+		$result = getDBResultsArray($dbQuery);
+		
+		if (!empty($result)) {
+			$dbQuery = sprintf("INSERT INTO Wishlist (mentee, mentor)
+													VALUES ('%s', '%s')",
+													$_USER['uid'], $username['uid']);
+			$result = getDBRegInserted($dbQuery);
+		}
+	}
 	
 	function listComments() {
 		global $_USER;

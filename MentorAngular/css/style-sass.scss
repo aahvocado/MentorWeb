@@ -14,6 +14,7 @@ $bgScrollSpeedX: (1 * $bgDimensionsX) * 1px;
 $bgScrollSpeedY: (3 * $bgDimensionsY) * 1px;
 $menuTextColor: #666666;
 $menuTextColor2: #a9a9a9;
+$favoritedColor: #fff;
 
 $borderRadius: 0.325em;
 $borderRadBig: 5px;
@@ -506,7 +507,7 @@ nav {
 }
 
 #isotopeContainer .kindling .like {
-  opacity: 0.5;
+  //opacity: 0.5;
   //right: -0.5em;
 }
 #isotopeContainer .kindling .like:after {
@@ -529,6 +530,10 @@ nav {
 
 #isotopeContainer .kindling .icon {
   margin: 0.5em 0em 0em 0.5em;
+}
+
+.searchmentors .favorited {
+  color: $favoritedColor;
 }
 
 .kindling{width:$cardSize;height:$cardSize;margin:5px;float:left;overflow:hidden;position:relative;background:#888;color:#222;

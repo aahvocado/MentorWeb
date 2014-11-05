@@ -1,4 +1,4 @@
-var appControllers = angular.module('appControllers', ['ngAnimate', 'ngResource'])
+var appControllers = angular.module('appControllers', ['ngAnimate', 'ngResource', 'ngSanitize'])
 .directive('ngEnter', function () {
     return function (scope, element, attrs) {
         element.bind("keydown keypress", function (event) {
@@ -63,17 +63,55 @@ appControllers.controller('SearchController', ['$scope', '$http', function($scop
   $http.get('json-gen/users.json').success(function(data) {
     $scope.userData = data;
     $scope.miniProfileData = $scope.userData[0];
+    $scope.wishButton = {};
+    $scope.renderButton($scope.miniProfileData.favorited);
   }).
   error(function(data, status, headers, config) {
     // called asynchronously if an error occurs
     // or server returns response with an error status.
     console.log("Error getting userData");
   });
-
   $scope.miniProfileSet = function(user) {
     //console.log("yo ");
     //console.log(user);
     $scope.miniProfileData = user;
+    $scope.renderButton($scope.miniProfileData.favorited);
+  }
+  $scope.addToWishlist = function() {
+    // $http.post('api/registerMentor',
+    // {
+    //     'fname': $scope.fname,
+    //     'lname': $scope.lname,
+    //     'phone': $scope.phone,
+    //     'email': $scope.email,
+    //     'pref_comm': $scope.pref_comm
+    //   }
+    //   )
+    // .success (function (data, status, headers, config) {
+    //   $scope.data = data;
+    //   console.log(data);
+    // })
+    // .error (function (data, status, headers, config) {
+    //   $scope.status = status;
+    // });
+
+    $scope.miniProfileData.favorited = "favorited";
+    $scope.renderButton($scope.miniProfileData.favorited);
+  }
+  $scope.removeFromWishlist = function() {
+    $scope.miniProfileData.favorited = "";
+    $scope.renderButton($scope.miniProfileData.favorited);
+  }
+
+  $scope.renderButton = function(favorited) {
+    if (favorited == "favorited") {
+      $scope.wishButton.contentText = "Remove from Wishlist";
+      $scope.wishButton.fn = $scope.removeFromWishlist;
+    } else {
+      $scope.wishButton.contentText = "Add to Wishlist";
+      $scope.wishButton.fn = $scope.addToWishlist;
+      console.log("wishButton text: " + $scope.wishButton);
+    }
   }
   
 }]);

@@ -121,7 +121,7 @@ nav {
 
 .logo.item {
   width: 200px;
-  background-color: #fefefe; }
+  /*background-color: #fefefe;*/ }
 
 .logo.item img {
   height: 100%; }

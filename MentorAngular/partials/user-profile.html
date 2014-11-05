@@ -1,0 +1,95 @@
+<section class="user-profile page">
+	<div class="user-profile header">
+   		<h1>Your Mentor</h1>
+	</div>
+
+	<div class="user-profile message ui">
+		<!-- upper profile stuff -->
+		<div class="user-profile personal ui three column page grid">
+			<div class="column" id="box">
+				<div class="id-box" style="background-color:pink">
+					<h2>{{scope.unique-name}}</h2>
+				</div>
+			</div>
+
+			<div class="column" id="name">
+				<div class="item">
+					<h5>Full Name<h5>
+					<h6>{{scope.firstname}} {{scope.lastname}}</h6>
+				</div>
+			</div>
+
+			<div class="column">
+				<div class="item">
+					<h5>Phone</h5>
+					<h6>{{scope.phone}}</h6>
+
+					<h5>Email</h5>
+					<h6>{{scope.email}}</h6>
+				</div>
+			</div>
+		</div>
+
+		<div class="ui divider"></div>
+
+		<!-- track, focus, etc stuff -->
+		<div class="user-profile ui two column page grid">
+			<div class="column">
+			    <div class="user-profile ui vertical fluid">
+					<div class="item">
+						<h5>Breadth Track<h5>
+						<h6>{{scope.breadth-track}}</h6>
+					</div>
+
+					<div class="item">
+						<h5>Depth Focus<h5>
+						<h6>{{scope.depth-focus}}</h6>
+					</div>
+
+					<div class="item">
+						<h5>Gender<h5>
+						<h6>{{scope.gender}}</h6>
+					</div>
+
+					<div class="item">
+						<h5>Student Year<h5>
+						<h6>{{scope.student-year}}</h6>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="column">
+				<div class="user-profile ui vertical fluid">
+					<div class="item">
+						<h5>Career Development<h5>
+						<h6>{{scope.career-development}}</h6>
+					</div>
+
+					<div class="item">
+						<h5>Future Plans<h5>
+						<h6>{{scope.future-plans}}</h6>
+					</div>
+
+					<div class="item">
+						<h5>Academic International Experience<h5>
+						<h6>{{scope.academic-experience}}</h6>
+					</div>
+
+					<div class="item">
+						<h5>Expected Graduation<h5>
+						<h6>{{scope.expected-graduation}}</h6>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="ui divider"></div>
+
+		<!-- extra bits of information stuff -->
+		<div class="user-info extra ">
+			<h5>Organizations, Extracurricular Activities, Interests, Skills, etc</h5>
+			<h6>{{scope.extra-info}}</h6>
+		</div>
+	</div>
+</section>

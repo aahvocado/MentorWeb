@@ -82,7 +82,8 @@ h1, h2, h3, h4, h5, h6 {
 font-family: 'Francois One', sans-serif;
   font-weight: normal;
   color: #475b62;
-  text-shadow: 1px 1px white; }
+  /*text-shadow: 1px 1px white; */
+}
 
 /*specific fonts*/
 h1{
@@ -92,6 +93,31 @@ h1{
 h2{
   font-family: 'Roboto', sans-serif;
   font-size: 22px;
+}
+/*For the thin font style*/
+h3{
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
+  font-size: 24px;
+}
+
+/*For the slighty bigger thin sub button description*/
+h4{
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
+  font-size: 14px;
+}
+/*For the thin sub button description*/
+h5{
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
+  font-size: 12px;
+}
+/*For the nice bold text*/
+h6{
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
 }
 
 // body{
@@ -226,7 +252,7 @@ nav {
 .page {
   height: 100%;
   width: 100%;
-  padding-top: $topHeight;
+ // padding-top: $topHeight;
 }
 
 .header {
@@ -250,6 +276,12 @@ nav {
   font-family: 'Open Sans', sans-serif;
 }
 
+/* Semantic overrides */
+.ui.message{
+  width:60%;
+  background-color: #fff;
+}
+
 /* Welcome Partial */
 
 .top-bar.ui.menu {
@@ -260,10 +292,7 @@ nav {
   /*background-color: #07b6ad;*/
 }
 
-.welcome.page > .ui.message{
-  width:60%;
-  background-color: #fff;
-}
+
 
 .welcome.header{
   margin-left: auto;
@@ -279,11 +308,15 @@ nav {
   margin-right: auto;
 }
 
+.welcome h1{
+  text-align: center;
+}
+
 /* REGISTER */
 .registration.page > .ui.message{
-  margin: 0px;
-  background-color: #07b6ad;
-  width: 100vw;
+  // margin: 0px;
+  // background-color: #07b6ad;
+  // width: 100vw;
 
 }
 .registration.page > .welcome.header h3{
@@ -291,37 +324,80 @@ nav {
   color: black;
 }
 .registration.page > .ui.message h2{
+  text-align: center;
   color: white;
 }
-.custom.columns{
+.registration.page > .ui.message h4{
+  text-align: center;
+  color: white;
+}
+.custom.cols{
   height: 10em;
 }
-.custom.columns #left-col{
+.custom.cols #left-col{
   float:left;
   margin-left: 25%;
   width: 22%;
 }
-.custom.columns #right-col{
+.custom.cols #right-col{
   float:right;
   margin-right:25%;
   width: 22%;
 }
-.register.column h4{
+.register.col h4{
   color: white;
 }
-.register.column h5{
+.register.col h5{
   color: white;
   font-style: normal;
 }
-.register.column > .button{
-
+.register.col > .button{
   margin-left: auto;
   margin-right: auto;
-
 
   color: gray;
   background-color: #E6E6E6;
   border-radius: 0px;
+}
+
+/* User Profile */
+.user-profile.message{
+  margin: 0px;
+  padding: 1em;
+}
+
+.column #box{
+  width: 22.333%;
+}
+.column #name{
+  width: 44.333%;
+}
+.user-profile.ui.page.grid{
+  padding: 0em;
+}
+
+.user-profile h1{
+  text-align: center;
+}
+
+.user-profile.personal{
+  padding: 0% 8%;
+}
+.id-box h2{
+  color: white;
+}
+
+.id-box{
+  width: 6.5em;
+  height: 6.5em;
+}
+
+.user-profile.ui > .item{
+  padding: .8em;
+}
+
+.user-info.extra{
+  padding: 0% 8%;
 }
 
 /*  Loading Partial */

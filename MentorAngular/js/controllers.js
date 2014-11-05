@@ -43,6 +43,7 @@ appControllers.controller('HeaderController', ['$scope', '$http', '$location', f
     mentor: 0,
     admin: 0};
   
+  var data = {};
   // $.get("api/user", function (data) {
   //       data = data;//$data = data;//$('#hello').tmpl(data).appendTo("#hello");
   //       console.log("data: " , data);

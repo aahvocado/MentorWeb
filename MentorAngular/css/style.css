@@ -308,6 +308,9 @@ nav {
   min-width: 90px;
   background-color: #ebebeb; }
 
+.searchmentors .view > .ui.vertical.menu {
+  margin: 0 15px 0 0; }
+
 .searchmentors #filter-menu {
   width: 20%;
   min-width: 250px;
@@ -317,7 +320,8 @@ nav {
   margin: 0 15px 0 0; }
 
 .searchmentors #filter-menu .item {
-  background-color: #ebebeb; }
+  background-color: #ebebeb;
+  width: 100%; }
 
 .searchmentors #filter-menu .accordion {
   width: 600px; }

@@ -450,6 +450,10 @@ nav {
   background-color: $fgColor;
 }
 
+.searchmentors .view > .ui.vertical.menu {
+  margin: 0 $menuSpacingRightMargin 0 0;
+}
+
 .searchmentors #filter-menu {
   width: 20%;
   // height: 100%;
@@ -462,6 +466,7 @@ nav {
 
 .searchmentors #filter-menu .item {
   background-color: $fgColor;
+  width: 100%;
 }
 
 .searchmentors #filter-menu .accordion {

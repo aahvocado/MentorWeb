@@ -111,6 +111,12 @@ h5{
   font-weight: 100;
   font-size: 12px;
 }
+/*For the nice bold text*/
+h6{
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+}
 
 // body{
 //     background-image:url("light_honeycomb_2X.png");
@@ -267,6 +273,12 @@ nav {
   font-family: 'Open Sans', sans-serif;
 }
 
+/* Semantic overrides */
+.ui.message{
+  width:60%;
+  background-color: #fff;
+}
+
 /* Welcome Partial */
 
 .top-bar.ui.menu {
@@ -277,10 +289,7 @@ nav {
   /*background-color: #07b6ad;*/
 }
 
-.welcome.page > .ui.message{
-  width:60%;
-  background-color: #fff;
-}
+
 
 .welcome.header{
   margin-left: auto;
@@ -349,8 +358,43 @@ nav {
 }
 
 /* User Profile */
+.user-profile.message{
+  margin: 0px;
+  padding: 1em;
+}
+
+.column #box{
+  width: 22.333%;
+}
+.column #name{
+  width: 44.333%;
+}
+.user-profile.ui.page.grid{
+  padding: 0em;
+}
+
 .user-profile h1{
   text-align: center;
+}
+
+.user-profile.personal{
+  padding: 0% 8%;
+}
+.id-box h2{
+  color: white;
+}
+
+.id-box{
+  width: 6.5em;
+  height: 6.5em;
+}
+
+.user-profile.ui > .item{
+  padding: .8em;
+}
+
+.user-info.extra{
+  padding: 0% 8%;
 }
 
 /*  Loading Partial */

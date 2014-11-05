@@ -4,27 +4,27 @@
 	    Mentee Registration
    	</div>
    	<a class="ui right aligned" ng-click="go('/homescreen')">Skip for now</a>
-	<h1>*Note: MentorWeb will not use your information for any other reason than for your own keeping. All mentors are available for you from the beginning. YOU have the freedom to choose your mentor. Don't worry about filling out all the fields correctly, this is mostly to get you thinking about what your interests are.</h1>
+	<div class="ui header">*Note: MentorWeb will not use your information for any other reason than for your own keeping. All mentors are available for you from the beginning. YOU have the freedom to choose your mentor. Don't worry about filling out all the fields correctly, this is mostly to get you thinking about what your interests are.</div>
 
 	<div class="ui form segment">
 	<h2 class="ui inverted black block header">Basic Information</h2><br/>
 	  <div class="two fields">
 	    <div class="field">
 	      <label>First Name</label>
-	      <input id="first_name" placeholder="First Name" type="text">
+	      <input id="first_name" ng-model="form.fname" placeholder="First Name" type="text">
 	    </div>
 	    <div class="field">
 	      <label>Last Name</label>
-	      <input id="last_name" placeholder="Last Name" type="text">
+	      <input id="last_name" ng-model="form.lname" placeholder="Last Name" type="text">
 	    </div>
 	  </div>
 	  <div class="field">
 	    <label>Email</label>
-	    <input id="email" placeholder="username@gatech.edu" type="text">
+	    <input id="email" ng-model="form.email" placeholder="username@gatech.edu" type="text">
 	  </div>
 	  <div class="field">
 	    <label>Phone Number</label>
-	    <input id="phone_number" placeholder="xxx-xxx-xxxx" type="text">
+	    <input id="phone_number" ng-model="form.phone" placeholder="xxx-xxx-xxxx" type="text">
 	  </div>
 	 <div class="field">
 	  	<div class="ui tiny header">Preferred Communication Method</div>
@@ -50,29 +50,29 @@
 	    <div class="ui tiny header">Did you transfer to the BME department from another major at Georgia Tech, or from another institution?</div>
 	    <div class="field">
 	  		<div class="ui radio checkbox">
-			  	<input type="radio" name="transfer" ng-model="form.transfer_from_within" ng-value="true"/>
-			  	<label ng-click="newValue(true, 'transfer_from_within')">Yes, from another major at Tech</label>
+			  	<input type="radio" name="transfer" ng-model="form.transfer_from_within" ng-value="1"/>
+			  	<label ng-click="newValue(1, 'transfer_from_within')">Yes, from another major at Tech</label>
 			</div>
 			<div class="field">
-		  	<div ng-show="form.transfer_from_within == true">
+		  	<div ng-show="form.transfer_from_within == 1">
 		  		<div class="ui tiny header">What was your previous major at Georgia Tech?</div>
 		      	<input type="text" id="prev_major" ng-model="form.prev_major" placeholder="Please Specify" ng-model-options="{ updateOn: 'blur' }">
 		    </div>
 			</div>
 			<div class="ui radio checkbox">
-			  	<input type="radio" name="transfer" ng-model="form.transfer_from_outside" ng-value="true"/>
-			  	<label ng-click="newValue(true, 'transfer_from_outside')">Yes, from another institution</label>
+			  	<input type="radio" name="transfer" ng-model="form.transfer_from_outside" ng-value="1"/>
+			  	<label ng-click="newValue(1, 'transfer_from_outside')">Yes, from another institution</label>
 			</div>
 			<div class="field">
-		  	<div ng-show="form.transfer_from_outside == true">
+		  	<div ng-show="form.transfer_from_outside == 1">
 		  		<div class="ui tiny header">What is the name of the institution where you were enrolled prior to transferring to Georgia Tech?</div>
 		      	<input type="text" id="institution_name" ng-model="form.institution_name" placeholder="Please Specify" ng-model-options="{ updateOn: 'blur' }">
 		    </div>
 			</div>
 
 			<div class="ui radio checkbox">
-			  	<input type="radio" name="transfer" ng-model="form.transfer_from_outside" ng-value="false"/>
-			  	<label ng-click="newValue(false, 'transfer_from_outside')">No</label>
+			  	<input type="radio" name="transfer" ng-model="form.transfer_from_outside" ng-value="0"/>
+			  	<label ng-click="newValue(0, 'transfer_from_outside')">No</label>
 			</div>
 		</div>
 	  </div>
@@ -128,20 +128,20 @@
 	    <div class="grouped inline fields">
 	    	<div class="field">
 		  		<div class="ui radio checkbox">
-				  	<input type="radio" name="undergrad_research" ng-model="form.undergrad_research" value="'Yes'"/>
-				  	<label ng-click="newValue('Yes', 'undergrad_research')">Yes</label>
+				  	<input type="radio" name="undergrad_research" ng-model="form.undergrad_research" value="1"/>
+				  	<label ng-click="newValue(1, 'undergrad_research')">Yes</label>
 				</div>
 			</div>
 			<div class="field">
 				<div class="ui radio checkbox">
-				  	<input type="radio" name="undergrad_research" ng-model="form.undergrad_research" value="'No'"/>
-				  	<label ng-click="newValue('No', 'undergrad_research')">No</label>
+				  	<input type="radio" name="undergrad_research" ng-model="form.undergrad_research" value="0"/>
+				  	<label ng-click="newValue(0, 'undergrad_research')">No</label>
 				</div>
 			</div>
 			<div class="field">
 				<div class="ui radio checkbox">
-				  	<input type="radio" name="undergrad_research" ng-model="form.undergrad_research" value="'Maybe'"/>
-				  	<label ng-click="newValue('Maybe', 'undergrad_research')">Maybe</label>
+				  	<input type="radio" name="undergrad_research" ng-model="form.undergrad_research" value="-1"/>
+				  	<label ng-click="newValue(-1, 'undergrad_research')">Maybe</label>
 			  	</div>
 			</div>
 		</div>
@@ -237,10 +237,8 @@
 
 	</div>
 
-      <div id="reg_submit_button" ng-click="go('/homescreen')"class="ui blue animated submit button">
-		<div class="visible content">Next</div>
-	  		<div class="hidden content">
-	    	<i class="right arrow icon"></i>
+      <div id="reg_submit_button" ng-click="addMentee(); go('/homescreen')" class="ui blue submit button">
+		Submit
 		</div>
     </div>
   

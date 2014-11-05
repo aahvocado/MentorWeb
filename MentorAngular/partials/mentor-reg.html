@@ -68,30 +68,30 @@
 	    <div class="ui tiny header">Did you transfer to the BME department from another major at Georgia Tech, or from another institution?</div>
 	    <div class="field">
 	  		<div class="ui radio checkbox">
-			  	<input type="radio" name="transfer" ng-model="form.transfer_from_within" ng-value="true"/>
-			  	<label ng-click="newValue(true, 'transfer_from_within')">Yes, from another major at Tech</label>
+			  	<input type="radio" name="transfer" ng-model="form.transfer_from_within" ng-value="1"/>
+			  	<label ng-click="newValue(1, 'transfer_from_within')">Yes, from another major at Tech</label>
 			</div>
 			<div class="field">
-		  	<div ng-show="form.transfer_from_within == true">
+		  	<div ng-show="form.transfer_from_within == 1">
 		  		<div class="ui tiny header">What was your previous major at Georgia Tech?</div>
 		      	<input type="text" id="prev_major" ng-model="form.prev_major" placeholder="Please Specify" ng-model-options="{ updateOn: 'blur' }">
 		    </div>
 			</div>
 
 			<div class="ui radio checkbox">
-			  	<input type="radio" name="transfer" ng-model="form.transfer_from_outside" ng-value="true"/>
-			  	<label ng-click="newValue(true, 'transfer_from_outside')">Yes, from another institution</label>
+			  	<input type="radio" name="transfer" ng-model="form.transfer_from_outside" ng-value="1"/>
+			  	<label ng-click="newValue(1, 'transfer_from_outside')">Yes, from another institution</label>
 			</div>
 			<div class="field">
-		  	<div ng-show="form.transfer_from_outside == true">
+		  	<div ng-show="form.transfer_from_outside == 1">
 		  		<div class="ui tiny header">What is the name of the institution where you were enrolled prior to transferring to Georgia Tech?</div>
 		      	<input type="text" id="institution_name" ng-model="form.institution_name" placeholder="Please Specify" ng-model-options="{ updateOn: 'blur' }">
 		    </div>
 			</div>
 
 			<div class="ui radio checkbox">
-			  	<input type="radio" name="transfer" ng-model="form.transfer_from_outside" ng-value="false"/>
-			  	<label ng-click="newValue(false, 'transfer_from_outside')">No</label>
+			  	<input type="radio" name="transfer" ng-model="form.transfer_from_outside" ng-value="0"/>
+			  	<label ng-click="newValue(0, 'transfer_from_outside')">No</label>
 			</div>
 		</div>
 	  </div>

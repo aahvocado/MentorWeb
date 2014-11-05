@@ -296,6 +296,10 @@ nav {
   margin-right: auto;
 }
 
+.welcome h1{
+  text-align: center;
+}
+
 /* REGISTER */
 .registration.page > .ui.message{
   margin: 0px;
@@ -342,6 +346,11 @@ nav {
   color: gray;
   background-color: #E6E6E6;
   border-radius: 0px;
+}
+
+/* User Profile */
+.user-profile h1{
+  text-align: center;
 }
 
 /*  Loading Partial */

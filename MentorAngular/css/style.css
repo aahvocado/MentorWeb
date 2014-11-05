@@ -124,7 +124,7 @@ nav {
 
 .logo.item {
   width: 200px;
-  /*background-color: #fefefe;*/ }
+  background-color: #fefefe; }
 
 .logo.item img {
   height: 100%; }
@@ -164,11 +164,7 @@ nav {
 
 .page {
   height: 100%;
-<<<<<<< HEAD
   width: 100%; }
-=======
-  width: 100%;}
->>>>>>> FETCH_HEAD
 
 .header {
   color: #475b62;
@@ -214,15 +210,10 @@ nav {
   text-align: center; }
 
 /* REGISTER */
-<<<<<<< HEAD
 .registration-splash.page > .ui.message {
   margin: 0px;
-=======
-.registration.page > .ui.message {
-  /*margin: 0px;
->>>>>>> FETCH_HEAD
   background-color: #07b6ad;
-  width: 100vw;*/ }
+  width: 100vw; }
 
 .registration-splash.page > .welcome.header h3 {
   text-shadow: 1px 1px white;

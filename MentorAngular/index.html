@@ -29,8 +29,20 @@
   </div>
 
 
-  <nav ng-controller="HeaderController">
+  <!-- <nav ng-controller="HeaderController">
     <div ng-include src="'partials/header.html'"></div>
+  </nav> -->
+
+  
+  <nav id="nav-t">
+    <div class="ui menu" id="nav-menu" > 
+      <a class="ui logo item" href="#/welcome"> <img src="images/logo-tiny.png"> </button>
+      <a class="item" href="#/register"> cProfile </button>
+      <a class="item" href="#/wishlist"> Wishlist </button>
+      <a class="item" href="#/searchmentors"> Search </button>
+      <a class="item" href="#/contact"> Contact </button>
+      <a class="right align item" href="#/logout"> Log Out </button></a>
+    </div>
   </nav>
   
   <!--[if lt IE 7]>
@@ -82,15 +94,9 @@
 <!--   // <script src="js/app-ang-iso.js"></script> -->
   <script src="js/app.js"></script>
   <script src="js/controllers.js"></script>
-  <!-- daniel's test stuff -->
-  <script src="js/jquery.backstretch.min.js"></script>
-  <script>
-          // $.backstretch("media/pot-holder.jpg");
-  </script>
-  <script type="text/javascript">
-  //   $(function(){
-  //     $('body').children().wrapAll("<div class='wrapper'>");
-  //   });
+  <!-- daniel's  stuff -->
+  <script src="js/jquery.address.js"></script>
+  <script src="lib/angular-isotope/angular-isotope.js"></script>
   </script>
   
 <div class="main" ng-view></div>

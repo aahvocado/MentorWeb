@@ -116,6 +116,26 @@ appControllers.controller('SearchController', ['$scope', '$http', function($scop
   
 }]);
 
+appControllers.controller('WishlistController', ['$scope', '$http', function($scope, $http) {
+  $http.get('json-gen/users.json').success(function(data) {
+    $scope.userData = data;
+    $scope.miniProfileData = $scope.userData[0];
+    $scope.wishButton = {};
+    $scope.renderButton($scope.miniProfileData.favorited);
+  }).
+  error(function(data, status, headers, config) {
+    // called asynchronously if an error occurs
+    // or server returns response with an error status.
+    console.log("Error getting userData");
+  });
+  $scope.miniProfileSet = function(user) {
+    //console.log("yo ");
+    //console.log(user);
+    $scope.miniProfileData = user;
+    $scope.renderButton($scope.miniProfileData.favorited);
+  }
+}]);
+
 appControllers.controller('RegisterMentorController', ['$scope', '$http', function($scope, $http) {
   $('.ui.dropdown').dropdown();
   console.log({

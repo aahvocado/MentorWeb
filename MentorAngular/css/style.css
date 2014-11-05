@@ -427,3 +427,69 @@ nav {
   color: rgba(0, 0, 0, 0.5);
   right: 0.5em;
   top: 0.5em; }
+
+/* Wishlist */
+.wishlist {
+  height: 100%;
+  width: 100%;
+  min-width: 1200px;
+  z-index: 100; }
+
+.wishlist .view {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: block;
+  margin: 0 auto;
+  padding: 0 20px;
+  top: 35px; }
+
+.wishlist .view > div {
+  position: relative;
+  vertical-align: top;
+  display: inline-block;
+  margin-left: -3px; }
+
+/*.searchmentor .view .ui.message {
+  height: 90%;
+}*/
+.wishlist .isotope-container {
+  width: 65%;
+  min-height: 400px;
+  background-color: #ebebeb;
+  border-radius: 0 0 0.325em 0.325em;
+  z-index: 200;
+  margin: 0 15px 0 0;
+  padding: 15px; }
+
+.wishlist .view .mentor-profile {
+  min-width: 200px;
+  width: 28%;
+  background-color: #eee;
+  border-radius: 0px 5px 5px 0px;
+  z-index: 100;
+  margin-top: 0; }
+
+.wishlist .view .mentor-profile .content {
+  padding: 15px;
+  color: #666666; }
+
+.wishlist .view .mentor-profile .p-pic {
+  height: 100%;
+  width: 100%;
+  margin-bottom: 40px;
+  display: block;
+  position: relative; }
+
+.wishlist .view .mentor-profile .p-pic > div {
+  float: none; }
+
+.wishlist .mentor-profile .p-label {
+  color: darkgray;
+  font-size: 14px;
+  padding: 0 0 0 0px;
+  margin-bottom: 6px; }
+
+.wishlist .mentor-profile .p-field {
+  font-size: 16px;
+  margin-bottom: 20px; }

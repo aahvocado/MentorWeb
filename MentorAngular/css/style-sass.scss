@@ -444,6 +444,8 @@ nav {
   right: 0px !important;
 }
 
+
+
 .searchmentors .view .mentor-profile {
   min-width: 200px;
   width: 28%;
@@ -542,3 +544,81 @@ nav {
 .kindling .symbol{left:0.2em;top:0.6em;font-size:$cardTextSize;line-height:1.0em;color:#FFF}
 .kindling .name{left:0.5em;bottom:1.6em;font-size:1.05em}
 .kindling .number{font-size:1.25em;font-weight:bold;color:rgba(0,0,0,0.5);right:0.5em;top:0.5em}
+
+/* Wishlist */
+
+.wishlist {
+  height: 100%;
+  width: 100%;
+  min-width: 1200px;
+  z-index: 100;
+}
+
+.wishlist .view {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: block;
+  margin: 0 auto;
+  padding: 0 20px;
+  top: 35px;
+}
+
+.wishlist .view > div {
+  position: relative;
+  vertical-align: top;
+  display: inline-block;
+  margin-left: -3px;
+}
+
+/*.searchmentor .view .ui.message {
+  height: 90%;
+}*/
+
+.wishlist .isotope-container {
+  width: 65%;
+  min-height: $testTubeMinHeight;
+  background-color: $fgColor;
+  border-radius: 0 0 $testTubeBorderRadius $testTubeBorderRadius;
+  z-index: 200;
+  margin: 0 $menuSpacingRightMargin 0 0;
+  padding: 15px;
+}
+
+.wishlist .view .mentor-profile {
+  min-width: 200px;
+  width: 28%;
+  background-color: #eee;
+  border-radius: 0px $borderRadBig $borderRadBig 0px;
+  z-index: 100;
+  margin-top: 0;
+}
+
+.wishlist .view .mentor-profile .content {
+  padding: 15px;
+  color: $menuTextColor;
+}
+
+.wishlist .view .mentor-profile .p-pic {
+  height: 100%;
+  width: 100%;
+  margin-bottom: 40px;
+  display: block;
+  position: relative;
+}
+
+.wishlist .view .mentor-profile .p-pic > div {
+  float: none;
+}
+
+.wishlist .mentor-profile .p-label {
+  color: $menuTextColor2;
+  font-size: 14px;
+  padding: 0 0 0 0px;
+  margin-bottom: 6px;
+}
+
+.wishlist .mentor-profile .p-field {
+  font-size: 16px;
+  margin-bottom: 20px;
+}

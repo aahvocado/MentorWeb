@@ -45,10 +45,47 @@
 		// echo var_dump($_User);
 		// echo $result["0"]["UserType"];
 
-	 	 header("Content-type: application/json");
+	 	 $GLOBALS["_PLATFORM"]->sandboxHeader("Content-type: application/json");
 	 	 //echo var_dump($userinfo);
 	 	 echo json_encode($userInfo);
 	}//end welcome
+
+	function getMentor() {
+
+	}
+
+	function getUserType() {
+		// echo "in getUserType: \n";
+		global $_USER;
+		$user = $_USER['uid'];
+
+		$userInfo = array("Admin" => 0, "Mentor" => 0, "Mentee" => 0, "Name" => '', "Id" => '', "Mentor" => '');
+		$checkAdmin = sprintf("SELECT first_name, id FROM User, Admin WHERE User.username = '%s' AND Admin.username = '%s'", $user, $user);
+		$isAdmin = getDBResultsArray($checkAdmin);
+		// echo "isAdmin: " . $isAdmin . "\n";
+		if (!empty($isAdmin)) {
+			$userInfo["Admin"] = 1;
+			$userInfo["Name"] = $isAdmin[0]["first_name"];
+			$userInfo["Id"] = $isAdmin[0]["id"];
+		}
+		$checkMentor = sprintf("SELECT first_name, id FROM User, Mentor WHERE User.username = '%s' AND Mentor.username = '%s'", $user, $user);
+		$isMentor = getDBResultsArray($checkMentor);
+		if (!empty($isMentor)) {
+			$userInfo["Mentor"] = 1;
+			$userInfo["Name"] = $isMentor[0]["first_name"];
+			$userInfo["Id"] = $isMentor[0]["id"];
+		}
+		$checkMentee = sprintf("SELECT first_name, id, mentor_user FROM User, Mentee WHERE User.username = '%s' AND Mentee.username = '%s'", $user, $user);
+		$isMentee = getDBResultsArray($checkMentee);
+		if (!empty($isMentee)) {
+			$userInfo["Mentee"] = 1;
+			$userInfo["Name"] = $isMentee[0]["first_name"];
+			$userInfo["Id"] = $isMentee[0]["id"];
+			$userInfo["Mentor"] = $isMentee[0]["mentor_user"];
+		}
+		header("Content-type: application/json");
+		echo json_encode($userInfo);
+	}
 
 	function submitRegForm($form) {
 		global $_USER;
@@ -83,18 +120,25 @@
 		echo "email: " . $email . "\n";
 		$pref_comm = mysql_real_escape_string($_POST['pref_comm']);
 		echo "pref_comm: " . $pref_comm . "\n";
-		$depth_focus = mysqli_real_escape_string($_POST['dfocus']);
-		$depth_focus_other = mysqli_real_escape_string($_POST['dfocusother']); //don't need escape string for pre-defined vals
-		$first_gen_college_student = (int)$_POST['first_gen_college_student'];
-		$transfer_from_outside = (int)$_POST['transfer_from_outside'];
-		$institution_name = mysqli_real_escape_string($_POST['$institution_name']);
-		$transfer_from_within = (int)$_POST['transfer_from_within'];
-		$prev_major = mysqli_real_escape_string($_POST['$prev_major']);
-		$international_student = mysqli_real_escape_string($_POST['$international_student']);
-		$expec_graduation = mysqli_real_escape_string($_POST['$expec_graduation']);
-		$other_major =  mysqli_real_escape_string($_POST['$other_major']);
+		$depth_focus = mysql_real_escape_string($_POST['dfocus']);
+		echo "depth_focus: " . $depth_focus . "\n";
+		$depth_focus_other = mysql_real_escape_string($_POST['dfocusother']); //don't need escape string for pre-defined vals
+		echo "depth_focus_other: " . $depth_focus_other . "\n";
+		$first_gen_college_student = $_POST['first_gen_college_student'];
+		echo "first_gen: " . $first_gen_college_student . "\n";
+		$transfer_from_outside = $_POST['transfer_from_outside'];
+		echo "transfer outside: " . $transfer_from_outside . "\n";
+		$institution_name = mysql_real_escape_string($_POST['institution_name']);
+		echo "inst name: " . $institution_name . "\n";
+		$transfer_from_within = $_POST['transfer_from_within'];
+		$prev_major = mysql_real_escape_string($_POST['prev_major']);
+		echo "prev_major: " . $prev_major . "\n";
+		$international_student = $_POST['international_student'];
+		echo "international student :" . $international_student . "\n";
+		$expec_graduation = mysql_real_escape_string($_POST['expec_graduation']);
+		$other_major =  mysql_real_escape_string($_POST['other_major']);
 		$breadth_track = "Big json";//is a json, need desc. to go along with it $_POST['breadth_track']  json_decode($json)
-		$undergrad_research = (int)$_POST['undergrad_research'];
+		$undergrad_research = $_POST['undergrad_research'];
 		$bme_organization = "bme organizations"; //Json of all the organizations $_POST['bme_organization']
 		$tutor_teacher_program = "programs checkbox";//JSON from checkbox;
 		$bme_academ_exp = "json checkbox"; //json
@@ -103,14 +147,26 @@
 		$career_dev_program_desc = mysql_real_escape_string($_POST['career_dev_program_desc']);
 		$post_grad_plan = "json radio button";
 		$post_grad_plan_desc = mysql_real_escape_string($_POST['post_grad_plan_desc']);
+		$freshman = 1;
 		$personal_hobby = mysql_real_escape_string($_POST['personal_hobby']);
 
-		// $userQuery = sprintf("INSERT INTO User (username, last_name, first_name, phone_num, email, pref_communication)
-		// 			VALUES ('%s', '%s', '%s','%s','%s','%s')", $_USER['uid'], $lname, $fname,$phone,$email,$pref_comm);
-		// $uresult = getDBRegInserted($userQuery);
+		$userQuery = sprintf("INSERT INTO User (username, last_name, first_name, phone_num, email, pref_communication)
+					VALUES ('%s', '%s', '%s', '%s','%s','%s')", $user, $lname, $fname,$phone,$email,$pref_comm);
+		$uresult = getDBRegInserted($userQuery);
+
+		$menteeQuery = sprintf("INSERT INTO Mentee (username, depth_focus, depth_focus_other, post_grad_plan, post_grad_plan_desc, 
+			freshman, transfer_from_outside, institution_name,
+			transfer_from_within, prev_major, international_student, first_gen_college_student, expec_graduation, 
+			undergrad_research,  personal_hobby) 
+			VALUES ('%s', '%s', '%s', '%s', '%s', '%u', '%u', '%s', '%u', '%s', '%u', '%u', '%s', '%u', '%s')", 
+			$user, $depth_focus, $depth_focus_other, $post_grad_plan, $post_grad_plan_desc, 
+			$freshman, $transfer_from_outside, $institution_name,
+			$transfer_from_within, $prev_major, $international_student, $first_gen_college_student, $expec_graduation, 
+			$undergrad_research, $personal_hobby);
+		$mresult = getDBRegInserted($menteeQuery);
 
 
-		// $mentorQuery = sprintf("INSERT INTO Mentor (username, gender, opt_in, depth_focus, depth_focus_other,
+		// $menteeQuery = sprintf("INSERT INTO Mentee (username, gender, opt_in, depth_focus, depth_focus_other,
 		// 	live_before_tech, live_on_campus, first_gen_college_student, transfer_from_outside, institution_name,
 		// 	transfer_from_within, prev_major, international_student, home_country, expec_graduation, other_major, 
 		// 	undergrad_research, undergrad_research_desc, post_grad_plan, post_grad_plan_desc, personal_hobby) 
@@ -155,7 +211,10 @@
 		// 	'%s','%s','%s')", $user, $career_dev_program1, $career_dev_program2, $career_dev_program3,
 		// $career_dev_program_desc);
 		// $careerresults = getDBRegInserted($careerQuery);
-
+		header("Content-type: application/json");
+		// print_r($json);
+		echo json_encode($uresult);
+		echo json_encode($mresult);
 	}
 
 	function addMentor() {

@@ -1,8 +1,9 @@
 
-<section class="registration page">
+<section class="registration-splash page">
 	<div class="welcome header">
 		<img src="images/logo.png"></img>
    		<h3>A campus platform that connects students with mentors</h3>
+   		<br>
 	</div>
 
 	<div class="registration-message ui message">
@@ -10,12 +11,9 @@
 		</br>
 		
 		<div class="custom cols">
-			<div class="register col" id="left-col">
-				<a ng-click="go('/menteeReg')" class="ui animated button">
-		  		<div class="visible content">Mentee</div>
-		  		<div class="hidden content">
-			    	<i class="right arrow icon"></i>
-				</div>
+			<div class="registration-splash col" id="left-col">
+				<a ng-click="go('/menteeReg')" class="ui button">
+		  			Mentee
 				</a>	
 
 				<h4>Incoming freshman or transfer student</h4>
@@ -28,12 +26,9 @@
 
 			</div>
 
-			<div class="register col" id="right-col">
-				<a ng-click="go('/mentorReg')" class="ui animated button">
-		  		<div class="visible content">Mentor</div>
-		  		<div class="hidden content">
-		    		<i class="right arrow icon"></i>
-				</div>
+			<div class="registration-splash col" id="right-col">
+				<a ng-click="go('/mentorReg')" class="ui button">
+			  		Mentor
 				</a>
 
 				<h4>Upperclassman</h4>

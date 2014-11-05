@@ -16,7 +16,7 @@ $menuTextColor: #999999;
 
 $borderRadius: 0.325em;
 $borderRadBig: 5px;
-$topHeight: 100px;
+$topHeight: 50px;
 $footerHeight: 100px;
 
 //Search Mentors
@@ -174,6 +174,9 @@ nav {
 //   border-radius: 0px 0px 5px 5px; 
 //   /*background-color: #07b6ad;*/
 // }
+#nav-t{
+  margin-bottom: $topHeight;
+}
 
 .ui.menu .item{
   height: 2.6em;
@@ -214,8 +217,22 @@ nav {
   background-color: $fgColor2;
 }
 .logo.item img{
-   //width:50px;
    height: 100%;
+}
+
+.ui.menu .item{
+  color: #E6E6E6;
+}
+.ui.menu .active.item{
+  color: white;
+  background-color: rgba(0,0,0,0);
+    -webkit-box-shadow: 0em 0em 0em inset;
+}
+.ui.menu a.item:hover{
+  background-color: rgba(0,0,0,0);
+}
+.ui.menu .item:before{
+  background-image: none;
 }
 
 .main.logo{
@@ -249,7 +266,6 @@ nav {
 .page {
   height: 100%;
   width: 100%;
-  padding-top: $topHeight;
 }
 
 .header {
@@ -260,7 +276,6 @@ nav {
 .page>.ui.message  {
   margin: 0 auto;
   width: 60%;
-  top: 35px;
 }
 
 .welcome .welcome-message .button {
@@ -295,7 +310,6 @@ nav {
   margin-left: auto;
   margin-right: auto;
   text-align: center;
-  padding-top: 1em;
 
 }
 .welcome.header img{
@@ -310,21 +324,21 @@ nav {
 }
 
 /* REGISTER */
-.registration.page > .ui.message{
+.registration-splash.page > .ui.message{
   margin: 0px;
   background-color: #07b6ad;
   width: 100vw;
 
 }
-.registration.page > .welcome.header h3{
+.registration-splash.page > .welcome.header h3{
   text-shadow: 1px 1px white;
   color: black;
 }
-.registration.page > .ui.message h2{
+.registration-splash.page > .ui.message h2{
   text-align: center;
   color: white;
 }
-.registration.page > .ui.message h4{
+.registration-splash.page > .ui.message h4{
   text-align: center;
   color: white;
 }
@@ -341,18 +355,19 @@ nav {
   margin-right:25%;
   width: 22%;
 }
-.register.col h4{
+.registration-splash.col h4{
+  font-weight: 400;
   color: white;
 }
-.register.col h5{
+.registration-splash.col h5{
   color: white;
   font-style: normal;
 }
-.register.col > .button{
+.registration-splash > .button{
   margin-left: auto;
   margin-right: auto;
-
-  color: gray;
+  padding: 1.5em 3em 1.5em 3em;
+  color: black;
   background-color: #E6E6E6;
   border-radius: 0px;
 }

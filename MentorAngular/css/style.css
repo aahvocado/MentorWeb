@@ -91,6 +91,9 @@ nav {
   position: relative;
   z-index: 200; }
 
+#nav-t {
+  margin-bottom: 50px; }
+
 .ui.menu .item {
   height: 2.6em;
   /*padding: .8em .9em;*/ }
@@ -126,6 +129,20 @@ nav {
 .logo.item img {
   height: 100%; }
 
+.ui.menu .item {
+  color: #E6E6E6; }
+
+.ui.menu .active.item {
+  color: white;
+  background-color: transparent;
+  -webkit-box-shadow: 0em 0em 0em inset; }
+
+.ui.menu a.item:hover {
+  background-color: transparent; }
+
+.ui.menu .item:before {
+  background-image: none; }
+
 .main.logo {
   margin-left: auto;
   margin-right: auto; }
@@ -147,8 +164,7 @@ nav {
 
 .page {
   height: 100%;
-  width: 100%;
-  padding-top: 100px; }
+  width: 100%; }
 
 .header {
   color: #475b62;
@@ -156,8 +172,7 @@ nav {
 
 .page > .ui.message {
   margin: 0 auto;
-  width: 60%;
-  top: 35px; }
+  width: 60%; }
 
 .welcome .welcome-message .button {
   margin: 0 auto;
@@ -183,8 +198,7 @@ nav {
 .welcome.header {
   margin-left: auto;
   margin-right: auto;
-  text-align: center;
-  padding-top: 1em; }
+  text-align: center; }
 
 .welcome.header img {
   width: 180px;
@@ -196,20 +210,20 @@ nav {
   text-align: center; }
 
 /* REGISTER */
-.registration.page > .ui.message {
+.registration-splash.page > .ui.message {
   margin: 0px;
   background-color: #07b6ad;
   width: 100vw; }
 
-.registration.page > .welcome.header h3 {
+.registration-splash.page > .welcome.header h3 {
   text-shadow: 1px 1px white;
   color: black; }
 
-.registration.page > .ui.message h2 {
+.registration-splash.page > .ui.message h2 {
   text-align: center;
   color: white; }
 
-.registration.page > .ui.message h4 {
+.registration-splash.page > .ui.message h4 {
   text-align: center;
   color: white; }
 
@@ -226,17 +240,19 @@ nav {
   margin-right: 25%;
   width: 22%; }
 
-.register.col h4 {
+.registration-splash.col h4 {
+  font-weight: 400;
   color: white; }
 
-.register.col h5 {
+.registration-splash.col h5 {
   color: white;
   font-style: normal; }
 
-.register.col > .button {
+.registration-splash > .button {
   margin-left: auto;
   margin-right: auto;
-  color: gray;
+  padding: 1.5em 3em 1.5em 3em;
+  color: black;
   background-color: #E6E6E6;
   border-radius: 0px; }
 

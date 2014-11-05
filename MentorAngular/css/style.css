@@ -196,9 +196,9 @@ nav {
 
 /* REGISTER */
 .registration.page > .ui.message {
-  margin: 0px;
+  /*margin: 0px;
   background-color: #07b6ad;
-  width: 100vw; }
+  width: 100vw;*/ }
 
 .registration.page > .welcome.header h3 {
   text-shadow: 1px 1px white;

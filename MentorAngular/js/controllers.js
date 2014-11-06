@@ -1,4 +1,4 @@
-var appControllers = angular.module('appControllers', ['ngAnimate', 'ngResource', 'ngSanitize'])
+var appControllers = angular.module('appControllers', ['ngAnimate', 'ngResource'])
 .directive('ngEnter', function () {
     return function (scope, element, attrs) {
         element.bind("keydown keypress", function (event) {
@@ -112,7 +112,7 @@ appControllers.controller('WelcomeController', ['$scope', '$http', '$location', 
   // window.location.reload(true);
 
   $scope.go = function() {
-    window.location.replace("https://login.gatech.edu/cas/login?service=http%3A%2F%2Fdev.m.gatech.edu%2Fd%2Fmosborne8%2Fw%2FMentorAngular%2Fcontent%2F")
+    window.location.replace("https://login.gatech.edu/cas/login?service=http%3A%2F%2Fdev.m.gatech.edu%2Fd%2Faarrowood3%2Fw%2FMentorAngular%2Fcontent%2F")
   };
 }]);
 
@@ -147,7 +147,7 @@ appControllers.controller('HomeController', ['$scope', '$http', '$location', fun
     mentor: 0,
     admin: 0,
     id: ''};
-  var data;
+  var data = {};
   
   // $.get("api/user", function (data) {
   //       data = data;//$data = data;//$('#hello').tmpl(data).appendTo("#hello");
@@ -192,14 +192,8 @@ appControllers.controller('HomeController', ['$scope', '$http', '$location', fun
 }]);
 
 appControllers.controller('SearchController', ['$scope', '$http', function($scope, $http) {
-  $('.ui.checkbox')
-    .checkbox()
-  ;
-    $('.ui.accordion')
-    .accordion()
-  ;
-
-$('.ui.accordion').accordion();
+  $('.ui.checkbox').checkbox();
+  $('.ui.accordion').accordion();
 
   $http.get('json-gen/users.json').success(function(data) {
     $scope.userData = data;
@@ -219,23 +213,6 @@ $('.ui.accordion').accordion();
     $scope.renderButton($scope.miniProfileData.favorited);
   }
   $scope.addToWishlist = function() {
-    // $http.post('api/registerMentor',
-    // {
-    //     'fname': $scope.fname,
-    //     'lname': $scope.lname,
-    //     'phone': $scope.phone,
-    //     'email': $scope.email,
-    //     'pref_comm': $scope.pref_comm
-    //   }
-    //   )
-    // .success (function (data, status, headers, config) {
-    //   $scope.data = data;
-    //   console.log(data);
-    // })
-    // .error (function (data, status, headers, config) {
-    //   $scope.status = status;
-    // });
-
     $scope.miniProfileData.favorited = "favorited";
     $scope.renderButton($scope.miniProfileData.favorited);
   }
@@ -254,10 +231,6 @@ $('.ui.accordion').accordion();
       console.log("wishButton text: " + $scope.wishButton);
     }
   }
-
-  // $http.get('json-gen/users.json').success(function(data) {
-  //   $scope.userdata = data;
-  // });
   
 }]);
 
@@ -576,7 +549,7 @@ appControllers.controller('WishlistController', ['$scope', '$http', function($sc
     $scope.userData = data;
     $scope.miniProfileData = $scope.userData[0];
     $scope.wishButton = {};
-    $scope.renderButton($scope.miniProfileData.favorited);
+    //$scope.renderButton($scope.miniProfileData.favorited);
   }).
   error(function(data, status, headers, config) {
     // called asynchronously if an error occurs

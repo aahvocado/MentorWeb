@@ -108,6 +108,9 @@ angular.module("iso.controllers", ["iso.config", "iso.services"])
         });
       }
     };
+    $scope.refreshIsoCont = function() {
+      isotopeContainer.isotope();
+    }
     $scope.refreshIso = function() {
       if (postInitialized) {
               console.log("refreshEvent");
@@ -302,6 +305,7 @@ angular.module("iso.directives")
       restrict: "A",
       require: "^isotopeContainer",
       link: function(scope, element, attrs) {
+        //config.refreshDelay = 50;
 
         scope.setIsoElement(element);
         scope.$on('$destroy', function(message) {
@@ -310,7 +314,8 @@ angular.module("iso.directives")
         if (attrs.ngRepeat && true === scope.$last && "addItems" === scope.isoMode) {
           element.ready(function() {
             return $timeout((function() {
-              return scope.refreshIso();
+              //return scope.refreshIso();
+              return scope.refreshIsoCont();
             }), config.refreshDelay || 0);
           });
         }

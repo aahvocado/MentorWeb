@@ -44,20 +44,43 @@
 		</post>
 	</command>
 
+	<command id='user' security='protected'>
+		<description><![CDATA[This simple API welcomes users to the homepage]]></description>
+
+		<index>
+			<description><![CDATA[Return a list of users]]></description>
+
+			 <action file='db.php'><![CDATA[getUserType();]]></action>
+		</index>
+
+		<post>
+			<description><![CDATA[This is how new mentees submit the registration form to create a new profile]]></description>
+
+			<!-- <action file='db.php'><![CDATA[addUser();]]></action> -->
+		</post>
+
+		<get>
+			<description><![CDATA[Get the user information]]></description>
+			<action file='db.php'><![CDATA[getUserType($_REST['user']);]]></action>
+		</get>
+	</command>
+
 	<command id='gen_faux_users' security='protected'>
 		<post>
 			<action file='db.php'><![CDATA[genFauxUsers($_POST['userData']);]]></action>
 		</post>
 	</command>
 
-	<command id="wishlist" security='protected'>
-		<description><![CDATA[This command allows mentees to add/remove mentors from their wishlist]]></description>
+	<command id='get_mentor' security='protected'>
+		<index>
+			<action file='db.php'><![CDATA[getMentor();]]></action>
+		</index>
+		<get>
+			<action file='db.php'><![CDATA[getMentor();]]></action>
+		</get>
+	</command>
 
-		<post>
-			<action file='db.php'><![CDATA[addToWishlist($_POST);]]></action>
-		</post>
-
-	<command id='user' security='protected'>
+	<!-- <command id='user' security='protected'>
 		<description><![CDATA[This simple API lets you add and remove comments]]></description>
 		
 		<index>
@@ -74,13 +97,13 @@
 			</get>
 		</command>
 
-<!-- 		<command id='gen_faux_users' security='protected'>
+		<command id='gen_faux_users' security='protected'>
 			<post>
 				<action file='db.php'><![CDATA[genFauxUsers($_POST);]]></action>
 			</post>
-		</command> -->
+		</command>
 	</command>
-
+ -->
 	<command id='match' security='protected'>
 		<description><![CDATA[This simple API lets you add and remove comments]]></description>
 		

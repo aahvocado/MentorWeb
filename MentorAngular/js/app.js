@@ -42,10 +42,6 @@ myApp.config(['$routeProvider', function($routeProvider) {
     templateUrl: 'partials/list.html',
     controller: 'ListController'
   }).
-  when('/wishlist', {
-    templateUrl: 'partials/wishlist.html',
-    controller: 'WishlistController'
-  }).
   when('/details/:itemId', {
     templateUrl: 'partials/details.html',
     controller: 'DetailsController'

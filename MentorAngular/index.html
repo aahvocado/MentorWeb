@@ -22,27 +22,14 @@
   <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 
 </head>
-<body ng-app="myApp" >
+<body ng-app="myApp"><!-- style="height:1000px" -->
 
   <div class="background-holder">
     <div id="background"></div>
   </div>
 
-
-  <!-- <nav ng-controller="HeaderController">
+  <nav ng-controller="HeaderController">
     <div ng-include src="'partials/header.html'"></div>
-  </nav> -->
-
-  
-  <nav id="nav-t">
-    <div class="ui menu" id="nav-menu" > 
-      <a class="ui logo item" href="#/welcome"> <img src="images/logo-tiny.png"> </button>
-      <a class="item" href="#/register"> cProfile </button>
-      <a class="item" href="#/wishlist"> Wishlist </button>
-      <a class="item" href="#/searchmentors"> Search </button>
-      <a class="item" href="#/contact"> Contact </button>
-      <a class="right align item" href="#/logout"> Log Out </button></a>
-    </div>
   </nav>
   
   <!--[if lt IE 7]>
@@ -55,31 +42,6 @@
   <![endif]-->
 
   <!-- Other Scripts -->
-  <script>
-
-    var addToList = function(number) {
-      var s=angular.element('#isotopeContainer').scope();
-      s.count = s.count || 0;
-      var newItem={name:'add', number:number || s.count--, date: Date.now(), class:'purple'};
-      s.$apply(s.xList.push(newItem));
-    };
-    var addLastItem = function() {
-      s.lastNumber = s.lastNumber || [];
-      addToList(s.lastNumber.shift());
-    };
-    var removeItem = function(elem) {
-      if (!Array.prototype.filter) return;
-      var s=angular.element('#isotopeContainer').scope();
-      var number = $(elem).find(".number").attr("number");
-      var items = s.xList.filter(function( obj ) {
-        return +obj.number != +number;
-      });
-      s.lastNumber = s.lastNumber || [];
-      s.lastNumber.unshift(number);
-      s.$apply(s.xList = items);
-    };
-  </script>
-
   <script src="js/jquery-2.1.0.min.js"></script>
 
   <script src="lib/angular/angular.min.js"></script>
@@ -94,12 +56,19 @@
 <!--   // <script src="js/app-ang-iso.js"></script> -->
   <script src="js/app.js"></script>
   <script src="js/controllers.js"></script>
-  <!-- daniel's  stuff -->
-  <script src="js/jquery.address.js"></script>
+  <!-- daniel's test stuff -->
+  <script src="js/jquery.backstretch.min.js"></script>
+  <script>
+          // $.backstretch("media/pot-holder.jpg");
+  </script>
+  <script type="text/javascript">
+  //   $(function(){
+  //     $('body').children().wrapAll("<div class='wrapper'>");
+  //   });
   </script>
   
 <div class="main" ng-view></div>
-<!-- <div class="footer"></div> -->
+<div class="footer"></div>
 
 </body>
 </html>

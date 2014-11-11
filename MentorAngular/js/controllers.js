@@ -1,35 +1,4 @@
-var appControllers = angular.module('appControllers', ['ngAnimate', 'ngResource'])
-.directive('ngEnter', function () {
-    return function (scope, element, attrs) {
-        element.bind("keydown keypress", function (event) {
-            if(event.which === 13) {
-                scope.$apply(function (){
-                    scope.$eval(attrs.ngEnter);
-                });
- 
-                event.preventDefault();
-            }
-        });
-    };
-})
-.directive('ngClassAlt', function() {
-  return {
-    restrict: 'A',
-    scope: {
-      ngClassAlt: '=ngClassAlt'
-    },
-    link: function(scope, elm, attrs) {
-      scope.$watch('ngClassAlt', function (newVal) {
-        _.each(scope.ngClassAlt, function(val, key) {
-          if(val)
-            elm.addClass(key);
-          else
-            elm.removeClass(key);
-        });
-      }, true);
-    }
-  };
-});
+var appControllers = angular.module('appControllers', ['ngAnimate', 'ngResource']);
 
 appControllers.controller('HeaderController', ['$scope', '$http', '$location', function($scope, $http, $location) {
   $scope.go = function(path) {
@@ -43,12 +12,11 @@ appControllers.controller('HeaderController', ['$scope', '$http', '$location', f
     mentor: 0,
     admin: 0};
   
-  var data = {};
   // $.get("api/user", function (data) {
   //       data = data;//$data = data;//$('#hello').tmpl(data).appendTo("#hello");
   //       console.log("data: " , data);
   // });
-
+var data = {};
 if(window.location.href.indexOf("welcome") > -1 || window.location.href.indexOf("register") > -1){
   console.log("no get sent");
   $scope.user = {none: 1,
@@ -86,7 +54,7 @@ appControllers.controller('EditProfileController', ['$scope', '$http', '$locatio
     $location.path(path);
     $location.reload(true);
   };
-  var data;
+  var data = {};
   $.ajax({
     url: "api/user",
     dataType: "json",
@@ -122,7 +90,7 @@ appControllers.controller('ForkController', ['$scope', '$http', function($scope,
 
 appControllers.controller('UserController', ['$scope', '$http', function($scope, $http) {
   $.get('api/welcome').success(function(data) {
-    $scope.user = data['username'];
+    $scope.user = data;
     $scope.userType = data['userType'];
     console.log(data);
   });
@@ -163,6 +131,7 @@ appControllers.controller('HomeController', ['$scope', '$http', '$location', fun
       type: 'GET'
       // error: ajaxError
     }); 
+  console.log("hoescreen user:");
   console.log(data);
   $scope.user.name = data["Name"];
   $scope.user.id = data["Id"];
@@ -231,7 +200,6 @@ appControllers.controller('SearchController', ['$scope', '$http', function($scop
       console.log("wishButton text: " + $scope.wishButton);
     }
   }
-  
 }]);
 
 appControllers.controller('RegisterController', ['$scope', '$http', '$location', function($scope, $http, $location) {
@@ -244,7 +212,6 @@ appControllers.controller('RegisterController', ['$scope', '$http', '$location',
 appControllers.controller('RegisterMenteeController', ['$scope', '$http', '$filter', '$location', function($scope, $http, $filter, $location) {
   $('.ui.radio.checkbox').checkbox();
   $('.ui.checkbox').checkbox();
-
   $scope.form = { 
       dfocus: '', 
       breadth_track:[],
@@ -544,25 +511,6 @@ appControllers.controller('RegisterMenteeController', ['$scope', '$http', '$filt
 
 }]);
 
-appControllers.controller('WishlistController', ['$scope', '$http', function($scope, $http) {
-  $http.get('json-gen/users.json').success(function(data) {
-    $scope.userData = data;
-    $scope.miniProfileData = $scope.userData[0];
-    $scope.wishButton = {};
-    //$scope.renderButton($scope.miniProfileData.favorited);
-  }).
-  error(function(data, status, headers, config) {
-    // called asynchronously if an error occurs
-    // or server returns response with an error status.
-    console.log("Error getting userData");
-  });
-  $scope.miniProfileSet = function(user) {
-    //console.log("yo ");
-    //console.log(user);
-    $scope.miniProfileData = user;
-    $scope.renderButton($scope.miniProfileData.favorited);
-  }
-}]);
 
 appControllers.controller('RegisterMentorController', ['$scope', '$http', '$filter', '$location', 
   function($scope, $http, $filter, $location) {

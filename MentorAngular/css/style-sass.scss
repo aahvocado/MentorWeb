@@ -1,7 +1,24 @@
-$color-1: #C52A79;
-$color-2: #B189C3;
-$color-3: #B6E763;
-$color-4: #EBF233; //yellow
+// $color-1: #C52A79;
+// $color-2: #B189C3;
+// $color-3: #B6E763;
+// $color-4: #EBF233; //yellow
+
+$auburn: #ce6453;
+$aqua: #89c1df;
+$golden: #d3a02f;
+$rose: #e06e77;
+$purple: #9177ac;
+$emerald: #5db376;
+$orange: #e27c2c;
+$navy: #41589d;
+$teal: #39a898;
+$pink: #cf6f9b;
+$maroon: #a83863;
+$forest: #54794a;
+$salmon: #e49879;
+$magenta: #843286;
+$midnight: #34316c;
+$silver: #858789;
 
 $fgColor: #ebebeb;
 $fgColor2: #fefefe;
@@ -23,6 +40,7 @@ $footerHeight: 100px;
 
 //Search Mentors
 $menuSpacingRightMargin: 15px;
+$menuSpacingOuterMargin: 20px;
 $cardSize: 100px;
 $cardTextSize: 2.8em;
 $cardBorderRad: 0em;
@@ -30,6 +48,11 @@ $sideMenuMargin: 50px;
 $testTubeBorderRadius: 0.325em;
 $testTubeMinHeight: 400px;
 $stampSize: 110px;
+$textTitleMedium: 20px;
+$textTitleSmall: 16px;
+$textRegular: 14px;
+$textFilterTitleFontWeight: 500;
+$textFilterFontWeight: 600;
 
 
 @font-face {
@@ -252,6 +275,8 @@ nav {
 .page {
   height: 100%;
   width: 100%;
+  //overflow-x: hidden;
+  position: relative;
  // padding-top: $topHeight;
 }
 
@@ -424,11 +449,12 @@ nav {
 
 .searchmentors .view {
   position: relative;
-  width: 100%;
+  width: 100vw;
+  max-width: 100vw;
+  min-width: 1200px;
   height: 100%;
   display: block;
   margin: 0 auto;
-  padding: 0 20px;
   top: 35px;
 }
 
@@ -453,7 +479,6 @@ nav {
 .searchmentors .view > .ui.vertical.menu {
   margin: 0 $menuSpacingRightMargin 0 0;
 }
-
 .searchmentors #filter-menu {
   width: 20%;
   // height: 100%;
@@ -461,22 +486,48 @@ nav {
   background-color: $fgColor;
   border-radius: $borderRadius 0 0 $borderRadius;
   z-index: 100;
-  margin: 0 $menuSpacingRightMargin 0 0;
+  margin: 0 $menuSpacingRightMargin 0 $menuSpacingOuterMargin;
+  color: $menuTextColor;
 }
-
+.searchmentors #filter-menu .filter-label{
+  font-size: $textTitleMedium;
+  font-weight: $textFilterTitleFontWeight;
+  padding: 0 0 0 15px;
+}
+.searchmentors #filter-menu .title {
+  font-weight: $textFilterFontWeight;
+}
 .searchmentors #filter-menu .item {
   background-color: $fgColor;
   width: 100%;
 }
-
 .searchmentors #filter-menu .accordion {
   width: 600px;
 }
-
+.searchmentors #filter-menu .ui.menu .item {
+  padding: 0.6em 0.6em;
+}
+.searchmentors #filter-menu .grouped.inline.fields {
+  padding: 0.5em 0 0 0;
+  //border: 1px solid $bgColor;
+}
+.searchmentors #filter-menu label {
+  font-size: $textTitleSmall;
+  font-weight: $textFilterFontWeight;
+}
+.searchmentors #filter-menu .field {
+  margin: 0.25em 0;
+}
+.searchmentors #filter-menu .field label {
+  font-size: $textRegular;
+  font-weight: $textFilterFontWeight;
+}
 .searchmentors #filter-text-input {
   background-color: $fgColor2;
 }
-
+.searchmentors #filter-menu .field {
+  padding: 0 0 0 25px;
+}
 .searchmentors .isotope-container {
   width: 45%;
   min-height: $testTubeMinHeight;
@@ -524,16 +575,31 @@ nav {
   bottom: 0px !important;
   right: 0px !important;
 }
+.isotope-container .kindling .name {
+  font-size: $textTitleSmall;
+  color: #fff;
+  position: relative;
+  bottom: 0em;
+  margin: 0 0 -0.3em 0 ;
+}
 
-
+.p-pic .kindling .name {
+  font-size: $textTitleSmall;
+  color: #fff;
+  position: relative;
+  bottom: 0em;
+  margin: 0 0 -0.3em 0 ;
+  height: 20px;
+  z-index: 300;
+}
 
 .searchmentors .view .mentor-profile {
   min-width: 200px;
-  width: 28%;
+  width: 25%;
   background-color: #eee;
   border-radius: 0px $borderRadBig $borderRadBig 0px;
   z-index: 100;
-  margin-top: 0;
+  margin: 0 $menuSpacingOuterMargin 0 0;
 }
 
 .searchmentors .view .mentor-profile .content {
@@ -575,14 +641,26 @@ nav {
 }
 
 #isotopeContainer { //Angular ul ng-repeat
-  width: 600px;
+  min-width: 500px;
 }
 #container{border:1px solid #666;padding:5px;margin-bottom:20px}
 
-.kindling.color-1 {background-color: $color-1;}
-.kindling.color-2 {background-color: $color-2;}
-.kindling.color-3 {background-color: $color-3;}
-.kindling.color-4 {background-color: $color-4;}
+.kindling.auburn {background-color: $auburn;}
+.kindling.aqua {background-color: $aqua;}
+.kindling.golden {background-color: $golden;}
+.kindling.rose {background-color: $rose;}
+.kindling.purple {background-color: $purple;}
+.kindling.emerald {background-color: $emerald;}
+.kindling.orange {background-color: $orange;}
+.kindling.navy {background-color: $navy;}
+.kindling.teal {background-color: $teal;}
+.kindling.pink {background-color: $pink;}
+.kindling.maroon {background-color: $maroon;}
+.kindling.forest {background-color: $forest;}
+.kindling.salmon {background-color: $salmon;}
+.kindling.magenta {background-color: $magenta;}
+.kindling.midnight {background-color: $midnight;}
+.kindling.silver {background-color: $silver;}
 
 #isotopeContainer .kindling {
   text-decoration: none;

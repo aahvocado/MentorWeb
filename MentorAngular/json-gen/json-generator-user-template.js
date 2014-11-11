@@ -1,9 +1,12 @@
 [
-  '{{repeat(0, 30)}}',
+  '{{repeat(30, 30)}}',
   {
     index: '{{index()}}',
     firstName: '{{firstName()}}',
     lastName: '{{surname()}}',
+    color: '{{random("auburn", "aqua", "golden", "rose", "purple", "emerald", "orange", "navy", "teal", "pink", "maroon")}}',
+    adj: '{{random("brainy", "bright", "careful", "brave", "delightful", "calm", "jolly", "fantastic", "good", "graceful", "kind")}}',
+    animal: '{{random("deer", "eagle", "hawk", "bear", "kangaroo", "lemur", "raven", "lion", "owl", "panda", "robin")}}',
     uid: function (tags) {
       return (this.firstName.substring(0,1) + this.lastName);
     },
@@ -11,14 +14,12 @@
       // Email tag is deprecated, because now you can produce an email as simple as this:
       return (this.firstName.substring(0,1) + this.lastName + '@gatech.edu');
     },
-    breadtTrack: '{{random("Pre-Health", "Research", "Minor", "Certificate")}}',
-    depthFocus: '{{random("Neuroengineering", "Cardiovascular Systems", "Biomechanics",
-                          "Biomaterials", "Medical Imaging")}}',
-    gender: '{{random("Female", "Male")}}',
-    academicIntExp: '{{random("Studied Abroad", "Transfer from China", "Transfer from Germany")}}',
-    futurePlans: '{{random("Graduate Studies", "Industry")}}'
-    commMethod: '{{random("phone", "email")}}',
-    color: '{{random("color-1", "color-2", "color-3", "color-4")}}'
+    breadthTrack: '{{random("pre-health", "research", "minor", "certificate")}}',
+    depthFocus: '{{random("neuroengineering","cardiovascular-systems", "biomechanics", "biomaterials", "medical-imaging")}}',
+    gender: '{{random("female", "male")}}',
+    academicIntExp: '{{random("studied abroad", "transfer from china", "transfer from germany")}}',
+    futurePlans: '{{random("graduate studies", "industry")}}',
+    commMethod: '{{random("phone", "email")}}'
   }
 ]
 

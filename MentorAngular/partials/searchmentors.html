@@ -9,57 +9,163 @@
       <i class="search icon"></i>
     </div>
   </div>
-    <div  class="ui basic vertical accordion menu">
-
-    	<div class="ui item">
-			  <div class="title">
-			    <i class="dropdown icon"></i>
-			    Communication Method
-			  </div>
-			  <div ok-filter-group="comm-method" class="content">
-			    <div class="ui form">
-					  <div class="grouped inline fields">
-					    <div class="field">
-					      <div class="ui radio checkbox">
-					        <input type="radio" name="comm-methods" ></input>
-					        <label ok-sel=".phone">Phone</label>
-					      </div>
-					    </div>
-					    <div class="field">
-					      <div class="ui radio checkbox">
-					        <input type="radio" name="comm-methods" ></input>
-					        <label ok-sel=".email">Email</label>
-					      </div>
-					    </div>
-					  </div>
-					</div>
-			  </div>
-			</div>
-			<div class="ui item">
-			  <div class="title">
-			    <i class="dropdown icon"></i>
-			    Other Functions
-			  </div>
-			  <div ok-filter-group="num" class="content">
-          <div class="ui buttons">
-				    <button type='button' class='ui button' ok-sel="greaterThan50">> 20</button>
-            <button type='button' class='ui button' ok-sel="even">Even</button>
+  <label class="filter-label ui">Filter by:</label>
+  <div  class="ui basic vertical accordion menu">
+    
+    <div class="ui item">
+      <label class="title">
+        <i class="dropdown icon"></i>
+        Breadth track
+      </label>
+      <div ok-filter-group="breadth-track" ok-filter-type="multi" class="active content">
+        <div class="ui form">
+          <div class="grouped inline fields">
+            <div class="field">
+              <div class="ui checkbox checkbox">
+                <input type="checkbox" name="pre-health">
+                <label ok-sel=".pre-health">Pre-Health</label>
+              </div>
+            </div>
+            <div class="field">
+              <div class="ui checkbox checkbox">
+                <input type="checkbox" name="research">
+                <label ok-sel=".research">Research</label>
+              </div>
+            </div>
+            <div class="field">
+              <div class="ui checkbox checkbox">
+                <input type="checkbox" name="minor">
+                <label ok-sel=".minor">Minor</label>
+              </div>
+            </div>
+            <div class="field">
+              <div class="ui checkbox checkbox">
+                <input type="checkbox" name="certificate">
+                <label ok-sel=".certificate">Certificate</label>
+              </div>
+            </div>
           </div>
-			  </div>
-			</div>
-			<div class="ui item">
-				<div class="title">
-			    <i class="dropdown icon"></i>
-			    Colors
-			  </div>
-				<div ok-filter-group="color" class="content">
-			  	<div class="ui buttons">
-            <button type='button' class='ui button' ok-sel=".color-1">color 1</button>
-            <button type='button' class='ui button' ok-sel=".color-2">color 2</button>
-            <button type='button' class='ui button' ok-sel=".color-3">color 3</button>
-            <button type='button' class='ui button' ok-sel=".color-4">color 4</button>
-        	</div>
         </div>
+      </div>
+    </div>
+
+    <div class="ui item">
+      <label class="title">
+        <i class="dropdown icon"></i>
+        Depth Focus
+      </label>
+      <div ok-filter-group="depth-focus" ok-filter-type="multi" class="active content">
+        <div class="ui form">
+          <div class="grouped inline fields">
+            <div class="field">
+              <div class="ui checkbox checkbox">
+                <input type="checkbox" name="neuroengineering">
+                <label ok-sel=".neuroengineering">Neuroengineering</label>
+              </div>
+            </div>
+            <div class="field">
+              <div class="ui checkbox checkbox">
+                <input type="checkbox" name="cardiovascular-systems">
+                <label ok-sel=".cardiovascular-systems">Cardiovascular Systems</label>
+              </div>
+            </div>
+            <div class="field">
+              <div class="ui checkbox checkbox">
+                <input type="checkbox" name="biomechanics">
+                <label ok-sel=".biomechanics">Biomechanics</label>
+              </div>
+            </div>
+            <div class="field">
+              <div class="ui checkbox checkbox">
+                <input type="checkbox" name="biomaterials">
+                <label ok-sel=".biomaterials">Biomaterials</label>
+              </div>
+            </div>
+            <div class="field">
+              <div class="ui checkbox checkbox">
+                <input type="checkbox" name="medical-imaging">
+                <label ok-sel=".medical-imaging">Medical Imaging</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ui item">
+      <label class="title">
+        <i class="dropdown icon"></i>
+          Gender
+      </label>
+      <div ok-filter-group="comm-method" class="content active">
+        <div class="ui form">
+          <div class="grouped inline fields">
+            <div class="field">
+              <div class="ui radio checkbox">
+                <input type="radio" name="female" ></input>
+                <label ok-sel=".female">Female</label>
+              </div>
+            </div>
+            <div class="field">
+              <div class="ui radio checkbox">
+                <input type="radio" name="male" ></input>
+                <label ok-sel=".male">Male</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  	<div class="ui item">
+		  <div class="title">
+		    <i class="dropdown icon"></i>
+		    Communication Method
+		  </div>
+		  <div ok-filter-group="comm-method" class="content">
+		    <div class="ui form">
+				  <div class="grouped inline fields">
+				    <div class="field">
+				      <div class="ui radio checkbox">
+				        <input type="radio" name="comm-methods" ></input>
+				        <label ok-sel=".phone">Phone</label>
+				      </div>
+				    </div>
+				    <div class="field">
+				      <div class="ui radio checkbox">
+				        <input type="radio" name="comm-methods" ></input>
+				        <label ok-sel=".email">Email</label>
+				      </div>
+				    </div>
+				  </div>
+				</div>
+		  </div>
+		</div>
+		<div class="ui item">
+		  <div class="title">
+		    <i class="dropdown icon"></i>
+		    Other Functions
+		  </div>
+		  <div ok-filter-group="num" class="content">
+        <div class="ui buttons">
+			    <button type='button' class='ui button' ok-sel="greaterThan50">> 20</button>
+          <button type='button' class='ui button' ok-sel="even">Even</button>
+        </div>
+		  </div>
+		</div>
+		<div class="ui item">
+			<div class="title">
+		    <i class="dropdown icon"></i>
+		    Colors
+		  </div>
+			<div ok-filter-group="color" class="content">
+		  	<div class="ui buttons">
+          <button type='button' class='ui button' ok-sel=".color-1">color 1</button>
+          <button type='button' class='ui button' ok-sel=".color-2">color 2</button>
+          <button type='button' class='ui button' ok-sel=".color-3">color 3</button>
+          <button type='button' class='ui button' ok-sel=".color-4">color 4</button>
+      	</div>
+      </div>
 		</div>
 	</div>
 </div>
@@ -80,11 +186,13 @@
         <!-- track by user.index -->
         <!-- ISOTOPECONTAINER -->
         <ul id="isotopeContainer" isotope-container ng-cloak class="ng-cloak">
-          <li ng-repeat="user in userData" isotope-item class="kindling {{user.breadthTrack}} {{user.depthFocus}} {{user.gender}} {{user.academicIntExp}} {{user.futurePlans}} {{user.commMethod}} {{user.color}}" ng-click="miniProfileSet(user)">
+          <li ng-repeat="user in userData" isotope-item class="kindling {{user.color}} {{user.adj}} {{user.animal}} {{user.breadthTrack}} {{user.depthFocus}} {{user.gender}} {{user.academicIntExp}} {{user.futurePlans}} {{user.commMethod}} {{user.color}}" ng-click="miniProfileSet(user)">
             <a class="like ui corner label">
               <i class="star icon" ng-class="user.favorited"></i>
             </a>
-             <div class="symbol">{{user.firstName.substring(0,1) + user.lastName.substring(0,1).toLowerCase();}}</div>
+             <div class="name color">{{user.color}}</div>
+             <div class="name adj">{{user.adj}}</div>
+             <div class="name animal">{{user.animal}}</div>
              <!-- <div class="weight" date="{{x.date}}">{{x.date | date}}</div> -->
              <!-- <div class="number" user-id={{user.index}} number="{{user.index}}">{{user.index}}</div> -->
           </li>
@@ -102,12 +210,14 @@
           <p>Email: {{miniProfileData.email}}</p> -->
           <div class="p-pic">
             <div class="kindling" ng-class="miniProfileData.color">
-              <div class="symbol">{{miniProfileData.firstName.substring(0,1) + miniProfileData.lastName.substring(0,1).toLowerCase();}}</div>
+              <div class="name color">{{user.color}}</div>
+              <div class="name adj">{{user.adj}}</div>
+              <div class="name animal">{{user.animal}}</div>
             </div>
           </div>
 
           <div class="p-label">Breadth track</div>
-          <div class="breadth-track p-field"> {{miniProfileData.lastName}}</div>
+          <div class="breadth-track p-field"> {{miniProfileData.breadthTrack}}</div>
           <div class="p-label">Depth focus</div>
           <div class="depth-focus p-field"> {{miniProfileData.depthFocus}}</div>
           <div class="p-label">Gender</div>

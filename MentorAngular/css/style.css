@@ -147,7 +147,8 @@ nav {
 
 .page {
   height: 100%;
-  width: 100%; }
+  width: 100%;
+  position: relative; }
 
 .header {
   color: #475b62;
@@ -286,11 +287,12 @@ nav {
 
 .searchmentors .view {
   position: relative;
-  width: 100%;
+  width: 100vw;
+  max-width: 100vw;
+  min-width: 1200px;
   height: 100%;
   display: block;
   margin: 0 auto;
-  padding: 0 20px;
   top: 35px; }
 
 .searchmentors .view > div {
@@ -317,7 +319,16 @@ nav {
   background-color: #ebebeb;
   border-radius: 0.325em 0 0 0.325em;
   z-index: 100;
-  margin: 0 15px 0 0; }
+  margin: 0 15px 0 20px;
+  color: #666666; }
+
+.searchmentors #filter-menu .filter-label {
+  font-size: 20px;
+  font-weight: 500;
+  padding: 0 0 0 15px; }
+
+.searchmentors #filter-menu .title {
+  font-weight: 600; }
 
 .searchmentors #filter-menu .item {
   background-color: #ebebeb;
@@ -326,8 +337,28 @@ nav {
 .searchmentors #filter-menu .accordion {
   width: 600px; }
 
+.searchmentors #filter-menu .ui.menu .item {
+  padding: 0.6em 0.6em; }
+
+.searchmentors #filter-menu .grouped.inline.fields {
+  padding: 0.5em 0 0 0; }
+
+.searchmentors #filter-menu label {
+  font-size: 16px;
+  font-weight: 600; }
+
+.searchmentors #filter-menu .field {
+  margin: 0.25em 0; }
+
+.searchmentors #filter-menu .field label {
+  font-size: 14px;
+  font-weight: 600; }
+
 .searchmentors #filter-text-input {
   background-color: #fefefe; }
+
+.searchmentors #filter-menu .field {
+  padding: 0 0 0 25px; }
 
 .searchmentors .isotope-container {
   width: 45%;
@@ -370,13 +401,29 @@ nav {
   bottom: 0px !important;
   right: 0px !important; }
 
+.isotope-container .kindling .name {
+  font-size: 16px;
+  color: #fff;
+  position: relative;
+  bottom: 0em;
+  margin: 0 0 -0.3em 0; }
+
+.p-pic .kindling .name {
+  font-size: 16px;
+  color: #fff;
+  position: relative;
+  bottom: 0em;
+  margin: 0 0 -0.3em 0;
+  height: 20px;
+  z-index: 300; }
+
 .searchmentors .view .mentor-profile {
   min-width: 200px;
-  width: 28%;
+  width: 25%;
   background-color: #eee;
   border-radius: 0px 5px 5px 0px;
   z-index: 100;
-  margin-top: 0; }
+  margin: 0 20px 0 0; }
 
 .searchmentors .view .mentor-profile .content {
   padding: 15px;
@@ -411,24 +458,60 @@ nav {
   font-weight: normal; }
 
 #isotopeContainer {
-  width: 600px; }
+  min-width: 500px; }
 
 #container {
   border: 1px solid #666;
   padding: 5px;
   margin-bottom: 20px; }
 
-.kindling.color-1 {
-  background-color: #c52a79; }
+.kindling.auburn {
+  background-color: #ce6453; }
 
-.kindling.color-2 {
-  background-color: #b189c3; }
+.kindling.aqua {
+  background-color: #89c1df; }
 
-.kindling.color-3 {
-  background-color: #b6e763; }
+.kindling.golden {
+  background-color: #d3a02f; }
 
-.kindling.color-4 {
-  background-color: #ebf233; }
+.kindling.rose {
+  background-color: #e06e77; }
+
+.kindling.purple {
+  background-color: #9177ac; }
+
+.kindling.emerald {
+  background-color: #5db376; }
+
+.kindling.orange {
+  background-color: #e27c2c; }
+
+.kindling.navy {
+  background-color: #41589d; }
+
+.kindling.teal {
+  background-color: #39a898; }
+
+.kindling.pink {
+  background-color: #cf6f9b; }
+
+.kindling.maroon {
+  background-color: #a83863; }
+
+.kindling.forest {
+  background-color: #54794a; }
+
+.kindling.salmon {
+  background-color: #e49879; }
+
+.kindling.magenta {
+  background-color: #843286; }
+
+.kindling.midnight {
+  background-color: #34316c; }
+
+.kindling.silver {
+  background-color: #858789; }
 
 #isotopeContainer .kindling {
   text-decoration: none;

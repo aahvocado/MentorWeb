@@ -25,26 +25,16 @@ angular.module("iso.controllers", ["iso.config", "iso.services"])
 .controller("angularIsotopeController", [
   "iso.config", "iso.topics", "$scope", "$timeout", "optionsStore", function(config, topics, $scope, $timeout, optionsStore) {
     "use strict";
-    var buffer, initEventHandler, isoMode, isotopeContainer, methodHandler, onLayoutEvent, optionsHandler, postInitialized, scope, qsRegex;
+    var buffer, initEventHandler, isoMode, isotopeContainer, 
+    methodHandler, onLayoutEvent, optionsHandler, postInitialized, 
+    scope, filters;
+    filters = {};
     onLayoutEvent = "isotope.onLayout";
     postInitialized = false;
     isotopeContainer = null;
     buffer = [];
     scope = "";
     isoMode = "";
-    qsRegex = "";
-
-      var filterFns = {
-        greaterThan50: function() {
-          var number = $(this).find('.number').text();
-          return parseInt( number, 10 ) > 20;
-        },
-        even: function() {
-          var number = $(this).find('.number').text();
-          return parseInt( number, 10 ) % 2 === 0;
-        }
-      };
-
     $scope.$on(onLayoutEvent, function(event) {});
     $scope.layoutEventEmit = function($elems, instance) {
       return $timeout(function() {
@@ -75,8 +65,8 @@ angular.module("iso.controllers", ["iso.config", "iso.services"])
     $scope.init = function(isoInit) {
       optionsStore.storeInit(isoInit);
       isotopeContainer = isoInit.element;
-      //initEventHandler($scope.$on, isoInit.isoOptionsEvent || topics.MSG_OPTIONS, optionsHandler);
-      //initEventHandler($scope.$on, isoInit.isoMethodEvent || topics.MSG_METHOD, methodHandler);
+      initEventHandler($scope.$on, isoInit.isoOptionsEvent || topics.MSG_OPTIONS, optionsHandler);
+      initEventHandler($scope.$on, isoInit.isoMethodEvent || topics.MSG_METHOD, methodHandler);
       $scope.isoMode = isoInit.isoMode || "addItems";
       return $timeout(function() {
         var opts = optionsStore.retrieve();
@@ -93,7 +83,6 @@ angular.module("iso.controllers", ["iso.config", "iso.services"])
                 } else {
                     instance.option( options );
                     instance._init( callback );
-                    //instance.stamp($('#stamp'));
                 }
            }
         }
@@ -108,22 +97,15 @@ angular.module("iso.controllers", ["iso.config", "iso.services"])
         });
       }
     };
-    $scope.refreshIsoCont = function() {
-      isotopeContainer.isotope();
-    }
     $scope.refreshIso = function() {
       if (postInitialized) {
-              console.log("refreshEvent");
-          return isotopeContainer.isotope( 'reloadItems' );
-          console.log("refreshEventDone");
-        //return isotopeContainer.isotope();
+        return isotopeContainer.isotope();
       }
     };
     $scope.updateOptions = function(option) {
       if (isotopeContainer) {
-        console.log("yo");
         isotopeContainer.isotope(option);
-        console.log("stamped");
+        console.log("updated options");
       } else {
         optionsStore.store(option);
       }
@@ -305,7 +287,6 @@ angular.module("iso.directives")
       restrict: "A",
       require: "^isotopeContainer",
       link: function(scope, element, attrs) {
-        //config.refreshDelay = 50;
 
         scope.setIsoElement(element);
         scope.$on('$destroy', function(message) {
@@ -314,8 +295,7 @@ angular.module("iso.directives")
         if (attrs.ngRepeat && true === scope.$last && "addItems" === scope.isoMode) {
           element.ready(function() {
             return $timeout((function() {
-              //return scope.refreshIso();
-              return scope.refreshIsoCont();
+              return scope.refreshIso();
             }), config.refreshDelay || 0);
           });
         }
@@ -353,20 +333,20 @@ angular.module("iso.directives")
     };
   }
 )
-.directive("optFilterMenu", ['iso.config','optionsStore', 'iso.topics', function(config, optionsStore, topics) {
+.directive("optFilterMenu", ['optionsStore', 'iso.topics', function(optionsStore, topics) {
   return {
     restrict: "A",
     controller: "isoSortByDataController",
     link: function(scope, element, attrs) {
       var createSortByDataMethods, createOptions, doOption, emitOption, 
       optKey, optPublish, methPublish, optionSet, determineAciveClass, 
-      activeClass, activeSelector, active, filters, qsRegex;
-
-      filters = {};
+      activeClass, activeSelector, active, qsRegex, filters;
+      
       optionSet = $(element);
       optPublish = attrs.okPublish || attrs.okOptionsPublish || topics.MSG_OPTIONS;
       methPublish = attrs.okMethodPublish || topics.MSG_METHOD;
       optKey = optionSet.attr("ok-key");
+      filters = {};
 
       determineActiveClass = function() {
         activeClass = attrs.okActiveClass;
@@ -398,31 +378,20 @@ angular.module("iso.directives")
         var ascAttr, key, option, virtualSortByKey;
         if (item) {
           option = {};
-          key = virtualSortByKey || item.attr("ok-sel");
           virtualSortByKey = item.attr("ok-sortby-key");
           ascAttr = item.attr("opt-ascending");
+          key = virtualSortByKey || item.attr("ok-sel");
           if (virtualSortByKey) {
             option.sortAscending = (ascAttr ? ascAttr === "true" : true);
           }
-          //create filter string
-          var filterFields = optionSet.find(activeSelector);
-
-          // option["stamp"] = "#stamp";
-          // option["itemSelector"] = ".isotope-item";
-          // option["masonry"] = { "columnWidth": 120,
-          //                       "cornerStampSelector": '.corner-stamp' };
-          option[optKey] = filterFunction;
+          //option[optKey] = key;
+          console.log("filter key: " + key);
+          //filters = key;
+          option[optKey] = filterFunction2;
           console.log("options: " + option);
-          //var output = '';
-          // for (var property in option) {
-          //   output += property + ': ' + option[property]+'; ';
-          // }
-          //console.log(output);
           return option;
         }
       };
-
-
 
       emitOption = function(option) {
         optionsStore.store(option);
@@ -430,26 +399,51 @@ angular.module("iso.directives")
       };
 
       doOption = function(event) {
-        console.log("button click");
         var selItem;
         event.preventDefault();
         selItem = angular.element(event.target);
-        //optionSet.find(activeSelector).removeClass(activeClass);
-        //evaluate each field separately
-        //var filterFields = optionSet.find("[ok-filter-field]");
+        // if (selItem.hasClass(activeClass)) {
+        //   return false;
+        // }
 
         var filterGroupElem = selItem.closest("[ok-filter-group]");
         var filterGroup = filterGroupElem.attr('ok-filter-group');
+        var filterType = filterGroupElem.attr('ok-filter-type');
         // set filter for group
-        if (selItem.hasClass(activeClass)) {
-          selItem.removeClass(activeClass);
-          filters[ filterGroup ] = "";
+        if (filterType === "multi") {
+          if (selItem.hasClass(activeClass)) {
+            selItem.removeClass(activeClass);
+          } else {
+            selItem.addClass(activeClass);
+          }
+            var filterGroupInputs = filterGroupElem.find(activeSelector);
+            var filterGroupFilter = "";
+            filterGroupInputs.each(function(index) {
+              if (index > 0)
+                filterGroupFilter += ", ";
+              filterGroupFilter += $(this).attr('ok-sel');
+            });
+            // console.log("groupFilter: " + filterGroupFilter);
+            filters[ filterGroup ] = filterGroupFilter;
         } else {
-          filters[ filterGroup ] = selItem.attr('ok-sel');
-          filterGroupElem.find(activeSelector).removeClass(activeClass);
-          selItem.addClass(activeClass);
+          if (selItem.hasClass(activeClass)) {
+            selItem.removeClass(activeClass);
+            filters[ filterGroup ] = "";
+          } else {
+            filters[ filterGroup ] = selItem.attr('ok-sel');
+            filterGroupElem.find(activeSelector).removeClass(activeClass);
+            selItem.addClass(activeClass);
+          }
         }
-        console.log("filter field:" + filterGroup);
+
+        console.log("filters");
+        console.log(JSON.stringify(filters, null, 4));
+
+        //filters = key;
+
+        //optionSet.find(activeSelector).removeClass(activeClass);
+        //selItem.addClass(activeClass);
+        console.log("createOptions emit");
         emitOption(createOptions(selItem));
         return false;
       };
@@ -465,6 +459,50 @@ angular.module("iso.directives")
         }
       };
 
+      var filterFunction2 = function() {
+        var isMatched = true;
+        var $this = $(this);
+        //var $this = angular.element(this);
+        var filter = filters;
+
+        for ( var prop in filters ) {
+          var filter = filters[ prop ];
+          // use function if it matches.
+          filter = filterFns[ filter ] || filter;
+          // test each filter
+           //console.log(qsRegex);
+
+
+          // console.log("regexCheck: " + regexCheck);
+          // console.log(JSON.stringify(filter, null, 4));
+          if ( filter ) {
+            isMatched = isMatched && $(this).is( filter );
+          }
+          // break if not matched
+          if ( !isMatched ) {
+            break;
+          }
+        }
+
+        var regexCheck = false;
+        //console.log(qsRegex);
+        var regReturn = (qsRegex ? ($(this).attr("class").match( qsRegex )) : true);
+        //console.log(regReturn);
+        if (regReturn !== null) {
+          if (regReturn.length !== 0) {
+            regexCheck = true;
+          } else {
+            regexCheck = false;
+          }
+        }
+        isMatched = isMatched && regexCheck;
+        // if ( filter ) {
+        //     isMatched = isMatched && $(this).is( filter );
+        // }
+        //console.log("ff2: " + isMatched);
+        return isMatched;
+      }
+
       var filterFunction = function() {
         var isMatched = true;
         var $this = $(this);
@@ -476,15 +514,7 @@ angular.module("iso.directives")
           filter = filterFns[ filter ] || filter;
           // test each filter
            //console.log(qsRegex);
-          var regexCheck = false;
-          var regReturn = (qsRegex ? ($(this).text().match( qsRegex )) : true);
-          if (regReturn !== null) {
-            if (regReturn.length !== 0) {
-              regexCheck = true;
-            } else {
-              regexCheck = false;
-            }
-          }
+
 
           console.log("regexCheck: " + regexCheck);
           console.log(JSON.stringify(filter, null, 4));
@@ -496,45 +526,34 @@ angular.module("iso.directives")
             break;
           }
         }
+        var regexCheck = false;
+        //console.log(qsRegex);
+        var regReturn = (qsRegex ? ($(this).attr("class").match( qsRegex )) : true);
+        console.log(regReturn);
+        if (regReturn !== null) {
+          if (regReturn.length !== 0) {
+            regexCheck = true;
+          } else {
+            regexCheck = false;
+          }
+        }
+
         isMatched = isMatched && regexCheck;
         return isMatched;
       };
 
-      function debounce(fn, threshold ) {
-        var timeout;
-        return function debounced() {
-          if ( timeout ) {
-            clearTimeout( timeout );
-          }
-          function delayed() {
-            fn();
-            timeout = null;
-          }
-          timeout = setTimeout( delayed, threshold || 100 );
-        }
-      }
-
-      determineActiveClass();
-      
-      createSortByDataMethods(optionSet);
-
-      if (active.length) {
-        var opts = createOptions(active);
-        optionsStore.store(opts);
-      }
-
       $.fn.pressEnter = function(fn) {  
 
-    return this.each(function() {  
-        $(this).bind('enterPress', fn);
-        $(this).keyup(function(e){
+        return this.each(function() {  
+          $(this).bind('enterPress', fn);
+          $(this).keyup(function(e){
             if(e.keyCode == 13)
             {
               $(this).trigger("enterPress");
             }
-        })
-    });  
- }; 
+          })
+        });  
+      }; 
 
       // Text Input
       var filterTextInput = $("[ok-text-input]");
@@ -544,107 +563,24 @@ angular.module("iso.directives")
             filterTextInput.pressEnter(function(event) {
             var evt = event;
              //debounce(function() {
-              console.log("yo");
+              //console.log("yo");
+              console.log(filterTextInput.val());
               qsRegex = new RegExp( filterTextInput.val(), 'gi' );
+              console.log(qsRegex);
               //scope.$emit(config.refreshEvent);
               doOption(evt);
-              console.log("keypress");
+              //console.log("keypress");
              //}, 200 );
           });
       }
-        //filterTextInput.keyup( debounce(function() {
-          // console.log("filterTextInput: " + filterTextInput.val());
-      //     qsRegex = new RegExp( filterTextInput.val(), 'gi' );
-      //     //scope.$emit(config.refreshEvent);
-      //     //scope.$emit("isotope.onLayout");
-      //     doOption(event);
-      //     console.log("keypress");
-      //   }, 200 ) );
-      // }
-
-      return optionSet.on("click", "[ok-sel]", function(event) {
-        return doOption(event);
-      });
-    }
-  };
-}])
-.directive("optKind", ['optionsStore', 'iso.topics', function(optionsStore, topics) {
-  return {
-    restrict: "A",
-    controller: "isoSortByDataController",
-    link: function(scope, element, attrs) {
-      var createSortByDataMethods, createOptions, doOption, emitOption, optKey, optPublish, methPublish, optionSet, determineAciveClass, activeClass, activeSelector, active;
-      optionSet = $(element);
-      optPublish = attrs.okPublish || attrs.okOptionsPublish || topics.MSG_OPTIONS;
-      methPublish = attrs.okMethodPublish || topics.MSG_METHOD;
-      optKey = optionSet.attr("ok-key");
-
-      determineActiveClass = function() {
-        activeClass = attrs.okActiveClass;
-        if (!activeClass) {
-          activeClass = optionSet.find(".selected").length ? "selected" : "active";
-        }
-        activeSelector = "." + activeClass;
-        active = optionSet.find(activeSelector);
-      };
-
-      createSortByDataMethods = function(optionSet) {
-        var methSet, methods, optKey, options;
-        optKey = optionSet.attr("ok-key");
-        if (optKey !== "sortBy") {
-          return;
-        }
-        options = {};
-        methSet = optionSet.find("[ok-sel]");
-        methSet.each(function(index) {
-          var $this;
-          $this = angular.element(this);
-          return $this.attr("ok-sortby-key", scope.getHash($this.attr("ok-sel")));
-        });
-        methods = scope.createSortByDataMethods(methSet);
-        return scope.storeMethods(methods);
-      };
-
-      createOptions = function(item) {
-        var ascAttr, key, option, virtualSortByKey;
-        if (item) {
-          option = {};
-          virtualSortByKey = item.attr("ok-sortby-key");
-          ascAttr = item.attr("opt-ascending");
-          key = virtualSortByKey || item.attr("ok-sel");
-          if (virtualSortByKey) {
-            option.sortAscending = (ascAttr ? ascAttr === "true" : true);
-          }
-          option[optKey] = key;
-          return option;
-        }
-      };
-
-      emitOption = function(option) {
-        optionsStore.store(option);
-        return scope.$emit(optPublish, option);
-      };
-
-      doOption = function(event) {
-        var selItem;
-        event.preventDefault();
-        selItem = angular.element(event.target);
-        if (selItem.hasClass(activeClass)) {
-          return false;
-        }
-        optionSet.find(activeSelector).removeClass(activeClass);
-        selItem.addClass(activeClass);
-        emitOption(createOptions(selItem));
-        return false;
-      };
 
       determineActiveClass();
       
       createSortByDataMethods(optionSet);
 
       if (active.length) {
-        var opts = createOptions(active);
-        optionsStore.store(opts);
+        //var opts = createOptions(active);
+        //optionsStore.store(opts);
       }
 
       return optionSet.on("click", function(event) {
@@ -653,7 +589,6 @@ angular.module("iso.directives")
     }
   };
 }]);
-
 angular.module("iso.services", ["iso.config"], [
   '$provide', function($provide) {
     return $provide.factory("optionsStore", [

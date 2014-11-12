@@ -38,6 +38,10 @@ myApp.config(['$routeProvider', function($routeProvider) {
     templateUrl: 'partials/searchmentors.html',
     controller: 'SearchController'
   }).
+  when('/wishlist', {
+    templateUrl: 'partials/wishlist.html',
+    controller: 'WishListController'
+  }).
   when('/list', {
     templateUrl: 'partials/list.html',
     controller: 'ListController'

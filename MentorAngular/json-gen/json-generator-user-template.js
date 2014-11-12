@@ -4,16 +4,17 @@
     index: '{{index()}}',
     firstName: '{{firstName()}}',
     lastName: '{{surname()}}',
-    color: '{{random("auburn", "aqua", "golden", "rose", "purple", "emerald", "orange", "navy", "teal", "pink", "maroon")}}',
+    color: '{{random("auburn", "aqua", "golden", "rose", "purple", "emerald", "orange", "navy", "teal", "pink", "maroon", "forest", "salmon", "magenta", "midnight", "silver")}}',
     adj: '{{random("brainy", "bright", "careful", "brave", "delightful", "calm", "jolly", "fantastic", "good", "graceful", "kind")}}',
     animal: '{{random("deer", "eagle", "hawk", "bear", "kangaroo", "lemur", "raven", "lion", "owl", "panda", "robin")}}',
     uid: function (tags) {
-      return (this.firstName.substring(0,1) + this.lastName);
+      return (this.firstName.substring(0,1).toLowerCase(); + this.lastName.toLowerCase(););
     },
     email: function (tags) {
       // Email tag is deprecated, because now you can produce an email as simple as this:
-      return (this.firstName.substring(0,1) + this.lastName + '@gatech.edu');
+      return (this.firstName.substring(0,1).toLowerCase(); + this.lastName.toLowerCase(); + '@gatech.edu');
     },
+    phone: '{{phone()}}',
     breadthTrack: '{{random("pre-health", "research", "minor", "certificate")}}',
     depthFocus: '{{random("neuroengineering","cardiovascular-systems", "biomechanics", "biomaterials", "medical-imaging")}}',
     gender: '{{random("female", "male")}}',

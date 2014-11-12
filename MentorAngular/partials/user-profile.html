@@ -1,95 +1,105 @@
 <section class="user-profile page">
-	<div class="user-profile header">
-   		<h1>Your Mentor</h1>
-	</div>
 
-	<div class="user-profile message ui">
-		<!-- upper profile stuff -->
-		<div class="user-profile personal ui three column page grid">
-			<div class="column" id="box">
-				<div class="id-box" style="background-color:pink">
-					<h2>{{scope.unique-name}}</h2>
-				</div>
-			</div>
-
-			<div class="column" id="name">
-				<div class="item">
-					<h5>Full Name<h5>
-					<h6>{{scope.firstname}} {{scope.lastname}}</h6>
-				</div>
-			</div>
-
-			<div class="column">
-				<div class="item">
-					<h5>Phone</h5>
-					<h6>{{scope.phone}}</h6>
-
-					<h5>Email</h5>
-					<h6>{{scope.email}}</h6>
-				</div>
-			</div>
+	<div class="user-profile message-wrapper">
+		<div class="user-profile header">
+	   		<h1>Your Mentor</h1>
 		</div>
 
-		<div class="ui divider"></div>
+		<div class="view">
+			<div class="user-profile message ui">
+				<!-- upper profile stuff -->
+				<div class="user-profile personal ui grid">
+					<div class="four wide column">
+						<div class="kindling" ng-class="myMentor.color">
+			        <a class="like ui corner label">
+			          <i class="star icon" ng-class="myMentor.favorited"></i>
+			        </a>
+			        <div class="name color">{{myMentor.color}}</div>
+			        <div class="name adj">{{myMentor.adj}}</div>
+			        <div class="name animal">{{myMentor.animal}}</div>
+			      </div>
+			    </div>
 
-		<!-- track, focus, etc stuff -->
-		<div class="user-profile ui two column page grid">
-			<div class="column">
-			    <div class="user-profile ui vertical fluid">
-					<div class="item">
-						<h5>Breadth Track<h5>
-						<h6>{{scope.breadth-track}}</h6>
+					<div class="six wide column" id="name">
+						<div class="item">
+							<div class="menu-text2">Full Name</div>
+							<div class="menu-text">{{myMentor.firstName}} {{myMentor.lastName}}</div>
+						</div>
 					</div>
 
-					<div class="item">
-						<h5>Depth Focus<h5>
-						<h6>{{scope.depth-focus}}</h6>
+					<div class="six wide column">
+						<div class="item">
+							<div class="menu-text2">Phone</div>
+							<div class="menu-text">{{myMentor.phone}}</div>
+						</div>
+						<div class="item">
+							<div class="menu-text2">Email</div>
+							<div class="menu-text">{{myMentor.email}}</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="ui divider"></div>
+
+				<!-- track, focus, etc stuff -->
+				<div class="user-profile ui grid">
+					<div class="seven wide column">
+				    <div class="user-profile ui vertical fluid">
+							<div class="item">
+								<div class="menu-text2">Breadth Track</div>
+								<div class="menu-text">{{myMentor.breadthTrack}}</div>
+							</div>
+
+							<div class="item">
+								<div class="menu-text2">Depth Focus</div>
+								<div class="menu-text">{{myMentor.depthFocus}}</div>
+							</div>
+
+							<div class="item">
+								<div class="menu-text2">Gender</div>
+								<div class="menu-text">{{myMentor.gender}}</div>
+							</div>
+
+							<div class="item">
+								<div class="menu-text2">Student Year</div>
+								<div class="menu-text">{{myMentor.studentYear}}</div>
+							</div>
+						</div>
 					</div>
 
-					<div class="item">
-						<h5>Gender<h5>
-						<h6>{{scope.gender}}</h6>
-					</div>
+					<div class="eight wide column">
+						<div class="user-profile ui vertical fluid">
+							<div class="item">
+								<div class="menu-text2">Career Development</div>
+								<div class="menu-text">{{myMentor.careerDevelopment}}</div>
+							</div>
 
-					<div class="item">
-						<h5>Student Year<h5>
-						<h6>{{scope.student-year}}</h6>
+							<div class="item">
+								<div class="menu-text2">Future Plans</div>
+								<div class="menu-text">{{myMentor.futurePlans}}</div>
+							</div>
+
+							<div class="item">
+								<div class="menu-text2">Academic International Experience</div>
+								<div class="menu-text">{{myMentor.academicIntExp}}</div>
+							</div>
+
+							<div class="item">
+								<div class="menu-text2">Expected Graduation</div>
+								<div class="menu-text">{{myMentor.expectedGraduation}}</div>
+							</div>
+						</div>
 					</div>
 				</div>
 
-			</div>
+				<div class="ui divider"></div>
 
-			<div class="column">
-				<div class="user-profile ui vertical fluid">
-					<div class="item">
-						<h5>Career Development<h5>
-						<h6>{{scope.career-development}}</h6>
-					</div>
-
-					<div class="item">
-						<h5>Future Plans<h5>
-						<h6>{{scope.future-plans}}</h6>
-					</div>
-
-					<div class="item">
-						<h5>Academic International Experience<h5>
-						<h6>{{scope.academic-experience}}</h6>
-					</div>
-
-					<div class="item">
-						<h5>Expected Graduation<h5>
-						<h6>{{scope.expected-graduation}}</h6>
-					</div>
+				<!-- extra bits of information stuff -->
+				<div class="user-info extra ">
+					<div class="menu-text2">Organizations, Extracurricular Activities, Interests, Skills, etc</div>
+					<div class="menu-text">{{myMentor.extraInfo}}</div>
 				</div>
 			</div>
-		</div>
-
-		<div class="ui divider"></div>
-
-		<!-- extra bits of information stuff -->
-		<div class="user-info extra ">
-			<h5>Organizations, Extracurricular Activities, Interests, Skills, etc</h5>
-			<h6>{{scope.extra-info}}</h6>
 		</div>
 	</div>
 </section>

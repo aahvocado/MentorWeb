@@ -210,9 +210,12 @@
           <p>Email: {{miniProfileData.email}}</p> -->
           <div class="p-pic">
             <div class="kindling" ng-class="miniProfileData.color">
-              <div class="name color">{{user.color}}</div>
-              <div class="name adj">{{user.adj}}</div>
-              <div class="name animal">{{user.animal}}</div>
+              <a class="like ui corner label">
+                <i class="star icon" ng-class="miniProfileData.favorited"></i>
+              </a>
+              <div class="name color">{{miniProfileData.color}}</div>
+              <div class="name adj">{{miniProfileData.adj}}</div>
+              <div class="name animal">{{miniProfileData.animal}}</div>
             </div>
           </div>
 

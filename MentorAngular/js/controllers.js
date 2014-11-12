@@ -1,5 +1,12 @@
 var appControllers = angular.module('appControllers', ['ngAnimate', 'ngResource']);
 
+appControllers.controller('mainController', ['$scope', '$http', '$location', function($scope, $http, $location) {
+  $scope.go = function(path) {
+    $location.path(path);
+    $location.reload(true);
+  };
+}]);
+
 appControllers.controller('HeaderController', ['$scope', '$http', '$location', function($scope, $http, $location) {
   $scope.go = function(path) {
     $location.path(path);
@@ -164,17 +171,21 @@ appControllers.controller('SearchController', ['$scope', '$http', function($scop
   $('.ui.checkbox').checkbox();
   $('.ui.accordion').accordion();
 
-  $http.get('json-gen/users.json').success(function(data) {
-    $scope.userData = data;
+  $scope.$parent.wishList = ($scope.$parent.wishList || []);
+
+  $http.get('json-gen/users120.json').success(function(data) {
+    //$scope.userData = data;
     $scope.miniProfileData = $scope.userData[0];
     $scope.wishButton = {};
     $scope.renderButton($scope.miniProfileData.favorited);
+    $scope.refreshUI();
   }).
   error(function(data, status, headers, config) {
     // called asynchronously if an error occurs
     // or server returns response with an error status.
     console.log("Error getting userData");
   });
+
   $scope.miniProfileSet = function(user) {
     //console.log("yo ");
     //console.log(user);
@@ -184,12 +195,23 @@ appControllers.controller('SearchController', ['$scope', '$http', function($scop
   $scope.addToWishlist = function() {
     $scope.miniProfileData.favorited = "favorited";
     $scope.renderButton($scope.miniProfileData.favorited);
+    $scope.$parent.wishList.push($scope.miniProfileData);
   }
   $scope.removeFromWishlist = function() {
     $scope.miniProfileData.favorited = "";
     $scope.renderButton($scope.miniProfileData.favorited);
+    $scope.$parent.wishList.splice($.inArray($scope.miniProfileData, $scope.$parent.wishList), 1 );
   }
-
+  $scope.refreshUI = function() {
+    $scope.userData.forEach(function(element) {
+      var user = element;
+      $scope.$parent.wishList.forEach(function(element) {
+        if (user.uid === element.uid) { //JSON.stringify(user) === JSON.stringify(element)
+          user.favorited = "favorited";
+        }
+      });
+    });
+  }
   $scope.renderButton = function(favorited) {
     if (favorited == "favorited") {
       $scope.wishButton.contentText = "Remove from Wishlist";
@@ -200,6 +222,59 @@ appControllers.controller('SearchController', ['$scope', '$http', function($scop
       console.log("wishButton text: " + $scope.wishButton);
     }
   }
+}]);
+
+appControllers.controller('WishListController', ['$scope', '$http', function($scope, $http) {
+  $scope.userData = $scope.$parent.wishList;
+  if ($scope.userData) {
+    $scope.miniProfileData = $scope.userData[0];
+  }
+  console.log('yo');
+  $scope.miniProfileSet = function(user) {
+    $scope.miniProfileData = user;
+  }
+  $scope.notification = function() {
+    $('#mentor-note').dimmer('toggle');
+  }
+  $scope.removeFromWishlist = function() {
+    $scope.miniProfileData.favorited = "";
+    //$scope.userData.splice($.inArray($scope.miniProfileData, $scope.userData), 1 );
+    $.each($scope.userData, function(i){
+      if($scope.userData[i].uid === $scope.miniProfileData.uid) {
+        console.log("splice");
+        console.log($scope.userData[i].uid);
+        console.log($scope.miniProfileData.uid);
+        $scope.userData.splice(i,1);
+        return false;
+      }
+    });
+    $scope.$parent.wishList = $scope.userData;
+
+    //$scope.$parent.wishList.splice($.inArray($scope.miniProfileData, $scope.$parent.wishList), 1 );
+  }
+  $scope.chooseMentor = function() {
+    $scope.$parent.myMentor = $scope.miniProfileData;
+    $scope.myMentor = $scope.$parent.myMentor;
+    console.log("chooseMentor");
+    $scope.go('/user-profile');
+  }
+  $scope.refreshUI = function() {
+    $scope.userData.forEach(function(element) {
+      var user = element;
+      $scope.$parent.wishList.forEach(function(element) {
+        if (user.uid === element.uid) { //JSON.stringify(user) === JSON.stringify(element)
+          user.favorited = "favorited";
+        }
+      });
+    });
+  }
+  if ($scope.userData) {
+    //$scope.refreshUI();
+  }
+}]);
+
+appControllers.controller('UserProfileController', ['$scope', '$http', '$location', function($scope, $http, $location) {
+  $scope.myMentor = $scope.$parent.myMentor;
 }]);
 
 appControllers.controller('RegisterController', ['$scope', '$http', '$location', function($scope, $http, $location) {

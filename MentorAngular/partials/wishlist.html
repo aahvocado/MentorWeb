@@ -17,11 +17,13 @@
         <!-- track by user.index -->
         <!-- ISOTOPECONTAINER -->
         <ul id="isotopeContainer" isotope-container ng-cloak class="ng-cloak">
-          <li ng-repeat="user in userData" isotope-item class="kindling {{user.breadthTrack}} {{user.depthFocus}} {{user.gender}} {{user.academicIntExp}} {{user.futurePlans}} {{user.commMethod}} {{user.color}}" ng-click="miniProfileSet(user)">
+          <li ng-repeat="user in userData" isotope-item class="kindling {{user.color}} {{user.adj}} {{user.animal}} {{user.breadthTrack}} {{user.depthFocus}} {{user.gender}} {{user.academicIntExp}} {{user.futurePlans}} {{user.commMethod}} {{user.color}}" ng-click="miniProfileSet(user)">
             <a class="like ui corner label">
               <i class="star icon" ng-class="user.favorited"></i>
             </a>
-             <div class="symbol">{{user.firstName.substring(0,1) + user.lastName.substring(0,1).toLowerCase();}}</div>
+             <div class="name color">{{user.color}}</div>
+             <div class="name adj">{{user.adj}}</div>
+             <div class="name animal">{{user.animal}}</div>
              <!-- <div class="weight" date="{{x.date}}">{{x.date | date}}</div> -->
              <!-- <div class="number" user-id={{user.index}} number="{{user.index}}">{{user.index}}</div> -->
           </li>
@@ -37,7 +39,12 @@
           <p>Email: {{miniProfileData.email}}</p> -->
           <div class="p-pic">
             <div class="kindling" ng-class="miniProfileData.color">
-              <div class="symbol">{{miniProfileData.firstName.substring(0,1) + miniProfileData.lastName.substring(0,1).toLowerCase();}}</div>
+              <a class="like ui corner label">
+                <i class="star icon" ng-class="miniProfileData.favorited"></i>
+              </a>
+              <div class="name color">{{miniProfileData.color}}</div>
+              <div class="name adj">{{miniProfileData.adj}}</div>
+              <div class="name animal">{{miniProfileData.animal}}</div>
             </div>
           </div>
 
@@ -58,13 +65,44 @@
 
           <!-- <div ng-bind-html="wishButton"></div> -->
 
-          <div id="wishlist-add-button" class="ui toggle button" ng-click="wishButton.fn()">
-            {{wishButton.contentText}}
+          <div id="wishlist-remove-button" class="ui toggle button" ng-click="removeFromWishlist()">
+            Remove
+          </div>
+          <div id="wishlist-choose-mentor" class="ui toggle button" ng-click="notification()">
+            Choose as my Mentor
           </div>
 
         </div>
 			</div>
-		</div>
+
+    <div id="mentor-note" class="ui page dimmer">
+      <div class="ui info message">
+        <i class="close icon" ng-click="notification()"></i>
+        <div class="title">
+          Mentor Confirmation
+        </div>
+        <div class="back-strip">
+          <div class="kindling" ng-class="miniProfileData.color">
+              <div class="name color">{{miniProfileData.color}}</div>
+              <div class="name adj">{{miniProfileData.adj}}</div>
+              <div class="name animal">{{miniProfileData.animal}}</div>
+            </div>
+          <div class="text-message">
+            Are you sure you want to select this person as your official mentor?
+          </div>
+        </div>
+        <div class="ui options">
+          <div class="ui Negative medium button" ng-click="notification()">
+            Cancel
+          </div>
+          <div class="ui positive medium button" ng-click="chooseMentor()">
+            Yes
+          </div>
+        </div>
+      </div>
+    </div>
+
+	</div>
 
   <script>
     var removeItem = function(elem) {

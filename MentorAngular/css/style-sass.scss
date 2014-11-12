@@ -22,6 +22,7 @@ $silver: #858789;
 
 $fgColor: #ebebeb;
 $fgColor2: #fefefe;
+$fgColor3: #eee;
 $bgColor: #e0e0e0; //00b5ad+
 $bgColor2: #07b6ad;
 $bgDimensionsX: 720;
@@ -61,6 +62,20 @@ $textFilterFontWeight: 600;
   src: url('fonts/icons.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
        url('fonts/icons.ttf')  format('truetype'), /* Safari, Android, iOS */
        url('fonts/icons.svg#svgFontName') format('svg'); /* Legacy iOS */
+}
+
+@mixin menu-text {
+  color: $menuTextColor;
+  font-size: 16px;
+  padding: 0 0 0 0px;
+  margin-bottom: 6px;
+}
+
+@mixin menu-text2 {
+  color: $menuTextColor2;
+  font-size: 14px;
+  padding: 0 0 0 0px;
+  margin-bottom: 6px;
 }
 
 /* Reset Styles */
@@ -182,7 +197,7 @@ h6{
 nav {
   width: 100vw;
   position: relative;
-  z-index: 200;
+  z-index: 100;
 }
 
 // .top-bar.ui.menu{
@@ -338,21 +353,21 @@ nav {
 }
 
 /* REGISTER */
-.registration.page > .ui.message{
-  // margin: 0px;
-  // background-color: #07b6ad;
-  // width: 100vw;
+.registration-splash.page > .ui.message{
+  margin: 0px;
+  background-color: #07b6ad;
+  width: 100vw;
 
 }
-.registration.page > .welcome.header h3{
+.registration-splash.page > .welcome.header h3{
   text-shadow: 1px 1px white;
   color: black;
 }
-.registration.page > .ui.message h2{
+.registration-splash.page > .ui.message h2{
   text-align: center;
   color: white;
 }
-.registration.page > .ui.message h4{
+.registration-splash.page > .ui.message h4{
   text-align: center;
   color: white;
 }
@@ -364,63 +379,83 @@ nav {
   margin-left: 25%;
   width: 22%;
 }
+
 .custom.cols #right-col{
   float:right;
   margin-right:25%;
   width: 22%;
 }
-.register.col h4{
+.registration-splash.col h4{
+  font-weight: 400;
   color: white;
 }
-.register.col h5{
+.registration-splash.col h5{
   color: white;
   font-style: normal;
 }
-.register.col > .button{
+.registration-splash > .button{
   margin-left: auto;
   margin-right: auto;
-
-  color: gray;
+  padding: 1.5em 3em 1.5em 3em;
+  color: black;
   background-color: #E6E6E6;
   border-radius: 0px;
 }
 
 /* User Profile */
-.user-profile.message{
-  margin: 0px;
-  padding: 1em;
+.user-profile .message-wrapper {
+  top: 80px;
+  position: relative;
 }
-
-.column #box{
+.user-profile .header-wrapper {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  display: block;
+}
+.user-profile .header {
+  position: relative;
+  margin: 10px 0;
+  //line-height: 0;
+}
+.user-profile.message{
+  margin: 0 auto;
+  padding: 1.4em 3em;
+  background-color: $fgColor3;
+}
+.user-profile .menu-text {
+  @include menu-text;
+  display: block;
+}
+.user-profile .menu-text2 {
+  @include menu-text2;
+  display: block;
+}
+.user-profile .column #box{
   width: 22.333%;
 }
-.column #name{
+.user-profile .column #name{
   width: 44.333%;
 }
-.user-profile.ui.page.grid{
-  padding: 0em;
-}
+.user-profile .user-profile.ui.page.grid{
 
+}
 .user-profile h1{
   text-align: center;
 }
-
 .user-profile.personal{
-  padding: 0% 8%;
+  //padding: 0% 8%;
 }
-.id-box h2{
+.user-profile .id-box h2{
   color: white;
 }
-
-.id-box{
+.user-profile .id-box{
   width: 6.5em;
   height: 6.5em;
 }
-
-.user-profile.ui > .item{
+.user-profile.ui .item{
   padding: .8em;
 }
-
 .user-info.extra{
   padding: 0% 8%;
 }
@@ -575,22 +610,11 @@ nav {
   bottom: 0px !important;
   right: 0px !important;
 }
-.isotope-container .kindling .name {
-  font-size: $textTitleSmall;
-  color: #fff;
-  position: relative;
-  bottom: 0em;
-  margin: 0 0 -0.3em 0 ;
-}
 
-.p-pic .kindling .name {
-  font-size: $textTitleSmall;
-  color: #fff;
-  position: relative;
-  bottom: 0em;
-  margin: 0 0 -0.3em 0 ;
-  height: 20px;
-  z-index: 300;
+.kindling .name {
+  height: 27px;
+  line-height: 27px;
+  //vertical-align: middle;
 }
 
 .searchmentors .view .mentor-profile {
@@ -620,14 +644,11 @@ nav {
 }
 
 .searchmentors .mentor-profile .p-label {
-  color: $menuTextColor2;
-  font-size: 14px;
-  padding: 0 0 0 0px;
-  margin-bottom: 6px;
+  @include menu-text2;
 }
 
 .searchmentors .mentor-profile .p-field {
-  font-size: 16px;
+  @include menu-text;
   margin-bottom: 20px;
 }
 
@@ -662,16 +683,16 @@ nav {
 .kindling.midnight {background-color: $midnight;}
 .kindling.silver {background-color: $silver;}
 
-#isotopeContainer .kindling {
+.page .view .kindling {
   text-decoration: none;
   margin: 3px;
 }
 
-#isotopeContainer .kindling .like {
+.page .view .kindling .like {
   //opacity: 0.5;
   //right: -0.5em;
 }
-#isotopeContainer .kindling .like:after {
+.page .view .kindling .like:after {
   position: absolute;
   //content: "";
   right: 0em;
@@ -689,7 +710,7 @@ nav {
   transition: border-color 0.2s ease;
 }
 
-#isotopeContainer .kindling .icon {
+.page .view .kindling .icon {
   margin: 0.5em 0em 0em 0.5em;
 }
 
@@ -697,11 +718,28 @@ nav {
   color: $favoritedColor;
 }
 
-.kindling{width:$cardSize;height:$cardSize;margin:5px;float:left;overflow:hidden;position:relative;background:#888;color:#222;
-          -webkit-border-top-right-radius:$cardBorderRad;-moz-border-radius-topright:$cardBorderRad;border-top-right-radius:$cardBorderRad}
+.kindling{
+  width:$cardSize;
+  height:$cardSize;
+  margin:5px;
+  float:left;
+  overflow:hidden;
+  position:relative;background:#888;
+  color:#222;
+  -webkit-border-top-right-radius:$cardBorderRad;
+  -moz-border-radius-topright:$cardBorderRad;
+  border-top-right-radius:$cardBorderRad;
+  padding: 6px;
+}
 .kindling *{position:absolute;margin:0}
 .kindling .symbol{left:0.2em;top:0.6em;font-size:$cardTextSize;line-height:1.0em;color:#FFF}
-.kindling .name{left:0.5em;bottom:1.6em;font-size:1.05em}
+.page .view .kindling .name {
+  font-size: $textTitleSmall;
+  color: #fff;
+  position: relative;
+  bottom: 0em;
+  margin: 0 0 -0.3em 0 ;
+}
 .kindling .number{font-size:1.25em;font-weight:bold;color:rgba(0,0,0,0.5);right:0.5em;top:0.5em}
 
 /* Wishlist */
@@ -781,3 +819,55 @@ nav {
   font-size: 16px;
   margin-bottom: 20px;
 }
+.wishlist .profile-link {
+  margin: 10px 0 20px 0;
+}
+#mentor-note .message {
+  @extend %vertical-align;
+  margin: 0 auto;
+  background-color: $fgColor2;
+  width: 550px;
+  height: 250px;
+  padding: 1em;
+  overflow: hidden;
+  text-align: left;
+}
+#mentor-note .title {
+  font-size: $textTitleMedium;
+  font-weight: 600;
+  display: inline-block;
+  margin-top: -10px;
+}
+#mentor-note .back-strip {
+  background-color: $fgColor;
+  width: 100%;
+  height: 50%;
+  left: 0;
+  position: absolute;
+  top: 50px;
+}
+#mentor-note .kindling {
+  margin: auto 30px auto 70px;
+  @extend %vertical-align;
+}
+#mentor-note .text-message {
+  margin: auto 0;
+  font-weight: 600;
+  font-size: $textTitleSmall;
+  @extend %vertical-align;
+  padding: 0px 30px 20px 0px;
+}
+#mentor-note .options {
+  position: absolute;
+  bottom: 20px;
+  right: 40px;
+}
+
+%vertical-align {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+

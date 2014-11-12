@@ -22,7 +22,7 @@
   <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 
 </head>
-<body ng-app="myApp"><!-- style="height:1000px" -->
+<body ng-app="myApp" ng-controller="mainController"><!-- style="height:1000px" -->
 
   <div class="background-holder">
     <div id="background"></div>
@@ -31,6 +31,24 @@
   <nav ng-controller="HeaderController">
     <div ng-include src="'partials/header.html'"></div>
   </nav>
+
+<!--   <div id="mentor-note" class="ui page dimmer">
+    <div class="ui info message">
+      <i class="close icon"></i>
+      <div class="title">
+        Mentor Confirmation
+      </div>
+      <div class="back-strip">
+        <div class="text-message">
+          Are you sure you want to select this person as your official mentor?
+        </div>
+      </div>
+      <div class="ui buttons">
+        <div class="ui button">Cancel</div>
+        <div class="ui positive button">Save</div>
+      </div>
+    </div>
+  </div> -->
   
   <!--[if lt IE 7]>
       <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>

@@ -174,7 +174,7 @@ appControllers.controller('SearchController', ['$scope', '$http', function($scop
   $scope.$parent.wishList = ($scope.$parent.wishList || []);
 
   $http.get('json-gen/users120.json').success(function(data) {
-    //$scope.userData = data;
+    $scope.userData = data;
     $scope.miniProfileData = $scope.userData[0];
     $scope.wishButton = {};
     $scope.renderButton($scope.miniProfileData.favorited);
@@ -212,6 +212,9 @@ appControllers.controller('SearchController', ['$scope', '$http', function($scop
       });
     });
   }
+  $scope.$on('$routeChangeStart', function () { //For some reason the isotope ul must be emptied or page change lags
+    $('#isotopeContainer').empty();
+  });
   $scope.renderButton = function(favorited) {
     if (favorited == "favorited") {
       $scope.wishButton.contentText = "Remove from Wishlist";

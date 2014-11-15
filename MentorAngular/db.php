@@ -50,6 +50,51 @@
 	 	 echo json_encode($userInfo);
 	}//end welcome
 
+	//function reset() {
+		//global $_USER;
+
+		// $dbQuery = sprintf("SELECT first_name, last_name FROM User WHERE username = '%s'",
+		// 										$_USER['uid']);
+		// $result = getDBResultsArray($dbQuery
+		// $dbQuery = sprintf("SELECT first_name, last_name FROM User WHERE username = '%s'",
+		// 										$_USER['uid']);
+		// $result = getDBResultsArray($dbQuery
+		// $dbQuery = sprintf("DELETE FROM Mentee WHERE username = '%s'",
+		// 										$_USER['uid']);
+		// $result = getDBResultsArray($dbQuery);
+		// $dbQuery = sprintf("DELETE FROM User WHERE username = '%s'",
+		// 										$_USER['uid']);
+		// $result = getDBResultsArray($dbQuery);
+	//}
+
+	function resetUser() {
+		global $_USER;
+		$dbQuery = sprintf("DELETE FROM Mentee WHERE username = '%s'",
+												$_USER['uid']);
+		$result = getDBResultsArray($dbQuery);
+		$dbQuery = sprintf("DELETE FROM User WHERE username = '%s'",
+												$_USER['uid']);
+		$result = getDBResultsArray($dbQuery);
+		$dbQuery = sprintf("DELETE FROM Matches WHERE mentee_user = '%s'",
+												$_USER['uid']);
+		$result = getDBResultsArray($dbQuery);
+
+		$userInfo = array('username' => $_USER['uid']);
+		$userInfo['complete'] = "true";
+		echo json_encode($userInfo);
+	}
+
+	function chooseMentor() {
+		global $_USER;
+		// $dbQuery = sprintf("INSERT INTO Matches FROM Mentee WHERE username = '%s'",
+		// 										$_USER['uid']);
+		$dbQuery = sprintf("INSERT INTO Matches (mentee_user, mentor_user)
+					VALUES ('%s', '%s')", $_USER['uid'], $_POST['mentor']);
+		
+		$result = getDBResultsArray($dbQuery);
+		echo json_encode($_POST);
+	}
+
 	function getMentor() {
 
 	}

@@ -3,64 +3,62 @@ var appControllers = angular.module('appControllers', ['ngAnimate', 'ngResource'
 appControllers.controller('mainController', ['$scope', '$http', '$location', function($scope, $http, $location) {
   $scope.go = function(path) {
     $location.path(path);
-    $location.reload(true);
+    //$location.reload(true);
+    //$scope.$parent.$apply();
   };
 }]);
 
 appControllers.controller('HeaderController', ['$scope', '$http', '$location', function($scope, $http, $location) {
-  $scope.go = function(path) {
-    $location.path(path);
-    // window.location.reload(true);
-  };
 
   // if($window.location == "\welcome" || $window.location == "\register" || $window.location == "\menteeReg"){
-    $scope.user = {none: 1,
+    $scope.$parent.headerType = {none: 1,
     mentee: 0,
     mentor: 0,
     admin: 0};
+    $scope.headerType = $scope.$parent.headerType;
   
   // $.get("api/user", function (data) {
   //       data = data;//$data = data;//$('#hello').tmpl(data).appendTo("#hello");
   //       console.log("data: " , data);
   // });
-var data = {};
-if(window.location.href.indexOf("welcome") > -1 || window.location.href.indexOf("register") > -1){
-  console.log("no get sent");
-  $scope.user = {none: 1,
-    mentee: 0,
-    mentor: 0,
-    admin: 0};
-} else {
-  $.ajax({
-      url: "api/user",
-      dataType: "json",
-      async: false,
-      success: function(result) {
-        data = result;
-      },
-      type: 'GET'
-      // error: ajaxError
-    }); 
-  if(data["Mentor"]) {
-    $scope.user.none = 0;
-    $scope.user.mentor = 1;
-  }
-  if(data["Mentee"]) {
-    $scope.user.none = 0;
-    $scope.user.mentee = 1;
-  }
-  if(data["Admin"]) {
-    $scope.user.none = 0;
-    $scope.user.admin = 1;
+$scope.refreshHeader = function() {
+  var data = {};
+  if(window.location.href.indexOf("welcome") > -1 || window.location.href.indexOf("register") > -1){
+    console.log("no get sent");
+    $scope.$parent.headerType = {none: 1,
+      mentee: 0,
+      mentor: 0,
+      admin: 0};
+    //$scope.headerType = $scope.$parent.headerType;
+  } else {
+    $.ajax({
+        url: "api/user",
+        dataType: "json",
+        async: false,
+        success: function(result) {
+          data = result;
+        },
+        type: 'GET'
+        // error: ajaxError
+      }); 
+    if(data["Mentor"]) {
+      $scope.$parent.headerType.none = 0;
+      $scope.$parent.headerType.mentor = 1;
+    }
+    if(data["Mentee"]) {
+      $scope.$parent.headerType.none = 0;
+      $scope.$parent.headerType.mentee = 1;
+    }
+    if(data["Admin"]) {
+      $scope.$parent.headerType.none = 0;
+      $scope.$parent.headerType.admin = 1;
+    }
   }
 }
+$scope.$parent.refreshHeader = $scope.refreshHeader;
 }]);
 
 appControllers.controller('EditProfileController', ['$scope', '$http', '$location', function($scope, $http, $location) {
-  $scope.go = function(path) {
-    $location.path(path);
-    $location.reload(true);
-  };
   var data = {};
   $.ajax({
     url: "api/user",
@@ -111,10 +109,8 @@ appControllers.controller('LoadingController', ['$scope', '$http', function($sco
 }]);
 
 appControllers.controller('HomeController', ['$scope', '$http', '$location', function($scope, $http, $location) {
-  $scope.go = function( path ) {
-    $location.path(path);
-    $location.reload(true);
-  }; 
+
+  $scope.refreshHeader();
 
   $scope.user = {type:[],
     none: 1,
@@ -258,6 +254,16 @@ appControllers.controller('WishListController', ['$scope', '$http', function($sc
   $scope.chooseMentor = function() {
     $scope.$parent.myMentor = $scope.miniProfileData;
     $scope.myMentor = $scope.$parent.myMentor;
+
+    $.ajax({
+      url: "api/chooseMentor",
+      dataType: "json",
+          async: false,
+      data: {'mentor': 'yyao3'}, //$scope.$parent.myMentor
+      type: 'POST'
+      // error: ajaxError
+    }); 
+
     console.log("chooseMentor");
     $scope.go('/user-profile');
   }
@@ -278,13 +284,22 @@ appControllers.controller('WishListController', ['$scope', '$http', function($sc
 
 appControllers.controller('UserProfileController', ['$scope', '$http', '$location', function($scope, $http, $location) {
   $scope.myMentor = $scope.$parent.myMentor;
+
+  $scope.reset = function() {
+    $.ajax({
+      url: "api/resetUser",
+      dataType: "json",
+      async: true,
+      success: function(result) {
+        //data = result;
+      },
+      type: 'GET'
+      // error: ajaxError
+    }); 
+  }
 }]);
 
 appControllers.controller('RegisterController', ['$scope', '$http', '$location', function($scope, $http, $location) {
-  $scope.go = function( path ) {
-    $location.path(path);
-    window.location.reload(true);
-  };
 }]);
 
 appControllers.controller('RegisterMenteeController', ['$scope', '$http', '$filter', '$location', function($scope, $http, $filter, $location) {
@@ -581,11 +596,6 @@ appControllers.controller('RegisterMenteeController', ['$scope', '$http', '$filt
 //             }
 //           );
 //   };
-
-   $scope.go = function( path ) {
-    $location.path(path);
-    window.location.reload(true);
-  };
 
 }]);
 
@@ -914,11 +924,6 @@ appControllers.controller('RegisterMentorController', ['$scope', '$http', '$filt
       // error: ajaxError
     });
   };
-
-   $scope.go = function( path ) {
-    $location.path(path);
-    window.location.reload(true);
-  };
   
 }]);
 
@@ -934,11 +939,6 @@ appControllers.controller('MentorAliasController', ['$scope', '$http', '$locatio
       type: 'POST'
       // error: ajaxError
     });
-  };
-
-   $scope.go = function( path ) {
-    $location.path(path);
-    window.location.reload(true);
   };
 
 }]);

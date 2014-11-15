@@ -44,6 +44,30 @@
 		</post>
 	</command>
 
+	<command id='resetUser' security='protected'>
+		<description><![CDATA[This simple API welcomes users to the homepage]]></description>
+
+		<index>
+			<action file='db.php'><![CDATA[resetUser();]]></action>
+		</index>
+
+		<get>
+			<action file='db.php'><![CDATA[resetUser();]]></action>
+		</get>
+	</command>
+
+	<command id='chooseMentor' security='protected'>
+		<description><![CDATA[This simple API welcomes users to the homepage]]></description>
+
+		<index>
+			<action file='db.php'><![CDATA[chooseMentor();]]></action>
+		</index>
+
+		<post>
+			<action file='db.php'><![CDATA[chooseMentor();]]></action>
+		</post>
+	</command>
+
 	<command id='gen_faux_users' security='protected'>
 		<post>
 			<action file='db.php'><![CDATA[genFauxUsers($_POST['userData']);]]></action>

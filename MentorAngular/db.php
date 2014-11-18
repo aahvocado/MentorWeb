@@ -110,49 +110,79 @@
 		global $_USER;	
 		$user = $_USER['uid'];
 		$fname = mysql_real_escape_string($_POST['fname']);
-		echo "first: " . $fname . "\n";
-		//echo var_dump($_POST['fname']);
 		$lname = mysql_real_escape_string($_POST['lname']);
-		echo "last: " . $lname . "\n";
 		$phone = mysql_real_escape_string($_POST['phone']);
-		echo "phone: " . $phone . "\n";
 		$email = mysql_real_escape_string($_POST['email']);
-		echo "email: " . $email . "\n";
 		$pref_comm = mysql_real_escape_string($_POST['pref_comm']);
-		echo "pref_comm: " . $pref_comm . "\n";
 		$depth_focus = mysql_real_escape_string($_POST['dfocus']);
-		echo "depth_focus: " . $depth_focus . "\n";
 		$depth_focus_other = mysql_real_escape_string($_POST['dfocusother']); //don't need escape string for pre-defined vals
-		echo "depth_focus_other: " . $depth_focus_other . "\n";
 		$first_gen_college_student = $_POST['first_gen_college_student'];
-		echo "first_gen: " . $first_gen_college_student . "\n";
 		$transfer_from_outside = $_POST['transfer_from_outside'];
-		echo "transfer outside: " . $transfer_from_outside . "\n";
 		$institution_name = mysql_real_escape_string($_POST['institution_name']);
-		echo "inst name: " . $institution_name . "\n";
 		$transfer_from_within = $_POST['transfer_from_within'];
 		$prev_major = mysql_real_escape_string($_POST['prev_major']);
-		echo "prev_major: " . $prev_major . "\n";
 		$international_student = $_POST['international_student'];
-		echo "international student :" . $international_student . "\n";
 		$expec_graduation = mysql_real_escape_string($_POST['expec_graduation']);
 		$other_major =  mysql_real_escape_string($_POST['other_major']);
-		$breadth_track = "Big json";//is a json, need desc. to go along with it $_POST['breadth_track']  json_decode($json)
-		$undergrad_research = $_POST['undergrad_research'];
-		$bme_organization = "bme organizations"; //Json of all the organizations $_POST['bme_organization']
-		$tutor_teacher_program = "programs checkbox";//JSON from checkbox;
-		$bme_academ_exp = "json checkbox"; //json
-		$international_experience = "josn checkbox";//json
-		$career_dev_program = "json checkbox";
-		$career_dev_program_desc = mysql_real_escape_string($_POST['career_dev_program_desc']);
-		$post_grad_plan = "json radio button";
+		$undergrad_research =  mysql_real_escape_string($_POST['undergrad_research']);
+
+		$bme_org1 = null;
+		$bme_org2 = null;
+		$bme_org3 = null;
+		$bme_org4 = null;
+		$bme_org5 = null;
+		$bme_org6 = null;
+		$bme_org7 = null;
+		$bmeOrgs = $_POST['bme_organization'];
+		for ($i=1; $i <= count($bmeOrgs); $i++) {
+			${"bme_org" . $i}  = $bmeOrgs[$i-1]['name']; //Json of all the organizations $_POST['bme_organization']
+		}
+
+		$tutor_teacher_program1 = null;
+		$tutor_teacher_program2 = null;
+		$tutor_teacher_program3 = null;
+		$tutor_teacher_program4 = null;
+		$tutor_teacher_program5 = null;
+		$tutor_teacher_program6 = null;
+		$ttProg = $_POST['tutor_teacher_program'];
+		for ($i=1; $i <= count($ttProg); $i++) {
+			${"tutor_teacher_program" . $i}  = $ttProg[$i-1]['name']; 
+		}
+
+		$bme_academ_exp1 = null;
+		$bme_academ_exp2 = null;
+		$bme_academ_exp3 = null;
+		$bme_academ_exp4 = null;
+		$bmeExp = $_POST['bme_academ_exp'];
+		for ($i=1; $i <= count($bmeExp); $i++) {
+			${"bme_academ_exp" . $i}  = $bmeExp[$i-1]['name']; 
+		}
+
+		$international_experience1 = null;
+		$international_experience2 = null;
+		$international_experience3 = null;
+		$international_experience4 = null;
+		$international_experience5 = null;
+		$internatExp = $_POST['international_experience'];
+		for ($i=1; $i <= count($internatExp); $i++) {
+			${"international_experience" . $i}  = $internatExp[$i-1]['name']; 
+		}
+
+		$career_dev_program1 = null;
+		$career_dev_program2 = null;
+		$career_dev_program3 = null;
+		$carDevProg = $_POST['career_dev_program']; 
+		for ($i=1; $i <= count($carDevProg); $i++) {
+			${"career_dev_program" . $i}  = $carDevProg[$i-1]['name']; 
+		}
+
+		$post_grad_plan = mysql_real_escape_string($_POST['post_grad_plan']);
 		$post_grad_plan_desc = mysql_real_escape_string($_POST['post_grad_plan_desc']);
-		$freshman = 1;
 		$personal_hobby = mysql_real_escape_string($_POST['personal_hobby']);
 
 		$userQuery = sprintf("INSERT INTO User (username, last_name, first_name, phone_num, email, pref_communication)
 					VALUES ('%s', '%s', '%s', '%s','%s','%s')", $user, $lname, $fname,$phone,$email,$pref_comm);
-		$uresult = getDBRegInserted($userQuery);
+		$uResult = getDBRegInserted($userQuery);
 
 		$menteeQuery = sprintf("INSERT INTO Mentee (username, depth_focus, depth_focus_other, post_grad_plan, post_grad_plan_desc, 
 			freshman, transfer_from_outside, institution_name,
@@ -163,189 +193,248 @@
 			$freshman, $transfer_from_outside, $institution_name,
 			$transfer_from_within, $prev_major, $international_student, $first_gen_college_student, $expec_graduation, 
 			$undergrad_research, $personal_hobby);
-		$mresult = getDBRegInserted($menteeQuery);
+		$mResult = getDBRegInserted($menteeQuery);
 
+		$bTrack = $_POST['breadth_track'];
+		foreach ($bTrack as $key => $value) {
+			$breadth_track = $value['name'];
+			$breadth_track_desc = $value['desc'];
+			$btrackQuery = sprintf("INSERT INTO Mentee_Breadth_Track(username, breadth_track, breadth_track_desc) VALUES ('%s', '%s', '%s')",
+			$user, $breadth_track, $breadth_track_desc);
+			$btrackResult = getDBRegInserted($btrackQuery);
+		}
 
-		// $menteeQuery = sprintf("INSERT INTO Mentee (username, gender, opt_in, depth_focus, depth_focus_other,
-		// 	live_before_tech, live_on_campus, first_gen_college_student, transfer_from_outside, institution_name,
-		// 	transfer_from_within, prev_major, international_student, home_country, expec_graduation, other_major, 
-		// 	undergrad_research, undergrad_research_desc, post_grad_plan, post_grad_plan_desc, personal_hobby) 
-		// 	VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%u', '%u', '%u', '%s', '%u', '%s', '%s', '%s', '%s', '%s', 
-		// 		'%u', '%s', '%s', '%s', '%s')", 
-		// 	$user, $gender, $opt_in, $depth_focus, $depth_focus_other,
-		// 	$live_before_tech, $live_on_campus, $first_gen_college_student, $transfer_from_outside, $institution_name, 
-		// 	$transfer_from_within, $prev_major, $international_student, $home_country, $expec_graduation, $other_major,
-		// 	$undergrad_research, $undergrad_research_desc, $post_grad_plan, $post_grad_plan_desc, $personal_hobby);
+		if ($_POST['bme_organization']) {
+			$bmeOrgQuery = sprintf("INSERT INTO Mentee_BME_Organization(username, bme_org1, bme_org2, bme_org3, 
+				bme_org4, bme_org5, bme_org6, bme_org7) VALUES ('%s', '%s', '%s' , '%s', '%s', '%s', '%s', '%s')",
+				$user, $bme_org1, $bme_org2, $bme_org3, $bme_org4, $bme_org5, $bme_org6, $bme_org7);
+			$bmeOrgResult = getDBRegInserted($bmeOrgQuery);
+		}
 
-			// , 
-			// post_grad_plan, post_grad_plan_desc, , , , 
-			// , , , , , 
-			// , , undergrad_research, undergrad_research_lab_worked, 
-			// undergrad_research_num_semesters, home_country, personal_hobby
-				// '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s',
-			 // '%s', '%s', '%s', '%s', '%s', '%s', '%s'
-		// $mresult = getDBRegInserted($mentorQuery);
+		if ($_POST['bme_academ_exp']) {
+			$bmeQuery = sprintf("INSERT INTO Mentee_BME_Academic_Experience(username, bme_academ_exp1, bme_academ_exp2,
+				bme_academ_exp3, bme_academ_exp4) VALUES ('%s', '%s', '%s', '%s', '%s')",
+			$user, $bme_academ_exp1, $bme_academ_exp2, $bme_academ_exp3, $bme_academ_exp4);
+			$bmeResult = getDBRegInserted($bmeQuery);
+		}
 
-		// $btrackQuery = sprintf("INSERT INTO Mentor_Breadth_Track(username, breadth_track, breadth_track_desc) VALUES ('%s', '%s', '%s')",
-		// 	$user, $breadth_track, $breadth_track_desc);
-		// $btrackresult = getDBRegInserted($btrackQuery);
+		if ($_POST['international_experience']) {
+			$interQuery = sprintf("INSERT INTO Mentee_International_Experience(username, international_experience1, international_experience2, 
+				international_experience3, international_experience4, international_experience5)
+			VALUES ('%s', '%s', '%s', '%s', '%s', '%s')", $user, $international_experience1, $international_experience2,
+			$international_experience3, $international_experience4, $international_experience5);
+			$interResult = getDBRegInserted($interQuery);
+		}
 
-		// $bmeOrgQuery = sprintf("INSERT INTO Mentee_BME_Organization(username, bme_org1, bme_org2, bme_org3,
-		// 	bme_org4, bme_org5, bme_org6, bme_org7, bme_org8) VALUES ('%s', '%s', '%s' , '%s', '%s', '%s', '%s', '%s', '%s')",
-		// 	$user, $bme_organization, $bme_organization_other);
-		// $bmeOrgresult = getDBRegInserted($bmeOrgQuery);
+		if ($_POST['career_dev_program']) {
+			$careerQuery = sprintf("INSERT INTO Mentee_Career_Dev_Program(username, career_dev_program1,
+				career_dev_program2, career_dev_program3) VALUES ('%s', '%s', '%s','%s')",
+				$user, $career_dev_program1, $career_dev_program2, $career_dev_program3);
+			$careerResult = getDBRegInserted($careerQuery);
+		}
 
-		// $bmeQuery = sprintf("INSERT INTO Mentee_BME_Academic_Experience(username, bme_academ_exp1, bme_academ_exp2,
-		// 	bme_academ_exp3, bme_academ_exp4, bme_academ_exp_desc) VALUES ('%s', '%s', '%s', '%s', '%s', '%s')",
-		// $user, $bme_academ_exp1, $bme_academ_exp2, $bme_academ_exp3, $bme_academ_exp4, $bme_academ_exp_desc);
-		// $bmeresult = getDBRegInserted($bmeQuery);
+		if ($_POST['tutor_teacher_program']) {
+			$ttProgQuery = sprintf("INSERT INTO Mentee_Tutor_Teacher_Program(username, tutor_teacher_program1, tutor_teacher_program2,
+				tutor_teacher_program3, tutor_teacher_program4, tutor_teacher_program5, tutor_teacher_program6) 
+			VALUES ('%s', '%s', '%s', '%s', '%s', '%s',' %s')", $user, $tutor_teacher_program1, $tutor_teacher_program2, $tutor_teacher_program3, 
+			$tutor_teacher_program4, $tutor_teacher_program5, $tutor_teacher_program6);
+			$ttProgResult = getDBRegInserted($ttProgQuery);
+		}
 
-		// $interQuery = sprintf("INSERT INTO Mentee_International_Experience(username, international_experience1, international_experience2, 
-		// 	international_experience3, international_experience4, international_experience5, international_experience_desc)
-		// VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s')", $user, $international_experience1, $international_experience2,
-		// $international_experience3, $international_experience4, $international_experience4, $international_experience_desc);
-		// $interresults = getDBRegInserted($interQuery);
-
-		// $careerQuery = sprintf("INSERT INTO Mentee_Career_Dev_Program(username, career_dev_program1,
-		// 	career_dev_program2, career_dev_program3, career_dev_program_desc) VALUES ('%s', '%s', 
-		// 	'%s','%s','%s')", $user, $career_dev_program1, $career_dev_program2, $career_dev_program3,
-		// $career_dev_program_desc);
-		// $careerresults = getDBRegInserted($careerQuery);
 		header("Content-type: application/json");
-		// print_r($json);
-		echo json_encode($uresult);
-		echo json_encode($mresult);
+		// echo json_encode($uresult);
+		// echo json_encode($mresult);
 	}
 
 	function addMentor() {
 		echo "addMEntor \n";
 		global $_USER;	
-		// $data = file_get_contents("php://input");
-
-		//Should i use mysqli or mysql?
-		//does casting true and false to int work? Do I even need to cast?
-		//are we doing true/false right by casting to int?
 		$user = $_USER['uid'];
-		echo "user: " . $user . "\n";
 		$fname = mysql_real_escape_string($_POST['fname']);//$data->fname);
-		echo "first: " . $fname . "\n";
-		//echo var_dump($_POST['fname']);
 		$lname = mysql_real_escape_string($_POST['lname']);
-		echo "last: " . $lname . "\n";
 		$phone = mysql_real_escape_string($_POST['phone']);
-		echo "phone: " . $phone . "\n";
 		$email = mysql_real_escape_string($_POST['email']);
-		echo "email: " . $email . "\n";
-		$pref_comm = mysql_real_escape_string($_POST['pref_comm']);
-		echo "pref_comm: " . $pref_comm . "\n";
+		$pref_communication = mysql_real_escape_string($_POST['pref_communication']);
 		$gender = mysql_real_escape_string($_POST['gender']);
-		echo "gender: " . $gender . "\n";
-		$ethnicity = json_decode($_POST['ethnicity'], true);
-		echo "ethnicity: " . $ethnicity . "\n";
-		for ($i=1; $i < count($ethnicity) ; $i++) {
-			${"ethnicity" . $i}  = $ethnicity[$i]['name'];
-			echo "Name " . ${"ethnicity" . $i} ;
+		$depth_focus = mysql_real_escape_string($_POST['dfocus']);
+		$depth_focus_other = mysql_real_escape_string($_POST['dfocusother']); 
+		$live_before_tech = mysql_real_escape_string($_POST['live_before_tech']);
+		$live_on_campus = $_POST['live_on_campus']; //is number 0 or 1 posting?
+		$first_gen_college_student = $_POST['first_gen_college_student'];
+		$transfer_from_outside = $_POST['transfer_from_outside'];
+		$institution_name = mysql_real_escape_string($_POST['$institution_name']);
+		$transfer_from_within = $_POST['transfer_from_within'];
+		$prev_major = mysql_real_escape_string($_POST['$prev_major']);
+		$international_student = $_POST['$international_student'];
+		$home_country =  mysql_real_escape_string($_POST['$home_country']);
+		$expec_graduation = mysql_real_escape_string($_POST['$expec_graduation']);
+		$other_major =  mysql_real_escape_string($_POST['$other_major']);
+	
+		$ethnicity1 = null;
+		$ethnicity2 = null; 
+		$ethnicity3 = null;
+		$ethnicity4 = null;
+		$ethnicity5 - null;
+		$ethnicity = $_POST['ethnicity'];
+		for ($i=1; $i <= count($ethnicity) ; $i++) {
+			${"ethnicity" . $i}  = $ethnicity[$i-1]['name'];
 		}
-		$depth_focus = mysqli_real_escape_string($_POST['dfocus']);
-		$depth_focus_other = mysqli_real_escape_string($_POST['dfocusother']); //don't need escape string for pre-defined vals
-		$live_before_tech = mysqli_real_escape_string($_POST['live_before_tech']);
-		$live_on_campus = (int)$_POST['live_on_campus'];
-		$first_gen_college_student = (int)$_POST['first_gen_college_student'];
-		$transfer_from_outside = (int)$_POST['transfer_from_outside'];
-		$institution_name = mysqli_real_escape_string($_POST['$institution_name']);
-		$transfer_from_within = (int)$_POST['transfer_from_within'];
-		$prev_major = mysqli_real_escape_string($_POST['$prev_major']);
-		$international_student = mysqli_real_escape_string($_POST['$international_student']);
-		$home_country =  mysqli_real_escape_string($_POST['$home_country']);
-		$expec_graduation = mysqli_real_escape_string($_POST['$expec_graduation']);
-		$honor_program = "honorProgram"; //is a json $_POST['honor_program']
-		$other_major =  mysqli_real_escape_string($_POST['$other_major']);
-		$breadth_track = "Big json";//is a json, need desc. to go along with it $_POST['breadth_track']  json_decode($json)
-		$undergrad_research = (int)$_POST['undergrad_research'];
+
+		$program1 = null;
+		$program2 = null;
+		$program3 = null;
+		$hProgs = $_POST['honor_program'];
+		for ($i=1; $i <= count($hProgs); $i++) {
+			${"honor_program" . $i}  = $hProgs[$i-1]['name']; 
+		}		
+
+		$undergrad_research = $_POST['undergrad_research'];
 		$undergrad_research_desc = $_POST['$undergrad_research_desc'];
-		$other_organization = "other orgs";//form.other_organization.one other_organization.two other_organization.three but only sent through form.other_organization
-		$bme_organization = "bme organizations"; //Json of all the organizations $_POST['bme_organization']
-		$bme_organization_other = mysqli_real_escape_string($_POST['$bme_organization_other']);
-		$mentee_mentor_organization = "json of mentee mentor orgs"; //Json from checkbox
-		$mentee_mentor_organization_other = mysqli_real_escape_string($_POST['$mentee_mentor_organization_other']);
-		$tutor_teacher_program = "programs checkbox";//JSON from checkbox;
-		$tutor_teacher_program_desc = mysqli_real_escape_string($_POST['$tutor_teacher_program_desc']);
-		$bme_academ_exp = "json checkbox"; //json
-		$bme_academ_exp_desc = mysql_real_escape_string($_POST['$bme_academ_exp_desc']);
-		$international_experience = "josn checkbox";//json
-		$international_experience_desc = mysql_real_escape_string($_POST['international_experience_desc']);
-		$career_dev_program = "json checkbox";
-		$career_dev_program_desc = mysql_real_escape_string($_POST['career_dev_program_desc']);
-		$post_grad_plan = "json radio button";
+
+		$other_organization1 = $_POST['other_organization1'];
+		$other_organization2 = $_POST['other_organization2'];
+		$other_organization3 = $_POST['other_organization3'];
+
+		$bme_org1 = null;
+		$bme_org2 = null;
+		$bme_org3 = null;
+		$bme_org4 = null;
+		$bme_org5 = null;
+		$bme_org6 = null;
+		$bme_org7 = null;
+		$bmeOrgs = $_POST['bme_organization'];
+		for ($i=1; $i <= count($bmeOrgs); $i++) {
+			${"bme_org" . $i}  = $bmeOrgs[$i-1]['name']; //Json of all the organizations $_POST['bme_organization']
+		}
+		$bme_org_other = mysql_real_escape_string($_POST['$bme_org_other']);
+
+		$mm_org1 = null;
+		$mm_org2 = null;
+		$mm_org3 = null;
+		$mm_org4 = null;
+		$mm_org5 = null;
+		$mmOrgs = $_POST['mm_org'];
+		for ($i=1; $i <= count($mmOrgs); $i++) {
+			${"mmm_org" . $i}  = $mmOrgs[$i-1]['name']; //Json of all the organizations $_POST['bme_organization']
+		}
+		$mm_org_other = mysql_real_escape_string($_POST['$mm_org_other']);
+
+		$tutor_teacher_program1 = null;
+		$tutor_teacher_program2 = null;
+		$tutor_teacher_program3 = null;
+		$tutor_teacher_program4 = null;
+		$tutor_teacher_program5 = null;
+		$tutor_teacher_program6 = null;
+		$ttProg = $_POST['tutor_teacher_program'];
+		for ($i=1; $i <= count($ttProg); $i++) {
+			${"tutor_teacher_program" . $i}  = $ttProg[$i-1]['name']; 
+		}
+		$tutor_teacher_program_other = mysql_real_escape_string($_POST['$tutor_teacher_program_other']);
+
+		$bme_academ_exp1 = null;
+		$bme_academ_exp2 = null;
+		$bme_academ_exp3 = null;
+		$bme_academ_exp4 = null;
+		$bmeExp = $_POST['bme_academ_exp'];
+		for ($i=1; $i <= count($bmeExp); $i++) {
+			${"bme_academ_exp" . $i}  = $bmeExp[$i-1]['name']; 
+		}
+		$bme_academ_exp_other = mysql_real_escape_string($_POST['$bme_academ_exp_other']);
+
+		$international_experience1 = null;
+		$international_experience2 = null;
+		$international_experience3 = null;
+		$international_experience4 = null;
+		$international_experience5 = null;
+		$internatExp = $_POST['international_experience'];
+		for ($i=1; $i <= count($internatExp); $i++) {
+			${"international_experience" . $i}  = $internatExp[$i-1]['name']; 
+		}
+		$international_experience_other = mysql_real_escape_string($_POST['international_experience_other']);
+
+		$career_dev_program1 = null;
+		$career_dev_program2 = null;
+		$career_dev_program3 = null;
+		$carDevProg = $_POST['career_dev_program']; 
+		for ($i=1; $i <= count($carDevProg); $i++) {
+			${"career_dev_program" . $i}  = $carDevProg[$i-1]['name']; 
+		}
+		$career_dev_program_other = mysql_real_escape_string($_POST['career_dev_program_other']);
+
+		$post_grad_plan = mysql_real_escape_string($_POST['post_grad_plan']);
 		$post_grad_plan_desc = mysql_real_escape_string($_POST['post_grad_plan_desc']);
+
 		$personal_hobby = mysql_real_escape_string($_POST['personal_hobby']);
 
-		//or request.form  form.get()
-
-		// $userQuery = sprintf("INSERT INTO User (username, last_name, first_name, phone_num, email, pref_communication)
-		// 			VALUES ('%s', '%s', '%s','%s','%s','%s')", $_USER['uid'], $lname, $fname,$phone,$email,$pref_comm);
-		// $uresult = getDBRegInserted($userQuery);
+		$userQuery = sprintf("INSERT INTO User (username, last_name, first_name, phone_num, email, pref_communication)
+					VALUES ('%s', '%s', '%s','%s','%s','%s')", $user, $lname, $fname, $phone, $email, $pref_communication);
+		$uResult = getDBRegInserted($userQuery);
 
 
-		// $mentorQuery = sprintf("INSERT INTO Mentor (username, gender, opt_in, depth_focus, depth_focus_other,
-		// 	live_before_tech, live_on_campus, first_gen_college_student, transfer_from_outside, institution_name,
-		// 	transfer_from_within, prev_major, international_student, home_country, expec_graduation, other_major, 
-		// 	undergrad_research, undergrad_research_desc, post_grad_plan, post_grad_plan_desc, personal_hobby) 
-		// 	VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%u', '%u', '%u', '%s', '%u', '%s', '%s', '%s', '%s', '%s', 
-		// 		'%u', '%s', '%s', '%s', '%s')", 
-		// 	$user, $gender, $opt_in, $depth_focus, $depth_focus_other,
-		// 	$live_before_tech, $live_on_campus, $first_gen_college_student, $transfer_from_outside, $institution_name, 
-		// 	$transfer_from_within, $prev_major, $international_student, $home_country, $expec_graduation, $other_major,
-		// 	$undergrad_research, $undergrad_research_desc, $post_grad_plan, $post_grad_plan_desc, $personal_hobby);
+		$mentorQuery = sprintf("INSERT INTO Mentor (username, gender, depth_focus, depth_focus_other,
+			live_before_tech, live_on_campus, first_gen_college_student, transfer_from_outside, institution_name,
+			transfer_from_within, prev_major, international_student, home_country, expec_graduation, other_major, 
+			undergrad_research, undergrad_research_desc, post_grad_plan, post_grad_plan_desc, personal_hobby) 
+			VALUES ('%s', '%s', '%s', '%s', '%u', '%u', '%u', '%u', '%s', '%u', '%s', '%u', '%s', '%s', '%s', 
+				'%u', '%s', '%s', '%s', '%s')", 
+			$user, $gender, $depth_focus, $depth_focus_other,
+			$live_before_tech, $live_on_campus, $first_gen_college_student, $transfer_from_outside, $institution_name, 
+			$transfer_from_within, $prev_major, $international_student, $home_country, $expec_graduation, $other_major,
+			$undergrad_research, $undergrad_research_desc, $post_grad_plan, $post_grad_plan_desc, $personal_hobby);
+		$mResult = getDBRegInserted($mentorQuery);
 
-			// , 
-			// post_grad_plan, post_grad_plan_desc, , , , 
-			// , , , , , 
-			// , , undergrad_research, undergrad_research_lab_worked, 
-			// undergrad_research_num_semesters, home_country, personal_hobby
-				// '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s',
-			 // '%s', '%s', '%s', '%s', '%s', '%s', '%s'
-		// $mresult = getDBRegInserted($mentorQuery);
+		$bTracks = $_POST['breadth_track'];
+		foreach ($bTrack as $key => $value) {
+			$breadth_track = $value['name'];
+			$breadth_track_desc = $value['desc'];
+			$bTrackQuery = sprintf("INSERT INTO Mentor_Breadth_Track(username, breadth_track, breadth_track_desc) VALUES ('%s', '%s', '%s')",
+			$user, $breadth_track, $breadth_track_desc);
+			$bTrackResult = getDBRegInserted($bTrackQuery);
+		}
 
-		// $ethQuery = sprintf("INSERT INTO Ethnicity(username, ethnicity1, ethnicity2, ethnicity3, ethnicity4, ethnicity5) VALUES ()", $ethnicity);
-		// $eresult = getDBRegInserted($ethQuery);
+		$ethQuery = sprintf("INSERT INTO Ethnicity(username, ethnicity1, ethnicity2, ethnicity3, ethnicity4, ethnicity5) 
+			VALUES ('%s', '%s', '%s', '%s', '%s', '%s')", $user, $ethnicity1, $ethnicity2, $ethnicity3, $ethnicity4, $ethnicity5);
+		$eResult = getDBRegInserted($ethQuery);
 
-		// $honorProgQuery = sprintf("INSERT INTO Mentor_Honors_Program(username, program1, program2, program3) VALUES ()", $honor_program);
-		// $hpresult = getDBRegInserted($honorProgQuery);
+		$honorProgQuery = sprintf("INSERT INTO Mentor_Honors_Program(username, program1, program2, program3) 
+			VALUES ('%s', '%s', '%s', '%s')", $user, $program1, $program2, $program3);
+		$hpResult = getDBRegInserted($honorProgQuery);
 
-		// $btrackQuery = sprintf("INSERT INTO Mentor_Breadth_Track(username, breadth_track, breadth_track_desc) VALUES ('%s', '%s', '%s')",
-		// 	$user, $breadth_track, $breadth_track_desc);
-		// $btrackresult = getDBRegInserted($btrackQuery);
+		$otherOrgQuery = sprintf("INSERT INTO Other_Organization(username, organization1, organization2, organization3) 
+			VALUES('%s', '%s', '%s', '%s')", $user, $other_organization1, $other_organization2, $other_organization3);
+		$otherOrgResult = getDBRegInserted($otherOrgQuery);
 
-		// $otherOrgQuery = sprintf("INSERT INTO Other_Organization(username, organization1, organization2, organization3) 
-		// 	VALUES('%s', '%s', '%s', '%s')", $user, $other_organization.one, $other_organization.two, $other_organization.three);
-		// $ooresult = getDBRegInserted($otherOrgQuery);
+		$bmeOrgQuery = sprintf("INSERT INTO Mentor_BME_Organization(username, bme_org1, bme_org2, bme_org3,
+			bme_org4, bme_org5, bme_org6, bme_org7, bme_org_other) VALUES ('%s', '%s', '%s' , '%s', '%s', '%s', '%s', '%s', '%s')",
+			$user, $bme_org1, $bme_org2, $bme_org3, $bme_org4, $bme_org5, $bme_org6, $bme_org7, $bme_org_other);
+		$bmeOrgResult = getDBRegInserted($bmeOrgQuery);
 
-		// $bmeOrgQuery = sprintf("INSERT INTO Mentor_BME_Organization(username, bme_org1, bme_org2, bme_org3,
-		// 	bme_org4, bme_org5, bme_org6, bme_org7, bme_org8) VALUES ('%s', '%s', '%s' , '%s', '%s', '%s', '%s', '%s', '%s')",
-		// 	$user, $bme_organization, $bme_organization_other);
-		// $bmeOrgresult = getDBRegInserted($bmeOrgQuery);
+		$mmOrgQuery = sprintf("INSERT INTO Mentee_Mentor_Organization(username, mm_org1, mm_org2, mm_org3, mm_org4, mm_org5, mm_org_other), 
+			VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s')", $user, $mm_org1, $mm_org2, $mm_org3, $mm_org4, $mm_org5, $mm_org_other);
+		$mmResult = getDBRegInserted($mmOrgQuery);
 
-		// $mmOrgQuery = sprintf("INSERT INTO Mentee_Mentor_Organization(username, mm_org1, mm_org2, mm_org3, mm_org4, mm_org5, mm_org6), 
-		// 	VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s')", $user, $mentee_mentor_organization, $mentee_mentor_organization_other);
-		// $mmresult = getDBRegInserted($mmOrgQuery);
+		$ttProgQuery = sprintf("INSERT INTO Mentor_Tutor_Teacher_Program(username, tutor_teacher_program1, tutor_teacher_program2, 
+			tutor_teacher_program3, tutor_teacher_program4, tutor_teacher_program5, tutor_teacher_program6, tutor_teacher_program_other)
+		 VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')", $user, $tutor_teacher_program1, $tutor_teacher_program2, 
+		 $tutor_teacher_program3, $tutor_teacher_program4, $tutor_teacher_program5, $tutor_teacher_program6, $tutor_teacher_program_other);
+		$ttProgResult = getDBRegInserted($ttProgQuery);
 
-		// $bmeQuery = sprintf("INSERT INTO Mentor_BME_Academic_Experience(username, bme_academ_exp1, bme_academ_exp2,
-		// 	bme_academ_exp3, bme_academ_exp4, bme_academ_exp_desc) VALUES ('%s', '%s', '%s', '%s', '%s', '%s')",
-		// $user, $bme_academ_exp1, $bme_academ_exp2, $bme_academ_exp3, $bme_academ_exp4, $bme_academ_exp_desc);
-		// $bmeresult = getDBRegInserted($bmeQuery);
+		$bmeQuery = sprintf("INSERT INTO Mentor_BME_Academic_Experience(username, bme_academ_exp1, bme_academ_exp2,
+			bme_academ_exp3, bme_academ_exp4, bme_academ_exp_other) VALUES ('%s', '%s', '%s', '%s', '%s', '%s')",
+		$user, $bme_academ_exp1, $bme_academ_exp2, $bme_academ_exp3, $bme_academ_exp4, $bme_academ_exp_other);
+		$bmeResult = getDBRegInserted($bmeQuery);
 
-		// $interQuery = sprintf("INSERT INTO Mentor_International_Experience(username, international_experience1, international_experience2, 
-		// 	international_experience3, international_experience4, international_experience5, international_experience_desc)
-		// VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s')", $user, $international_experience1, $international_experience2,
-		// $international_experience3, $international_experience4, $international_experience4, $international_experience_desc);
-		// $interresults = getDBRegInserted($interQuery);
+		$interQuery = sprintf("INSERT INTO Mentor_International_Experience(username, international_experience1, international_experience2, 
+			international_experience3, international_experience4, international_experience5, international_experience_other)
+		VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s')", $user, $international_experience1, $international_experience2,
+		$international_experience3, $international_experience4, $international_experience5, $international_experience_other);
+		$interResults = getDBRegInserted($interQuery);
 
-		// $careerQuery = sprintf("INSERT INTO Mentor_Career_Dev_Program(username, career_dev_program1,
-		// 	career_dev_program2, career_dev_program3, career_dev_program_desc) VALUES ('%s', '%s', 
-		// 	'%s','%s','%s')", $user, $career_dev_program1, $career_dev_program2, $career_dev_program3,
-		// $career_dev_program_desc);
-		// $careerresults = getDBRegInserted($careerQuery);
+		$careerQuery = sprintf("INSERT INTO Mentor_Career_Dev_Program(username, career_dev_program1,
+			career_dev_program2, career_dev_program3, career_dev_program_other) VALUES ('%s', '%s', 
+			'%s','%s','%s')", $user, $career_dev_program1, $career_dev_program2, $career_dev_program3,
+		$career_dev_program_other);
+		$careerResults = getDBRegInserted($careerQuery);
 
 		// //header("Content-type: application/json");
 		// // print_r($json);

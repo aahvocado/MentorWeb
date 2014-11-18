@@ -10,20 +10,20 @@
 	<h2 class="ui inverted black block header">Basic Information</h2><br/>
 	  <div class="two fields">
 	    <div class="field">
-	      <label>First Name</label>
-	      <input id="first_name" ng-model="form.fname" placeholder="First Name" type="text">
+	      <div class="ui tiny header"><i class="asterisk teal icon"></i>First Name</div>
+	      <input id="first_name" name="fname" ng-model="form.fname" placeholder="First Name" type="text">
 	    </div>
 	    <div class="field">
-	      <label>Last Name</label>
-	      <input id="last_name" ng-model="form.lname" placeholder="Last Name" type="text">
+	      <div class="ui tiny header"><i class="asterisk teal icon"></i>Last Name</div>
+	      <input id="last_name" name="lname" ng-model="form.lname" placeholder="Last Name" type="text">
 	    </div>
 	  </div>
 	  <div class="field">
-	    <label>Email</label>
-	    <input id="email" ng-model="form.email" placeholder="username@gatech.edu" type="text">
+	    <div class="ui tiny header"><i class="asterisk teal icon"></i>Email</div>
+	    <input id="email" name="email" ng-model="form.email" placeholder="username@gatech.edu" type="text">
 	  </div>
 	  <div class="field">
-	    <label>Phone Number</label>
+	    <div class="ui tiny header">Phone Number</div>
 	    <input id="phone_number" ng-model="form.phone" placeholder="xxx-xxx-xxxx" type="text">
 	  </div>
 	 <div class="field">
@@ -128,20 +128,20 @@
 	    <div class="grouped inline fields">
 	    	<div class="field">
 		  		<div class="ui radio checkbox">
-				  	<input type="radio" name="undergrad_research" ng-model="form.undergrad_research" value="1"/>
-				  	<label ng-click="newValue(1, 'undergrad_research')">Yes</label>
+				  	<input type="radio" name="undergrad_research" ng-model="form.undergrad_research" value="Yes"/>
+				  	<label ng-click="newValue('Yes', 'undergrad_research')">Yes</label>
 				</div>
 			</div>
 			<div class="field">
 				<div class="ui radio checkbox">
-				  	<input type="radio" name="undergrad_research" ng-model="form.undergrad_research" value="0"/>
-				  	<label ng-click="newValue(0, 'undergrad_research')">No</label>
+				  	<input type="radio" name="undergrad_research" ng-model="form.undergrad_research" value="No"/>
+				  	<label ng-click="newValue('No', 'undergrad_research')">No</label>
 				</div>
 			</div>
 			<div class="field">
 				<div class="ui radio checkbox">
-				  	<input type="radio" name="undergrad_research" ng-model="form.undergrad_research" value="-1"/>
-				  	<label ng-click="newValue(-1, 'undergrad_research')">Maybe</label>
+				  	<input type="radio" name="undergrad_research" ng-model="form.undergrad_research" value="Maybe"/>
+				  	<label ng-click="newValue('Maybe', 'undergrad_research')">Maybe</label>
 			  	</div>
 			</div>
 		</div>
@@ -150,17 +150,17 @@
 	<div class="field">
 	 	<div class="ui tiny header">Are you planning on pursuing another major in addition to BME?</div>
 		<div class="ui radio checkbox">
-				<input type="radio" name="other_major" ng-model="form.majorHelper" value="Yes"/>
-				<label ng-click="newValue('Yes', 'majorHelper')">Yes</label>
+				<input type="radio" name="other_major" ng-model="form.majorHelper" value="1"/>
+				<label ng-click="newValue(1, 'majorHelper')">Yes</label>
 		</div>
 		<div class="field">
-	  	<div ng-show="form.majorHelper == 'Yes'">
-	      	<input type="text" id="other_major" ng-model="form.other_major" placeholder="Please Specify, if you know">
+	  	<div ng-show="form.majorHelper == 1">
+	      	<input type="text" id="other_major" ng-model="form.other_major" placeholder="Please Specify">
 	    </div>
 		</div>
 		<div class="ui radio checkbox">
-				<input type="radio" name="other_major" ng-model="form.majorHelper" value="No"/>
-				<label ng-click="newValue('No', 'majorHelper')">No</label>
+				<input type="radio" name="other_major" ng-model="form.majorHelper" value="0"/>
+				<label ng-click="newValue(0, 'majorHelper')">No</label>
 		</div>
 		</div>
 
@@ -236,8 +236,9 @@
 	 </div>	
 
 	</div>
+	
 
-      <div id="reg_submit_button" ng-click="addMentee(); go('/homescreen')" class="ui blue submit button">
+      <div id="reg_submit_button" ng-click="addMentee()" class="ui blue submit button"><!-- ; go('/homescreen') -->
 		Submit
 		</div>
     </div>

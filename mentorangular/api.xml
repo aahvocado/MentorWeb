@@ -21,6 +21,11 @@
 			 <action file='db.php'><![CDATA[listMentor();]]></action>
 		</index>
 
+		<get>
+			<description><![CDATA[This is how to retreive informatio on a single mentor]]></description>
+			<action file='db.php'><![CDATA[getMentor($_REST['mentor']);]]></action>
+		</get>
+
 		<post>
 			<description><![CDATA[This is how new mentors submit the registration form to create a new profile]]></description>
 
@@ -53,6 +58,19 @@
 
 		<get>
 			<action file='db.php'><![CDATA[resetUser();]]></action>
+		</get>
+	</command>
+		
+
+		<command id='getMenteeMatch' security='protected'>
+		<description><![CDATA[This simple API welcomes users to the homepage]]></description>
+
+		<index>
+			<action file='db.php'><![CDATA[getMenteeMatch();]]></action>
+		</index>
+
+		<get>
+			<action file='db.php'><![CDATA[getMenteeMatch();]]></action>
 		</get>
 	</command>
 

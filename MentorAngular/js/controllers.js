@@ -6,6 +6,9 @@ appControllers.controller('mainController', ['$scope', '$http', '$location', fun
     //$location.reload(true);
     //$scope.$parent.$apply();
   };
+  $scope.ajaxError = function ajaxError(jqXHR, textStatus, errorThrown){
+    console.log('ajaxError '+textStatus+' '+errorThrown);
+  }
 }]);
 
 appControllers.controller('HeaderController', ['$scope', '$http', '$location', function($scope, $http, $location) {
@@ -138,6 +141,12 @@ appControllers.controller('HomeController', ['$scope', '$http', '$location', fun
   console.log(data);
   $scope.user.name = data["Name"];
   $scope.user.id = data["Id"];
+  $scope.user.mentor = data["Mentor"];
+  $scope.user.mentee = data["Mentee"];
+  $scope.user.admin = data["Admin"];
+  if ($scope.user.mentor == 1 || $scope.user.mentee == 1 || $scope.user.admin ==1) {
+    $scope.user.none = 0;
+  }
 
   if(data["Mentor"]) {
     $scope.user.type.push("Mentor");
@@ -146,17 +155,47 @@ appControllers.controller('HomeController', ['$scope', '$http', '$location', fun
     $scope.user.type.push("Mentee");
 
     // $.ajax({
-    //   url: "api/mentee",
+    //   url: "api/mentor",
     //   dataType: "json",
-    //   async: false,
+    //   async: true,
     //   success: function(result) {
-    //     data = result;
+    //     //data = result;
+    //     $scope.myMentor = result;
+    //     console.log("getMentor");
+    //     console.log($scope.myMentor);
     //   },
-    //   type: 'GET'
+    //   type: 'GET',
+    //   error: $scope.ajaxError
     //   // error: ajaxError
-    // }); 
+    // });
 
+    $.ajax({
+      url: "api/getMenteeMatch",
+      dataType: "json",
+          async: true,
+          success: function(data, textStatus, jqXHR) {
+            console.log("getMenteeMatch");
+            console.log(data);
+            $scope.$apply();
+            //Create The New Rows From Template
+            //$scope.myMentor = data;
+          },
+          error: $scope.ajaxError
+    });
+
+    // $.ajax({
+    //   url: "api/mentor/" + user + "/comment",
+    //   dataType: "json",
+    //       async: false,
+    //       success: function(data, textStatus, jqXHR) {
+    //     console.log(data);
+    //         //Create The New Rows From Template
+    //         $scope.myMentor = data;
+    //       },
+    //       error: ajaxError
+    //});
   }
+
   if(data["Admin"]) {
     $scope.user.type.push("Admin");
   }
@@ -164,6 +203,8 @@ appControllers.controller('HomeController', ['$scope', '$http', '$location', fun
 }]);
 
 appControllers.controller('SearchController', ['$scope', '$http', function($scope, $http) {
+  $scope.refreshHeader();
+
   $('.ui.checkbox').checkbox();
   $('.ui.accordion').accordion();
 
@@ -224,6 +265,8 @@ appControllers.controller('SearchController', ['$scope', '$http', function($scop
 }]);
 
 appControllers.controller('WishListController', ['$scope', '$http', function($scope, $http) {
+  $scope.refreshHeader();
+
   $scope.userData = $scope.$parent.wishList;
   if ($scope.userData) {
     $scope.miniProfileData = $scope.userData[0];

@@ -50,8 +50,38 @@
 	 	 echo json_encode($userInfo);
 	}//end welcome
 
-	function getMentor() {
+	//function reset() {
+		//global $_USER;
 
+		// $dbQuery = sprintf("SELECT first_name, last_name FROM User WHERE username = '%s'",
+		// 										$_USER['uid']);
+		// $result = getDBResultsArray($dbQuery
+		// $dbQuery = sprintf("SELECT first_name, last_name FROM User WHERE username = '%s'",
+		// 										$_USER['uid']);
+		// $result = getDBResultsArray($dbQuery
+		// $dbQuery = sprintf("DELETE FROM Mentee WHERE username = '%s'",
+		// 										$_USER['uid']);
+		// $result = getDBResultsArray($dbQuery);
+		// $dbQuery = sprintf("DELETE FROM User WHERE username = '%s'",
+		// 										$_USER['uid']);
+		// $result = getDBResultsArray($dbQuery);
+	//}
+
+	function resetUser() {
+		global $_USER;
+		$dbQuery = sprintf("DELETE FROM Mentee WHERE username = '%s'",
+												$_USER['uid']);
+		$result = getDBResultsArray($dbQuery);
+		$dbQuery = sprintf("DELETE FROM User WHERE username = '%s'",
+												$_USER['uid']);
+		$result = getDBResultsArray($dbQuery);
+		$dbQuery = sprintf("DELETE FROM Matches WHERE mentee_user = '%s'",
+												$_USER['uid']);
+		$result = getDBResultsArray($dbQuery);
+
+		$userInfo = array('username' => $_USER['uid']);
+		$userInfo['complete'] = "true";
+		echo json_encode($userInfo);
 	}
 
 	function getUserType() {
@@ -245,6 +275,42 @@
 		// echo json_encode($uresult);
 		// echo json_encode($mresult);
 	}
+
+	function getMenteeMatch() {
+		global $_USER;
+		$dbQuery = sprintf("SELECT mentor_user FROM Matches WHERE mentee_user = '%s'", $_USER['uid']); // breadth_track, student_year, career_dev_program, future_plans, Mentor_BME_Academic_Experience,
+		$result = getDBResultsArray($dbQuery);
+		echo json_encode($result);
+	}
+
+	function chooseMentor() {
+		global $_USER;
+		// $dbQuery = sprintf("INSERT INTO Matches FROM Mentee WHERE username = '%s'",
+		// 										$_USER['uid']);
+		$dbQuery = sprintf("INSERT INTO Matches (mentee_user, mentor_user)
+					VALUES ('%s', '%s')", $_USER['uid'], $_POST['mentor']);
+		
+		$result = getDBResultsArray($dbQuery);
+		echo json_encode($_POST);
+	}
+
+
+
+	 function getMentor($mentor) {
+	// 	global $_USER;
+
+		// $dbQuery = sprintf("SELECT first_name, last_name, alias, 
+		// 														email, phone_num, pref_communication, depth_focus, 
+		// 														post_grad_plan, expec_graduation, gender,  
+		// 														expec_graduation 
+		// 														FROM User, Mentor WHERE User.username = '%s' AND Mentor.username = '%s'",
+		// 														$mentor, $mentor); // breadth_track, student_year, career_dev_program, future_plans, Mentor_BME_Academic_Experience,
+		// $result = getDBResultsArray($dbQuery);
+
+		// $checkMentee = sprintf("SELECT first_name, id, mentor_user FROM User, Mentee WHERE User.username = '%s' AND Mentee.username = '%s'", $user, $user);
+		// $isMentee = getDBResultsArray($checkMentee);
+	// 	echo json_encode($_REST);
+	 }
 
 	function addMentor() {
 		echo "addMEntor \n";

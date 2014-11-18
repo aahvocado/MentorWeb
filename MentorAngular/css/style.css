@@ -298,6 +298,11 @@ nav {
 .user-info.extra {
   padding: 0% 8%; }
 
+.user-profile #reset-button {
+  position: absolute;
+  bottom: 20px;
+  right: 20px; }
+
 /*  Loading Partial */
 .loading .loading-message img {
   display: block;

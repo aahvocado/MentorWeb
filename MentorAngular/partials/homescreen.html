@@ -1,12 +1,36 @@
 <section class="homescreen page">
-<div class="homescreen-message ui message" ng-controller="HomeController">
-	  <div class="header">
+<div ng-controller="HomeController">
+	<div ng-if="user.none">
+		<div class="homescreen-message ui message">
+		  <div class="header">
+		    Welcome, {{user.name}}!
+		  </div>
+		  <p class="field">
+		    You do not have a mentor yet. 
+		  </p>
+		</div>
+	</div>
+
+	<div ng-if="user.mentee === 1">
+		<div class="header">
 	    Welcome, {{user.name}}!
 	  </div>
-	  <p class="field">
-	    You do not have a mentor yet. 
-	  </p>
+		<div ng-include src="'partials/user-profile.html'"></div>
+	</div>
 
+	<div ng-if="user.mentor">
+		<div class="header">
+	    Welcome, {{user.name}}!
+	  </div>
+		<div ng-include src="'partials/user-profile.html'"></div>
+	</div>
 
+	<div ng-if="user.admin">
+		<div class="header">
+	    Welcome, {{user.name}}!
+	  </div>
+		<div ng-include src="'partials/user-profile.html'"></div>
+	</div>
 </div>
+
 </section>

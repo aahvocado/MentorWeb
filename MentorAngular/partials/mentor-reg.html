@@ -6,7 +6,7 @@
    		<div>We estimate it will take you 5-10 minutes to complete the rest of this registration, depending on the length of your responses to the open-ended questions.</div><br/>
 		<div>Please fill out your profile information so mentees can find you based on similar interests. Note that all of this informaition is required for you to fill out, but no one will see your contact information, or name, except your mentee when you are matched. </div>
 
-	<form class="ui form segment" ng-model="registerForm" name="registerForm" ng-controller="RegisterMentorController" novalidate>
+	<form class="ui form segment" name="registerForm" ng-controller="RegisterMentorController" >
 	<h2 class="ui inverted black block header">Basic Information</h2><br/>
 	  <div class="two fields">
 	    <div class="field">
@@ -68,29 +68,29 @@
 	    <div class="ui tiny header"><i class="asterisk teal icon"></i>Did you transfer to the BME department from another major at Georgia Tech, or from another institution?</div>
 	    <div class="field">
 	  		<div class="ui radio checkbox">
-			  	<input type="radio" name="transfer" ng-model="form.transfer_from_within" ng-value="1" required/>
+			  	<input type="radio" name="transfer" ng-model="form.transfer_from_within" ng-value="1" ng-required="form.transfer_from_outside != 1"/>
 			  	<label ng-click="newValue(1, 'transfer_from_within')">Yes, from another major at Tech</label>
 			</div>
 			<div class="field">
 		  	<div ng-show="form.transfer_from_within == 1">
 		  		<div class="ui tiny header"<i class="asterisk teal icon"></i>What was your previous major at Georgia Tech?</div>
-		      	<input type="text" id="prev_major" ng-model="form.prev_major" placeholder="Please Specify" ng-model-options="{ updateOn: 'blur' }" ng-required="form.transfer_from_within">
+		      	<input type="text" id="prev_major" ng-model="form.prev_major" placeholder="Please Specify" ng-model-options="{ updateOn: 'blur' }" ng-required="form.transfer_from_within == 1">
 		    </div>
 			</div>
 
 			<div class="ui radio checkbox">
-			  	<input type="radio" name="transfer" ng-model="form.transfer_from_outside" ng-value="1"/>
+			  	<input type="radio" name="transfer" ng-model="form.transfer_from_outside" ng-value="1" ng-required="form.transfer_from_within != 1"/>
 			  	<label ng-click="newValue(1, 'transfer_from_outside')">Yes, from another institution</label>
 			</div>
 			<div class="field">
 		  	<div ng-show="form.transfer_from_outside == 1">
 		  		<div class="ui tiny header"><i class="asterisk teal icon"></i>What is the name of the institution where you were enrolled prior to transferring to Georgia Tech?</div>
-		      	<input type="text" id="institution_name" ng-model="form.institution_name" placeholder="Please Specify" ng-model-options="{ updateOn: 'blur' }" ng-required="form.transfer_from_outside">
+		      	<input type="text" id="institution_name" ng-model="form.institution_name" placeholder="Please Specify" ng-model-options="{ updateOn: 'blur' }" ng-required="form.transfer_from_outside == 1">
 		    </div>
 			</div>
 
 			<div class="ui radio checkbox">
-			  	<input type="radio" name="transfer" ng-model="form.transfer_from_outside" ng-value="0"/>
+			  	<input type="radio" name="transfer" ng-model="form.transfer_from_outside" ng-value="0" ng-required="form.transfer_from_within != 1 && form.transfer_from_outside != 1"/>
 			  	<label ng-click="newValue(0, 'transfer_from_outside')">No</label>
 			</div>
 		</div>
@@ -161,16 +161,16 @@
 	 	<div class="field">
 	 	<div class="ui tiny header"><i class="asterisk teal icon"></i>Are you pursuing another major in addition to BME?</div>
 		<div class="ui radio checkbox">
-				<input type="radio" name="other_major" ng-model="form.majorHelper" value="Yes" required/>
+				<input type="radio" name="other_major" ng-model="form.majorHelper" value="Yes" ng-required="form.majorHelper != 'No'"/>
 				<label ng-click="newValue('Yes', 'majorHelper')">Yes</label>
 		</div>
 		<div class="field">
 	  	<div ng-show="form.majorHelper == 'Yes'">
-	      	<input type="text" id="other_major" ng-model="form.other_major" placeholder="Please Specify" ng-required="!form.other_major">
+	      	<input type="text" id="other_major" ng-model="form.other_major" placeholder="Please Specify" ng-required="form.majorHelper == 'Yes'">
 	    </div>
 		</div>
 		<div class="ui radio checkbox">
-				<input type="radio" name="other_major" ng-model="form.majorHelper" value="No"/>
+				<input type="radio" name="other_major" ng-model="form.majorHelper" value="No" ng-required="form.majorHelper != 'Yes'"/>
 				<label ng-click="newValue('No', 'majorHelper')">No</label>
 		</div>
 		</div>
@@ -205,18 +205,18 @@
 	    <div class="ui tiny header"><i class="asterisk teal icon"></i>Have you worked as an undergraduate researcher (other than for the research option, which was asked about earlier)?</div>
 	    <div class="field">
 	  			<div class="ui radio checkbox">
-			  	<input type="radio" name="undergrad_research" ng-model="form.undergrad_research" ng-value="true" required/>
-			  	<label ng-click="newValue(true, 'undergrad_research')">Yes</label>
+			  	<input type="radio" name="undergrad_research" ng-model="form.undergrad_research" ng-value="1" required/>
+			  	<label ng-click="newValue(1, 'undergrad_research')">Yes</label>
 				</div>
 				<div class="field">
-		  		<div ng-show="form.undergrad_research == true">
+		  		<div ng-show="form.undergrad_research == 1">
 		  		<div class="ui tiny header">What lab(s) and for how many semesters have you worked?</div>
-		      	<input type="text" id="undergrad_research_desc" ng-model="form.undergrad_research_desc" placeholder="Research Lab 1 for 1 Semesters, Research Lab 2 for 2 Semesters" ng-model-options="{ updateOn: 'blur' }" ng-required="form.undergrad_research">
+		      	<input type="text" id="undergrad_research_desc" ng-model="form.undergrad_research_desc" placeholder="Research Lab 1 for 1 Semesters, Research Lab 2 for 2 Semesters" ng-model-options="{ updateOn: 'blur' }" ng-required="form.undergrad_research == 1">
 		    	</div>
 				</div>
 				<div class="ui radio checkbox">
-			  	<input type="radio" name="undergrad_research" ng-model="form.undergrad_research" ng-value="false"/>
-			  	<label ng-click="newValue(false, 'undergrad_research')">No</label>
+			  	<input type="radio" name="undergrad_research" ng-model="form.undergrad_research" ng-value="0"/>
+			  	<label ng-click="newValue(0, 'undergrad_research')">No</label>
 				</div>
 		</div>
 	  </div>
@@ -316,7 +316,7 @@
 
 	 <div class="field">
 	 	<div class="ui tiny header">Have you participated in any of the following career development programs? Check all that apply.</div>
-	 	<div class="field" ng-repeat="opt in carrerDevPrograms">
+	 	<div class="field" ng-repeat="opt in careerDevPrograms">
 	  			<div class="ui checkbox">
 	  				<input type="checkbox" name="selectedCareerDevPrograms[]" value="{{opt}}" ng-checked="form.career_dev_program.indexOf(opt) > -1">
 	  				<label ng-click="toggleSelection(opt, 'career_dev_program')">{{opt.name}}</label>
@@ -331,38 +331,17 @@
       	<input type="text" id="personal_hobby" ng-model="form.personal_hobby" placeholder="Please Specify" ng-model-options="{ updateOn: 'blur' }">
 	 </div>
 	
-	<!-- </div> -->
 
-	<div class="ui error message">{{registerForm.$invalid}}</div>
+	<!-- <div class="ui error message">{{registerForm.$invalid}}</div> -->
 	
-	<div class="ui inverted dimmer" ng-class="{true: 'active', false: 'disabled'}[loading]">
+	<!-- <div class="ui inverted dimmer" ng-class="{true: 'active', false: 'disabled'}[loading]">
 	  <div class="ui text loader">Registering you now :)</div>
+	</div> -->
+	<button id="reg_submit_button" ng-if="!showNext" type="submit" ng-click="addMentor(registerForm.$valid)" class="ui blue button">Submit</button><!--  type="submit"go('/mentorAlias' -->
+	<div ng-if="showNext" class="ui field floating success message">
+	  <i class="close icon"></i>
+	    Congratulations, your profile information has successfully been submitted! Don't worry if there's something you want to change; you can always go back in and edit your profile.
 	</div>
-	<button id="reg_submit_button" ng-submit="addMentor()" class="ui blue button">Submit</button><!-- ng-click="register()"; go('/mentorAlias' -->
+	<button id="next_page" ng-if="showNext" ng-click="go('/mentorAlias')" class="ui blue button"> Next</button>
 	</form>
-
-  <script>
-    var addToList = function(number) {
-      var s=angular.element('#isotopeContainer').scope();
-      s.count = s.count || 0;
-      var newItem={name:'add', number:number || s.count--, date: Date.now(), class:'purple'};
-      s.$apply(s.xList.push(newItem));
-    };
-    var addLastItem = function() {
-      s.lastNumber = s.lastNumber || [];
-      addToList(s.lastNumber.shift());
-    };
-    var removeItem = function(elem) {
-      if (!Array.prototype.filter) return;
-      var s=angular.element('#isotopeContainer').scope();
-      var number = $(elem).find(".number").attr("number");
-      var items = s.xList.filter(function( obj ) {
-        return +obj.number != +number;
-      });
-      s.lastNumber = s.lastNumber || [];
-      s.lastNumber.unshift(number);
-      s.$apply(s.xList = items);
-    };
-  </script>
-
 </section>

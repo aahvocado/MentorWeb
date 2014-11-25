@@ -1076,33 +1076,23 @@ appControllers.controller('RegisterMentorController', ['$scope', '$http', '$filt
 }]);
 
 appControllers.controller('MentorAliasController', ['$scope', '$http', '$location', function($scope, $http, $location) {
-   
+   $scope.aliasNames;
+   var color, adjective, animal, alias;
   $scope.generate = function() {
     $scope.generateClicked = true;
-    $.ajax({
-        type: "GET",
-        url: "aliasNames.csv",
-        dataType: "text",
-        success: function(data) {processData(data);}
-     });
+    $http.get('js/aliasNames.json').success (function(data){
+        $scope.aliasNames = data;
+        console.log(Math.floor(Math.random()*$scope.aliasNames[0].color.length));
+        color = $scope.aliasNames[0].color[Math.floor(Math.random()*$scope.aliasNames[0].color.length)].name;
+        adjective = $scope.aliasNames[1].adjective[Math.floor(Math.random()*$scope.aliasNames[1].adjective.length)];
+        animal = $scope.aliasNames[2].animal[Math.floor(Math.random()*$scope.aliasNames[2].animal.length)];
+    });
+    alias = color + " " + adjective + " " + animal;
+    
+    if (listAliasNames) 
+    
   }
 
-function processData(allText) {
-    var record_num = 5;  // or however many elements there are in each row
-    var allTextLines = allText.split(/\r\n|\n/);
-    var entries = allTextLines[0].split(',');
-    var lines = [];
-
-    var headings = entries.splice(0,record_num);
-    while (entries.length>0) {
-        var tarr = [];
-        for (var j=0; j<record_num; j++) {
-            tarr.push(headings[j]+":"+entries.shift());
-        }
-        lines.push(tarr);
-    }
-    // alert(lines);
-  }
 
   $scope.addAliasName = function() {
     var name = $scope.name.one + $scope.name.two + $scope.name.three;

@@ -1,7 +1,52 @@
-[
-{"color": [{"hex": "#fff", 
-			"name": "Magenta"},
-			{}], 
+{"color": [{
+				"hex": "#8B008B", 
+				"name": "Magenta"
+			}, {
+				"hex": "#DA614E", 
+				"name": "Auburn"
+			}, {
+				"hex": "#87CEFA", 
+				"name": "Aqua"
+			}, {
+				"hex": "#5B9C64",
+				"name": "Emerald"
+			}, {
+				"hex": "#FFDF00",
+				"name": "Golden"
+			}, {
+				"hex": "#9576B5",
+				"name": "Purple"
+			}, {
+				"hex": "#FFA07A",
+				"name": "Coral"
+			}, {
+				"hex": "#CCCCFF",
+				"name": "Lilac"
+			}, {
+				"hex": "#3A53A4",
+				"name": "Navy"
+			}, {
+				"hex": "#3AB09E",
+				"name": "Teal"
+			}, {
+				"hex": "#DE6FA1",
+				"name": "Pink"
+			}, {
+				"hex": "#FF7E00",
+				"name": "Orange"
+			}, {
+				"hex": "#B03060",
+				"name": "Maroon"
+			}, {
+				"hex": "#4F7942",
+				"name": "Forest"
+			}, {
+				"hex": "#191970",
+				"name": "Midnight"
+			}, {
+				"hex": "#C0C0C0",
+				"name": "Silver"
+			}] 
 }, 
 {"adjective": ["Academic",
 				"Accountable",
@@ -23,7 +68,7 @@
 				"Kind",
 				"Lively",
 				"Objective",
-				"Orgnate",
+				"Ornate",
 				"Peaceful",
 				"Perfect",
 				"Righteous",
@@ -64,41 +109,6 @@
 			"Unicorn",
 			"Wolf",
 			"Wombat"]
-}, ]}]
+}
 
 
-color
-	hex
-	name
-adjective
-	name
-animal
-	name
-
-#8B008B,Magenta,Brilliant,
-#DA614E,Auburn,Brave,
-#87CEFA,Aqua,Bright,
-#5B9C64,Emerald,Calm,
-#FFDF00,Golden,Careful,
-#9576B5,Purple,Charming,
-#FFA07A,Coral,Cheerful,
-#CCCCFF,Lilac,Delightful,
-#3A53A4,Navy,Fantastic,
-#3AB09E,Teal,Righteous,
-#DE6FA1,Pink,Graceful,
-#FF7E00,Orange,Jolly,
-#B03060,Maroon,Kind,
-#4F7942,Forest,Lively,
-#191970,Midnight,Wise,
-#C0C0C0,Silver,Witty,
-,,Studious,
-,,Accountable,
-,,Academic,
-,,Perfect,
-,,Peaceful,
-,,Assertive,
-,,Clever,
-,,Genuine,
-,,Genteel,
-,,Objective,
-,,Ornate,

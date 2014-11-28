@@ -31,6 +31,12 @@
 
 			<action file='db.php'><![CDATA[addMentor();]]></action>
 		</post>
+
+		<put>
+			<description><![CDATA[This is how you can update a mentor to put in their alias]]></description>
+			
+			<action file='db.php'><![CDATA[updateMentor();]]></action>  <!--right now will only do alias... inside () was previously: $_REST['comment'],$_POST['commentText'] -->
+		</put>
 	</command>
 
 	<command id='mentee' security='protected'>
@@ -100,14 +106,14 @@
 			
 			<action file='db.php'><![CDATA[getUserType();]]></action>
 		</index>
-		<command id='comment' security='protected'>
+		<!-- <command id='comment' security='protected'>
 			<index>
 				<action file='db.php'><![CDATA[listUserComments($_REST['user']);]]></action>
 			</index>
 			<get>
 				<action file='db.php'><![CDATA[getUserComment($_REST['user'], $_REST['user/comment']);]]></action>
 			</get>
-		</command>
+		</command> -->
 
 <!-- 		<command id='gen_faux_users' security='protected'>
 			<post>

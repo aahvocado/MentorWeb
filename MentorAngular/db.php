@@ -500,6 +500,25 @@
 		
 	}//end addMentor
 
+	function listAliasNames($alias) {
+		$countHasName = sprintf("SELECT username FROM Mentor WHERE Mentor.alias = '%s'", $alias);
+		$nameResult = getDBResultRecord($countHasName);
+		if ($nameResult) {
+			echo "name already exists";
+		} else {
+			echo "name does not already exist, ok to show this alias";
+		}
+		header("Content-type: application/json");
+		echo json_encode($nameResult);
+	}
+
+	function inputAliasName($aliasName) {
+		$query = sprintf("UPDATE MENTOR SET alias = '%s'", $aliasName);
+		$queryRestult = getDBResultInserted($query,'aliasName');
+		header("Content-type: application/json");
+		echo json_encode($queryResult);
+	}
+
 	function genFauxUsers($form) {
 		global $_USER;
 

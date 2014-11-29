@@ -22,10 +22,15 @@ var appControllers = angular.module('appControllers', ['ngAnimate', 'ngResource'
 // });
 
 appControllers.controller('mainController', ['$scope', '$http', '$location', function($scope, $http, $location) {
-  $scope.go = function(path) {
+   $scope.go = function(path) {
     $location.path(path);
-    $location.reload(true);
+    //$location.reload(true);
+    //$scope.$parent.$apply();
   };
+  $scope.ajaxError = function ajaxError(jqXHR, textStatus, errorThrown){
+    console.log('ajaxError '+textStatus+' '+errorThrown);
+  }
+  console.log("Main Controller Called");
 }]);
 
 appControllers.controller('HeaderController', ['$scope', '$http', '$location', function($scope, $http, $location) {
@@ -1077,27 +1082,38 @@ appControllers.controller('RegisterMentorController', ['$scope', '$http', '$filt
 
 appControllers.controller('MentorAliasController', ['$scope', '$http', '$location', function($scope, $http, $location) {
    $scope.aliasNames;
-   var color, adjective, animal, alias;
+   var color;
+   var adjective;
+   var animal; 
+   var alias;
   $scope.generate = function() {
     $scope.generateClicked = true;
-    $http.get('js/aliasNames.json').success (function(data){
-        $scope.aliasNames = data;
-        console.log(Math.floor(Math.random()*$scope.aliasNames[0].color.length));
-        color = $scope.aliasNames[0].color[Math.floor(Math.random()*$scope.aliasNames[0].color.length)].name;
-        adjective = $scope.aliasNames[1].adjective[Math.floor(Math.random()*$scope.aliasNames[1].adjective.length)];
-        animal = $scope.aliasNames[2].animal[Math.floor(Math.random()*$scope.aliasNames[2].animal.length)];
-    });
-    alias = color + " " + adjective + " " + animal;
+    var validName = false;
+    // while (!validName) {
+      $http.get('aliasNames.json').success(function(data){
+           $scope.aliasNames = data;
+          // console.log(Math.floor(Math.random()*$scope.aliasNames[0].color.length));
+          $scope.color = $scope.aliasNames[0].color[Math.floor(Math.random()*$scope.aliasNames[0].color.length)].name;
+          $scope.adjective = $scope.aliasNames[1].adjective[Math.floor(Math.random() * $scope.aliasNames[1].adjective.length)];
+          $scope.animal = $scope.aliasNames[2].animal[Math.floor(Math.random() * $scope.aliasNames[2].animal.length)];
+          alias = $scope.color + " " + $scope.adjective + " " + $scope.animal;
+          console.log(alias);
+          // $http.get('api/alias/'+ alias).success( function(data) {
+          //   console.log("there is an existing name");
+          // })
+          // .error( function(data) {
+          //   console.log("there's no existing name");
+          // });
+      });
     
-    if (listAliasNames) 
-    
+      // if (namesWithAlias.contains(alias));
+    // } 
   }
 
-
   $scope.addAliasName = function() {
-    var name = $scope.name.one + $scope.name.two + $scope.name.three;
+    var name = $scope.color + " " + $scope.adjective + " " + $scope.animal;
     $.ajax({
-          url: "api/mentor",
+          url: "api/alias/" + name,
           dataType: "json",
               async: false,
           data: {'alias': name

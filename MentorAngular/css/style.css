@@ -491,52 +491,52 @@ nav {
   padding: 5px;
   margin-bottom: 20px; }
 
-.kindling.auburn {
+.kindling.Auburn {
   background-color: #ce6453; }
 
-.kindling.aqua {
+.kindling.Aqua {
   background-color: #89c1df; }
 
-.kindling.golden {
+.kindling.Golden {
   background-color: #d3a02f; }
 
-.kindling.rose {
+.kindling.Rose {
   background-color: #e06e77; }
 
-.kindling.purple {
+.kindling.Purple {
   background-color: #9177ac; }
 
-.kindling.emerald {
+.kindling.Emerald {
   background-color: #5db376; }
 
-.kindling.orange {
+.kindling.Orange {
   background-color: #e27c2c; }
 
-.kindling.navy {
+.kindling.Navy {
   background-color: #41589d; }
 
-.kindling.teal {
+.kindling.Teal {
   background-color: #39a898; }
 
-.kindling.pink {
+.kindling.Pink {
   background-color: #cf6f9b; }
 
-.kindling.maroon {
+.kindling.Maroon {
   background-color: #a83863; }
 
-.kindling.forest {
+.kindling.Forest {
   background-color: #54794a; }
 
-.kindling.salmon {
+.kindling.Salmon {
   background-color: #e49879; }
 
-.kindling.magenta {
+.kindling.Magenta {
   background-color: #843286; }
 
-.kindling.midnight {
+.kindling.Midnight {
   background-color: #34316c; }
 
-.kindling.silver {
+.kindling.Silver {
   background-color: #858789; }
 
 .page .view .kindling {
@@ -673,6 +673,9 @@ nav {
 .wishlist .profile-link {
   margin: 10px 0 20px 0; }
 
+#mentor-note.visible .message {
+  display: block; }
+
 #mentor-note .message {
   margin: 0 auto;
   background-color: #fefefe;
@@ -680,7 +683,8 @@ nav {
   height: 250px;
   padding: 1em;
   overflow: hidden;
-  text-align: left; }
+  text-align: left;
+  display: none; }
 
 #mentor-note .title {
   font-size: 20px;

@@ -39,6 +39,16 @@
 		</put>
 	</command>
 
+	<command id='listMentors' security='protected'>
+		<description><![CDATA[This simple API welcomes users to the homepage]]></description>
+
+		<index>
+			<description><![CDATA[Return a list of mentors]]></description>
+
+			 <action file='db.php'><![CDATA[listMentors();]]></action>
+		</index>
+	</command>
+
 	<command id='mentee' security='protected'>
 		<description><![CDATA[This simple API welcomes users to the homepage]]></description>
 
@@ -92,10 +102,26 @@
 		</post>
 	</command>
 
-	<command id='gen_faux_users' security='protected'>
+	<command id='genFauxUsers' security='protected'>
 		<post>
 			<action file='db.php'><![CDATA[genFauxUsers($_POST['userData']);]]></action>
 		</post>
+	</command>
+
+	<command id='genFauxMentors' security='protected'>
+		<post>
+			<action file='db.php'><![CDATA[genFauxMentors();]]></action>
+		</post>
+	</command>
+
+	<command id='deleteMentors' security='protected'>
+		<index>
+			<action file='db.php'><![CDATA[deleteMentors();]]></action>
+		</index>
+
+		<put>
+			<action file='db.php'><![CDATA[deleteMentors();]]></action>
+		</put>
 	</command>
 
 	<command id='user' security='protected'>

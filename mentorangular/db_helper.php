@@ -113,6 +113,10 @@
             }
         }
     }
+
+    function deleteDBEntries($dbQuery,$dieOnError=True){
+        $dbResults=mysql_query($dbQuery);
+    }
     
     function beginDBTransaction(){
         mysql_query("START TRANSACTION");

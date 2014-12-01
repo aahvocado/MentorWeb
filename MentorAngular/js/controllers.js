@@ -28,7 +28,7 @@ appControllers.controller('mainController', ['$scope', '$http', '$location', fun
     //$scope.$parent.$apply();
   };
   $scope.ajaxError = function ajaxError(jqXHR, textStatus, errorThrown){
-    console.log('ajaxError '+textStatus+' '+errorThrown);
+    console.log('ajaxError '+jqXHR+' '+textStatus+' '+errorThrown);
   }
 }]);
 
@@ -231,18 +231,38 @@ appControllers.controller('SearchController', ['$scope', '$http', function($scop
 
   $scope.$parent.wishList = ($scope.$parent.wishList || []);
 
-  $http.get('json-gen/users120.json').success(function(data) {
-    $scope.userData = data;
-    $scope.miniProfileData = $scope.userData[0];
-    $scope.wishButton = {};
-    $scope.renderButton($scope.miniProfileData.favorited);
-    $scope.refreshUI();
-  }).
-  error(function(data, status, headers, config) {
-    // called asynchronously if an error occurs
-    // or server returns response with an error status.
-    console.log("Error getting userData");
-  });
+  // $http.get('json-gen/users120.json').success(function(data) {
+  //   $scope.userData = data;
+  //   $scope.miniProfileData = $scope.userData[0];
+  //   $scope.wishButton = {};
+  //   $scope.renderButton($scope.miniProfileData.favorited);
+  //   $scope.refreshUI();
+  // }).
+  // error(function(data, status, headers, config) {
+  //   // called asynchronously if an error occurs
+  //   // or server returns response with an error status.
+  //   console.log("Error getting userData");
+  // });
+
+  $.ajax({
+    url: "api/listMentors",
+    dataType: "json",
+      async: true,
+      success: function(data, textStatus, jqXHR) {
+        console.log("listMentors");
+        console.log(data);
+        $scope.userData = data;
+        $scope.miniProfileData = $scope.userData[0];
+        $scope.wishButton = {};
+        $scope.renderButton($scope.miniProfileData.favorited);
+        $scope.refreshUI();
+        //Create The New Rows From Template
+        //$scope.myMentor = data;
+        $scope.$apply();
+
+      },
+      error: $scope.ajaxError
+    });
 
   $scope.miniProfileSet = function(user) {
     //console.log("yo ");
@@ -264,7 +284,7 @@ appControllers.controller('SearchController', ['$scope', '$http', function($scop
     $scope.userData.forEach(function(element) {
       var user = element;
       $scope.$parent.wishList.forEach(function(element) {
-        if (user.uid === element.uid) { //JSON.stringify(user) === JSON.stringify(element)
+        if (user.username === element.username) { //JSON.stringify(user) === JSON.stringify(element)
           user.favorited = "favorited";
         }
       });
@@ -303,10 +323,10 @@ appControllers.controller('WishListController', ['$scope', '$http', function($sc
     $scope.miniProfileData.favorited = "";
     //$scope.userData.splice($.inArray($scope.miniProfileData, $scope.userData), 1 );
     $.each($scope.userData, function(i){
-      if($scope.userData[i].uid === $scope.miniProfileData.uid) {
+      if($scope.userData[i].username === $scope.miniProfileData.username) {
         console.log("splice");
-        console.log($scope.userData[i].uid);
-        console.log($scope.miniProfileData.uid);
+        console.log($scope.userData[i].username);
+        console.log($scope.miniProfileData.username);
         $scope.userData.splice(i,1);
         return false;
       }
@@ -323,7 +343,7 @@ appControllers.controller('WishListController', ['$scope', '$http', function($sc
       url: "api/chooseMentor",
       dataType: "json",
           async: false,
-      data: {'mentor': 'yyao3'}, //$scope.$parent.myMentor
+      data: {'mentor': $scope.myMentor.username}, //$scope.$parent.myMentor
       type: 'POST'
       // error: ajaxError
     }); 
@@ -335,7 +355,7 @@ appControllers.controller('WishListController', ['$scope', '$http', function($sc
     $scope.userData.forEach(function(element) {
       var user = element;
       $scope.$parent.wishList.forEach(function(element) {
-        if (user.uid === element.uid) { //JSON.stringify(user) === JSON.stringify(element)
+        if (user.username === element.username) { //JSON.stringify(user) === JSON.stringify(element)
           user.favorited = "favorited";
         }
       });
@@ -1148,7 +1168,7 @@ appControllers.controller('MentorAliasController', ['$scope', '$http', '$locatio
     });
     alias = color + " " + adjective + " " + animal;
     
-    if (listAliasNames) 
+    //if (listAliasNames) 
     
   }
 
@@ -1168,31 +1188,55 @@ appControllers.controller('MentorAliasController', ['$scope', '$http', '$locatio
   
 }]);
 
-appControllers.controller('ListController', ['$scope', '$http', function($scope, $http) {
-  $http.get('js/data.json').success(function(data) {
-    $scope.apps = data;
-    $scope.appOrder = 'name';
+appControllers.controller('DevController', ['$scope', '$http', function($scope, $http) {
+  $http.get('json-gen/mentors25.json').success(function(data) {
+    $scope.mentors = data;
+    console.log($scope.mentors);
+  }).
+  error(function(data, status, headers, config) {
+    // called asynchronously if an error occurs
+    // or server returns response with an error status.
+    console.log("Error getting userData");
   });
-}]);
+  
+  $scope.postMentors = function() {
+    console.log("length: " + $scope.mentors.length);
+    $.ajax({
+      url: "api/genFauxMentors",
+      dataType: "json",
+      async: true,
+      data: {'mentors': $scope.mentors}, //$scope.mentors
+      type: 'POST',
+      success: function(data, textStatus, jqXHR) {
+        console.log("Posted Mentors");
+      }
+      //error: $scope.ajaxError
+    });
+  }
+$scope.deleteMentors = function() {
+  $.ajax({
+      url: "api/deleteMentors",
+      async: true,
+      type: 'PUT',
+      success: function(data, textStatus, jqXHR) {
+        console.log("Deleted Mentors");
+      }
+      //error: $scope.ajaxError
+    });
+}
+$scope.reset = function() {
+    $.ajax({
+      url: "api/resetUser",
+      dataType: "json",
+      async: true,
+      success: function(result) {
+        //data = result;
+      },
+      type: 'GET'
+      // error: ajaxError
+    }); 
+  }
 
-appControllers.controller('DetailsController', ['$scope', '$http','$routeParams', function($scope, $http, $routeParams) {
-  $http.get('js/data.json').success(function(data) {
-    $scope.apps = data;
-    $scope.whichItem = $routeParams.itemId;
-
-    if ($routeParams.itemId > 0) {
-      $scope.prevItem = Number($routeParams.itemId)-1;
-    } else {
-      $scope.prevItem = $scope.apps.length-1;
-    }
-
-    if ($routeParams.itemId < $scope.apps.length-1) {
-      $scope.nextItem = Number($routeParams.itemId)+1;
-    } else {
-      $scope.nextItem = 0;
-    }
-
-  });
 }]);
 
 

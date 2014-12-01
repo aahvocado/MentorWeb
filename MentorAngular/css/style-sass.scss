@@ -671,22 +671,22 @@ nav {
 }
 #container{border:1px solid #666;padding:5px;margin-bottom:20px}
 
-.kindling.auburn {background-color: $auburn;}
-.kindling.aqua {background-color: $aqua;}
-.kindling.golden {background-color: $golden;}
-.kindling.rose {background-color: $rose;}
-.kindling.purple {background-color: $purple;}
-.kindling.emerald {background-color: $emerald;}
-.kindling.orange {background-color: $orange;}
-.kindling.navy {background-color: $navy;}
-.kindling.teal {background-color: $teal;}
-.kindling.pink {background-color: $pink;}
-.kindling.maroon {background-color: $maroon;}
-.kindling.forest {background-color: $forest;}
-.kindling.salmon {background-color: $salmon;}
-.kindling.magenta {background-color: $magenta;}
-.kindling.midnight {background-color: $midnight;}
-.kindling.silver {background-color: $silver;}
+.kindling.Auburn {background-color: $auburn;}
+.kindling.Aqua {background-color: $aqua;}
+.kindling.Golden {background-color: $golden;}
+.kindling.Rose {background-color: $rose;}
+.kindling.Purple {background-color: $purple;}
+.kindling.Emerald {background-color: $emerald;}
+.kindling.Orange {background-color: $orange;}
+.kindling.Navy {background-color: $navy;}
+.kindling.Teal {background-color: $teal;}
+.kindling.Pink {background-color: $pink;}
+.kindling.Maroon {background-color: $maroon;}
+.kindling.Forest {background-color: $forest;}
+.kindling.Salmon {background-color: $salmon;}
+.kindling.Magenta {background-color: $magenta;}
+.kindling.Midnight {background-color: $midnight;}
+.kindling.Silver {background-color: $silver;}
 
 .page .view .kindling {
   text-decoration: none;
@@ -827,6 +827,9 @@ nav {
 .wishlist .profile-link {
   margin: 10px 0 20px 0;
 }
+#mentor-note.visible .message {
+  display: block;
+}
 #mentor-note .message {
   @extend %vertical-align;
   margin: 0 auto;
@@ -836,6 +839,7 @@ nav {
   padding: 1em;
   overflow: hidden;
   text-align: left;
+  display: none;
 }
 #mentor-note .title {
   font-size: $textTitleMedium;

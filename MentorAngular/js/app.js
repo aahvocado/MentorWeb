@@ -54,6 +54,10 @@ myApp.config(['$routeProvider', function($routeProvider) {
     templateUrl: 'partials/loading.html',
     controller: 'LoadingController'
   }).
+  when('/dev', {
+    templateUrl: 'partials/dev.html',
+    controller: 'DevController'
+  }).
   otherwise({
     redirectTo: '/loading'
   });

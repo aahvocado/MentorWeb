@@ -69,6 +69,12 @@
 
 	function resetUser() {
 		global $_USER;
+		$dbQuery = sprintf("DELETE FROM Mentor WHERE username = '%s'",
+												$_USER['uid']);
+		$result = getDBResultsArray($dbQuery);
+		$dbQuery = sprintf("DELETE FROM Admin WHERE username = '%s'",
+												$_USER['uid']);
+		$result = getDBResultsArray($dbQuery);
 		$dbQuery = sprintf("DELETE FROM Mentee WHERE username = '%s'",
 												$_USER['uid']);
 		$result = getDBResultsArray($dbQuery);
@@ -281,13 +287,14 @@
 	}
 
 	function chooseMentor() {
+		echo var_dump($_POST);
 		global $_USER;
 		// $dbQuery = sprintf("INSERT INTO Matches FROM Mentee WHERE username = '%s'",
 		// 										$_USER['uid']);
 		$dbQuery = sprintf("INSERT INTO Matches (mentee_user, mentor_user)
 					VALUES ('%s', '%s')", $_USER['uid'], $_POST['mentor']);
 		
-		$result = getDBResultsArray($dbQuery);
+		$result = getDBRegInserted($dbQuery);
 		echo json_encode($_POST);
 	}
 
@@ -309,7 +316,291 @@
 	// 	echo json_encode($_REST);
 	 }
 
-	function addMentor() {
+	 function listMentors() {
+		$dbQuery = sprintf("SELECT * FROM USER
+													JOIN Mentor
+														ON  USER.username = Mentor.username
+													JOIN Mentor_Breadth_Track
+														ON Mentor_Breadth_Track.username = Mentor.username
+													JOIN Mentor_BME_Organization
+														ON Mentor_BME_Organization.username = Mentor.username
+													JOIN Mentor_Tutor_Teacher_Program
+														ON Mentor_Tutor_Teacher_Program.username = Mentor.username
+													JOIN Mentor_BME_Academic_Experience
+														ON Mentor_BME_Academic_Experience.username = Mentor.username
+													JOIN Mentor_International_Experience
+														ON Mentor_International_Experience.username = Mentor.username
+													JOIN Mentor_Career_Dev_Program
+														ON Mentor_Career_Dev_Program.username = Mentor.username
+													WHERE Mentor.username = USER.username",
+																$mentor, $mentor); // breadth_track, student_year, career_dev_program, future_plans, Mentor_BME_Academic_Experience,
+		$result = getDBResultsArray($dbQuery);
+		echo json_encode($result);
+	}
+
+	function addMentorLoop($mentor) {
+		echo "addMEntor in PHP \n";
+		global $_USER;	
+		$user = $mentor['username'];
+		$fname = mysql_real_escape_string($mentor['first_name']);//$data->fname);
+		$lname = mysql_real_escape_string($mentor['last_name']);
+		$alias = mysql_real_escape_string($mentor['alias']);
+		$phone = mysql_real_escape_string($mentor['phone']);
+		$email = mysql_real_escape_string($mentor['email']);
+		$pref_communication = mysql_real_escape_string($mentor['pref_communication']);
+		$gender = mysql_real_escape_string($mentor['gender']);
+		$depth_focus = mysql_real_escape_string($mentor['depth_focus']);
+		$depth_focus_other = mysql_real_escape_string($mentor['depth_focus_other']); 
+		$live_before_tech = mysql_real_escape_string($mentor['live_before_tech']);
+		$live_on_campus = $mentor['live_on_campus']; //is number 0 or 1 posting?
+		$first_gen_college_student = $mentor['first_gen_college_student'];
+		$transfer_from_outside = $mentor['transfer_from_outside'];
+		$institution_name = mysql_real_escape_string($mentor['institution_name']);
+		$transfer_from_within = $mentor['transfer_from_within'];
+		$prev_major = mysql_real_escape_string($mentor['prev_major']);
+		$international_student = $mentor['international_student'];
+		$home_country =  mysql_real_escape_string($mentor['home_country']);
+		$expec_graduation = mysql_real_escape_string($mentor['expec_graduation']);
+		$other_major =  mysql_real_escape_string($mentor['other_major']);
+	
+		$ethnicity1 = null;
+		$ethnicity2 = null; 
+		$ethnicity3 = null;
+		$ethnicity4 = null;
+		$ethnicity5 - null;
+		$ethnicity = $mentor['ethnicity'];
+		for ($i=1; $i <= count($ethnicity) ; $i++) {
+			${"ethnicity" . $i}  = $ethnicity[$i-1]['name'];
+		}
+
+		$honor_program1 = null;
+		$honor_program2 = null;
+		$honor_program3 = null;
+		$hProgs = $mentor['honor_program'];
+		for ($i=1; $i <= count($hProgs); $i++) {
+			${"honor_program" . $i}  = $hProgs[$i-1]['name']; 
+		}		
+
+		$undergrad_research = $mentor['undergrad_research'];
+		if ($mentor['undergrad_research']) {
+			$undergrad_research_desc = $mentor['undergrad_research_desc'];
+		} else {
+			$undergrad_research_desc = null;
+		}
+
+		if ($mentor['other_organization1']) {
+			$other_organization1 = $mentor['other_organization1'];
+		} else {
+			$other_organization1 = null;
+		}
+		if ($mentor['other_organization2']) {
+			$other_organization2 = $mentor['other_organization2'];
+		} else {
+			$other_organization2 = null;
+		}
+		if ($mentor['other_organization3']) {
+			$other_organization3 = $mentor['other_organization3'];
+		} else {
+			$other_organization3 = null;
+		}
+
+		$bme_org1 = null;
+		$bme_org2 = null;
+		$bme_org3 = null;
+		$bme_org4 = null;
+		$bme_org5 = null;
+		$bme_org6 = null;
+		$bme_org7 = null;
+		echo var_dump($mentor['bme_organization']);
+		$bmeOrgs = $mentor['bme_organization'];
+		for ($i=1; $i <= count($bmeOrgs); $i++) {
+			//echo $bmeOrgs[$i-1]['name'];
+			${"bme_org" . $i}  = $bmeOrgs[$i-1]['name']; //Json of all the organizations $mentor['bme_organization']
+		}
+		if ($mentor['bme_org_other']) {
+			$bme_org_other = mysql_real_escape_string($mentor['bme_org_other']);
+		} else {
+			$bme_org_other = null;
+		}
+
+		$mm_org1 = null;
+		$mm_org2 = null;
+		$mm_org3 = null;
+		$mm_org4 = null;
+		$mm_org5 = null;
+		$mmOrgs = $mentor['mm_org'];
+		for ($i=1; $i <= count($mmOrgs); $i++) {
+			${"mm_org" . $i}  = $mmOrgs[$i-1]['name']; //Json of all the organizations $mentor['bme_organization']
+		} 
+		if ($mentor['mm_org_other']) {
+			$mm_org_other = mysql_real_escape_string($mentor['mm_org_other']);
+		} else {
+			$mm_org_other = null;
+		}
+
+		$tutor_teacher_program1 = null;
+		$tutor_teacher_program2 = null;
+		$tutor_teacher_program3 = null;
+		$tutor_teacher_program4 = null;
+		$tutor_teacher_program5 = null;
+		$tutor_teacher_program6 = null;
+		$ttProg = $mentor['tutor_teacher_program'];
+		for ($i=1; $i <= count($ttProg); $i++) {
+			${"tutor_teacher_program" . $i}  = $ttProg[$i-1]['name']; 
+		}
+		if ($mentor['tutor_teacher_program_other']) {
+			$tutor_teacher_program_other = mysql_real_escape_string($mentor['tutor_teacher_program_other']);
+		} else {
+			$tutor_teacher_program_other = null;
+		}
+
+		$bme_academ_exp1 = null;
+		$bme_academ_exp2 = null;
+		$bme_academ_exp3 = null;
+		$bme_academ_exp4 = null;
+		$bmeExp = $mentor['bme_academ_exp'];
+		for ($i=1; $i <= count($bmeExp); $i++) {
+			${"bme_academ_exp" . $i}  = $bmeExp[$i-1]['name']; 
+		}
+		if ($mentor['bme_academ_exp_other']) {
+			$bme_academ_exp_other = mysql_real_escape_string($mentor['bme_academ_exp_other']);
+		} else {
+			$bme_academ_exp_other = null;
+		}
+
+		$international_experience1 = null;
+		$international_experience2 = null;
+		$international_experience3 = null;
+		$international_experience4 = null;
+		$international_experience5 = null;
+		$internatExp = $mentor['international_experience'];
+		for ($i=1; $i <= count($internatExp); $i++) {
+			${"international_experience" . $i}  = $internatExp[$i-1]['name']; 
+		}
+		if ($mentor['international_experience_other']) {
+			$international_experience_other = mysql_real_escape_string($mentor['international_experience_other']);
+		} else {
+			$international_experience_other = null;
+		}
+
+		$career_dev_program1 = null;
+		$career_dev_program2 = null;
+		$career_dev_program3 = null;
+		$carDevProg = $mentor['career_dev_program']; 
+		for ($i=1; $i <= count($carDevProg); $i++) {
+			${"career_dev_program" . $i}  = $carDevProg[$i-1]['name']; 
+		}
+		if ($mentor['career_dev_program_other']) {
+			$career_dev_program_other = mysql_real_escape_string($mentor['career_dev_program_other']);
+		} else {
+			$career_dev_program_other = null;
+		}
+
+		$post_grad_plan = mysql_real_escape_string($mentor['post_grad_plan']);
+		if ($mentor['post_grad_plan_desc']) {
+			$post_grad_plan_desc = mysql_real_escape_string($mentor['post_grad_plan_desc']);
+		} else {
+			$post_grad_plan_desc = null;
+		}
+
+		$personal_hobby = mysql_real_escape_string($mentor['personal_hobby']);
+
+		$userQuery = sprintf("INSERT INTO USER (username, last_name, first_name, phone_num, email, pref_communication)
+					VALUES ('%s', '%s', '%s','%s','%s','%s')", $user, $lname, $fname, $phone, $email, $pref_communication);
+		$uResult = getDBRegInserted($userQuery);
+
+
+		$mentorQuery = sprintf("INSERT INTO Mentor (username, alias, gender, depth_focus, depth_focus_other,
+			live_before_tech, live_on_campus, first_gen_college_student, transfer_from_outside, institution_name,
+			transfer_from_within, prev_major, international_student, home_country, expec_graduation, other_major, 
+			undergrad_research, undergrad_research_desc, post_grad_plan, post_grad_plan_desc, personal_hobby) 
+			VALUES ('%s', '%s', '%s', '%s', '%s', '%u', '%u', '%u', '%u', '%s', '%u', '%s', '%u', '%s', '%s', '%s', 
+				'%u', '%s', '%s', '%s', '%s')", 
+			$user, $alias, $gender, $depth_focus, $depth_focus_other,
+			$live_before_tech, $live_on_campus, $first_gen_college_student, $transfer_from_outside, $institution_name, 
+			$transfer_from_within, $prev_major, $international_student, $home_country, $expec_graduation, $other_major,
+			$undergrad_research, $undergrad_research_desc, $post_grad_plan, $post_grad_plan_desc, $personal_hobby);
+		$mResult = getDBRegInserted($mentorQuery);
+
+		$bTrack = $mentor['breadth_track'];
+		//echo var_dump($bTrack);
+		foreach ($bTrack as $key => $value) {
+			$breadth_track = $value['name'];
+			//echo $value['name'];
+			$breadth_track_desc = $value['desc'];
+			$bTrackQuery = sprintf("INSERT INTO Mentor_Breadth_Track(username, breadth_track, breadth_track_desc) VALUES ('%s', '%s', '%s')",
+			$user, $breadth_track, $breadth_track_desc);
+			$bTrackResult = getDBRegInserted($bTrackQuery);
+		}
+
+		if ($mentor['ethnicity']) {
+		$ethQuery = sprintf("INSERT INTO Ethnicity(username, ethnicity1, ethnicity2, ethnicity3, ethnicity4, ethnicity5) 
+			VALUES ('%s', '%s', '%s', '%s', '%s', '%s')", $user, $ethnicity1, $ethnicity2, $ethnicity3, $ethnicity4, $ethnicity5);
+		$eResult = getDBRegInserted($ethQuery);
+		}
+
+		if ($mentor['honor_program']) {
+		$honorProgQuery = sprintf("INSERT INTO Mentor_Honors_Program(username, program1, program2, program3) 
+			VALUES ('%s', '%s', '%s', '%s')", $user, $honor_program1, $honor_program2, $honor_program3);
+		$hpResult = getDBRegInserted($honorProgQuery);
+		}
+
+		if ($mentor['other_organization1']) {
+			$otherOrgQuery = sprintf("INSERT INTO Other_Organization(username, organization1, organization2, organization3) 
+				VALUES ('%s', '%s', '%s', '%s')", $user, $other_organization1, $other_organization2, $other_organization3);
+			$otherOrgResult = getDBRegInserted($otherOrgQuery);
+		}
+
+		if ($mentor['bme_organization']) {
+		$bmeOrgQuery = sprintf("INSERT INTO Mentor_BME_Organization(username, bme_org1, bme_org2, bme_org3,
+			bme_org4, bme_org5, bme_org6, bme_org7, bme_org_other) VALUES ('%s', '%s', '%s' , '%s', '%s', '%s', '%s', '%s', '%s')",
+			$user, $bme_org1, $bme_org2, $bme_org3, $bme_org4, $bme_org5, $bme_org6, $bme_org7, $bme_org_other);
+		$bmeOrgResult = getDBRegInserted($bmeOrgQuery);
+		}
+
+		if ($mentor['mm_org']) {
+		$mmOrgQuery = sprintf("INSERT INTO Mentee_Mentor_Organization(username, mm_org1, mm_org2, mm_org3, mm_org4, mm_org5, mm_org_other) 
+			VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s')", $user, $mm_org1, $mm_org2, $mm_org3, $mm_org4, $mm_org5, $mm_org_other);
+		$mmResult = getDBRegInserted($mmOrgQuery);
+		}
+
+		if ($mentor['tutor_teacher_program']) {
+		$ttProgQuery = sprintf("INSERT INTO Mentor_Tutor_Teacher_Program(username, tutor_teacher_program1, tutor_teacher_program2, 
+			tutor_teacher_program3, tutor_teacher_program4, tutor_teacher_program5, tutor_teacher_program6, tutor_teacher_program_other)
+		 VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')", $user, $tutor_teacher_program1, $tutor_teacher_program2, 
+		 $tutor_teacher_program3, $tutor_teacher_program4, $tutor_teacher_program5, $tutor_teacher_program6, $tutor_teacher_program_other);
+		$ttProgResult = getDBRegInserted($ttProgQuery);
+		}
+
+		if ($mentor['bme_academ_exp']) {
+		$bmeQuery = sprintf("INSERT INTO Mentor_BME_Academic_Experience(username, bme_academ_exp1, bme_academ_exp2,
+			bme_academ_exp3, bme_academ_exp4, bme_academ_exp_other) VALUES ('%s', '%s', '%s', '%s', '%s', '%s')",
+		$user, $bme_academ_exp1, $bme_academ_exp2, $bme_academ_exp3, $bme_academ_exp4, $bme_academ_exp_other);
+		$bmeResult = getDBRegInserted($bmeQuery);
+		}
+
+		if ($mentor['international_experience']) {
+		$interQuery = sprintf("INSERT INTO Mentor_International_Experience(username, international_experience1, international_experience2, 
+			international_experience3, international_experience4, international_experience5, international_experience_other)
+		VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s')", $user, $international_experience1, $international_experience2,
+		$international_experience3, $international_experience4, $international_experience5, $international_experience_other);
+		$interResults = getDBRegInserted($interQuery);
+		}
+
+		if ($mentor['career_dev_program']) {
+		$careerQuery = sprintf("INSERT INTO Mentor_Career_Dev_Program(username, career_dev_program1,
+			career_dev_program2, career_dev_program3, career_dev_program_other) VALUES ('%s', '%s', '%s','%s', '%s')",
+			 $user, $career_dev_program1, $career_dev_program2, $career_dev_program3, $career_dev_program_other);
+		$careerResults = getDBRegInserted($careerQuery);
+		}
+
+		// //header("Content-type: application/json");
+		// // print_r($json);
+		// echo json_encode($uresult+$mresult);
+		
+	}//end addMentor
+
+		function addMentor() {
 		echo "addMEntor in PHP \n";
 		global $_USER;	
 		$user = $_USER['uid'];
@@ -588,6 +879,59 @@
 		//echo $form;
 		echo json_encode($count);
 	}//end genFauxUsers
+
+		function deleteMentors() {
+		global $_USER;
+
+		$dbQueryMentor = sprintf("DELETE FROM USER WHERE username IN (SELECT username FROM Mentor)");
+
+		$result = deleteDBEntries($dbQueryMentor);
+		//header("Content-type: application/json");
+		echo "deleted";
+		//echo json_encode();
+	}
+
+	function genFauxMentors() {
+
+		//$form = json_decode($form);
+		$count = 0;
+		foreach($_POST['mentors'] as $cu) {
+			//echo var_dump($cu);
+			addMentorLoop($cu);
+		}
+		//echo var_dump($_POST);
+		header("Content-type: application/json");
+		//echo json_encode($_POST);
+	}
+
+	// function genFauxMentors() {
+	// 	global $_USER;
+
+	// 	//$form = json_decode($form);
+	// 	$count = 0;
+	// 	foreach($_POST['mentors'] as $cu) {
+	// 		$count++;
+	// 		$dbQuery = sprintf("INSERT INTO USER (username, last_name, first_name, phone_num, email, pref_communication)
+	// 												VALUES ('%s', '%s', '%s', '%u', '%s', '%s')",
+	// 												$cu['username'], $cu['first_name'], $cu['last_name'], 
+	// 												$cu['phone_number'], $cu['email'], $cu['pref_communication']);
+	// 		$result = getDBRegInserted($dbQuery);
+
+	// 		$dbQuery = sprintf("INSERT INTO Mentor (username, alias, opt_in, depth_focus, post_grad_plan, expec_graduation,
+	// 																					 	transfer_from_within, transfer_from_outside, international_student,
+	// 																					 	first_gen_college_student, live_before_tech, live_on_campus,
+	// 																					 	undergrad_research, home_country, gender)
+	// 												VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')",
+	// 												$cu['username'], $cu['alias'], $cu['opt_in'], $cu['depth_focus'], $cu['post_grad_plan'], 
+	// 												$cu['expec_graduation'], $cu['transfer_from_within,'], $cu['transfer_from_outside'],
+	// 												$cu['international_student'], $cu['first_gen_college_student'], $cu['live_before_tech'], 
+	// 												$cu['live_on_campus'], $cu['undergrad_research'], $cu['home_country'], $cu['gender']);
+	// 		$result = getDBRegInserted($dbQuery);
+	// 	}
+	// 	//echo var_dump($_POST);
+	// 	header("Content-type: application/json");
+	// 	echo json_encode($_POST);
+	// }
 	
 	function listComments() {
 		global $_USER;

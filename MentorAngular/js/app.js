@@ -22,6 +22,10 @@ myApp.config(['$routeProvider', function($routeProvider) {
     templateUrl: 'partials/mentee-reg.html',
     controller: 'RegisterMenteeController'//change to Mentee when
   }).
+  when('/mentorAgreement', {
+    templateUrl: 'partials/mentor-user-agreement.html',
+    controller: 'MentorUserAgreementController'
+  }).
   when('/mentorReg', {
     templateUrl: 'partials/mentor-reg.html',
     controller: 'RegisterMentorController'

@@ -22,13 +22,14 @@ var appControllers = angular.module('appControllers', ['ngAnimate', 'ngResource'
 // });
 
 appControllers.controller('mainController', ['$scope', '$http', '$location', function($scope, $http, $location) {
-  $scope.go = function(path) {
+   $scope.go = function(path) {
     $location.path(path);
     //$location.reload(true);
     //$scope.$parent.$apply();
   };
   $scope.ajaxError = function ajaxError(jqXHR, textStatus, errorThrown){
     console.log('ajaxError '+jqXHR+' '+textStatus+' '+errorThrown);
+    console.log("Main Controller Called");
   }
 }]);
 
@@ -158,7 +159,7 @@ appControllers.controller('HomeController', ['$scope', '$http', '$location', fun
       type: 'GET'
       // error: ajaxError
     }); 
-  console.log("hoescreen user:");
+  console.log("homescreen user:");
   console.log(data);
   $scope.user.name = data["Name"];
   $scope.user.id = data["Id"];
@@ -709,7 +710,7 @@ appControllers.controller('RegisterMentorController', ['$scope', '$http', '$filt
   function($scope, $http, $filter, $location) {
   $('.ui.radio.checkbox').checkbox();
   $('.ui.checkbox').checkbox();
-  $('.ui.dropdown').dropdown();
+  $('select.dropdown').dropdown();
   $scope.showNext = $scope.$parent.showNext;
   var validation = {
     fname: {
@@ -1154,33 +1155,124 @@ appControllers.controller('RegisterMentorController', ['$scope', '$http', '$filt
   
 }]);
 
+appControllers.controller('MentorUserAgreementController', ['$scope', '$http', '$location', function($scope, $http, $location) {
+  $('.ui.radio.checkbox').checkbox();
+  var ind = 0;
+  $scope.active = ind;
+  $scope.form= {
+    "q1": 0,
+    "q2": 0,
+    "q3": 0,
+    "q4": 0,
+    "q5": 0,
+    "q6": 0,
+    "q7": 0,
+    "q8": 0,
+    "q9": 0,
+    "q10": 0,
+    "q11": 0,
+    "q12": 0,
+    "q13": 0,
+    "q14": 0,
+    "q15": 0
+  };
+  $scope.yes = false;
+
+
+  $scope.yesno = [{
+      id:1,
+      name: 'Yes',
+      value: 1
+    }, {
+      id:2, 
+      name: 'No',
+      value: 0
+    }];
+
+    $scope.yesnoOptIn = [{
+      id:1,
+      name: 'Yes, I commit to serving as a mentor next fall.',
+      value: 1
+    }, {
+      id:2, 
+      name: 'No, I do not wish to serve as a mentor next fall.',
+      value: 0
+    }];
+
+  $scope.newValue = function(value, attr) {
+    $scope.form[attr] = value;
+  };
+
+  $scope.setStep = function(index) {
+    // if (!$(this).hasClass('disabled')) {
+    $('.ui.steps div').removeClass('active');
+    $('.ui.steps div:eq(' + index + ')').addClass('active');
+    $scope.active = index;
+  };
+
+  $scope.allYes = function() {
+    var numTrue = 0;
+    $.each($scope.form, function(key, value) {
+      console.log($scope.form);
+      if (value === 1 && value !== 0) {
+        numTrue++;
+        console.log("true" + value);
+      } else {
+        console.log("false" + value);
+      }
+    });
+    if (numTrue == 15) {
+      $scope.yes = true;
+      $location.path('/mentorReg');
+    }
+  };
+}]);
+
 appControllers.controller('MentorAliasController', ['$scope', '$http', '$location', function($scope, $http, $location) {
    $scope.aliasNames;
-   var color, adjective, animal, alias;
+   var color;
+   var adjective;
+   var animal; 
+   var alias;
   $scope.generate = function() {
     $scope.generateClicked = true;
-    $http.get('js/aliasNames.json').success (function(data){
-        $scope.aliasNames = data;
-        console.log(Math.floor(Math.random()*$scope.aliasNames[0].color.length));
-        color = $scope.aliasNames[0].color[Math.floor(Math.random()*$scope.aliasNames[0].color.length)].name;
-        adjective = $scope.aliasNames[1].adjective[Math.floor(Math.random()*$scope.aliasNames[1].adjective.length)];
-        animal = $scope.aliasNames[2].animal[Math.floor(Math.random()*$scope.aliasNames[2].animal.length)];
-    });
-    alias = color + " " + adjective + " " + animal;
-    
-    //if (listAliasNames) 
-    
+    var validName = false;
+    function nameRequest() {
+      $http.get('aliasNames.json').success(function(data){
+           $scope.aliasNames = data;
+          // console.log(Math.floor(Math.random()*$scope.aliasNames[0].color.length));
+          var randoNum = Math.random();
+          $scope.color = $scope.aliasNames[0].color[Math.floor(randoNum * $scope.aliasNames[0].color.length)].name;
+          $scope.hex = $scope.aliasNames[0].color[Math.floor(randoNum * $scope.aliasNames[0].color.length)].hex;
+          $scope.adjective = $scope.aliasNames[1].adjective[Math.floor(Math.random() * $scope.aliasNames[1].adjective.length)];
+          $scope.animal = $scope.aliasNames[2].animal[Math.floor(Math.random() * $scope.aliasNames[2].animal.length)];
+          alias = $scope.color + " " + $scope.adjective + " " + $scope.animal;
+          $http.get('api/alias/'+ alias).success( function(data) {
+            // adjust error message from GET RED ERROR to be specially defined
+            console.log("there is an existing name, can't be used");
+            return validName = false;
+          })
+          .error( function(data) {
+            console.log("there's no existing name, this one can be used");
+            return validName = true;
+          });
+          //console.log(validName);
+      }); 
+    } 
+  if (!validName) {
+    nameRequest();
+  }
   }
 
-
   $scope.addAliasName = function() {
-    var name = $scope.name.one + $scope.name.two + $scope.name.three;
+    var name = $scope.color + " " + $scope.adjective + " " + $scope.animal;
+    console.log(alias);
+    console.log(name);
     $.ajax({
-          url: "api/mentor",
+          url: "api/alias/" + name,
           dataType: "json",
-              async: false,
-          data: {'alias': name
-                },
+          async: false,
+          data: name,
           type: 'PUT'
           // error: ajaxError
         });

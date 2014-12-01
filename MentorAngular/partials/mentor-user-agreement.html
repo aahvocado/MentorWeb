@@ -1,0 +1,206 @@
+<section class="mentor-register page">
+	<script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.1/underscore-min.js"></script>
+	<div class="mentor-user-agreement-message ui message">
+	 <div class="ui huge header">
+	    Mentor Registration for BME Mentoring Program
+   	</div>
+
+	<form class="ui form segment" name="form" ng-controller="MentorUserAgreementController">
+
+	  <div class="ui two small teal steps">
+		 <div ng-click="setStep(0)" class="active step">
+		  Welcome
+		 </div>
+		 <div ng-click="setStep(1)" class="step">
+		   Agreement
+		  </div>
+		</div>
+		<br/>
+
+	<div class="field">
+		<div ng-if="active == 0" class="active field">
+			<h1 class="ui header">Welcome to the BME Mentor Program!</h1>
+			<p>Thank you for considering volunteering your time and resources to serve as a mentor for incoming BME freshmen</p>
+			<p>To help you decide if mentoring is for you, please read the rest of this page, and then please go through the user agreement questions in the following steps. If at any time you decide you do not wish to serve as a mentor, just exit the page.</p>
+			<p>Basic Info....</p>
+			<div class="field">
+				<button id="goToQuestionsStep" ng-click="setStep(1)" class="ui blue button">Next</button>
+			</div>
+		</div>
+		<div ng-if="active == 1" class="field">
+			<h1 class="ui header">BME Mentorship Program Mentor User Agreement</h1>
+
+			<div class="grouped fields">
+				<div class="field">
+			   		<h2 class="ui tiny header"><i class="asterisk teal icon"></i>I understand this program requires at the very least 3-5 hours of my time each month for a year and pledge to commit my time, energy, and expertise to assist my mentees in developing and achieving their individual goals.</h2>
+					<div class="field" ng-repeat="opt in yesno">
+				  		<div class="ui radio checkbox">
+						  	<input type="radio" name="q1" ng-model="form.q1" ng-value="{{opt.value}}" required/>
+						  	<label ng-click="newValue(opt.value, 'q1')">{{opt.name}}</label>
+						</div>
+					</div>
+				</div>
+				
+
+				<div class="field">
+			   		<h2 class="ui tiny header"><i class="asterisk teal icon"></i>I realize that this is a vertical mentorship program that links alumni to upperclassmen to freshmen. As such, in addition to acting as a mentor to freshmen, I am expected to join the student alumni association (SAA) and complete the process for obtaining an alumni mentor by participating in the Mentor Jackets program.</h2>
+					<div class="field" ng-repeat="opt in yesno">
+				  		<div class="ui radio checkbox">
+						  	<input type="radio" name="q2" ng-model="form.q2" ng-value="{{opt.value}}" required/>
+						  	<label ng-click="newValue(opt.value, 'q2')">{{opt.name}}</label>
+						</div>
+					</div>
+				</div>
+
+				<div class="field">
+			   		<h2 class="ui tiny header"><i class="asterisk teal icon"></i>I commit to building a mutual relationship and to entering the world of someone else, to hear about dreams and challenges, to share my own stories, and to respect the differences between us.</h2>
+					<div class="field" ng-repeat="opt in yesno">
+				  		<div class="ui radio checkbox">
+						  	<input type="radio" name="q3" ng-model="form.q3" ng-value="{{opt.value}}" required/>
+						  	<label ng-click="newValue(opt.value, 'q3')">{{opt.name}}</label>
+						</div>
+					</div>
+				</div>
+
+				<div class="field">
+			   		<h2 class="ui tiny header"><i class="asterisk teal icon"></i>I understand the BME Mentorship Program staff pairs student mentees with the most suitable mentors using a variety of factors and that the freshmen I am paired with depends on the cumulative pool of mentors and freshmen who register for the program.</h2>
+					<div class="field" ng-repeat="opt in yesno">
+				  		<div class="ui radio checkbox">
+						  	<input type="radio" name="q4" ng-model="form.q4" ng-value="{{opt.value}}" required/>
+						  	<label ng-click="newValue(opt.value, 'q4')">{{opt.name}}</label>
+						</div>
+					</div>
+				</div>
+
+				<div class="field">
+			   		<h2 class="ui tiny header"><i class="asterisk teal icon"></i>I understand that the academic and professional developmental needs otf the students are the central focus in the pairing process and that BME Mentorship Program administrators endeavor to create pairs with similar education and professional interests.</h2>
+					<div class="field" ng-repeat="opt in yesno">
+				  		<div class="ui radio checkbox">
+						  	<input type="radio" name="q5" ng-model="form.q5" ng-value="{{opt.value}}" required/>
+						  	<label ng-click="newValue(opt.value, 'q5')">{{opt.name}}</label>
+						</div>
+					</div>
+				</div>
+
+				<div class="field">
+			   		<h2 class="ui tiny header"><i class="asterisk teal icon"></i>I understand the quality and scope of any mentoring partnership is largely determined by the commitment and quality of communication between myself and any student mentee I am paired with.</h2>
+					<div class="field" ng-repeat="opt in yesno">
+				  		<div class="ui radio checkbox">
+						  	<input type="radio" name="q6" ng-model="form.q6" ng-value="{{opt.value}}" required/>
+						  	<label ng-click="newValue(opt.value, 'q6')">{{opt.name}}</label>
+						</div>
+					</div>
+				</div>
+
+				<div class="field">
+			   		<h2 class="ui tiny header"><i class="asterisk teal icon"></i>I understand that the BME Mentorship Program's primary form of communication will be through its T-square site which I agree to join immediately.</h2>
+					<div class="field" ng-repeat="opt in yesno">
+				  		<div class="ui radio checkbox">
+						  	<input type="radio" name="q7" ng-model="form.q7" ng-value="{{opt.value}}" required/>
+						  	<label ng-click="newValue(opt.value, 'q7')">{{opt.name}}</label>
+						</div>
+					</div>
+				</div>
+
+				<div class="field">
+			   		<h2 class="ui tiny header"><i class="asterisk teal icon"></i>I understand that the BME MEntoring Program's T-square site will use my official Georgia Tech e-mail for communications and I will check my email regularly to maintain communication with the program and my mentees.</h2>
+					<div class="field" ng-repeat="opt in yesno">
+				  		<div class="ui radio checkbox">
+						  	<input type="radio" name="q8" ng-model="form.q8" ng-value="{{opt.value}}" required/>
+						  	<label ng-click="newValue(opt.value, 'q8')">{{opt.name}}</label>
+						</div>
+					</div>
+				</div>
+
+				<div class="field">
+			   		<h2 class="ui tiny header"><i class="asterisk teal icon"></i>I understand that my involvement in the BME Mentorship Program is at the discretion of the BME Mentorship Program administrators and that the administrators reserve the right to terminate my participation at any time.</h2>
+					<div class="field" ng-repeat="opt in yesno">
+				  		<div class="ui radio checkbox">
+						  	<input type="radio" name="q9" ng-model="form.q9" ng-value="{{opt.value}}" required/>
+						  	<label ng-click="newValue(opt.value, 'q9')">{{opt.name}}</label>
+						</div>
+					</div>
+				</div>
+
+				<div class="field">
+			   		<h2 class="ui tiny header"><i class="asterisk teal icon"></i>If at any point, I am no longer able to, or no longer want to participate in the program, I promise to notify my student mentees and BME Mentorship Program administrators about my situation as soon as possibile so they can find another mentor for my students.</h2>
+					<div class="field" ng-repeat="opt in yesno">
+				  		<div class="ui radio checkbox">
+						  	<input type="radio" name="q10" ng-model="form.q10" ng-value="{{opt.value}}" required/>
+						  	<label ng-click="newValue(opt.value, 'q10')">{{opt.name}}</label>
+						</div>
+					</div>
+				</div>
+
+				<div class="field">
+			   		<h2 class="ui tiny header"><i class="asterisk teal icon"></i>I understand that the BME Mentorship Program administrators are available to help me and provide resources to enhance the mentoring experience and I can contact them at any time at joe.ledoux@gme.gatech.edu.</h2>
+					<div class="field" ng-repeat="opt in yesno">
+				  		<div class="ui radio checkbox">
+						  	<input type="radio" name="q11" ng-model="form.q11" ng-value="{{opt.value}}" required/>
+						  	<label ng-click="newValue(opt.value, 'q11')">{{opt.name}}</label>
+						</div>
+					</div>
+				</div>
+
+				<div class="field">
+			   		<h2 class="ui tiny header"><i class="asterisk teal icon"></i>I understand that trust is fundamental to building sound relationships with and between mentors and mentees and, thus, agree to ethically protect the confidentiality of the students in charge by avoiding talking about them to other students.</h2>
+					<div class="field" ng-repeat="opt in yesno">
+				  		<div class="ui radio checkbox">
+						  	<input type="radio" name="q12" ng-model="form.q12" ng-value="{{opt.value}}" required/>
+						  	<label ng-click="newValue(opt.value, 'q12')">{{opt.name}}</label>
+						</div>
+					</div>
+				</div>
+
+				<div class="field">
+			   		<h2 class="ui tiny header"><i class="asterisk teal icon"></i>I will notify Dr. Le Doux, Dr. Fasse, Kim Paige, or Paul Fincannon confidentially if I perceive that one of the mentees needs professional assistance or support.</h2>
+					<div class="field" ng-repeat="opt in yesno">
+				  		<div class="ui radio checkbox">
+						  	<input type="radio" name="q13" ng-model="form.q13" ng-value="{{opt.value}}" required/>
+						  	<label ng-click="newValue(opt.value, 'q13')">{{opt.name}}</label>
+						</div>
+					</div>
+				</div>
+
+				<div class="field">
+			   		<h2 class="ui tiny header"><i class="asterisk teal icon"></i>I give the BME Mentorship Program permission to share my name, email address, and phone number with my student mentee(s).</h2>
+					<div class="field" ng-repeat="opt in yesno">
+				  		<div class="ui radio checkbox">
+						  	<input type="radio" name="q14" ng-model="form.q14" ng-value="{{opt.value}}" required/>
+						  	<label ng-click="newValue(opt.value, 'q14')">{{opt.name}}</label>
+						</div>
+					</div>
+				</div>
+
+				<div class="field">
+			   		<h2 class="ui tiny header"><i class="asterisk teal icon"></i>I've read and agree to ALL of the statements above and commit to serving as a mentor next fall.</h2>
+					<div class="field" ng-repeat="opt in yesnoOptIn">
+				  		<div class="ui radio checkbox">
+						  	<input type="radio" name="q15" ng-model="form.q15" ng-value="{{opt.value}}" required/>
+						  	<label ng-click="newValue(opt.value, 'q15')">{{opt.name}}</label>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div ng-if="form.$invalid || !yes" class="ui negative message wide">
+			  <i class="close icon"></i>
+			  <div class="content" ng-if="form.$invalid">
+			    You must read all terms of the agreement.
+			  </div>
+			  <div class="content" ng-if="!yes"> 
+			  	You must agree with all terms of the mentorship program.
+			  </div>
+			 </div>
+
+			 <!-- {{userAgreementForm.$valid}} -->
+			<button id="goToRegistrationPage" ng-click="allYes()" class="ui blue button">Next</button>
+
+		</div>
+	</div>
+
+	<!-- <button id="reg_submit_button" ng-if="!showNext" type="submit" ng-click="addMentor(registerForm.$valid)" class="ui blue button">Submit</button> -->
+
+	</form>
+	</div>
+</section>

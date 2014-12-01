@@ -34,6 +34,16 @@
 		</put>
 	</command>
 
+	<command id='alias' security='protected'>
+		<description></description>
+		<get>
+			<action file='db.php'><![CDATA[listAliasNames($_REST['alias']);]]></action>
+		</get>
+		<put>
+			<action file='db.php'><![CDATA[inputAliasName($_REST['alias']);]]></action>
+		</put>
+	</command>
+
 	<command id='mentee' security='protected'>
 		<description><![CDATA[This simple API welcomes users to the homepage]]></description>
 

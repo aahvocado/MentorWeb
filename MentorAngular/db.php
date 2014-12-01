@@ -513,8 +513,11 @@
 	}
 
 	function inputAliasName($aliasName) {
-		$query = sprintf("UPDATE MENTOR SET alias = '%s'", $aliasName);
-		$queryRestult = getDBResultInserted($query,'aliasName');
+		global $_USER;
+		$user = $_USER['uid'];
+
+		$query = sprintf("UPDATE Mentor SET alias = '%s' WHERE username = '%s'", $aliasName, $user);
+		$queryRestult = getDBResultInserted($query);
 		header("Content-type: application/json");
 		echo json_encode($queryResult);
 	}

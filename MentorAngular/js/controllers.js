@@ -391,6 +391,8 @@ appControllers.controller('RegisterMenteeController', ['$scope', '$http', '$filt
   $('.ui.radio.checkbox').checkbox();
   $('.ui.checkbox').checkbox();
   $('.ui.dropdown').dropdown();
+  $scope.showNext = $scope.$parent.showNext;
+
   $scope.form = { 
       dfocus: '', 
       breadth_track:[],
@@ -698,10 +700,16 @@ appControllers.controller('RegisterMenteeController', ['$scope', '$http', '$filt
              'post_grad_plan_desc': $scope.form.post_grad_plan_desc,
              'personal_hobby': $scope.form.personal_hobby
             },
-      type: 'POST'
+      type: 'POST',
+      success: success()
       // error: ajaxError
     }); 
   };
+
+  function success() {
+    $scope.$parent.showNext = true;
+    $scope.showNext = $scope.$parent.showNext;
+  }
 
 }]);
 
@@ -1224,6 +1232,7 @@ appControllers.controller('MentorUserAgreementController', ['$scope', '$http', '
     if (numTrue == 15) {
       $scope.yes = true;
       $location.path('/mentorReg');
+      window.scrollTo(0,0);
     }
   };
 }]);

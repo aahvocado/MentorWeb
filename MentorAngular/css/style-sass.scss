@@ -401,7 +401,6 @@ nav {
   background-color: #E6E6E6;
   border-radius: 0px;
 }
-
 /* User Profile */
 .user-profile .message-wrapper {
   top: 80px;
@@ -593,99 +592,6 @@ nav {
   height: 50px;
   width: 50px;
   z-index: 200;
-}
-
-
-/* Mentor Alias Generate page */
-
-.ribbon{
-  /*color: #fff;*/
-  /*margin: 30px 0 50px;*/
-  position: relative;
-  /*text-transform: uppercase;*/
-  background: rgb(0, 164, 239);
-  border: 1px solid rgba(0, 0, 0, .1);
-  box-shadow: 0px 1px 3px rgba(0,0,0,.2);
-  padding: 10px 15px;
-  clear: both;
-}
- 
-div.left_ribbon{
-  color: #000;
-  margin-left: -10px;
-  float: left;
-}
- 
-div.left_ribbon h2{
-  margin: 0 12px;
-
-}
- 
-div.left_ribbon::before{
-  display: block;
-  width: 10px;
-  height: 0px;
-  position: absolute;
-  bottom: -10px;
-  left: -11px;
-  content: "";
-  border-bottom: 10px solid transparent;
-  border-right: 10px solid rgba(0, 0, 0, .6);
-}
- 
-div.left_ribbon::after{
-  display: block;
-  width: 6px;
-  height: 44px;
-  position: absolute;
-  bottom: 3px;
-  right: -1px;
-  content: "";
-  border: 1px solid rgba(0,0,0,.3);
-  transform: skew(0deg,45deg);
-  -ms-transform: skew(0deg,45deg); /* IE 9 */
-  -webkit-transform: skew(0deg,45deg); /* Safari and Chrome */
-  -o-transform: skew(0deg,45deg); /* Opera */
-  -moz-transform: skew(0deg,45deg); /* Firefox */
-  background: rgba(0, 0, 0, .6);
-}
-
-div.both_ribbon{
-  text-align: center;
-  /*color: #000;*/
-  /*padding: 10px 9px 10px 10px;*/
-  /*width: 104%;*/
-  /*margin-left: -25.5px;*/
-}
- 
-div.both_ribbon::before{
-  display: block;
-  width: 10px;
-  height: 0px;
-  position: absolute;
-  bottom: -10px;
-  left: -11px;
-  content: "";
-  border-bottom: 10px solid transparent;
-  border-right: 10px solid rgba(20,20,20,.75);
-}
- 
-div.both_ribbon::after{
-  display: block;
-  width: 10px;
-  height: 0px;
-  position: absolute;
-  bottom: -10px;
-  right: -10px;
-  content: "";
-  border-bottom: 10px solid transparent;
-  border-left: 10px solid rgba(20,20,20,.75);
-}
-
-.mentor-alias h2{
-  color: #fff;
-  font-size: 30px;
-  text-shadow: 0 -2px 0 rgba(0,0,0,.6);
 }
 
 #stamp {

@@ -17,10 +17,10 @@
       return (this.first_name.substring(0,1).toLowerCase() + this.last_name.toLowerCase() + '@gatech.edu');
     },
     phone: '{{phone("xxxxxxxxxx")}}',
-    pref_communication: '{{random("phone", "email")}}',
+    pref_communication: '{{random("Phone", "Email")}}',
     opt_in: '{{random("0", "1")}}',
     approvedb_by: 'NULL',
-    depth_focus: '{{random("neuroengineering","cardiovascular-systems", "biomechanics", "biomaterials", "medical-imaging")}}',
+    depth_focus: '{{random("Neuroengineering","Cardiovascular-systems", "Biomechanics", "Biomaterials", "Medical-imaging")}}',
     post_grad_plan: '{{random("Graduate School", "Work in industry")}}',
     post_grad_plan_desc: '{{random("Study study study", "Graduate School")}}',
     expec_graduation: '{{random("Fall 2014", "Spring 2014", "Fall 2015", "Spring 2015")}}',
@@ -39,8 +39,8 @@
     gender: '{{random("female", "male")}}',
     other_major: '{{random("Architecture", "Computer Science", "Computational Media")}}',
     breadth_track: function(tags) {
-      return [{name: random("pre-health", "research", "minor", "certifcate"),
-    desc: random("descripton1", "description2")}];
+      return [{name: random("Pre-health", "Research", "Minor", "Certifcate"),
+    desc: random("Descripton1", "Description2")}];
     },
     bme_organization: function(tags) {
       return [{name: random("Alpha Eta Mu (AEMB)", "Biomedical Engineering Society (BMES)", "Biomedical Research & Opportunities Society (BROS)", "BMED Futures", "Engineering World Health (EWH)", "Medical Device Entrepreneurship Association (MDEA)", "Pioneer"),

@@ -584,6 +584,7 @@ angular.module("iso.directives")
       }
 
       return optionSet.on("click", function(event) {
+      //return $("[ok-sel]").on("click", function(event) {
         return doOption(event);
       });
     }

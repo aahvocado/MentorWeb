@@ -237,10 +237,12 @@
 
 	</div>
 	
-
-      <div id="reg_submit_button" ng-click="addMentee()" class="ui blue submit button"><!-- ; go('/homescreen') -->
-		Submit
-		</div>
+<button id="reg_submit_button" ng-if="!showNext" type="submit" ng-click="addMentee()" class="ui blue button">Submit</button><!--  type="submit"go('/mentorAlias' -->
+	<div ng-if="showNext" class="ui field floating success message">
+	  <i class="close icon"></i>
+	    Congratulations, your profile information has successfully been submitted! Don't worry if there's something you want to change; you can always go back in and edit your profile.
+	</div>
+	<button id="next_page" ng-if="showNext" ng-click="go('/homescreen')" class="ui blue button"> Next</button>
     </div>
   
 </div>

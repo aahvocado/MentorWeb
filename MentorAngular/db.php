@@ -69,19 +69,7 @@
 
 	function resetUser() {
 		global $_USER;
-		$dbQuery = sprintf("DELETE FROM Mentor WHERE username = '%s'",
-												$_USER['uid']);
-		$result = getDBResultsArray($dbQuery);
-		$dbQuery = sprintf("DELETE FROM Admin WHERE username = '%s'",
-												$_USER['uid']);
-		$result = getDBResultsArray($dbQuery);
-		$dbQuery = sprintf("DELETE FROM Mentee WHERE username = '%s'",
-												$_USER['uid']);
-		$result = getDBResultsArray($dbQuery);
-		$dbQuery = sprintf("DELETE FROM User WHERE username = '%s'",
-												$_USER['uid']);
-		$result = getDBResultsArray($dbQuery);
-		$dbQuery = sprintf("DELETE FROM Matches WHERE mentee_user = '%s'",
+		$dbQuery = sprintf("DELETE FROM USER WHERE username = '%s'",
 												$_USER['uid']);
 		$result = getDBResultsArray($dbQuery);
 
@@ -317,7 +305,7 @@
 	 }
 
 	 function listMentors() {
-		$dbQuery = sprintf("SELECT * FROM USER
+		$dbQuery = "SELECT * FROM USER
 													JOIN Mentor
 														ON  USER.username = Mentor.username
 													JOIN Mentor_Breadth_Track
@@ -332,8 +320,7 @@
 														ON Mentor_International_Experience.username = Mentor.username
 													JOIN Mentor_Career_Dev_Program
 														ON Mentor_Career_Dev_Program.username = Mentor.username
-													WHERE Mentor.username = USER.username",
-																$mentor, $mentor); // breadth_track, student_year, career_dev_program, future_plans, Mentor_BME_Academic_Experience,
+													WHERE Mentor.username = USER.username"; // breadth_track, student_year, career_dev_program, future_plans, Mentor_BME_Academic_Experience,
 		$result = getDBResultsArray($dbQuery);
 		echo json_encode($result);
 	}
@@ -411,7 +398,7 @@
 		$bme_org5 = null;
 		$bme_org6 = null;
 		$bme_org7 = null;
-		echo var_dump($mentor['bme_organization']);
+		//echo var_dump($mentor['bme_organization']);
 		$bmeOrgs = $mentor['bme_organization'];
 		for ($i=1; $i <= count($bmeOrgs); $i++) {
 			//echo $bmeOrgs[$i-1]['name'];

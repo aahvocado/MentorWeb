@@ -91,6 +91,7 @@ appControllers.controller('EditProfileController', ['$scope', '$http', '$locatio
     async: false,
     success: function(result) {
       data = result;
+      // $scope.username = data['username'];
     },
     type: 'GET'
     // error: ajaxError
@@ -104,13 +105,35 @@ appControllers.controller('EditProfileController', ['$scope', '$http', '$locatio
     $scope.viewMentorForm = 0;
   }
 
+  $scope.form = [];
+
+  $.get('api/mentor/' + $scope.$parent.username).success(function(data) {
+    $scope.data = JSON.parse(data)[0];
+    console.log($scope.data["first_name"]);
+    $scope.form.fname = $scope.data["first_name"];
+  });
+
+  // 
+  
+
+ // $.ajax({
+ //    url: "api/mentor/" + $scope.$parent.username,
+ //    dataType: "json",
+ //    async: false,
+ //    success: function(result) {
+ //      data = result;
+ //    },
+ //    type: 'GET'
+ //    // error: ajaxError
+ //  });
+
 }]);
 
 appControllers.controller('WelcomeController', ['$scope', '$http', '$location', function($scope, $http, $location) {
   // window.location.reload(true);
 
   $scope.go = function() {
-    window.location.replace("https://login.gatech.edu/cas/login?service=http%3A%2F%2Fdev.m.gatech.edu%2Fd%2Faarrowood3%2Fw%2FMentorAngular%2Fcontent%2F")
+    window.location.replace("https://login.gatech.edu/cas/login?service=http%3A%2F%2Fdev.m.gatech.edu%2Fd%2Fmosborne8%2Fw%2FMentorAngular%2Fcontent%2F")
   };
 }]);
 
@@ -122,6 +145,7 @@ appControllers.controller('UserController', ['$scope', '$http', function($scope,
   $.get('api/welcome').success(function(data) {
     $scope.user = data;
     $scope.userType = data['userType'];
+    $scope.$parent.username = data['username'];
     console.log(data);
   });
 }]);
@@ -162,7 +186,8 @@ appControllers.controller('HomeController', ['$scope', '$http', '$location', fun
   console.log("homescreen user:");
   console.log(data);
   $scope.user.name = data["Name"];
-  $scope.user.id = data["Id"];
+  $scope.$parent.username = data["Name"];
+  // $scope.user.id = data["Id"];
   $scope.user.mentor = data["Mentor"];
   $scope.user.mentee = data["Mentee"];
   $scope.user.admin = data["Admin"];

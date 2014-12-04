@@ -1,5 +1,5 @@
 <section class="edit-profile page">
-	<div class="edit-profile-message ui message" ng-controller="EditProfileController">
+	<div class="edit-profile-message ui message">
 	 <div class="ui huge header">
 	    Edit Profile
    	</div>
@@ -240,10 +240,11 @@
 		Submit
 		</div>
 
-  </div>
+</div>
  <!-- end mentee profile form -->
 
- <div ng-show="viewMentorForm">
+
+ <div ng-show="viewMentorForm" ng-controller="EditProfileController">
  	<div class="ui error form segment">
 	<h2 class="ui inverted black block header">Basic Information</h2><br/>
 	  <div class="two fields">
@@ -574,7 +575,7 @@
 
 
 	<div id="reg_submit_button" class="ui blue submit button" ng-click="go('/homescreen')">Next</div> <!-- add updateMentor function to ng-click -->
-<!-- addMentor() -->
+
 	</div>
  </div>
 

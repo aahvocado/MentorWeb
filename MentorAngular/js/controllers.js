@@ -111,6 +111,7 @@ appControllers.controller('EditProfileController', ['$scope', '$http', '$locatio
     $scope.data = JSON.parse(data)[0];
     console.log($scope.data["first_name"]);
     $scope.form.fname = $scope.data["first_name"];
+    $scope.form.load = true;
   });
 
   // 

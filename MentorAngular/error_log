@@ -6658,3 +6658,104 @@
 [04-Dec-2014 01:38:57 America/New_York] PHP Notice:  Array to string conversion in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 313
 [04-Dec-2014 01:39:07 America/New_York] PHP Notice:  Array to string conversion in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 313
 [04-Dec-2014 01:50:57 America/New_York] PHP Warning:  json_decode() expects parameter 1 to be string, array given in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 313
+[09-Feb-2015 12:27:12 America/New_York] PHP Notice:  Undefined index: uid in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 293
+[09-Feb-2015 13:00:20 America/New_York] PHP Notice:  Undefined variable: ethnicity5 in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 627
+[09-Feb-2015 13:00:20 America/New_York] PHP Notice:  Undefined index: other_organization1 in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 648
+[09-Feb-2015 13:00:20 America/New_York] PHP Notice:  Undefined index: other_organization2 in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 653
+[09-Feb-2015 13:00:20 America/New_York] PHP Notice:  Undefined index: other_organization3 in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 658
+[09-Feb-2015 13:00:20 America/New_York] PHP Notice:  Undefined index: bme_organization in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 671
+[09-Feb-2015 13:00:20 America/New_York] PHP Notice:  Undefined index: bme_org_other in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 675
+[09-Feb-2015 13:00:20 America/New_York] PHP Notice:  Undefined index: mm_org in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 686
+[09-Feb-2015 13:00:20 America/New_York] PHP Notice:  Undefined index: mm_org_other in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 690
+[09-Feb-2015 13:00:20 America/New_York] PHP Notice:  Undefined index: tutor_teacher_program in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 702
+[09-Feb-2015 13:00:20 America/New_York] PHP Notice:  Undefined index: tutor_teacher_program_other in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 706
+[09-Feb-2015 13:00:20 America/New_York] PHP Notice:  Undefined index: bme_academ_exp in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 716
+[09-Feb-2015 13:00:20 America/New_York] PHP Notice:  Undefined index: bme_academ_exp_other in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 720
+[09-Feb-2015 13:00:20 America/New_York] PHP Notice:  Undefined index: international_experience in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 731
+[09-Feb-2015 13:00:20 America/New_York] PHP Notice:  Undefined index: international_experience_other in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 735
+[09-Feb-2015 13:00:20 America/New_York] PHP Notice:  Undefined index: career_dev_program in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 744
+[09-Feb-2015 13:00:20 America/New_York] PHP Notice:  Undefined index: career_dev_program_other in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 748
+[09-Feb-2015 13:00:20 America/New_York] PHP Notice:  Undefined index: post_grad_plan_desc in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 755
+[09-Feb-2015 13:00:20 America/New_York] PHP Notice:  Undefined index: personal_hobby in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 761
+[09-Feb-2015 13:00:20 America/New_York] PHP Warning:  Missing argument 2 for getDBRegInserted(), called in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 765 and defined in /nethome/mosborne8/dev.m.gatech/MentorAngular/db_helper.php on line 48
+[09-Feb-2015 13:00:20 America/New_York] PHP Warning:  Missing argument 2 for getDBRegInserted(), called in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 778 and defined in /nethome/mosborne8/dev.m.gatech/MentorAngular/db_helper.php on line 48
+[09-Feb-2015 13:00:21 America/New_York] PHP Warning:  Missing argument 2 for getDBRegInserted(), called in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 786 and defined in /nethome/mosborne8/dev.m.gatech/MentorAngular/db_helper.php on line 48
+[09-Feb-2015 13:00:21 America/New_York] PHP Notice:  Undefined variable: ethnicity5 in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 791
+[09-Feb-2015 13:00:21 America/New_York] PHP Warning:  Missing argument 2 for getDBRegInserted(), called in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 792 and defined in /nethome/mosborne8/dev.m.gatech/MentorAngular/db_helper.php on line 48
+[09-Feb-2015 13:00:21 America/New_York] PHP Warning:  Missing argument 2 for getDBRegInserted(), called in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 798 and defined in /nethome/mosborne8/dev.m.gatech/MentorAngular/db_helper.php on line 48
+[09-Feb-2015 13:00:21 America/New_York] PHP Notice:  Undefined index: other_organization1 in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 801
+[09-Feb-2015 13:00:21 America/New_York] PHP Notice:  Undefined index: bme_organization in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 807
+[09-Feb-2015 13:00:21 America/New_York] PHP Notice:  Undefined index: mm_org in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 814
+[09-Feb-2015 13:00:21 America/New_York] PHP Notice:  Undefined index: tutor_teacher_program in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 820
+[09-Feb-2015 13:00:21 America/New_York] PHP Notice:  Undefined index: bme_academ_exp in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 828
+[09-Feb-2015 13:00:21 America/New_York] PHP Notice:  Undefined index: international_experience in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 835
+[09-Feb-2015 13:00:21 America/New_York] PHP Notice:  Undefined index: career_dev_program in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 843
+[09-Feb-2015 13:01:03 America/New_York] PHP Warning:  Missing argument 2 for getDBResultInserted(), called in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 873 and defined in /nethome/mosborne8/dev.m.gatech/MentorAngular/db_helper.php on line 99
+[09-Feb-2015 13:01:03 America/New_York] PHP Notice:  Undefined variable: id in /nethome/mosborne8/dev.m.gatech/MentorAngular/db_helper.php on line 102
+[09-Feb-2015 13:01:03 America/New_York] PHP Notice:  Undefined variable: queryResult in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 875
+[11-Feb-2015 14:43:31 America/New_York] PHP Notice:  Undefined index: gender in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 608
+[11-Feb-2015 14:43:31 America/New_York] PHP Notice:  Undefined variable: ethnicity5 in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 627
+[11-Feb-2015 14:43:31 America/New_York] PHP Notice:  Undefined index: ethnicity in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 628
+[11-Feb-2015 14:43:31 America/New_York] PHP Notice:  Undefined index: other_organization1 in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 648
+[11-Feb-2015 14:43:31 America/New_York] PHP Notice:  Undefined index: other_organization2 in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 653
+[11-Feb-2015 14:43:31 America/New_York] PHP Notice:  Undefined index: other_organization3 in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 658
+[11-Feb-2015 14:43:31 America/New_York] PHP Notice:  Undefined index: bme_organization in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 671
+[11-Feb-2015 14:43:31 America/New_York] PHP Notice:  Undefined index: bme_org_other in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 675
+[11-Feb-2015 14:43:31 America/New_York] PHP Notice:  Undefined index: mm_org in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 686
+[11-Feb-2015 14:43:31 America/New_York] PHP Notice:  Undefined index: mm_org_other in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 690
+[11-Feb-2015 14:43:31 America/New_York] PHP Notice:  Undefined index: tutor_teacher_program in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 702
+[11-Feb-2015 14:43:31 America/New_York] PHP Notice:  Undefined index: tutor_teacher_program_other in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 706
+[11-Feb-2015 14:43:31 America/New_York] PHP Notice:  Undefined index: bme_academ_exp in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 716
+[11-Feb-2015 14:43:31 America/New_York] PHP Notice:  Undefined index: bme_academ_exp_other in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 720
+[11-Feb-2015 14:43:31 America/New_York] PHP Notice:  Undefined index: international_experience in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 731
+[11-Feb-2015 14:43:31 America/New_York] PHP Notice:  Undefined index: international_experience_other in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 735
+[11-Feb-2015 14:43:31 America/New_York] PHP Notice:  Undefined index: career_dev_program in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 744
+[11-Feb-2015 14:43:31 America/New_York] PHP Notice:  Undefined index: career_dev_program_other in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 748
+[11-Feb-2015 14:43:31 America/New_York] PHP Notice:  Undefined index: post_grad_plan_desc in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 755
+[11-Feb-2015 14:43:31 America/New_York] PHP Notice:  Undefined index: personal_hobby in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 761
+[11-Feb-2015 14:43:31 America/New_York] PHP Warning:  Missing argument 2 for getDBRegInserted(), called in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 765 and defined in /nethome/mosborne8/dev.m.gatech/MentorAngular/db_helper.php on line 48
+[11-Feb-2015 14:43:31 America/New_York] PHP Warning:  Missing argument 2 for getDBRegInserted(), called in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 778 and defined in /nethome/mosborne8/dev.m.gatech/MentorAngular/db_helper.php on line 48
+[11-Feb-2015 14:43:31 America/New_York] PHP Warning:  Missing argument 2 for getDBRegInserted(), called in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 786 and defined in /nethome/mosborne8/dev.m.gatech/MentorAngular/db_helper.php on line 48
+[11-Feb-2015 14:43:31 America/New_York] PHP Notice:  Undefined index: ethnicity in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 789
+[11-Feb-2015 14:43:31 America/New_York] PHP Warning:  Missing argument 2 for getDBRegInserted(), called in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 798 and defined in /nethome/mosborne8/dev.m.gatech/MentorAngular/db_helper.php on line 48
+[11-Feb-2015 14:43:31 America/New_York] PHP Notice:  Undefined index: other_organization1 in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 801
+[11-Feb-2015 14:43:31 America/New_York] PHP Notice:  Undefined index: bme_organization in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 807
+[11-Feb-2015 14:43:31 America/New_York] PHP Notice:  Undefined index: mm_org in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 814
+[11-Feb-2015 14:43:31 America/New_York] PHP Notice:  Undefined index: tutor_teacher_program in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 820
+[11-Feb-2015 14:43:31 America/New_York] PHP Notice:  Undefined index: bme_academ_exp in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 828
+[11-Feb-2015 14:43:31 America/New_York] PHP Notice:  Undefined index: international_experience in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 835
+[11-Feb-2015 14:43:31 America/New_York] PHP Notice:  Undefined index: career_dev_program in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 843
+[11-Feb-2015 14:43:37 America/New_York] PHP Warning:  Missing argument 2 for getDBResultInserted(), called in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 873 and defined in /nethome/mosborne8/dev.m.gatech/MentorAngular/db_helper.php on line 99
+[11-Feb-2015 14:43:37 America/New_York] PHP Notice:  Undefined variable: id in /nethome/mosborne8/dev.m.gatech/MentorAngular/db_helper.php on line 102
+[11-Feb-2015 14:43:37 America/New_York] PHP Notice:  Undefined variable: queryResult in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 875
+[11-Feb-2015 14:48:54 America/New_York] PHP Notice:  Undefined index: phone in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 135
+[11-Feb-2015 14:48:54 America/New_York] PHP Notice:  Undefined index: pref_comm in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 137
+[11-Feb-2015 14:48:54 America/New_York] PHP Notice:  Undefined index: dfocusother in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 139
+[11-Feb-2015 14:48:54 America/New_York] PHP Notice:  Undefined index: first_gen_college_student in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 140
+[11-Feb-2015 14:48:55 America/New_York] PHP Notice:  Undefined index: transfer_from_outside in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 141
+[11-Feb-2015 14:48:55 America/New_York] PHP Notice:  Undefined index: institution_name in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 142
+[11-Feb-2015 14:48:55 America/New_York] PHP Notice:  Undefined index: transfer_from_within in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 143
+[11-Feb-2015 14:48:55 America/New_York] PHP Notice:  Undefined index: prev_major in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 144
+[11-Feb-2015 14:48:55 America/New_York] PHP Notice:  Undefined index: international_student in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 145
+[11-Feb-2015 14:48:55 America/New_York] PHP Notice:  Undefined index: expec_graduation in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 146
+[11-Feb-2015 14:48:55 America/New_York] PHP Notice:  Undefined index: undergrad_research in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 148
+[11-Feb-2015 14:48:55 America/New_York] PHP Notice:  Undefined index: bme_organization in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 157
+[11-Feb-2015 14:48:55 America/New_York] PHP Notice:  Undefined index: tutor_teacher_program in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 168
+[11-Feb-2015 14:48:55 America/New_York] PHP Notice:  Undefined index: bme_academ_exp in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 177
+[11-Feb-2015 14:48:55 America/New_York] PHP Notice:  Undefined index: international_experience in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 187
+[11-Feb-2015 14:48:55 America/New_York] PHP Notice:  Undefined index: career_dev_program in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 195
+[11-Feb-2015 14:48:55 America/New_York] PHP Notice:  Undefined index: post_grad_plan in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 200
+[11-Feb-2015 14:48:55 America/New_York] PHP Notice:  Undefined index: post_grad_plan_desc in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 201
+[11-Feb-2015 14:48:55 America/New_York] PHP Notice:  Undefined index: personal_hobby in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 202
+[11-Feb-2015 14:48:55 America/New_York] PHP Notice:  Undefined variable: pref_communication in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 205
+[11-Feb-2015 14:48:55 America/New_York] PHP Warning:  Missing argument 2 for getDBRegInserted(), called in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 206 and defined in /nethome/mosborne8/dev.m.gatech/MentorAngular/db_helper.php on line 48
+[11-Feb-2015 14:48:55 America/New_York] PHP Notice:  Undefined variable: freshman in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 214
+[11-Feb-2015 14:48:55 America/New_York] PHP Warning:  Missing argument 2 for getDBRegInserted(), called in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 217 and defined in /nethome/mosborne8/dev.m.gatech/MentorAngular/db_helper.php on line 48
+[11-Feb-2015 14:48:55 America/New_York] PHP Notice:  Undefined index: breadth_track in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 219
+[11-Feb-2015 14:48:55 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 220
+[11-Feb-2015 14:48:55 America/New_York] PHP Notice:  Undefined index: bme_organization in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 228
+[11-Feb-2015 14:48:55 America/New_York] PHP Notice:  Undefined index: bme_academ_exp in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 235
+[11-Feb-2015 14:48:55 America/New_York] PHP Notice:  Undefined index: international_experience in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 242
+[11-Feb-2015 14:48:55 America/New_York] PHP Notice:  Undefined index: career_dev_program in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 250
+[11-Feb-2015 14:48:55 America/New_York] PHP Notice:  Undefined index: tutor_teacher_program in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 257
+[11-Feb-2015 14:53:57 America/New_York] PHP Warning:  Missing argument 2 for getDBRegInserted(), called in /nethome/mosborne8/dev.m.gatech/MentorAngular/db.php on line 285 and defined in /nethome/mosborne8/dev.m.gatech/MentorAngular/db_helper.php on line 48

@@ -46,6 +46,10 @@ myApp.config(['$routeProvider', function($routeProvider) {
     templateUrl: 'partials/wishlist.html',
     controller: 'WishListController'
   }).
+  when('/editProfile', {
+    templateUrl: 'partials/edit-profile.html'
+    // controller: 'EditProfileController'
+  }).
   when('/list', {
     templateUrl: 'partials/list.html',
     controller: 'ListController'

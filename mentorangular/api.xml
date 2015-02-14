@@ -12,7 +12,7 @@
 		</index>
 	</command>
 
-	<command id='mentor' security='protected'>
+	<command id='mentor' security='public'>
 		<description><![CDATA[This simple API welcomes users to the homepage]]></description>
 
 		<index>

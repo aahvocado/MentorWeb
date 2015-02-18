@@ -1,5 +1,5 @@
 var config = {};
 
-config.developerName = "jreddaway3";
+config.developerName = "devname";
 config.appName = "MentorWeb";
 config.baseUrl = "http://dev.m.gatech.edu/d/" + config.developerName + "/w/" + config.appName + "/content/";

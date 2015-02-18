@@ -1,30 +1,26 @@
 $(document).ready(function(){
 	console.log("link check");
-	//$.getJSON('http://dev.m.gatech.edu/d/mosborne8/w/mentoringweb/content/api/welcome', function(data) {
-  //window.location.replace("index.html#/loading");
- 		var data = "";
- 		$.ajax({
-      'async': false,
-      'global': false,
-      'url': "api/welcome",
-      'dataType': "json",
-      'success': function (dataReq) {
-          data = dataReq;
-          console.log(dataReq);
-      }
-    });
+	var data = "";
+	$.ajax({
+    'async': false,
+    'global': false,
+    'url': "api/welcome",
+    'dataType': "json",
+    'success': function (dataReq) {
+        data = dataReq;
+        console.log(dataReq);
+    }
+  });
 
- 		console.log(data);
+	console.log(data);
 
- 		if (data['username'] == null) {
- 			window.location.replace("index.html#/welcome");
- 		} else if (data['userType'] == "None") {
- 			window.location.replace("index.html#/register");
- 		} 
- 		else {
- 			window.location.replace("index.html#/homescreen");
- 		}
-//	});
+	if (data['username'] == null) {
+		window.location.replace("index.html#/welcome");
+	} else if (data['userType'] == "None") {
+		window.location.replace("index.html#/register");
+	} else {
+		window.location.replace("index.html#/homescreen");
+	}
 });
 
 

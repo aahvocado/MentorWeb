@@ -187,6 +187,7 @@ appControllers.controller('HomeController', ['$scope', '$http', '$location', fun
   }
   if(data["Mentee"]) {
     $scope.user.type.push("Mentee");
+    $scope.profile_title = "Your Mentor";
 
     function getMentorData(mentorUsername) {
       console.log(mentorUsername)
@@ -267,6 +268,7 @@ appControllers.controller('SearchController', ['$scope', '$http', function($scop
     });
 
   $scope.showFull = function(user) {
+    $scope.profile_title = "Mentor Profile";
     $scope.show_identifier = false;
     $scope.myMentor = user;
     $scope.show_full_profile = true;

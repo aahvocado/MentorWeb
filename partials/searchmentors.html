@@ -1,7 +1,7 @@
 
-<section class="searchmentors page">
+<section class="searchmentors page" ng-hide="show_full_profile">
 
-<div class="view" ng-hide="show_full_profile">
+<div class="view">
   <div id="filter-menu" opt-filter-menu ok-key="filter" class="ui vertical menu">
   <div class="item">
     <div class="ui small icon input">
@@ -244,11 +244,6 @@
 			</div>
 		</div>
 
-<div class="view" ng-show="show_full_profile">
-  <a ng-click="hideFull()">Hide full profile >></a>
-  <div ng-include src="'partials/user-profile.html'"></div>
-</div>
-
   <script>
     var removeItem = function(elem) {
       if (!Array.prototype.filter) return;
@@ -260,4 +255,11 @@
       s.$apply(s.xList = items);
     };
   </script>
+</section>
+
+<section class="user-profile page" ng-show="show_full_profile">
+  <div class="view">
+    <a ng-click="hideFull()">&lt;&lt; Hide full profile</a>
+    <div ng-include src="'partials/user-profile.html'"></div>
+  </div>
 </section>

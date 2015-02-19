@@ -114,20 +114,6 @@ appControllers.controller('EditProfileController', ['$scope', '$http', '$locatio
     $scope.form.load = true;
   });
 
-  // 
-  
-
- // $.ajax({
- //    url: "api/mentor/" + $scope.$parent.username,
- //    dataType: "json",
- //    async: false,
- //    success: function(result) {
- //      data = result;
- //    },
- //    type: 'GET'
- //    // error: ajaxError
- //  });
-
 }]);
 
 appControllers.controller('WelcomeController', ['$scope', '$http', '$location', function($scope, $http, $location) {
@@ -202,20 +188,22 @@ appControllers.controller('HomeController', ['$scope', '$http', '$location', fun
   if(data["Mentee"]) {
     $scope.user.type.push("Mentee");
 
-    // $.ajax({
-    //   url: "api/mentor",
-    //   dataType: "json",
-    //   async: true,
-    //   success: function(result) {
-    //     //data = result;
-    //     $scope.myMentor = result;
-    //     console.log("getMentor");
-    //     console.log($scope.myMentor);
-    //   },
-    //   type: 'GET',
-    //   error: $scope.ajaxError
-    //   // error: ajaxError
-    // });
+    function getMentorData(mentorUsername) {
+      console.log(mentorUsername)
+      $.ajax({
+        url: "api/mentor/" + mentorUsername,
+        dataType: "json",
+        async: true,
+        success: function(result) {
+          $scope.myMentor = result[0];
+          console.log("getMentor");
+          console.log($scope.myMentor);
+        },
+        type: 'GET',
+        error: $scope.ajaxError
+        // error: ajaxError
+      });
+    }
 
     $.ajax({
       url: "api/getMenteeMatch",
@@ -224,24 +212,10 @@ appControllers.controller('HomeController', ['$scope', '$http', '$location', fun
           success: function(data, textStatus, jqXHR) {
             console.log("getMenteeMatch");
             console.log(data);
-            $scope.$apply();
-            //Create The New Rows From Template
-            //$scope.myMentor = data;
+            getMentorData(data[0].mentor_user);
           },
           error: $scope.ajaxError
     });
-
-    // $.ajax({
-    //   url: "api/mentor/" + user + "/comment",
-    //   dataType: "json",
-    //       async: false,
-    //       success: function(data, textStatus, jqXHR) {
-    //     console.log(data);
-    //         //Create The New Rows From Template
-    //         $scope.myMentor = data;
-    //       },
-    //       error: ajaxError
-    //});
   }
 
   if(data["Admin"]) {

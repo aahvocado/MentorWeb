@@ -257,9 +257,9 @@
   </script>
 </section>
 
-<section class="user-profile page" ng-show="show_full_profile">
-  <div class="view">
+<section class="user-profile page" ng-show="show_full_profile" style="padding-bottom: 5em;">
+  <div ng-include src="'partials/user-profile.html'"></div>
+  <div class="user-profile message ui" style="top: 6em;">
     <a ng-click="hideFull()">&lt;&lt; Hide full profile</a>
-    <div ng-include src="'partials/user-profile.html'"></div>
   </div>
 </section>

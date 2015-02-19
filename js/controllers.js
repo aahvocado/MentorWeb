@@ -324,7 +324,17 @@ appControllers.controller('WishListController', ['$scope', '$http', function($sc
   if ($scope.userData) {
     $scope.miniProfileData = $scope.userData[0];
   }
-  console.log('yo');
+
+  $scope.showFull = function(user) {
+    console.log("here");
+    $scope.profile_title = "Mentor Profile";
+    $scope.show_identifier = false;
+    $scope.myMentor = user;
+    $scope.show_full_profile = true;
+  }
+  $scope.hideFull = function() {
+    $scope.show_full_profile = false;
+  }
   $scope.miniProfileSet = function(user) {
     $scope.miniProfileData = user;
   }

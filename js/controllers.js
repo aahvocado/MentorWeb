@@ -198,7 +198,6 @@ appControllers.controller('HomeController', ['$scope', '$http', '$location', fun
           $scope.show_identifier = true;
           $scope.myMentor = result[0];
           console.log("getMentor");
-          console.log($scope.myMentor);
           $scope.$apply();
         },
         type: 'GET',

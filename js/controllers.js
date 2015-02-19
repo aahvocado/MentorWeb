@@ -195,6 +195,7 @@ appControllers.controller('HomeController', ['$scope', '$http', '$location', fun
         dataType: "json",
         async: true,
         success: function(result) {
+          $scope.show_identifier = true;
           $scope.myMentor = result[0];
           console.log("getMentor");
           console.log($scope.myMentor);

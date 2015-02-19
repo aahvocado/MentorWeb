@@ -20,14 +20,14 @@
 			      </div>
 			    </div>
 
-					<div class="six wide column" id="name">
+					<div class="six wide column" id="name" ng-show="show_identifier">
 						<div class="item">
 							<div class="menu-text2">Full Name</div>
 							<div class="menu-text">{{myMentor.first_name}} {{myMentor.last_name}}</div>
 						</div>
 					</div>
 
-					<div class="six wide column">
+					<div class="six wide column" ng-show="show_identifier">
 						<div class="item">
 							<div class="menu-text2">Phone</div>
 							<div class="menu-text">{{myMentor.phone_num}}</div>

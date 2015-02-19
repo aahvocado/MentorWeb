@@ -198,6 +198,7 @@ appControllers.controller('HomeController', ['$scope', '$http', '$location', fun
           $scope.myMentor = result[0];
           console.log("getMentor");
           console.log($scope.myMentor);
+          $scope.$apply();
         },
         type: 'GET',
         error: $scope.ajaxError

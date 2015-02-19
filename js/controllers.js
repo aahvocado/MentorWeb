@@ -266,6 +266,14 @@ appControllers.controller('SearchController', ['$scope', '$http', function($scop
       error: $scope.ajaxError
     });
 
+  $scope.showFull = function(user) {
+    $scope.show_identifier = false;
+    $scope.myMentor = user;
+    $scope.show_full_profile = true;
+  }
+  $scope.hideFull = function() {
+    $scope.show_full_profile = false;
+  }
   $scope.miniProfileSet = function(user) {
     //console.log("yo ");
     //console.log(user);

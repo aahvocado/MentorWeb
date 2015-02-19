@@ -1,7 +1,7 @@
 
 <section class="searchmentors page">
 
-<div class="view">
+<div class="view" ng-hide="show_full_profile">
   <div id="filter-menu" opt-filter-menu ok-key="filter" class="ui vertical menu">
   <div class="item">
     <div class="ui small icon input">
@@ -231,7 +231,7 @@
           <div class="future-plans p-field"> {{miniProfileData.post_grad_plan}}</div>
 
           <div class="profile-link">
-            <a>See full profile >></a>
+            <a ng-click="showFull(miniProfileData)">See full profile >></a>
           </div>
 
           <!-- <div ng-bind-html="wishButton"></div> -->
@@ -243,6 +243,11 @@
         </div>
 			</div>
 		</div>
+
+<div class="view" ng-show="show_full_profile">
+  <a ng-click="hideFull()">Hide full profile >></a>
+  <div ng-include src="'partials/user-profile.html'"></div>
+</div>
 
   <script>
     var removeItem = function(elem) {

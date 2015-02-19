@@ -1,5 +1,5 @@
 <?php
-    include 'db_credentials.php';
+    include 'config.php';
     
     $connection = mysql_connect(
                                 $db_host,

@@ -289,19 +289,27 @@
 
 
 	 function getMentor($mentor) {
-	// 	global $_USER;
+		$user = $mentor;
 
-		// $dbQuery = sprintf("SELECT first_name, last_name, alias, 
-		// 														email, phone_num, pref_communication, depth_focus, 
-		// 														post_grad_plan, expec_graduation, gender,  
-		// 														expec_graduation 
-		// 														FROM User, Mentor WHERE User.username = '%s' AND Mentor.username = '%s'",
-		// 														$mentor, $mentor); // breadth_track, student_year, career_dev_program, future_plans, Mentor_BME_Academic_Experience,
-		// $result = getDBResultsArray($dbQuery);
-
+		$dbQuery = sprintf("SELECT *
+							FROM USER LEFT JOIN Mentor ON USER.username = Mentor.username 
+							LEFT JOIN Mentor_Breadth_Track ON USER.username = Mentor_Breadth_Track.username
+							LEFT JOIN Mentor_BME_Organization ON USER.username = Mentor_BME_Organization.username
+							LEFT JOIN Mentor_Tutor_Teacher_Program ON USER.username = Mentor_Tutor_Teacher_Program.username
+							LEFT JOIN Mentor_BME_Academic_Experience ON USER.username = Mentor_BME_Academic_Experience.username
+							LEFT JOIN Mentor_International_Experience ON USER.username = Mentor_International_Experience.username
+							LEFT JOIN Mentor_Career_Dev_Program ON USER.username = Mentor_Career_Dev_Program.username
+							LEFT JOIN Mentor_Honors_Program ON USER.username = Mentor_Honors_Program.username
+							LEFT JOIN Ethnicity ON USER.username = Ethnicity.username
+							LEFT JOIN Mentee_Mentor_Organization ON USER.username = Mentee_Mentor_Organization.username
+							LEFT JOIN Matches ON USER.username = Matches.mentor_user
+							LEFT JOIN Other_Organization ON USER.username = Other_Organization.username
+							WHERE USER.username = '%s'", $user); // breadth_track, student_year, career_dev_program, future_plans, Mentor_BME_Academic_Experience,
+		
+		$result = getDBResultsArray($dbQuery);
 		// $checkMentee = sprintf("SELECT first_name, id, mentor_user FROM User, Mentee WHERE User.username = '%s' AND Mentee.username = '%s'", $user, $user);
 		// $isMentee = getDBResultsArray($checkMentee);
-	// 	echo json_encode($_REST);
+		echo json_encode($result);
 	 }
 
 	 function listMentors() {

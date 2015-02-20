@@ -4,16 +4,11 @@ MentorWeb is a web based application made for Georgia Tech students to better fi
 
 -how to use goes here-
 Log in using your Georgia Tech identifications, the system will detect whether you are a Mentor, Mentee, or Admin.
-
--git essentials-
-Once the repo is cloned, please run 
-	git update-index --assume-unchanged config.php
-	git update-index --assume-unchanged js/config.js
 	
 -configuration-
 Once the system is setup on the server, edit the files:
 	config.php:
-		replace each of the variables with your server and database credentials
+		replace each of the variables with your server and database credentials, which can be found on the Google Drive
 	js/config.js:
 		replace each config variable with your specific info
 

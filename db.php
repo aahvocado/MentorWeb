@@ -1041,4 +1041,65 @@
 		header("Content-type: application/json");
 		echo json_encode($result);
 	}
+	
+	
+//==================================
+// RequestPeriod Code
+//==================================
+	/**
+	 * Function that determines whether or not the given request period is currently open
+	 */
+	function isRequestPeriodOpen($requestPeriod){
+		$dbQuery = sprintf("SELECT isOpen FROM RequestPeriods WHERE RequestPeriod = '%s'",
+			mysql_real_escape_string($requestPeriod));
+		$result=getDBResultsArray($dbQuery);
+		header("Content-type: application/json");
+		echo json_encode($result);
+	}
+	
+	/**
+	 * Function that determines whether or not the default request period is currently open
+	 */
+	function isRequestDefaultPeriodOpen(){
+		$defaultPeriod = "DefaultRequestPeriod";
+		isRequestPeriodOpen($defaultPeriod);
+	}
+	
+	/**
+	 * Opens a given request period
+	 */
+	function openRequestPeriod($requestPeriod){
+		$dbQuery = sprintf("UPDATE RequestPeriods SET isOpen = 1 WHERE RequestPeriod = '%s'",
+			mysql_real_escape_string($requestPeriod));
+		$result=getDBResultsArray($dbQuery);
+		header("Content-type: application/json");
+		echo json_encode($result);
+	}
+	
+	/**
+	 * Closes a given request period
+	 */
+	function closeRequestPeriod($requestPeriod){
+		$dbQuery = sprintf("UPDATE RequestPeriods SET isOpen = 0 WHERE RequestPeriod = '%s'",
+			mysql_real_escape_string($requestPeriod));
+		$result=getDBResultsArray($dbQuery);
+		header("Content-type: application/json");
+		echo json_encode($result);
+	}
+	
+	/**
+	 * Opens the default request period
+	 */
+	function openDefaultRequestPeriod(){
+		$defaultPeriod = "DefaultRequestPeriod";
+		openRequestPeriod($defaultPeriod);
+	}
+	
+	/**
+	 * Closes the default request period
+	 */
+	function closeDefaultRequestPeriod(){
+		$defaultPeriod = "DefaultRequestPeriod";
+		closeRequestPeriod($defaultPeriod);
+	}
 ?>

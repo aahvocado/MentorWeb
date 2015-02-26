@@ -289,19 +289,27 @@
 
 
 	 function getMentor($mentor) {
-	// 	global $_USER;
+		$user = $mentor;
 
-		// $dbQuery = sprintf("SELECT first_name, last_name, alias, 
-		// 														email, phone_num, pref_communication, depth_focus, 
-		// 														post_grad_plan, expec_graduation, gender,  
-		// 														expec_graduation 
-		// 														FROM User, Mentor WHERE User.username = '%s' AND Mentor.username = '%s'",
-		// 														$mentor, $mentor); // breadth_track, student_year, career_dev_program, future_plans, Mentor_BME_Academic_Experience,
-		// $result = getDBResultsArray($dbQuery);
-
+		$dbQuery = sprintf("SELECT *
+							FROM USER LEFT JOIN Mentor ON USER.username = Mentor.username 
+							LEFT JOIN Mentor_Breadth_Track ON USER.username = Mentor_Breadth_Track.username
+							LEFT JOIN Mentor_BME_Organization ON USER.username = Mentor_BME_Organization.username
+							LEFT JOIN Mentor_Tutor_Teacher_Program ON USER.username = Mentor_Tutor_Teacher_Program.username
+							LEFT JOIN Mentor_BME_Academic_Experience ON USER.username = Mentor_BME_Academic_Experience.username
+							LEFT JOIN Mentor_International_Experience ON USER.username = Mentor_International_Experience.username
+							LEFT JOIN Mentor_Career_Dev_Program ON USER.username = Mentor_Career_Dev_Program.username
+							LEFT JOIN Mentor_Honors_Program ON USER.username = Mentor_Honors_Program.username
+							LEFT JOIN Ethnicity ON USER.username = Ethnicity.username
+							LEFT JOIN Mentee_Mentor_Organization ON USER.username = Mentee_Mentor_Organization.username
+							LEFT JOIN Matches ON USER.username = Matches.mentor_user
+							LEFT JOIN Other_Organization ON USER.username = Other_Organization.username
+							WHERE USER.username = '%s'", $user); // breadth_track, student_year, career_dev_program, future_plans, Mentor_BME_Academic_Experience,
+		
+		$result = getDBResultsArray($dbQuery);
 		// $checkMentee = sprintf("SELECT first_name, id, mentor_user FROM User, Mentee WHERE User.username = '%s' AND Mentee.username = '%s'", $user, $user);
 		// $isMentee = getDBResultsArray($checkMentee);
-	// 	echo json_encode($_REST);
+		echo json_encode($result);
 	 }
 
 	 function listMentors() {
@@ -587,7 +595,7 @@
 		
 	}//end addMentor
 
-		function addMentor() {
+	function addMentor() {
 		echo "addMEntor in PHP \n";
 		global $_USER;	
 		$user = $_USER['uid'];
@@ -889,7 +897,7 @@
 		echo json_encode($count);
 	}//end genFauxUsers
 
-		function deleteMentors() {
+	function deleteMentors() {
 		global $_USER;
 
 		$dbQueryMentor = sprintf("DELETE FROM USER WHERE username IN (SELECT username FROM Mentor)");
@@ -941,95 +949,64 @@
 	// 	header("Content-type: application/json");
 	// 	echo json_encode($_POST);
 	// }
-	
-	function listComments() {
-		global $_USER;
-		// $userid = array('username' => $_USER['uid']);
 
-		$dbQuery = sprintf("SELECT id,comment FROM usercomments");
-		$result = getDBResultsArray($dbQuery);
-		error_log("test");
-		header("Content-type: application/json");
-		echo json_encode($userid);
-	}
-	
-	function getComment($id) {
-		$dbQuery = sprintf("SELECT id,comment FROM usercomments WHERE id = '%s'",
-			mysql_real_escape_string($id));
-		$result=getDBResultRecord($dbQuery);
-		header("Content-type: application/json");
-		echo json_encode($result);
-	}
-	
-	function addComment($comment) {
-		
-		global $_USER;
-		$user = $_USER["uid"];
-		$dbQuery = sprintf("INSERT INTO usercomments (comment, user) VALUES ('%s', '%s')",
-			mysql_real_escape_string($comment), mysql_real_escape_string($user));
-	
-		$result = getDBResultInserted($dbQuery,'personId');
-		
-		header("Content-type: application/json");
-		echo json_encode($result);
-	}
-
-	function checkCommentPermission($id) {
-		global $_USER;
-		$user = $_USER["uid"];
-		$dbQuery = sprintf("SELECT user from usercomments where id = '%s'",
-					mysql_real_escape_string($id));
-		$result = getDBResultRecord($dbQuery);
-		if ($result["user"] != $user) {
-			$GLOBALS["_PLATFORM"]->sandboxHeader('HTTP/1.1 401 Unauthorized');
-			die();
-		}
-	}
-
-	function updateComment($id,$comment) {
-
-		checkCommentPermission($id);
-		$dbQuery = sprintf("UPDATE usercomments SET comment = '%s' WHERE id = '%s'",
-			mysql_real_escape_string($comment),
-			mysql_real_escape_string($id));
-		
-		$result = getDBResultAffected($dbQuery);
-		
-		header("Content-type: application/json");
-		echo json_encode($result);
-	}
-	
-	function deleteComment($id) {
-		checkCommentPermission($id);
-		$dbQuery = sprintf("DELETE FROM usercomments WHERE id = '%s'",
-			mysql_real_escape_string($id));												
-		$result = getDBResultAffected($dbQuery);
-		
-		header("Content-type: application/json");
-		echo json_encode($result);
-	}
-
-	function listUsers() {
-		$dbQuery = sprintf("SELECT DISTINCT(user) from usercomments");
-		$result = getDBResultsArray($dbQuery);
-		error_log("test");
-		header("Content-type: application/json");
-		echo json_encode($result);
-	}
-
-	function getUserComment($user, $id) {
-		$dbQuery = sprintf("SELECT id,comment FROM usercomments WHERE user = '%s' AND id = '%s'",
-			mysql_real_escape_string($user), mysql_real_escape_string($id));
-		$result=getDBResultRecord($dbQuery);
-		header("Content-type: application/json");
-		echo json_encode($result);
-	}
-
-	function listUserComments($user, $id) {
-		$dbQuery = sprintf("SELECT id,comment FROM usercomments WHERE user = '%s'",
-			mysql_real_escape_string($user));
+	//==================================
+	// RequestPeriod Code
+	//==================================
+	/**
+	 * Function that determines whether or not the given request period is currently open
+	 */
+	function isRequestPeriodOpen($requestPeriod){
+		$dbQuery = sprintf("SELECT isOpen FROM RequestPeriods WHERE RequestPeriod = '%s'",
+			mysql_real_escape_string($requestPeriod));
 		$result=getDBResultsArray($dbQuery);
 		header("Content-type: application/json");
 		echo json_encode($result);
+	}
+	
+	/**
+	 * Function that determines whether or not the default request period is currently open
+	 */
+	function isRequestDefaultPeriodOpen(){
+		$defaultPeriod = "DefaultRequestPeriod";
+		isRequestPeriodOpen($defaultPeriod);
+	}
+	
+	/**
+	 * Opens a given request period
+	 */
+	function openRequestPeriod($requestPeriod){
+		$dbQuery = sprintf("UPDATE RequestPeriods SET isOpen = 1 WHERE RequestPeriod = '%s'",
+			mysql_real_escape_string($requestPeriod));
+		$result=getDBResultsArray($dbQuery);
+		header("Content-type: application/json");
+		echo json_encode($result);
+	}
+	
+	/**
+	 * Closes a given request period
+	 */
+	function closeRequestPeriod($requestPeriod){
+		$dbQuery = sprintf("UPDATE RequestPeriods SET isOpen = 0 WHERE RequestPeriod = '%s'",
+			mysql_real_escape_string($requestPeriod));
+		$result=getDBResultsArray($dbQuery);
+		header("Content-type: application/json");
+		echo json_encode($result);
+	}
+	
+	/**
+	 * Opens the default request period
+	 */
+	function openDefaultRequestPeriod(){
+		$defaultPeriod = "DefaultRequestPeriod";
+		openRequestPeriod($defaultPeriod);
+	}
+	
+	/**
+	 * Closes the default request period
+	 */
+	function closeDefaultRequestPeriod(){
+		$defaultPeriod = "DefaultRequestPeriod";
+		closeRequestPeriod($defaultPeriod);
 	}
 ?>

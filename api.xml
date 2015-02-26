@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <api>
 	<description>
-		<![CDATA[This is an API to interact with comments db]]>
+		<![CDATA[This is the API to interact with the BME mentor system.]]>
 	</description>
 
 	<command id='welcome' security='protected'>
@@ -12,8 +12,8 @@
 		</index>
 	</command>
 
-	<command id='mentor' security='protected'>
-		<description><![CDATA[This simple API welcomes users to the homepage]]></description>
+	<command id='mentor' security='public'>
+		<description><![CDATA[Manages data regarding mentors.]]></description>
 
 		<index>
 			<description><![CDATA[Return a list of mentors]]></description>
@@ -40,7 +40,7 @@
 	</command>
 
 	<command id='listMentors' security='protected'>
-		<description><![CDATA[This simple API welcomes users to the homepage]]></description>
+		<description><![CDATA[Returns a list of mentors.]]></description>
 
 		<index>
 			<description><![CDATA[Return a list of mentors]]></description>
@@ -50,17 +50,19 @@
 	</command>
 
 	<command id='alias' security='protected'>
-		<description></description>
+		<description><![CDATA[Manages the aliases in the system.]]></description>
 		<get>
+			<description><![CDATA[Lists the aliases in the system.]]></description>
 			<action file='db.php'><![CDATA[listAliasNames($_REST['alias']);]]></action>
 		</get>
 		<put>
+			<description><![CDATA[Adds an alias to the system.]]></description>
 			<action file='db.php'><![CDATA[inputAliasName($_REST['alias']);]]></action>
 		</put>
 	</command>
 
 	<command id='mentee' security='protected'>
-		<description><![CDATA[This simple API welcomes users to the homepage]]></description>
+		<description><![CDATA[Manages the mentees in the system.]]></description>
 
 		<index>
 			<description><![CDATA[Return a list of mentees]]></description>
@@ -69,14 +71,14 @@
 		</index>
 
 		<post>
-			<description><![CDATA[This is how new mentees submit the registration form to create a new profile]]></description>
+			<description><![CDATA[This is how new mentees submit the registration form to create a new profile.]]></description>
 
 			<action file='db.php'><![CDATA[addMentee();]]></action>
 		</post>
 	</command>
 
 	<command id='resetUser' security='protected'>
-		<description><![CDATA[This simple API welcomes users to the homepage]]></description>
+		<description><![CDATA[Deletes the current user in the database.]]></description>
 
 		<index>
 			<action file='db.php'><![CDATA[resetUser();]]></action>
@@ -89,7 +91,7 @@
 		
 
 		<command id='getMenteeMatch' security='protected'>
-		<description><![CDATA[This simple API welcomes users to the homepage]]></description>
+		<description><![CDATA[Gets the mentor that matches the currently logged in user.]]></description>
 
 		<index>
 			<action file='db.php'><![CDATA[getMenteeMatch();]]></action>
@@ -101,7 +103,7 @@
 	</command>
 
 	<command id='chooseMentor' security='protected'>
-		<description><![CDATA[This simple API welcomes users to the homepage]]></description>
+		<description><![CDATA[Matches a mentor with the currently logged in user.]]></description>
 
 		<index>
 			<action file='db.php'><![CDATA[chooseMentor();]]></action>
@@ -113,18 +115,21 @@
 	</command>
 
 	<command id='genFauxUsers' security='protected'>
+		<description><![CDATA[Bulk adds users to the system.]]></description>
 		<post>
 			<action file='db.php'><![CDATA[genFauxUsers($_POST['userData']);]]></action>
 		</post>
 	</command>
 
 	<command id='genFauxMentors' security='protected'>
+		<description><![CDATA[Bulk adds mentors to the database.]]></description>
 		<post>
 			<action file='db.php'><![CDATA[genFauxMentors();]]></action>
 		</post>
 	</command>
 
 	<command id='deleteMentors' security='protected'>
+		<description><![CDATA[Deletes a mentor from the database.]]></description>
 		<index>
 			<action file='db.php'><![CDATA[deleteMentors();]]></action>
 		</index>
@@ -135,60 +140,10 @@
 	</command>
 
 	<command id='user' security='protected'>
-		<description><![CDATA[This simple API lets you add and remove comments]]></description>
-		
 		<index>
-			<description><![CDATA[This is how you can get a listing of all comments]]></description>
+			<description><![CDATA[Displays the type (e.g. mentor, mentee, etc.) of the current user.]]></description>
 			
 			<action file='db.php'><![CDATA[getUserType();]]></action>
 		</index>
-		<!-- <command id='comment' security='protected'>
-			<index>
-				<action file='db.php'><![CDATA[listUserComments($_REST['user']);]]></action>
-			</index>
-			<get>
-				<action file='db.php'><![CDATA[getUserComment($_REST['user'], $_REST['user/comment']);]]></action>
-			</get>
-		</command> -->
-
-<!-- 		<command id='gen_faux_users' security='protected'>
-			<post>
-				<action file='db.php'><![CDATA[genFauxUsers($_POST);]]></action>
-			</post>
-		</command> -->
-	</command>
-
-	<command id='match' security='protected'>
-		<description><![CDATA[This simple API lets you add and remove comments]]></description>
-		
-		<index>
-			<description><![CDATA[This is how you can get a listing of all comments]]></description>
-			
-			<action file='db.php'><![CDATA[listComments();]]></action>
-		</index>
-		
-		<get>
-			<description><![CDATA[This is how you can get a specific match]]></description>
-			
-			<action file='db.php'><![CDATA[getComment($_REST['comment']);]]></action>
-		</get>
-		
-		<post>
-			<description><![CDATA[This is how you can create a match]]></description>
-			
-			<action file='db.php'><![CDATA[addComment($_POST['commentText']);]]></action>
-		</post>
-		
-		<put>
-			<description><![CDATA[This is how you can update a match]]></description>
-			
-			<action file='db.php'><![CDATA[updateComment($_REST['comment'],$_POST['commentText']);]]></action>
-		</put>
-		
-		<delete>
-			<description><![CDATA[This is how you can delete a match]]></description>
-			
-			<action file='db.php'><![CDATA[deleteComment($_REST['comment']);]]></action>
-		</delete>
 	</command>
 </api>

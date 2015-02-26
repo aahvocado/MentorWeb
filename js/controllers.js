@@ -204,7 +204,6 @@ appControllers.controller('HomeController', ['$scope', '$http', '$location', fun
         },
         type: 'GET',
         error: $scope.ajaxError
-        // error: ajaxError
       });
     }
 

@@ -146,4 +146,16 @@
 			<action file='db.php'><![CDATA[getUserType();]]></action>
 		</index>
 	</command>
+
+	<command id='requestPeriodStatus' security='public'>
+		<description><![CDATA[Manages the request period. If open, then mentees can request mentors.]]></description>
+			
+		<index>
+			<action file='db.php'><![CDATA[getDefaultPeriodStatus();]]></action>
+		</index>
+
+		<post>
+			<action file='db.php'><![CDATA[putDefaultPeriodStatus($_POST['isOpen']);]]></action>
+		</post>
+	</command>
 </api>

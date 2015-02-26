@@ -222,6 +222,14 @@ appControllers.controller('HomeController', ['$scope', '$http', '$location', fun
 
   if(data["Admin"]) {
     $scope.user.type.push("Admin");
+    $scope.widgets = [
+    {
+      image: "/images/wireframe/image.png",
+      title: "Requesting Period",
+      description: "Open and close the requesting period for mentors"
+      meta: "Meta"
+      link: "#/requestingPeriod"
+    }];
   }
 
 }]);
@@ -318,6 +326,18 @@ appControllers.controller('SearchController', ['$scope', '$http', function($scop
 }]);
 
 appControllers.controller('WishListController', ['$scope', '$http', function($scope, $http) {
+  var open = {};
+  $.ajax({
+    // TOOD Check API for asking if open
+    url: "api/isRequestDefaultPeriodOpen",
+    dataType: "json",
+    async: true,
+    type: 'GET',
+    success: function(data) {
+      $scope.requestingOpen = data['isOpen']
+    }
+  });
+
   $scope.refreshHeader();
 
   $scope.userData = $scope.$parent.wishList;
@@ -385,6 +405,54 @@ appControllers.controller('WishListController', ['$scope', '$http', function($sc
   }
   if ($scope.userData) {
     //$scope.refreshUI();
+  }
+}]);
+
+appControllers.controller('RegistrationPeriodController', ['$scope', '$http', function($scope, $http) {
+  var open = {};
+  $.ajax({
+    // TOOD Check API for asking if open
+    url: "api/isRequestDefaultPeriodOpen",
+    dataType: "json",
+    async: false,
+    type: 'GET',
+    success: function(data) {
+      open = data;
+    }
+  });
+
+  if (open['isOpen']) {
+    $scope.action_case = "Close"
+    $scope.action_lower = "close"
+    $scope.explanation = "(This will prevent current mentees from selecting any mentors.)"
+  } else {
+    $scope.action_case = "Open"
+    $scope.action_lower = "open"
+    $scope.explanation = "(This will allow current mentees to select a mentor.)"
+  }
+
+  $scope.notification = function() {
+    $('#mentor-note').dimmer('toggle');
+  }
+  $scope.triggerRequestingPeriod = function() {
+    if (open['isOpen']) {
+      $.ajax({
+        // TOOD Check API for closing period
+        url: "api/closeDefaultRequestPeriod",
+        dataType: "json",
+        async: false,
+        type: 'POST'
+      });
+    } else {
+      $.ajax({
+        // TOOD Check API for opening period
+        url: "api/openDefaultRequestPeriod",
+        dataType: "json",
+        async: false,
+        type: 'GET'
+      });
+    }
+    $scope.go('/homescreen');
   }
 }]);
 

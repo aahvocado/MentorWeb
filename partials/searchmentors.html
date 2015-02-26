@@ -1,5 +1,5 @@
 
-<section class="searchmentors page">
+<section class="searchmentors page" ng-hide="show_full_profile">
 
 <div class="view">
   <div id="filter-menu" opt-filter-menu ok-key="filter" class="ui vertical menu">
@@ -231,7 +231,7 @@
           <div class="future-plans p-field"> {{miniProfileData.post_grad_plan}}</div>
 
           <div class="profile-link">
-            <a>See full profile >></a>
+            <a ng-click="showFull(miniProfileData)">See full profile >></a>
           </div>
 
           <!-- <div ng-bind-html="wishButton"></div> -->
@@ -255,4 +255,11 @@
       s.$apply(s.xList = items);
     };
   </script>
+</section>
+
+<section class="user-profile page" ng-show="show_full_profile" style="padding-bottom: 5em;">
+  <div ng-include src="'partials/user-profile.html'"></div>
+  <div class="user-profile message ui" style="top: 6em;">
+    <a ng-click="hideFull()">&lt;&lt; Hide full profile</a>
+  </div>
 </section>

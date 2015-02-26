@@ -289,8 +289,7 @@
 
 
 	 function getMentor($mentor) {
-		global $_USER;
-		$user = $_USER['uid'];
+		$user = $mentor;
 
 		$dbQuery = sprintf("SELECT *
 							FROM USER LEFT JOIN Mentor ON USER.username = Mentor.username 

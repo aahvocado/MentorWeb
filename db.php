@@ -956,10 +956,10 @@
 	/**
 	 * Function that determines whether or not the given request period is currently open
 	 */
-	function isRequestPeriodOpen($requestPeriod){
+	function getRequestPeriodStatus($requestPeriod){
 		$dbQuery = sprintf("SELECT isOpen FROM RequestPeriods WHERE RequestPeriod = '%s'",
 			mysql_real_escape_string($requestPeriod));
-		$result=getDBResultsArray($dbQuery);
+		$result=getDBResultsArray($dbQuery)[0];
 		header("Content-type: application/json");
 		echo json_encode($result);
 	}
@@ -967,9 +967,9 @@
 	/**
 	 * Function that determines whether or not the default request period is currently open
 	 */
-	function isRequestDefaultPeriodOpen(){
+	function getDefaultPeriodStatus(){
 		$defaultPeriod = "DefaultRequestPeriod";
-		isRequestPeriodOpen($defaultPeriod);
+		getRequestPeriodStatus($defaultPeriod);
 	}
 	
 	/**
@@ -992,6 +992,14 @@
 		$result=getDBResultsArray($dbQuery);
 		header("Content-type: application/json");
 		echo json_encode($result);
+	}
+
+	function putDefaultPeriodStatus($newStatus) {
+		if ($newStatus == 0) {
+			closeDefaultRequestPeriod();
+		} else {
+			openDefaultRequestPeriod();
+		}
 	}
 	
 	/**

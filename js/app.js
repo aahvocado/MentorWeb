@@ -48,7 +48,7 @@ myApp.config(['$routeProvider', function($routeProvider) {
   }).
   when('/editProfile', {
     templateUrl: 'partials/edit-profile.html'
-    // controller: 'EditProfileController'
+    controller: 'EditProfileController'
   }).
   when('/list', {
     templateUrl: 'partials/list.html',

@@ -84,7 +84,7 @@ $scope.$parent.refreshHeader = $scope.refreshHeader;
 }]);
 
 appControllers.controller('EditProfileController', ['$scope', '$http', '$location', function($scope, $http, $location) {
-  var data = {};
+var data = {};
   $.ajax({
     url: "api/user",
     dataType: "json",
@@ -109,9 +109,13 @@ appControllers.controller('EditProfileController', ['$scope', '$http', '$locatio
 
   $.get('api/mentor/' + $scope.$parent.username).success(function(data) {
     $scope.data = JSON.parse(data)[0];
-    console.log($scope.data["first_name"]);
+    console.log($scope.data);
     $scope.form.fname = $scope.data["first_name"];
+    $scope.form.lname = $scope.data["last_name"];
+    $scope.form.phone = $scope.data["phone_num"];
+    $scope.form.email = $scope.data["email"];
     $scope.form.load = true;
+    $scope.$apply();
   });
 
 }]);

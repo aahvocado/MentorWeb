@@ -47,7 +47,7 @@ myApp.config(['$routeProvider', function($routeProvider) {
     controller: 'WishListController'
   }).
   when('/editProfile', {
-    templateUrl: 'partials/edit-profile.html'
+    templateUrl: 'partials/edit-profile.html',
     controller: 'EditProfileController'
   }).
   when('/list', {

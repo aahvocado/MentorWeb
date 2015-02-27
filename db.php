@@ -978,7 +978,7 @@
 	function openRequestPeriod($requestPeriod){
 		$dbQuery = sprintf("UPDATE RequestPeriods SET isOpen = 1 WHERE RequestPeriod = '%s'",
 			mysql_real_escape_string($requestPeriod));
-		$result=getDBResultsArray($dbQuery);
+		$result=getDBRegInserted($dbQuery);
 		header("Content-type: application/json");
 		echo json_encode($result);
 	}
@@ -989,7 +989,7 @@
 	function closeRequestPeriod($requestPeriod){
 		$dbQuery = sprintf("UPDATE RequestPeriods SET isOpen = 0 WHERE RequestPeriod = '%s'",
 			mysql_real_escape_string($requestPeriod));
-		$result=getDBResultsArray($dbQuery);
+		$result=getDBRegInserted($dbQuery);
 		header("Content-type: application/json");
 		echo json_encode($result);
 	}

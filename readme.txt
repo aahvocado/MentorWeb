@@ -4,7 +4,7 @@ MentorWeb is a web based application made for Georgia Tech students to better fi
 
 -Setup and Configuration-
 1. Clone the repo onto your local machine
-2. Follow RNOC steps <here> for setting up the code on your prism account
+2. Follow the RNOC steps here, http://gtjourney.gatech.edu/gt-devhub/documentation for setting up the code on your prism account
 3. Once the system is setup on the server, edit the files:
 	config.php:
 		replace each of the variables with your server and database credentials, see Getting Started on Google Drive

@@ -1,0 +1,31 @@
+<section class="user-profile page">
+
+	<div class="user-profile message-wrapper">
+		<div class="user-profile header">
+			<h1>Admin Tools</h1>
+		</div>
+
+		<div class="view">
+			<!-- A GRID THAT WILL HOUSE ALL THE WIDGETS -->
+			<div class="ui grid">
+				<!-- INDIVIDUAL WIDGET -->
+				<!-- TODO REPLACE WITH ANGULAR CODE TO PROPOGATE ACROSS ALL WIDGETS -->
+				<div class="four wide column">
+					<ul>
+						<li ng-repeat="widget in widgets">
+							<div class="user-profile message ui">
+								<!-- DATA FOR WIDGET -->
+								<div class="content">
+									<img ng-src="{{widget.image}}" align="center">
+									<div class="menu-text" align="center">{{widget.title}}</div>
+									<div class="menu-text2">{{widget.description}}</div>
+								</div>
+								<div class="ui button"><a href="{{widget.link}}">Activate Widget</a></div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+</section>

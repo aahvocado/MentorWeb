@@ -219,15 +219,15 @@ appControllers.controller('HomeController', ['$scope', '$http', '$location', fun
           error: $scope.ajaxError
     });
   }
-
+  
   if(data["Admin"]) {
     $scope.user.type.push("Admin");
     $scope.widgets = [
     {
       image: "/images/wireframe/image.png",
-      title: "Requesting Period",
-      description: "Open and close the requesting period for mentors"
-      meta: "Meta"
+      title: "Toggle Requesting Period",
+      description: "Open and close the requesting period for mentors",
+      meta: "Meta",
       link: "#/requestingPeriod"
     }];
   }

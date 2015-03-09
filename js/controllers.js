@@ -124,6 +124,11 @@ appControllers.controller('WelcomeController', ['$scope', '$http', '$location', 
   };
 }]);
 
+appControllers.controller('LogoutController', ['$scope', '$http', '$location', function($scope, $http, $location) {
+  var serviceUrl = encodeURIComponent(config.baseUrl);
+  window.location.replace("https://login.gatech.edu/cas/logout?service=" + serviceUrl);
+}]);
+
 appControllers.controller('ForkController', ['$scope', '$http', function($scope, $http) {
 
 }]);

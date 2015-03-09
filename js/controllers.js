@@ -220,6 +220,7 @@ appControllers.controller('HomeController', ['$scope', '$http', '$location', fun
     $scope.user.type.push("Admin");
     $scope.widgets = [
     {
+      // TODO: create image
       image: "/images/wireframe/image.png",
       title: "Toggle Requesting Period",
       description: "Open and close the requesting period for mentors",

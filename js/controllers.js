@@ -34,57 +34,54 @@ appControllers.controller('mainController', ['$scope', '$http', '$location', fun
 }]);
 
 appControllers.controller('HeaderController', ['$scope', '$http', '$location', function($scope, $http, $location) {
-
-  // if($window.location == "\welcome" || $window.location == "\register" || $window.location == "\menteeReg"){
-    $scope.$parent.headerType = {none: 1,
+  $scope.$parent.headerType = {
+    none: 1,
     mentee: 0,
     mentor: 0,
-    admin: 0};
-    $scope.headerType = $scope.$parent.headerType;
-  
-  // $.get("api/user", function (data) {
-  //       data = data;//$data = data;//$('#hello').tmpl(data).appendTo("#hello");
-  //       console.log("data: " , data);
-  // });
-$scope.refreshHeader = function() {
-  var data = {};
-  if(window.location.href.indexOf("welcome") > -1 || window.location.href.indexOf("register") > -1){
-    console.log("no get sent");
-    $scope.$parent.headerType = {none: 1,
-      mentee: 0,
-      mentor: 0,
-      admin: 0};
-    //$scope.headerType = $scope.$parent.headerType;
-  } else {
-    $.ajax({
-        url: "api/user",
-        dataType: "json",
-        async: false,
-        success: function(result) {
-          data = result;
-        },
-        type: 'GET'
-        // error: ajaxError
-      }); 
-    if(data["Mentor"]) {
-      $scope.$parent.headerType.none = 0;
-      $scope.$parent.headerType.mentor = 1;
-    }
-    if(data["Mentee"]) {
-      $scope.$parent.headerType.none = 0;
-      $scope.$parent.headerType.mentee = 1;
-    }
-    if(data["Admin"]) {
-      $scope.$parent.headerType.none = 0;
-      $scope.$parent.headerType.admin = 1;
+    admin: 0
+  };
+  $scope.headerType = $scope.$parent.headerType;
+
+  $scope.refreshHeader = function() {
+    var data = {};
+    if(window.location.href.indexOf("welcome") > -1 || window.location.href.indexOf("register") > -1) {
+      $scope.$parent.headerType.none = 1;
+      $scope.$parent.headerType.mentee = 0;
+      $scope.$parent.headerType.mentor = 0;
+      $scope.$parent.headerType.admin = 0;
+    } else {
+      $.ajax({
+          url: "api/user",
+          dataType: "json",
+          async: false,
+          success: function(result) {
+            data = result;
+          },
+          type: 'GET'
+        }); 
+      if(data["Mentor"]) {
+        $scope.$parent.headerType.none = 0;
+        $scope.$parent.headerType.mentor = 1;
+      }
+      if(data["Mentee"]) {
+        $scope.$parent.headerType.none = 0;
+        $scope.$parent.headerType.mentee = 1;
+      }
+      if(data["Admin"]) {
+        $scope.$parent.headerType.none = 0;
+        $scope.$parent.headerType.admin = 1;
+      }
     }
   }
-}
-$scope.$parent.refreshHeader = $scope.refreshHeader;
+
+  $scope.$parent.refreshHeader = $scope.refreshHeader;
+  $scope.$on('$locationChangeSuccess', function() {   
+    $scope.refreshHeader();
+  });
 }]);
 
 appControllers.controller('EditProfileController', ['$scope', '$http', '$location', function($scope, $http, $location) {
-var data = {};
+  var data = {};
   $.ajax({
     url: "api/user",
     dataType: "json",
@@ -121,8 +118,6 @@ var data = {};
 }]);
 
 appControllers.controller('WelcomeController', ['$scope', '$http', '$location', function($scope, $http, $location) {
-  // window.location.reload(true);
-
   $scope.go = function() {
     var serviceUrl = encodeURIComponent(config.baseUrl);
     window.location.replace("https://login.gatech.edu/cas/login?service=" + serviceUrl);
@@ -150,9 +145,6 @@ appControllers.controller('LoadingController', ['$scope', '$http', function($sco
 }]);
 
 appControllers.controller('HomeController', ['$scope', '$http', '$location', function($scope, $http, $location) {
-
-  $scope.refreshHeader();
-
   $scope.user = {type:[],
     none: 1,
     mentee: 0,
@@ -239,8 +231,6 @@ appControllers.controller('HomeController', ['$scope', '$http', '$location', fun
 }]);
 
 appControllers.controller('SearchController', ['$scope', '$http', function($scope, $http) {
-  $scope.refreshHeader();
-
   $('.ui.checkbox').checkbox();
   $('.ui.accordion').accordion();
 
@@ -807,8 +797,7 @@ appControllers.controller('RegisterMenteeController', ['$scope', '$http', '$filt
 }]);
 
 
-appControllers.controller('RegisterMentorController', ['$scope', '$http', '$filter', '$location',
-  function($scope, $http, $filter, $location) {
+appControllers.controller('RegisterMentorController', ['$scope', '$http', '$filter', '$location', function($scope, $http, $filter, $location) {
   $('.ui.radio.checkbox').checkbox();
   $('.ui.checkbox').checkbox();
   $('select.dropdown').dropdown();

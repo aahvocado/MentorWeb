@@ -125,6 +125,8 @@ appControllers.controller('WelcomeController', ['$scope', '$http', '$location', 
 }]);
 
 appControllers.controller('LogoutController', ['$scope', '$http', '$location', function($scope, $http, $location) {
+  document.cookie = "_ga=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+  document.cookie = "PHPSESSID=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;";
   var serviceUrl = encodeURIComponent(config.baseUrl);
   window.location.replace("https://login.gatech.edu/cas/logout?service=" + serviceUrl);
 }]);

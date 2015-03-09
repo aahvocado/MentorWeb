@@ -403,20 +403,20 @@ appControllers.controller('WishListController', ['$scope', '$http', function($sc
   }
 }]);
 
-appControllers.controller('RegistrationPeriodController', ['$scope', '$http', function($scope, $http) {
+appControllers.controller('RequestingPeriodController', ['$scope', '$http', function($scope, $http) {
   var open = {};
   $.ajax({
-    // TOOD Check API for asking if open
-    url: "api/isRequestDefaultPeriodOpen",
+    url: "api/requestPeriodStatus",
     dataType: "json",
     async: false,
     type: 'GET',
     success: function(data) {
+      console.log(data);
       open = data;
     }
   });
 
-  if (open['isOpen']) {
+  if (open['isOpen'] == '1') {
     $scope.action_case = "Close"
     $scope.action_lower = "close"
     $scope.explanation = "(This will prevent current mentees from selecting any mentors.)"
@@ -430,24 +430,25 @@ appControllers.controller('RegistrationPeriodController', ['$scope', '$http', fu
     $('#mentor-note').dimmer('toggle');
   }
   $scope.triggerRequestingPeriod = function() {
-    if (open['isOpen']) {
+    if (open['isOpen'] == '1') {
       $.ajax({
-        // TOOD Check API for closing period
-        url: "api/closeDefaultRequestPeriod",
+        url: "api/requestPeriodStatus",
         dataType: "json",
+        data: {'isOpen': 0},
         async: false,
         type: 'POST'
       });
     } else {
       $.ajax({
-        // TOOD Check API for opening period
-        url: "api/openDefaultRequestPeriod",
+        url: "api/requestPeriodStatus",
         dataType: "json",
+        data: {'isOpen': 1},
         async: false,
-        type: 'GET'
+        type: 'POST'
       });
     }
     $scope.go('/homescreen');
+    console.log("Request for requestingOpen");
   }
 }]);
 

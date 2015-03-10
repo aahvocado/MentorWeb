@@ -232,23 +232,24 @@ appControllers.controller('HomeController', ['$scope', '$http', '$location', fun
 }]);
 
 appControllers.controller('SearchController', ['$scope', '$http', function($scope, $http) {
+  var open = {};
+  $.ajax({
+    url: "api/requestPeriodStatus",
+    dataType: "json",
+    async: false,
+    type: 'GET',
+    success: function(data) {
+      console.log(data);
+      open = data;
+    }
+  });
+  // TODO: include check for mentor currently assigned
+  $scope.chooseAvailable = open['isOpen'];
+
   $('.ui.checkbox').checkbox();
   $('.ui.accordion').accordion();
 
   $scope.$parent.wishList = ($scope.$parent.wishList || []);
-
-  // $http.get('json-gen/users120.json').success(function(data) {
-  //   $scope.userData = data;
-  //   $scope.miniProfileData = $scope.userData[0];
-  //   $scope.wishButton = {};
-  //   $scope.renderButton($scope.miniProfileData.favorited);
-  //   $scope.refreshUI();
-  // }).
-  // error(function(data, status, headers, config) {
-  //   // called asynchronously if an error occurs
-  //   // or server returns response with an error status.
-  //   console.log("Error getting userData");
-  // });
 
   $.ajax({
     url: "api/listMentors",
@@ -305,6 +306,25 @@ appControllers.controller('SearchController', ['$scope', '$http', function($scop
       });
     });
   }
+  $scope.notification = function() {
+    $('#mentor-note').dimmer('toggle');
+  }
+  $scope.chooseMentor = function() {
+    $scope.$parent.myMentor = $scope.miniProfileData;
+    $scope.myMentor = $scope.$parent.myMentor;
+
+    $.ajax({
+      url: "api/chooseMentor",
+      dataType: "json",
+          async: false,
+      data: {'mentor': $scope.myMentor.username}, //$scope.$parent.myMentor
+      type: 'POST'
+      // error: ajaxError
+    }); 
+
+    console.log("chooseMentor");
+    $scope.go('/user-profile');
+  }
   $scope.$on('$routeChangeStart', function () { //For some reason the isotope ul must be emptied or page change lags
     $('#isotopeContainer').empty();
   });
@@ -323,15 +343,17 @@ appControllers.controller('SearchController', ['$scope', '$http', function($scop
 appControllers.controller('WishListController', ['$scope', '$http', function($scope, $http) {
   var open = {};
   $.ajax({
-    // TOOD Check API for asking if open
-    url: "api/isRequestDefaultPeriodOpen",
+    url: "api/requestPeriodStatus",
     dataType: "json",
-    async: true,
+    async: false,
     type: 'GET',
     success: function(data) {
-      $scope.requestingOpen = data['isOpen']
+      console.log(data);
+      open = data;
     }
   });
+  // TODO: include check for mentor currently assigned
+  $scope.chooseAvailable = open['isOpen'];
 
   $scope.refreshHeader();
 
@@ -382,7 +404,6 @@ appControllers.controller('WishListController', ['$scope', '$http', function($sc
           async: false,
       data: {'mentor': $scope.myMentor.username}, //$scope.$parent.myMentor
       type: 'POST'
-      // error: ajaxError
     }); 
 
     console.log("chooseMentor");
@@ -464,7 +485,6 @@ appControllers.controller('UserProfileController', ['$scope', '$http', '$locatio
         //data = result;
       },
       type: 'GET'
-      // error: ajaxError
     }); 
   }
 }]);

@@ -239,10 +239,44 @@
           <div id="wishlist-add-button" class="ui toggle button" ng-click="wishButton.fn()">
             {{wishButton.contentText}}
           </div>
+          <br>
+          <div id="wishlist-choose-mentor" class="ui toggle button" ng-click="notification()" ng-if="chooseAvailable">
+            Choose as my Mentor
+          </div>
 
         </div>
 			</div>
 		</div>
+
+    <div id="mentor-note" class="ui page dimmer" ng-click="noteHeight()">
+      <div class="ui info message note-message">
+        <i class="close icon" ng-click="notification()"></i>
+        <div class="title">
+          Mentor Confirmation
+        </div>
+        <div class="back-strip">
+          <div class="kindling" ng-class="miniProfileData.alias.split(' ')[0]">
+              <a class="like ui corner label">
+                <i class="star icon" ng-class="miniProfileData.favorited"></i>
+              </a>
+              <div class="name color">{{miniProfileData.alias.split(" ")[0]}}</div>
+             <div class="name adj">{{miniProfileData.alias.split(" ")[1]}}</div>
+             <div class="name animal">{{miniProfileData.alias.split(" ")[2]}}</div>
+          </div>
+          <div class="text-message">
+            Are you sure you want to select this person as your official mentor?
+          </div>
+        </div>
+        <div class="ui options">
+          <div class="ui Negative medium button" ng-click="notification()">
+            Cancel
+          </div>
+          <div class="ui positive medium button" ng-click="chooseMentor()">
+            Yes
+          </div>
+        </div>
+      </div>
+    </div>
 
   <script>
     var removeItem = function(elem) {

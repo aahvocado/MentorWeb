@@ -65,6 +65,7 @@ myApp.config(['$routeProvider', function($routeProvider) {
   when('/dev', {
     templateUrl: 'partials/dev.html',
     controller: 'DevController'
+  }).
   when('/requestingPeriod', {
     templateUrl: 'partials/requesting-period.html',
     controller: 'RequestingPeriodController'

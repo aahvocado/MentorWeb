@@ -235,33 +235,16 @@ appControllers.controller('SearchController', ['$scope', '$http', function($scop
 
   $scope.$parent.wishList = ($scope.$parent.wishList || []);
 
-  // $http.get('json-gen/users120.json').success(function(data) {
-  //   $scope.userData = data;
-  //   $scope.miniProfileData = $scope.userData[0];
-  //   $scope.wishButton = {};
-  //   $scope.renderButton($scope.miniProfileData.favorited);
-  //   $scope.refreshUI();
-  // }).
-  // error(function(data, status, headers, config) {
-  //   // called asynchronously if an error occurs
-  //   // or server returns response with an error status.
-  //   console.log("Error getting userData");
-  // });
-
   $.ajax({
     url: "api/listMentors",
     dataType: "json",
       async: true,
       success: function(data, textStatus, jqXHR) {
-        console.log("listMentors");
-        console.log(data);
         $scope.userData = data;
         $scope.miniProfileData = $scope.userData[0];
         $scope.wishButton = {};
         $scope.renderButton($scope.miniProfileData.favorited);
         $scope.refreshUI();
-        //Create The New Rows From Template
-        //$scope.myMentor = data;
         $scope.$apply();
 
       },
@@ -278,20 +261,30 @@ appControllers.controller('SearchController', ['$scope', '$http', function($scop
     $scope.show_full_profile = false;
   }
   $scope.miniProfileSet = function(user) {
-    //console.log("yo ");
-    //console.log(user);
     $scope.miniProfileData = user;
     $scope.renderButton($scope.miniProfileData.favorited);
   }
   $scope.addToWishlist = function() {
     $scope.miniProfileData.favorited = "favorited";
     $scope.renderButton($scope.miniProfileData.favorited);
-    $scope.$parent.wishList.push($scope.miniProfileData);
+    $.ajax({
+      url: "api/wishlist",
+      dataType: "json",
+      async: true,
+      data: {'username': $scope.miniProfileData.username},
+      type: 'POST'
+    }); 
   }
   $scope.removeFromWishlist = function() {
     $scope.miniProfileData.favorited = "";
     $scope.renderButton($scope.miniProfileData.favorited);
-    $scope.$parent.wishList.splice($.inArray($scope.miniProfileData, $scope.$parent.wishList), 1 );
+    $.ajax({
+      url: "api/wishlist",
+      dataType: "json",
+      async: true,
+      data: {'username': $scope.miniProfileData.username},
+      type: 'DELETE'
+    }); 
   }
   $scope.refreshUI = function() {
     $scope.userData.forEach(function(element) {
@@ -313,18 +306,16 @@ appControllers.controller('SearchController', ['$scope', '$http', function($scop
     } else {
       $scope.wishButton.contentText = "Add to Wishlist";
       $scope.wishButton.fn = $scope.addToWishlist;
-      console.log("wishButton text: " + $scope.wishButton);
     }
   }
 }]);
 
 appControllers.controller('WishListController', ['$scope', '$http', function($scope, $http) {
-  # HERE
   $scope.userData = [];
   $.ajax({
       url: "api/wishlist",
       dataType: "json",
-      async: true,
+      async: false,
       success: function(result) {
         $scope.userData = result;
       },
@@ -357,9 +348,6 @@ appControllers.controller('WishListController', ['$scope', '$http', function($sc
       dataType: "json",
       async: true,
       data: {'username': $scope.miniProfileData.username},
-      success: function(result) {
-        $scope.userData = result;
-      },
       type: 'DELETE'
     }); 
     $.each($scope.userData, function(i){

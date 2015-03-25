@@ -319,7 +319,17 @@ appControllers.controller('SearchController', ['$scope', '$http', function($scop
 }]);
 
 appControllers.controller('WishListController', ['$scope', '$http', function($scope, $http) {
-  $scope.userData = $scope.$parent.wishList;
+  # HERE
+  $scope.userData = [];
+  $.ajax({
+      url: "api/wishlist",
+      dataType: "json",
+      async: true,
+      success: function(result) {
+        $scope.userData = result;
+      },
+      type: 'GET'
+    }); 
   if ($scope.userData) {
     $scope.miniProfileData = $scope.userData[0];
   }

@@ -352,19 +352,22 @@ appControllers.controller('WishListController', ['$scope', '$http', function($sc
   }
   $scope.removeFromWishlist = function() {
     $scope.miniProfileData.favorited = "";
-    //$scope.userData.splice($.inArray($scope.miniProfileData, $scope.userData), 1 );
+    $.ajax({
+      url: "api/wishlist",
+      dataType: "json",
+      async: true,
+      data: {'username': $scope.miniProfileData.username},
+      success: function(result) {
+        $scope.userData = result;
+      },
+      type: 'DELETE'
+    }); 
     $.each($scope.userData, function(i){
       if($scope.userData[i].username === $scope.miniProfileData.username) {
-        console.log("splice");
-        console.log($scope.userData[i].username);
-        console.log($scope.miniProfileData.username);
         $scope.userData.splice(i,1);
         return false;
       }
     });
-    $scope.$parent.wishList = $scope.userData;
-
-    //$scope.$parent.wishList.splice($.inArray($scope.miniProfileData, $scope.$parent.wishList), 1 );
   }
   $scope.chooseMentor = function() {
     $scope.$parent.myMentor = $scope.miniProfileData;

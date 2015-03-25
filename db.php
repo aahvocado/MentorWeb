@@ -1037,7 +1037,7 @@
 											ON Mentor_International_Experience.username = Mentor.username
 										JOIN Mentor_Career_Dev_Program
 											ON Mentor_Career_Dev_Program.username = Mentor.username
-										WHERE Wishlist.mentee = '%s'", $_USER);
+										WHERE Wishlist.mentee = '%s'", $_USER['uid']);
 		$result=getDBResultsArray($dbQueryWishlist);
 		header("Content-type: application/json");
 		echo json_encode($result);
@@ -1048,7 +1048,7 @@
 	 */
 	function addWishlistMentor($username) {
 		global $_USER;
-		$dbQueryWishlist = sprintf("INSERT INTO USER (mentee, mentor) VALUES ('%s', '%s')", $_USER, $username);
+		$dbQueryWishlist = sprintf("INSERT INTO Wishlist (mentee, mentor) VALUES ('%s', '%s')", $_USER['uid'], $username);
 		$result = getDBRegInserted($dbQueryWishlist);
 		echo "added";
 	}
@@ -1058,7 +1058,7 @@
 	 */
 	function removeWishlistMentor($username) {
 		global $_USER;
-		$dbQueryWishlist = sprintf("DELETE FROM Wishlist WHERE mentee='%s' AND mentor='%s'", $_USER, $username);
+		$dbQueryWishlist = sprintf("DELETE FROM Wishlist WHERE mentee='%s' AND mentor='%s'", $_USER['uid'], $username);
 		$result = deleteDBEntries($dbQueryWishlist);
 		echo "deleted";
 	}

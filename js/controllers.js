@@ -269,18 +269,16 @@ appControllers.controller('SearchController', ['$scope', '$http', function($scop
     $scope.renderButton($scope.miniProfileData.favorited);
     $.ajax({
       url: "api/wishlist",
-      dataType: "json",
-      async: true,
+      async: false,
       data: {'username': $scope.miniProfileData.username},
       type: 'POST'
-    }); 
+    });
   }
   $scope.removeFromWishlist = function() {
     $scope.miniProfileData.favorited = "";
     $scope.renderButton($scope.miniProfileData.favorited);
     $.ajax({
       url: "api/wishlist",
-      dataType: "json",
       async: true,
       data: {'username': $scope.miniProfileData.username},
       type: 'DELETE'
@@ -320,7 +318,7 @@ appControllers.controller('WishListController', ['$scope', '$http', function($sc
         $scope.userData = result;
       },
       type: 'GET'
-    }); 
+    });
   if ($scope.userData) {
     $scope.miniProfileData = $scope.userData[0];
   }

@@ -233,8 +233,6 @@ appControllers.controller('SearchController', ['$scope', '$http', function($scop
   $('.ui.checkbox').checkbox();
   $('.ui.accordion').accordion();
 
-  $scope.$parent.wishList = ($scope.$parent.wishList || []);
-
   $.ajax({
     url: "api/listMentors",
     dataType: "json",
@@ -269,7 +267,7 @@ appControllers.controller('SearchController', ['$scope', '$http', function($scop
     $scope.renderButton($scope.miniProfileData.favorited);
     $.ajax({
       url: "api/wishlist",
-      async: false,
+      async: true,
       data: {'username': $scope.miniProfileData.username},
       type: 'POST'
     });
@@ -285,10 +283,20 @@ appControllers.controller('SearchController', ['$scope', '$http', function($scop
     }); 
   }
   $scope.refreshUI = function() {
+    var wishlist = [];
+    $.ajax({
+      url: "api/wishlist",
+      dataType: "json",
+      async: false,
+      success: function(result) {
+        wishlist = result;
+      },
+    });
+
     $scope.userData.forEach(function(element) {
       var user = element;
-      $scope.$parent.wishList.forEach(function(element) {
-        if (user.username === element.username) { //JSON.stringify(user) === JSON.stringify(element)
+      wishlist.forEach(function(element) {
+        if (user.username === element.username) {
           user.favorited = "favorited";
         }
       });
@@ -317,8 +325,10 @@ appControllers.controller('WishListController', ['$scope', '$http', function($sc
       success: function(result) {
         $scope.userData = result;
       },
-      type: 'GET'
     });
+  $scope.userData.forEach(function(element) {
+    element.favorited = "favorited";
+  });
   if ($scope.userData) {
     $scope.miniProfileData = $scope.userData[0];
   }
@@ -343,7 +353,6 @@ appControllers.controller('WishListController', ['$scope', '$http', function($sc
     $scope.miniProfileData.favorited = "";
     $.ajax({
       url: "api/wishlist",
-      dataType: "json",
       async: true,
       data: {'username': $scope.miniProfileData.username},
       type: 'DELETE'
@@ -370,16 +379,6 @@ appControllers.controller('WishListController', ['$scope', '$http', function($sc
 
     console.log("chooseMentor");
     $scope.go('/user-profile');
-  }
-  $scope.refreshUI = function() {
-    $scope.userData.forEach(function(element) {
-      var user = element;
-      $scope.$parent.wishList.forEach(function(element) {
-        if (user.username === element.username) { //JSON.stringify(user) === JSON.stringify(element)
-          user.favorited = "favorited";
-        }
-      });
-    });
   }
   if ($scope.userData) {
     //$scope.refreshUI();

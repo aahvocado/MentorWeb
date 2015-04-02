@@ -1,0 +1,91 @@
+/*http://dev.m.gatech.edu/d/mcox41/w/MentorWeb/content/index.html#/register*/
+.registration-splash > .button {
+  margin-left: 110px;
+  margin-right: auto;
+  padding: 1.5em 3em 1.5em 3em;
+  color: black;
+  background-color: #E6E6E6;
+  border-radius: 0px;
+}
+
+/* http://dev.m.gatech.edu/d/mcox41/w/MentorWeb/content/index.html#/editProfile */
+.ui.huge.header {
+  min-height: 1em;
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+.ui.segment {
+  margin-bottom: 2em;
+  background-color: #FFFFFF;
+  -webkit-box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.1);
+  padding: 1em;
+  border-radius: 5px 5px 5px 5px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* http://dev.m.gatech.edu/d/mcox41/w/MentorWeb/content/index.html#/searchmentors */
+.searchmentors .view .mentor-profile .content {
+  margin-left: 5px;
+  margin-bottom: 10px;
+  padding: 15px;
+  color: #666666;
+}
+
+.profile-link {
+  PADDING-TOP: 5PX;
+  PADDING-BOTTOM: 5PX;
+  width: 140px;
+  cursor: pointer;
+}
+
+.user-info.extra {
+  padding-left: 0px;
+}
+
+/* http://dev.m.gatech.edu/d/mcox41/w/MentorWeb/content/index.html#/mentorAgreement */
+.ui.form .grouped.fields .field {
+  display: block;
+  float: none;
+  margin: 0.5em 0em;
+  margin-bottom: 1em;
+  padding: 0em;
+}
+
+/* http://dev.m.gatech.edu/d/mcox41/w/MentorWeb/content/index.html#/mentorReg */
+.ui.form .field {
+  clear: both;
+  margin: 0em 0em 1em;
+}
+
+/* http://dev.m.gatech.edu/d/mcox41/w/MentorWeb/content/index.html#/homescreen (admin page) */
+section.homescreen.page.ng-scope .ng-scope:first-child {
+  height: 380px;
+}
+
+/* http://dev.m.gatech.edu/d/mcox41/w/MentorWeb/content/index.html#/requestingPeriod */
+#mentor-note .text-message {
+  margin: auto 0;
+  font-weight: 600;
+  font-size: 16px;
+  /* padding: 0px 30px 20px 0px; */
+}
+
+#mentor-note .back-strip {
+  background-color: #ebebeb;
+  width: 100%;
+  height: 50%;
+  left: 0;
+  position: absolute;
+  top: 50px;
+  PADDING-LEFT: 10PX;
+  PADDING-RIGHT: 10PX;
+}f
+
+div#trigger-requesting-period {
+  /* PADDING: 10PX; */
+  MARGIN: 10PX;
+}

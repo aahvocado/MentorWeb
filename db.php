@@ -1060,6 +1060,6 @@
 		global $_USER;
 		$dbQueryWishlist = sprintf("DELETE FROM Wishlist WHERE mentee='%s' AND mentor='%s'", $_USER['uid'], $username);
 		$result = deleteDBEntries($dbQueryWishlist);
-		echo "deleted";
+		print($result);
 	}
 ?>

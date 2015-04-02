@@ -175,7 +175,7 @@
 		</post>
 
 		<delete>
-			<action file='db.php'><![CDATA[removeWishlistMentor($_POST['username']);]]></action>
+			<action file='db.php'><![CDATA[removeWishlistMentor($_REST['wishlist']);]]></action>
 		</delete>
 	</command>
 </api>

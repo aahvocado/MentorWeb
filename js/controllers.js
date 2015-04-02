@@ -276,9 +276,8 @@ appControllers.controller('SearchController', ['$scope', '$http', function($scop
     $scope.miniProfileData.favorited = "";
     $scope.renderButton($scope.miniProfileData.favorited);
     $.ajax({
-      url: "api/wishlist",
+      url: "api/wishlist/" + $scope.miniProfileData.username,
       async: true,
-      data: {'username': $scope.miniProfileData.username},
       type: 'DELETE'
     }); 
   }
@@ -352,9 +351,8 @@ appControllers.controller('WishListController', ['$scope', '$http', function($sc
   $scope.removeFromWishlist = function() {
     $scope.miniProfileData.favorited = "";
     $.ajax({
-      url: "api/wishlist",
+      url: "api/wishlist/" + $scope.miniProfileData.username,
       async: true,
-      data: {'username': $scope.miniProfileData.username},
       type: 'DELETE'
     }); 
     $.each($scope.userData, function(i){

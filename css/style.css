@@ -812,18 +812,14 @@ div#trigger-requesting-period {
   MARGIN: 10PX;
 }
 .kindling .name.animal.ng-binding {
-  position: fixed;
+  position: initial;
   top: 45px;
 }
 .kindling .name.adj.ng-binding {
-  position: fixed;
+  position: initial;
   top: 25px;
 }
-.p-pic .kindling .name.animal.ng-binding {
-    position: initial;
-}
-
-.p-pic .kindling .name.adj.ng-binding {
-    position: initial;
+.kindling .name.color.ng-binding {
+  position: initial;
 }
 

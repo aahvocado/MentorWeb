@@ -819,4 +819,11 @@ div#trigger-requesting-period {
   position: fixed;
   top: 25px;
 }
+.p-pic .kindling .name.animal.ng-binding {
+    position: initial;
+}
+
+.p-pic .kindling .name.adj.ng-binding {
+    position: initial;
+}
 

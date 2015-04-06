@@ -805,10 +805,20 @@ section.homescreen.page.ng-scope .ng-scope:first-child {
   top: 50px;
   PADDING-LEFT: 10PX;
   PADDING-RIGHT: 10PX;
-}f
+}
 
 div#trigger-requesting-period {
   /* PADDING: 10PX; */
   MARGIN: 10PX;
 }
-
+.kindling .name.animal.ng-binding {
+  position: initial;
+  top: 45px;
+}
+.kindling .name.adj.ng-binding {
+  position: initial;
+  top: 25px;
+}
+.kindling .name.color.ng-binding {
+  position: initial;
+}

@@ -275,7 +275,7 @@
 	}
 
 	function chooseMentor() {
-		//echo var_dump($_POST);
+		echo var_dump($_POST);
 		global $_USER;
 		// $dbQuery = sprintf("INSERT INTO Matches FROM Mentee WHERE username = '%s'",
 		// 										$_USER['uid']);
@@ -283,7 +283,7 @@
 					VALUES ('%s', '%s')", $_USER['uid'], $_POST['mentor']);
 		
 		$result = getDBRegInserted($dbQuery);
-		echo json_encode($result == 1);
+		echo json_encode($_POST);
 	}
 
 
@@ -1016,5 +1016,50 @@
 	function closeDefaultRequestPeriod(){
 		$defaultPeriod = "DefaultRequestPeriod";
 		closeRequestPeriod($defaultPeriod);
+	}
+
+	function getWishlistContents() {
+		global $_USER;
+		$dbQueryWishlist = sprintf("SELECT * FROM Wishlist
+										JOIN Mentor
+											ON  Wishlist.mentor = Mentor.username
+										JOIN USER
+											ON Mentor.username = USER.username
+										JOIN Mentor_Breadth_Track
+											ON Mentor_Breadth_Track.username = Mentor.username
+										JOIN Mentor_BME_Organization
+											ON Mentor_BME_Organization.username = Mentor.username
+										JOIN Mentor_Tutor_Teacher_Program
+											ON Mentor_Tutor_Teacher_Program.username = Mentor.username
+										JOIN Mentor_BME_Academic_Experience
+											ON Mentor_BME_Academic_Experience.username = Mentor.username
+										JOIN Mentor_International_Experience
+											ON Mentor_International_Experience.username = Mentor.username
+										JOIN Mentor_Career_Dev_Program
+											ON Mentor_Career_Dev_Program.username = Mentor.username
+										WHERE Wishlist.mentee = '%s'", $_USER['uid']);
+		$result=getDBResultsArray($dbQueryWishlist);
+		header("Content-type: application/json");
+		echo json_encode($result);
+	}
+
+	/**
+	 * Adds a mentor to the currently logged in user's wishlist.
+	 */
+	function addWishlistMentor($username) {
+		global $_USER;
+		$dbQueryWishlist = sprintf("INSERT INTO Wishlist (mentee, mentor) VALUES ('%s', '%s')", $_USER['uid'], $username);
+		$result = getDBRegInserted($dbQueryWishlist);
+		echo "added";
+	}
+
+	/**
+	 * Removes a mentor from the currently logged in user's wishlist.
+	 */
+	function removeWishlistMentor($username) {
+		global $_USER;
+		$dbQueryWishlist = sprintf("DELETE FROM Wishlist WHERE mentee='%s' AND mentor='%s'", $_USER['uid'], $username);
+		$result = deleteDBEntries($dbQueryWishlist);
+		print($result);
 	}
 ?>

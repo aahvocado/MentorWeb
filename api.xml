@@ -158,4 +158,24 @@
 			<action file='db.php'><![CDATA[putDefaultPeriodStatus($_POST['isOpen']);]]></action>
 		</post>
 	</command>
+
+	<command id='wishlist' security='public'>
+		<description><![CDATA[Manages the wishlist. Can get a list of mentors for a wishlist and add and remove.]]></description>
+			
+		<index>
+			<action file='db.php'><![CDATA[getWishlistContents();]]></action>
+		</index>
+			
+		<get>
+			<action file='db.php'><![CDATA[getWishlistContents();]]></action>
+		</get>
+
+		<post>
+			<action file='db.php'><![CDATA[addWishlistMentor($_POST['username']);]]></action>
+		</post>
+
+		<delete>
+			<action file='db.php'><![CDATA[removeWishlistMentor($_REST['wishlist']);]]></action>
+		</delete>
+	</command>
 </api>

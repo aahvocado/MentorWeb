@@ -23,6 +23,7 @@ var appControllers = angular.module('appControllers', ['ngAnimate', 'ngResource'
 
 appControllers.controller('mainController', ['$scope', '$http', '$location', function($scope, $http, $location) {
    $scope.go = function(path) {
+   	console.log("in go");
     $location.path(path);
     //$location.reload(true);
     //$scope.$parent.$apply();
@@ -315,13 +316,16 @@ appControllers.controller('SearchController', ['$scope', '$http', function($scop
     $.ajax({
       url: "api/chooseMentor",
       dataType: "json",
-          async: false,
       data: {'mentor': $scope.myMentor.username}, //$scope.$parent.myMentor
-      type: 'POST'
-      // error: ajaxError
+      type: 'POST',
+	  async: false,
+	  success: function(data){
+		$scope.go('/user-profile');
+	  },
+      error: function(data) {
+		console.log(data);
+	  }
     }); 
-
-    $scope.go('/user-profile');
   }
   $scope.$on('$routeChangeStart', function () { //For some reason the isotope ul must be emptied or page change lags
     $('#isotopeContainer').empty();
@@ -402,12 +406,17 @@ appControllers.controller('WishListController', ['$scope', '$http', function($sc
     $.ajax({
       url: "api/chooseMentor",
       dataType: "json",
-          async: false,
       data: {'mentor': $scope.myMentor.username}, //$scope.$parent.myMentor
-      type: 'POST'
+      type: 'POST',
+	  async: false,
+	  success: function(data){
+		$scope.go('/user-profile');
+	  },
+      error: function(data) {
+		console.log(data);
+	  }
+	  
     }); 
-
-    $scope.go('/user-profile');
   }
   $scope.refreshUI = function() {
     $scope.userData.forEach(function(element) {
@@ -472,7 +481,9 @@ appControllers.controller('RequestingPeriodController', ['$scope', '$http', func
 }]);
 
 appControllers.controller('UserProfileController', ['$scope', '$http', '$location', function($scope, $http, $location) {
-  $scope.myMentor = $scope.$parent.myMentor;
+  //$scope.myMentor = $scope.$parent.myMentor;
+
+	console.log("in UserProfileController");
 
   $scope.reset = function() {
     $.ajax({

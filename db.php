@@ -275,7 +275,7 @@
 	}
 
 	function chooseMentor() {
-		echo var_dump($_POST);
+		//echo var_dump($_POST);
 		global $_USER;
 		// $dbQuery = sprintf("INSERT INTO Matches FROM Mentee WHERE username = '%s'",
 		// 										$_USER['uid']);
@@ -283,7 +283,7 @@
 					VALUES ('%s', '%s')", $_USER['uid'], $_POST['mentor']);
 		
 		$result = getDBRegInserted($dbQuery);
-		echo json_encode($_POST);
+		echo json_encode($result == 1);
 	}
 
 

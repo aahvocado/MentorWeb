@@ -481,7 +481,7 @@ appControllers.controller('RequestingPeriodController', ['$scope', '$http', func
 }]);
 
 appControllers.controller('UserProfileController', ['$scope', '$http', '$location', function($scope, $http, $location) {
-  //$scope.myMentor = $scope.$parent.myMentor;
+  $scope.myMentor = $scope.$parent.myMentor;
 
 	console.log("in UserProfileController");
 

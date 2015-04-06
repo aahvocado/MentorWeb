@@ -66,9 +66,13 @@ myApp.config(['$routeProvider', function($routeProvider) {
     templateUrl: 'partials/dev.html',
     controller: 'DevController'
   }).
+  when('/requestingPeriod', {
+    templateUrl: 'partials/requesting-period.html',
+    controller: 'RequestingPeriodController'
+  }).
   when('/logout', {
-	templateUrl: 'partials/logout.html',
-	controller: 'LogoutController'
+    templateUrl: 'partials/logout.html',
+    controller: 'LogoutController'
   }).
   otherwise({
     redirectTo: '/loading'

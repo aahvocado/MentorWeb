@@ -1,0 +1,29 @@
+<section class="requesting-period page">
+
+    <div id="trigger-requesting-period" class="ui toggle button" ng-click="notification()">
+        {{action_case}} Requesting Period
+    </div>
+
+    <div id="mentor-note" class="ui page dimmer" ng-click="noteHeight()">
+      <div class="ui info message note-message">
+        <i class="close icon" ng-click="notification()"></i>
+        <div class="title">
+          {{action_case}} Requesting Period Confirmation
+        </div>
+        <div class="back-strip">
+          <div class="text-message">
+            Are you sure you want {{action_lower}} the requesting period? {{explanation}}
+          </div>
+        </div>
+        <div class="ui options">
+          <div class="ui Negative medium button" ng-click="notification()">
+            Cancel
+          </div>
+          <div class="ui positive medium button" ng-click="triggerRequestingPeriod()">
+            Yes
+          </div>
+        </div>
+      </div>
+    </div>
+
+</section>

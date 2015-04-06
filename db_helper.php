@@ -114,7 +114,7 @@
         }
     }
 
-    function deleteDBEntries($dbQuery){
+    function deleteDBEntries($dbQuery,$dieOnError=True){
         return mysql_query($dbQuery);
     }
     
@@ -148,5 +148,4 @@
         
         return $dbResultsAffected;
     }
-    
-    ?>
+?>

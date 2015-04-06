@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 var appControllers = angular.module('appControllers', ['ngAnimate', 'ngResource']);
 
 // appControllers.directive('accessibleForm', function () {
@@ -106,7 +107,6 @@ appControllers.controller('EditProfileController', ['$scope', '$http', '$locatio
 
   $.get('api/mentor/' + $scope.$parent.username).success(function(data) {
     $scope.data = JSON.parse(data)[0];
-    console.log($scope.data);
     $scope.form.fname = $scope.data["first_name"];
     $scope.form.lname = $scope.data["last_name"];
     $scope.form.phone = $scope.data["phone_num"];
@@ -140,7 +140,6 @@ appControllers.controller('UserController', ['$scope', '$http', function($scope,
     $scope.user = data;
     $scope.userType = data['userType'];
     $scope.$parent.username = data['username'];
-    console.log(data);
   });
 }]);
 
@@ -160,10 +159,6 @@ appControllers.controller('HomeController', ['$scope', '$http', '$location', fun
     id: ''};
   var data = {};
   
-  // $.get("api/user", function (data) {
-  //       data = data;//$data = data;//$('#hello').tmpl(data).appendTo("#hello");
-  //       console.log("data: " , data);
-  // });
   $.ajax({
       url: "api/user",
       dataType: "json",
@@ -173,9 +168,7 @@ appControllers.controller('HomeController', ['$scope', '$http', '$location', fun
       },
       type: 'GET'
       // error: ajaxError
-    }); 
-  console.log("homescreen user:");
-  console.log(data);
+    });
   $scope.user.name = data["Name"];
   $scope.$parent.username = data["Name"];
   // $scope.user.id = data["Id"];
@@ -194,7 +187,6 @@ appControllers.controller('HomeController', ['$scope', '$http', '$location', fun
     $scope.profile_title = "Your Mentor";
 
     function getMentorData(mentorUsername) {
-      console.log(mentorUsername)
       $.ajax({
         url: "api/mentor/" + mentorUsername,
         dataType: "json",
@@ -202,7 +194,6 @@ appControllers.controller('HomeController', ['$scope', '$http', '$location', fun
         success: function(result) {
           $scope.show_identifier = true;
           $scope.myMentor = result[0];
-          console.log("getMentor");
           $scope.$apply();
         },
         type: 'GET',
@@ -215,21 +206,50 @@ appControllers.controller('HomeController', ['$scope', '$http', '$location', fun
       dataType: "json",
           async: true,
           success: function(data, textStatus, jqXHR) {
-            console.log("getMenteeMatch");
-            console.log(data);
             getMentorData(data[0].mentor_user);
           },
           error: $scope.ajaxError
     });
   }
-
+  
   if(data["Admin"]) {
     $scope.user.type.push("Admin");
+    $scope.widgets = [
+    {
+      // TODO: create image
+      image: "/images/wireframe/image.png",
+      title: "Toggle Requesting Period",
+      description: "Open and close the requesting period for mentors",
+      meta: "Meta",
+      link: "#/requestingPeriod"
+    }];
   }
 
 }]);
 
 appControllers.controller('SearchController', ['$scope', '$http', function($scope, $http) {
+  var open = {};
+  $.ajax({
+    url: "api/requestPeriodStatus",
+    dataType: "json",
+    async: false,
+    type: 'GET',
+    success: function(data) {
+      open = data;
+    }
+  });
+  $.ajax({
+    url: "api/getMenteeMatch",
+    dataType: "json",
+      async: false,
+      success: function(data) {
+        console.log(data.length == 0);
+        console.log(open['isOpen'] == '1');
+        $scope.chooseAvailable = (data.length == 0 && open['isOpen'] == '1');
+      },
+      error: $scope.ajaxError
+  });
+
   $('.ui.checkbox').checkbox();
   $('.ui.accordion').accordion();
 
@@ -301,6 +321,27 @@ appControllers.controller('SearchController', ['$scope', '$http', function($scop
       });
     });
   }
+  $scope.notification = function() {
+    $('#mentor-note').dimmer('toggle');
+  }
+  $scope.chooseMentor = function() {
+    $scope.$parent.myMentor = $scope.miniProfileData;
+    $scope.myMentor = $scope.$parent.myMentor;
+
+    $.ajax({
+      url: "api/chooseMentor",
+      dataType: "json",
+      data: {'mentor': $scope.myMentor.username}, //$scope.$parent.myMentor
+      type: 'POST',
+    async: false,
+    success: function(data){
+    $scope.go('/user-profile');
+    },
+      error: function(data) {
+    console.log(data);
+    }
+    }); 
+  }
   $scope.$on('$routeChangeStart', function () { //For some reason the isotope ul must be emptied or page change lags
     $('#isotopeContainer').empty();
   });
@@ -316,6 +357,28 @@ appControllers.controller('SearchController', ['$scope', '$http', function($scop
 }]);
 
 appControllers.controller('WishListController', ['$scope', '$http', function($scope, $http) {
+  var open = {};
+  $.ajax({
+    url: "api/requestPeriodStatus",
+    dataType: "json",
+    async: false,
+    type: 'GET',
+    success: function(data) {
+      open = data;
+    }
+  });
+  $.ajax({
+    url: "api/getMenteeMatch",
+    dataType: "json",
+      async: false,
+      success: function(data) {
+        console.log(data.length == 0);
+        console.log(open['isOpen'] == '1');
+        $scope.chooseAvailable = (data.length == 0 && open['isOpen'] == '1');
+      },
+      error: $scope.ajaxError
+  });
+
   $scope.userData = [];
   $.ajax({
       url: "api/wishlist",
@@ -333,7 +396,6 @@ appControllers.controller('WishListController', ['$scope', '$http', function($sc
   }
 
   $scope.showFull = function(user) {
-    console.log("here");
     $scope.profile_title = "Mentor Profile";
     $scope.show_identifier = false;
     $scope.myMentor = user;
@@ -369,17 +431,72 @@ appControllers.controller('WishListController', ['$scope', '$http', function($sc
     $.ajax({
       url: "api/chooseMentor",
       dataType: "json",
-          async: false,
       data: {'mentor': $scope.myMentor.username}, //$scope.$parent.myMentor
-      type: 'POST'
-      // error: ajaxError
-    }); 
-
-    console.log("chooseMentor");
-    $scope.go('/user-profile');
+      type: 'POST',
+      async: false,
+      success: function(data){
+        $scope.go('/user-profile');
+      },
+      error: function(data) {
+        console.log(data);
+      }
+    });
+  $scope.refreshUI = function() {
+    $scope.userData.forEach(function(element) {
+      var user = element;
+      $scope.$parent.wishList.forEach(function(element) {
+        if (user.username === element.username) { //JSON.stringify(user) === JSON.stringify(element)
+          user.favorited = "favorited";
+        }
+      });
+    });
   }
-  if ($scope.userData) {
-    //$scope.refreshUI();
+}]);
+
+appControllers.controller('RequestingPeriodController', ['$scope', '$http', function($scope, $http) {
+  var open = {};
+  $.ajax({
+    url: "api/requestPeriodStatus",
+    dataType: "json",
+    async: false,
+    type: 'GET',
+    success: function(data) {
+      open = data;
+    }
+  });
+
+  if (open['isOpen'] == '1') {
+    $scope.action_case = "Close"
+    $scope.action_lower = "close"
+    $scope.explanation = "(This will prevent current mentees from selecting any mentors.)"
+  } else {
+    $scope.action_case = "Open"
+    $scope.action_lower = "open"
+    $scope.explanation = "(This will allow current mentees to select a mentor.)"
+  }
+
+  $scope.notification = function() {
+    $('#mentor-note').dimmer('toggle');
+  }
+  $scope.triggerRequestingPeriod = function() {
+    if (open['isOpen'] == '1') {
+      $.ajax({
+        url: "api/requestPeriodStatus",
+        dataType: "json",
+        data: {'isOpen': 0},
+        async: false,
+        type: 'POST'
+      });
+    } else {
+      $.ajax({
+        url: "api/requestPeriodStatus",
+        dataType: "json",
+        data: {'isOpen': 1},
+        async: false,
+        type: 'POST'
+      });
+    }
+    $scope.go('/homescreen');
   }
 }]);
 
@@ -1084,7 +1201,6 @@ appControllers.controller('RegisterMentorController', ['$scope', '$http', '$filt
   };
 
   $scope.newValue = function(value, attr) {
-    console.log('new value', value);
     $scope.form[attr] = value;
     if (value == "Other" && attr == "dfocus") {
       $scope.form.dfocusother = $scope.form.dfocusother; //left side was $scope.form.dfocus.other
@@ -1354,5 +1470,3 @@ $scope.reset = function() {
   }
 
 }]);
-
-

@@ -11,6 +11,13 @@
 		</div>
 	</div>
 
+	<div ng-if="user.admin">
+		<div class="header">
+	    <!-- Welcome, {{user.name}}! -->
+	  </div>
+		<div ng-include src="'partials/admin-dash.html'"></div>
+	</div>
+
 	<div ng-if="user.mentee === 1">
 		<div class="header">
 	    <!-- Welcome, {{user.name}}! -->
@@ -19,13 +26,6 @@
 	</div>
 
 	<div ng-if="user.mentor">
-		<div class="header">
-	    <!-- Welcome, {{user.name}}! -->
-	  </div>
-		<div ng-include src="'partials/user-profile.html'"></div>
-	</div>
-
-	<div ng-if="user.admin">
 		<div class="header">
 	    <!-- Welcome, {{user.name}}! -->
 	  </div>

@@ -34,53 +34,50 @@ appControllers.controller('mainController', ['$scope', '$http', '$location', fun
 }]);
 
 appControllers.controller('HeaderController', ['$scope', '$http', '$location', function($scope, $http, $location) {
-
-  // if($window.location == "\welcome" || $window.location == "\register" || $window.location == "\menteeReg"){
-    $scope.$parent.headerType = {none: 1,
+  $scope.$parent.headerType = {
+    none: 1,
     mentee: 0,
     mentor: 0,
-    admin: 0};
-    $scope.headerType = $scope.$parent.headerType;
-  
-  // $.get("api/user", function (data) {
-  //       data = data;//$data = data;//$('#hello').tmpl(data).appendTo("#hello");
-  //       console.log("data: " , data);
-  // });
-$scope.refreshHeader = function() {
-  var data = {};
-  if(window.location.href.indexOf("welcome") > -1 || window.location.href.indexOf("register") > -1){
-    console.log("no get sent");
-    $scope.$parent.headerType = {none: 1,
-      mentee: 0,
-      mentor: 0,
-      admin: 0};
-    //$scope.headerType = $scope.$parent.headerType;
-  } else {
-    $.ajax({
-        url: "api/user",
-        dataType: "json",
-        async: false,
-        success: function(result) {
-          data = result;
-        },
-        type: 'GET'
-        // error: ajaxError
-      }); 
-    if(data["Mentor"]) {
-      $scope.$parent.headerType.none = 0;
-      $scope.$parent.headerType.mentor = 1;
-    }
-    if(data["Mentee"]) {
-      $scope.$parent.headerType.none = 0;
-      $scope.$parent.headerType.mentee = 1;
-    }
-    if(data["Admin"]) {
-      $scope.$parent.headerType.none = 0;
-      $scope.$parent.headerType.admin = 1;
+    admin: 0
+  };
+  $scope.headerType = $scope.$parent.headerType;
+
+  $scope.refreshHeader = function() {
+    var data = {};
+    if(window.location.href.indexOf("welcome") > -1 || window.location.href.indexOf("register") > -1) {
+      $scope.$parent.headerType.none = 1;
+      $scope.$parent.headerType.mentee = 0;
+      $scope.$parent.headerType.mentor = 0;
+      $scope.$parent.headerType.admin = 0;
+    } else {
+      $.ajax({
+          url: "api/user",
+          dataType: "json",
+          async: false,
+          success: function(result) {
+            data = result;
+          },
+          type: 'GET'
+        }); 
+      if(data["Mentor"]) {
+        $scope.$parent.headerType.none = 0;
+        $scope.$parent.headerType.mentor = 1;
+      }
+      if(data["Mentee"]) {
+        $scope.$parent.headerType.none = 0;
+        $scope.$parent.headerType.mentee = 1;
+      }
+      if(data["Admin"]) {
+        $scope.$parent.headerType.none = 0;
+        $scope.$parent.headerType.admin = 1;
+      }
     }
   }
-}
-$scope.$parent.refreshHeader = $scope.refreshHeader;
+
+  $scope.$parent.refreshHeader = $scope.refreshHeader;
+  $scope.$on('$locationChangeSuccess', function() {   
+    $scope.refreshHeader();
+  });
 }]);
 
 appControllers.controller('EditProfileController', ['$scope', '$http', '$location', function($scope, $http, $location) {
@@ -91,6 +88,7 @@ appControllers.controller('EditProfileController', ['$scope', '$http', '$locatio
     async: false,
     success: function(result) {
       data = result;
+      // $scope.username = data['username'];
     },
     type: 'GET'
     // error: ajaxError
@@ -104,14 +102,33 @@ appControllers.controller('EditProfileController', ['$scope', '$http', '$locatio
     $scope.viewMentorForm = 0;
   }
 
+  $scope.form = [];
+
+  $.get('api/mentor/' + $scope.$parent.username).success(function(data) {
+    $scope.data = JSON.parse(data)[0];
+    console.log($scope.data);
+    $scope.form.fname = $scope.data["first_name"];
+    $scope.form.lname = $scope.data["last_name"];
+    $scope.form.phone = $scope.data["phone_num"];
+    $scope.form.email = $scope.data["email"];
+    $scope.form.load = true;
+    $scope.$apply();
+  });
+
 }]);
 
 appControllers.controller('WelcomeController', ['$scope', '$http', '$location', function($scope, $http, $location) {
-  // window.location.reload(true);
-
   $scope.go = function() {
-    window.location.replace("https://login.gatech.edu/cas/login?service=http%3A%2F%2Fdev.m.gatech.edu%2Fd%2Faarrowood3%2Fw%2FMentorAngular%2Fcontent%2F")
+    var serviceUrl = encodeURIComponent(config.baseUrl);
+    window.location.replace("https://login.gatech.edu/cas/login?service=" + serviceUrl);
   };
+}]);
+
+appControllers.controller('LogoutController', ['$scope', '$http', '$location', function($scope, $http, $location) {
+  document.cookie = "_ga=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+  document.cookie = "PHPSESSID=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+  var serviceUrl = encodeURIComponent(config.baseUrl);
+  window.location.replace("https://login.gatech.edu/cas/logout?service=" + serviceUrl);
 }]);
 
 appControllers.controller('ForkController', ['$scope', '$http', function($scope, $http) {
@@ -122,6 +139,7 @@ appControllers.controller('UserController', ['$scope', '$http', function($scope,
   $.get('api/welcome').success(function(data) {
     $scope.user = data;
     $scope.userType = data['userType'];
+    $scope.$parent.username = data['username'];
     console.log(data);
   });
 }]);
@@ -134,9 +152,6 @@ appControllers.controller('LoadingController', ['$scope', '$http', function($sco
 }]);
 
 appControllers.controller('HomeController', ['$scope', '$http', '$location', function($scope, $http, $location) {
-
-  $scope.refreshHeader();
-
   $scope.user = {type:[],
     none: 1,
     mentee: 0,
@@ -162,7 +177,8 @@ appControllers.controller('HomeController', ['$scope', '$http', '$location', fun
   console.log("homescreen user:");
   console.log(data);
   $scope.user.name = data["Name"];
-  $scope.user.id = data["Id"];
+  $scope.$parent.username = data["Name"];
+  // $scope.user.id = data["Id"];
   $scope.user.mentor = data["Mentor"];
   $scope.user.mentee = data["Mentee"];
   $scope.user.admin = data["Admin"];
@@ -175,21 +191,24 @@ appControllers.controller('HomeController', ['$scope', '$http', '$location', fun
   }
   if(data["Mentee"]) {
     $scope.user.type.push("Mentee");
+    $scope.profile_title = "Your Mentor";
 
-    // $.ajax({
-    //   url: "api/mentor",
-    //   dataType: "json",
-    //   async: true,
-    //   success: function(result) {
-    //     //data = result;
-    //     $scope.myMentor = result;
-    //     console.log("getMentor");
-    //     console.log($scope.myMentor);
-    //   },
-    //   type: 'GET',
-    //   error: $scope.ajaxError
-    //   // error: ajaxError
-    // });
+    function getMentorData(mentorUsername) {
+      console.log(mentorUsername)
+      $.ajax({
+        url: "api/mentor/" + mentorUsername,
+        dataType: "json",
+        async: true,
+        success: function(result) {
+          $scope.show_identifier = true;
+          $scope.myMentor = result[0];
+          console.log("getMentor");
+          $scope.$apply();
+        },
+        type: 'GET',
+        error: $scope.ajaxError
+      });
+    }
 
     $.ajax({
       url: "api/getMenteeMatch",
@@ -198,24 +217,10 @@ appControllers.controller('HomeController', ['$scope', '$http', '$location', fun
           success: function(data, textStatus, jqXHR) {
             console.log("getMenteeMatch");
             console.log(data);
-            $scope.$apply();
-            //Create The New Rows From Template
-            //$scope.myMentor = data;
+            getMentorData(data[0].mentor_user);
           },
           error: $scope.ajaxError
     });
-
-    // $.ajax({
-    //   url: "api/mentor/" + user + "/comment",
-    //   dataType: "json",
-    //       async: false,
-    //       success: function(data, textStatus, jqXHR) {
-    //     console.log(data);
-    //         //Create The New Rows From Template
-    //         $scope.myMentor = data;
-    //       },
-    //       error: ajaxError
-    //});
   }
 
   if(data["Admin"]) {
@@ -225,67 +230,72 @@ appControllers.controller('HomeController', ['$scope', '$http', '$location', fun
 }]);
 
 appControllers.controller('SearchController', ['$scope', '$http', function($scope, $http) {
-  $scope.refreshHeader();
-
   $('.ui.checkbox').checkbox();
   $('.ui.accordion').accordion();
-
-  $scope.$parent.wishList = ($scope.$parent.wishList || []);
-
-  // $http.get('json-gen/users120.json').success(function(data) {
-  //   $scope.userData = data;
-  //   $scope.miniProfileData = $scope.userData[0];
-  //   $scope.wishButton = {};
-  //   $scope.renderButton($scope.miniProfileData.favorited);
-  //   $scope.refreshUI();
-  // }).
-  // error(function(data, status, headers, config) {
-  //   // called asynchronously if an error occurs
-  //   // or server returns response with an error status.
-  //   console.log("Error getting userData");
-  // });
 
   $.ajax({
     url: "api/listMentors",
     dataType: "json",
       async: true,
       success: function(data, textStatus, jqXHR) {
-        console.log("listMentors");
-        console.log(data);
         $scope.userData = data;
         $scope.miniProfileData = $scope.userData[0];
         $scope.wishButton = {};
         $scope.renderButton($scope.miniProfileData.favorited);
         $scope.refreshUI();
-        //Create The New Rows From Template
-        //$scope.myMentor = data;
         $scope.$apply();
 
       },
       error: $scope.ajaxError
     });
 
+  $scope.showFull = function(user) {
+    $scope.profile_title = "Mentor Profile";
+    $scope.show_identifier = false;
+    $scope.myMentor = user;
+    $scope.show_full_profile = true;
+  }
+  $scope.hideFull = function() {
+    $scope.show_full_profile = false;
+  }
   $scope.miniProfileSet = function(user) {
-    //console.log("yo ");
-    //console.log(user);
     $scope.miniProfileData = user;
     $scope.renderButton($scope.miniProfileData.favorited);
   }
   $scope.addToWishlist = function() {
     $scope.miniProfileData.favorited = "favorited";
     $scope.renderButton($scope.miniProfileData.favorited);
-    $scope.$parent.wishList.push($scope.miniProfileData);
+    $.ajax({
+      url: "api/wishlist",
+      async: true,
+      data: {'username': $scope.miniProfileData.username},
+      type: 'POST'
+    });
   }
   $scope.removeFromWishlist = function() {
     $scope.miniProfileData.favorited = "";
     $scope.renderButton($scope.miniProfileData.favorited);
-    $scope.$parent.wishList.splice($.inArray($scope.miniProfileData, $scope.$parent.wishList), 1 );
+    $.ajax({
+      url: "api/wishlist/" + $scope.miniProfileData.username,
+      async: true,
+      type: 'DELETE'
+    }); 
   }
   $scope.refreshUI = function() {
+    var wishlist = [];
+    $.ajax({
+      url: "api/wishlist",
+      dataType: "json",
+      async: false,
+      success: function(result) {
+        wishlist = result;
+      },
+    });
+
     $scope.userData.forEach(function(element) {
       var user = element;
-      $scope.$parent.wishList.forEach(function(element) {
-        if (user.username === element.username) { //JSON.stringify(user) === JSON.stringify(element)
+      wishlist.forEach(function(element) {
+        if (user.username === element.username) {
           user.favorited = "favorited";
         }
       });
@@ -301,19 +311,37 @@ appControllers.controller('SearchController', ['$scope', '$http', function($scop
     } else {
       $scope.wishButton.contentText = "Add to Wishlist";
       $scope.wishButton.fn = $scope.addToWishlist;
-      console.log("wishButton text: " + $scope.wishButton);
     }
   }
 }]);
 
 appControllers.controller('WishListController', ['$scope', '$http', function($scope, $http) {
-  $scope.refreshHeader();
-
-  $scope.userData = $scope.$parent.wishList;
+  $scope.userData = [];
+  $.ajax({
+      url: "api/wishlist",
+      dataType: "json",
+      async: false,
+      success: function(result) {
+        $scope.userData = result;
+      },
+    });
+  $scope.userData.forEach(function(element) {
+    element.favorited = "favorited";
+  });
   if ($scope.userData) {
     $scope.miniProfileData = $scope.userData[0];
   }
-  console.log('yo');
+
+  $scope.showFull = function(user) {
+    console.log("here");
+    $scope.profile_title = "Mentor Profile";
+    $scope.show_identifier = false;
+    $scope.myMentor = user;
+    $scope.show_full_profile = true;
+  }
+  $scope.hideFull = function() {
+    $scope.show_full_profile = false;
+  }
   $scope.miniProfileSet = function(user) {
     $scope.miniProfileData = user;
   }
@@ -322,19 +350,17 @@ appControllers.controller('WishListController', ['$scope', '$http', function($sc
   }
   $scope.removeFromWishlist = function() {
     $scope.miniProfileData.favorited = "";
-    //$scope.userData.splice($.inArray($scope.miniProfileData, $scope.userData), 1 );
+    $.ajax({
+      url: "api/wishlist/" + $scope.miniProfileData.username,
+      async: true,
+      type: 'DELETE'
+    }); 
     $.each($scope.userData, function(i){
       if($scope.userData[i].username === $scope.miniProfileData.username) {
-        console.log("splice");
-        console.log($scope.userData[i].username);
-        console.log($scope.miniProfileData.username);
         $scope.userData.splice(i,1);
         return false;
       }
     });
-    $scope.$parent.wishList = $scope.userData;
-
-    //$scope.$parent.wishList.splice($.inArray($scope.miniProfileData, $scope.$parent.wishList), 1 );
   }
   $scope.chooseMentor = function() {
     $scope.$parent.myMentor = $scope.miniProfileData;
@@ -351,16 +377,6 @@ appControllers.controller('WishListController', ['$scope', '$http', function($sc
 
     console.log("chooseMentor");
     $scope.go('/user-profile');
-  }
-  $scope.refreshUI = function() {
-    $scope.userData.forEach(function(element) {
-      var user = element;
-      $scope.$parent.wishList.forEach(function(element) {
-        if (user.username === element.username) { //JSON.stringify(user) === JSON.stringify(element)
-          user.favorited = "favorited";
-        }
-      });
-    });
   }
   if ($scope.userData) {
     //$scope.refreshUI();
@@ -714,8 +730,7 @@ appControllers.controller('RegisterMenteeController', ['$scope', '$http', '$filt
 }]);
 
 
-appControllers.controller('RegisterMentorController', ['$scope', '$http', '$filter', '$location',
-  function($scope, $http, $filter, $location) {
+appControllers.controller('RegisterMentorController', ['$scope', '$http', '$filter', '$location', function($scope, $http, $filter, $location) {
   $('.ui.radio.checkbox').checkbox();
   $('.ui.checkbox').checkbox();
   $('select.dropdown').dropdown();

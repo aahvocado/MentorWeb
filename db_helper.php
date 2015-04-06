@@ -1,5 +1,5 @@
 <?php
-    include 'db_credentials.php';
+    include 'config.php';
     
     $connection = mysql_connect(
                                 $db_host,
@@ -114,8 +114,8 @@
         }
     }
 
-    function deleteDBEntries($dbQuery,$dieOnError=True){
-        $dbResults=mysql_query($dbQuery);
+    function deleteDBEntries($dbQuery){
+        return mysql_query($dbQuery);
     }
     
     function beginDBTransaction(){

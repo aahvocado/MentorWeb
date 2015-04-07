@@ -1,4 +1,4 @@
 error_log
 /js/config.js
-/config.php
+db/config.php
 images/Thumbs.db

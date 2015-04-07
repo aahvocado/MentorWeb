@@ -48,6 +48,26 @@
 			 <action file='db.php'><![CDATA[listMentors();]]></action>
 		</index>
 	</command>
+	
+	<command id='listUnapprovedMentors' security='protected'>
+		<description><![CDATA[Returns a list of mentors.]]></description>
+
+		<index>
+			<description><![CDATA[Return a list of mentors]]></description>
+
+			 <action file='db.php'><![CDATA[listUnapprovedMentors();]]></action>
+		</index>
+	</command>
+
+	<command id='listApprovedMentors' security='protected'>
+		<description><![CDATA[Returns a list of mentors.]]></description>
+
+		<index>
+			<description><![CDATA[Return a list of mentors]]></description>
+
+			 <action file='db.php'><![CDATA[listApprovedMentors();]]></action>
+		</index>
+	</command>
 
 	<command id='alias' security='protected'>
 		<description><![CDATA[Manages the aliases in the system.]]></description>

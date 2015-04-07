@@ -178,4 +178,12 @@
 			<action file='db/db.php'><![CDATA[removeWishlistMentor($_REST['wishlist']);]]></action>
 		</delete>
 	</command>
+
+	<command id='mentorMax' security='public'>
+		<description><![CDATA[Manages the value of the maximum mentees per mentor setting.]]></description>
+			
+		<index>
+			<action file='db/mentor_maximum.php'><![CDATA[getMaxMenteesPerMentor();]]></action>
+		</index>
+	</command>
 </api>

@@ -205,7 +205,9 @@ appControllers.controller('HomeController', ['$scope', '$http', '$location', fun
       dataType: "json",
           async: true,
           success: function(data, textStatus, jqXHR) {
-            getMentorData(data[0].mentor_user);
+            if(data != ""){
+				getMentorData(data[0].mentor_user);
+			}
           },
           error: $scope.ajaxError
     });
@@ -221,6 +223,14 @@ appControllers.controller('HomeController', ['$scope', '$http', '$location', fun
       description: "Open and close the requesting period for mentors",
       meta: "Meta",
       link: "#/requestingPeriod"
+    },
+	{
+      // TODO: create image
+      image: "/images/wireframe/image.png",
+      title: "Mentor Max",
+      description: "Set the maximum number of mentees any one mentor can have per semester",
+      meta: "Meta",
+      link: "#/setMentorMax"
     }];
   }
 
@@ -496,6 +506,47 @@ appControllers.controller('RequestingPeriodController', ['$scope', '$http', func
         type: 'POST'
       });
     }
+    $scope.go('/homescreen');
+  }
+}]);
+
+appControllers.controller('SetMentorMaxController', ['$scope', '$http', function($scope, $http) {
+  var max = {};
+  $.ajax({
+    url: "api/mentorMax",
+    dataType: "json",
+    async: false,
+    type: 'GET',
+    success: function(data) {
+		console.log(data);
+      max = data;
+	  $scope.maxNumber = max;
+    }
+  });
+
+  $scope.notification = function() {
+    $('#mentor-note').dimmer('toggle');
+  }
+  $scope.triggerSetMax = function() {
+	/*
+    if (open['isOpen'] == '1') {
+      $.ajax({
+        url: "api/requestPeriodStatus",
+        dataType: "json",
+        data: {'isOpen': 0},
+        async: false,
+        type: 'POST'
+      });
+    } else {
+      $.ajax({
+        url: "api/requestPeriodStatus",
+        dataType: "json",
+        data: {'isOpen': 1},
+        async: false,
+        type: 'POST'
+      });
+    }
+	*/
     $scope.go('/homescreen');
   }
 }]);

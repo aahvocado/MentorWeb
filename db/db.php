@@ -33,12 +33,10 @@
 			if (!empty($result)){$userType = "Mentor";}
 		}
 
-		if (empty($result)) {
-			$dbQuery = sprintf("SELECT username FROM Admin WHERE username = '%s'",
-													$_USER['uid']);
-			$result = getDBResultsArray($dbQuery);
-			if (!empty($result)){$userType = "Admin";}
+		if (empty($result) && userIsAdmin()) {
+			$userType = "Admin";
 		}
+
 		// echo $userType;
 		// array_push($result, $userType);
 		 $userInfo["userType"] = $userType;

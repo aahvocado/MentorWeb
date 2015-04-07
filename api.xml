@@ -185,5 +185,9 @@
 		<index>
 			<action file='db/mentor_maximum.php'><![CDATA[getMaxMenteesPerMentor();]]></action>
 		</index>
+
+		<post>
+			<action file='db/mentor_maximum.php'><![CDATA[setMaxMenteesPerMentor($_POST['newMax']);]]></action>
+		</post>
 	</command>
 </api>

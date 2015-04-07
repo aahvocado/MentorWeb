@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 var appControllers = angular.module('appControllers', ['ngAnimate', 'ngResource']);
 
 // appControllers.directive('accessibleForm', function () {
@@ -441,6 +440,7 @@ appControllers.controller('WishListController', ['$scope', '$http', function($sc
         console.log(data);
       }
     });
+  }
   $scope.refreshUI = function() {
     $scope.userData.forEach(function(element) {
       var user = element;

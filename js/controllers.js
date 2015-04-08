@@ -253,7 +253,7 @@ appControllers.controller('SearchController', ['$scope', '$http', function($scop
   $('.ui.accordion').accordion();
 
   $.ajax({
-    url: "api/listMentors",
+    url: "api/listApprovedMentors",
     dataType: "json",
       async: true,
       success: function(data, textStatus, jqXHR) {

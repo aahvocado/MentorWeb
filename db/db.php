@@ -1,5 +1,5 @@
 <?php
-	include 'db_helper.php';
+	include_once('db_helper.php');
 	header("Access-Control-Allow-Origin: *");
 
 	function welcome() {
@@ -125,7 +125,6 @@
 	}
 
 	function addMentee() {
-		echo "addMentee \n";
 		global $_USER;	
 		$user = $_USER['uid'];
 		$fname = mysql_real_escape_string($_POST['fname']);
@@ -260,9 +259,22 @@
 			$ttProgResult = getDBRegInserted($ttProgQuery);
 		}
 
+		updateMaxMenteesPerMentor();
+
 		header("Content-type: application/json");
 		// echo json_encode($uresult);
 		// echo json_encode($mresult);
+	}
+
+	function updateMaxMenteesPerMentor() {
+		include_once("mentor_maximum.php");
+
+		$currentValue = retrieveMaxMenteesPerMentor();
+		$minValue = calcMinMaxMenteesPerMentor();
+
+		if ($currentValue < $minValue) {
+			setMaxMenteesPerMentor($minValue);
+		}
 	}
 
 	function getMenteeMatch() {

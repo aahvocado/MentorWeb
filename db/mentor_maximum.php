@@ -1,25 +1,25 @@
 <?php
-  include 'db_helper.php';
+  include_once("db_helper.php");
   header("Access-Control-Allow-Origin: *");
 
-  $settingName = "MaxMenteesPerMentor";
-  $colName = "settingValue";
-
   function getMaxMenteesPerMentor() {
-    global $settingName, $colName;
+    print(retrieveMaxMenteesPerMentor());
+  }
 
-    $query = "SELECT $colName FROM GlobalSettings WHERE settingName='$settingName';";
-    $result = getDBResultsArray($query);
+  function retrieveMaxMenteesPerMentor() {
+    $query = "SELECT settingValue FROM GlobalSettings WHERE settingName='MaxMenteesPerMentor';";
+
+    $result = getDBResultRecord($query);
 
     if (count($result) == 0) {
       $GLOBALS["_PLATFORM"]->sandboxHeader("HTTP/1.1 500 Internal Server Error");
       die();
     }
 
-    print($result[0][$colName]);
+    return $result[$colName];
   }
 
-  function setMaxMenteesPerMentor($newMax) {
+  function postMaxMenteesPerMentor($newMax) {
     global $_USER;
 
     if (!userIsAdmin($_USER['uid'])) {
@@ -39,17 +39,16 @@
       return;
     }
 
-    global $settingName, $colName;
+    print(setMaxMenteesPerMentor($newMax));
+  }
 
-    $query = "UPDATE GlobalSettings SET $colName='$newMax' WHERE settingName='$settingName';";
-    $result = getDBResultAffected($query);
+  function setMaxMenteesPerMentor($newMax) {
+    $query = "UPDATE GlobalSettings SET settingValue='$newMax' WHERE settingName='MaxMenteesPerMentor';";
+    getDBResultAffected($query);
 
-    if ($result['rowsAffected'] != 1) {
-      $GLOBALS["_PLATFORM"]->sandboxHeader('HTTP/1.1 500 Internal Server Error');
-      return;
-    }
+    //TODO check if the row was actually updated; rows_affected returns 0 if value was the same; see http://php.net/manual/en/pdostatement.rowcount.php#allnotes for workaround
 
-    print($newMax);
+    return $newMax;
   }
 
   function calcMinMaxMenteesPerMentor() {

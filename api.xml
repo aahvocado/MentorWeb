@@ -190,4 +190,12 @@
 			<action file='db/mentor_maximum.php'><![CDATA[setMaxMenteesPerMentor($_POST['newMax']);]]></action>
 		</post>
 	</command>
+
+	<command id='minMentorMax' security='public'>
+		<description><![CDATA[Gets the minimum allowed value for the maximum mentees per mentor.]]></description>
+			
+		<index>
+			<action file='db/mentor_maximum.php'><![CDATA[getMinMaxMenteesPerMentor();]]></action>
+		</index>
+	</command>
 </api>

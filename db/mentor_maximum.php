@@ -32,6 +32,13 @@
       return;
     }
 
+    $minMaxMenteesPerMentor = calcMinMaxMenteesPerMentor();
+    if ($newMax < $minMaxMenteesPerMentor) {
+      $GLOBALS["_PLATFORM"]->sandboxHeader("HTTP/1.1 409 Conflict");
+      print("The new maximum must be greater than $minMaxMenteesPerMentor.");
+      return;
+    }
+
     global $settingName, $colName;
 
     $query = "UPDATE GlobalSettings SET $colName='$newMax' WHERE settingName='$settingName';";
@@ -43,5 +50,22 @@
     }
 
     print($newMax);
+  }
+
+  function calcMinMaxMenteesPerMentor() {
+    $query = "SELECT COUNT(*) FROM Mentee";
+    $result = getDBResultRecord($query);
+    $numMentees =  $result["COUNT(*)"];
+
+    $query = "SELECT COUNT(*) FROM Mentor";
+    $result = getDBResultRecord($query);
+    $numMentors = $result["COUNT(*)"];
+
+    return ceil($numMentees / $numMentors);
+  }
+
+  function getMinMaxMenteesPerMentor() {
+    $minMenteesPerMentor = calcMinMaxMenteesPerMentor();
+    print($minMenteesPerMentor);
   }
 ?>

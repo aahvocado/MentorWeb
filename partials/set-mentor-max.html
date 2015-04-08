@@ -3,7 +3,7 @@
 	
 	<div class="field">
 	  <label>Max #</label>
-	  <input id="first_name" ng-model="form.fname" placeholder={{maxNumber}} type="text">
+	  <input id="max_number" ng-model="form.mnum" placeholder={{maxNumber}} type="text">
 	</div>
     <div id="trigger-requesting-period" class="ui toggle button" ng-click="notification()">
         Update Maximum
@@ -24,7 +24,7 @@
           <div class="ui Negative medium button" ng-click="notification()">
             Cancel
           </div>
-          <div class="ui positive medium button" ng-click="triggerRequestingPeriod()">
+          <div class="ui positive medium button" ng-click="triggerSetMax(max_number)">
             Yes
           </div>
         </div>

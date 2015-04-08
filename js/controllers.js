@@ -518,36 +518,34 @@ appControllers.controller('SetMentorMaxController', ['$scope', '$http', function
     async: false,
     type: 'GET',
     success: function(data) {
-		console.log(data);
       max = data;
 	  $scope.maxNumber = max;
     }
   });
 
   $scope.notification = function() {
-    $('#mentor-note').dimmer('toggle');
+  	var newMaxVal = $('#max_number').val();
+  	if(newMaxVal == ''){
+  		alert("Note: you must enter a value for the new max");
+  	}
+  	else{
+		$('#mentor-note').dimmer('toggle');
+	}
   }
-  $scope.triggerSetMax = function() {
-	/*
-    if (open['isOpen'] == '1') {
-      $.ajax({
-        url: "api/requestPeriodStatus",
+  $scope.triggerSetMax = function(data) {
+  	var newMaxVal = $('#max_number').val();
+  	
+  	// save new max val
+  	$.ajax({
+        url: "api/mentorMax",
         dataType: "json",
-        data: {'isOpen': 0},
+        data: {'newMax': newMaxVal},
         async: false,
-        type: 'POST'
+        type: 'POST',
+        success: function(data){
+        	$scope.go('/homescreen');
+        }
       });
-    } else {
-      $.ajax({
-        url: "api/requestPeriodStatus",
-        dataType: "json",
-        data: {'isOpen': 1},
-        async: false,
-        type: 'POST'
-      });
-    }
-	*/
-    $scope.go('/homescreen');
   }
 }]);
 

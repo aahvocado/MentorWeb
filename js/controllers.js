@@ -453,6 +453,10 @@ appControllers.controller('WishListController', ['$scope', '$http', function($sc
   }
 }]);
 
+appControllers.controller('ApproveMentorController', ['$scope', '$http', function($scope, $http) {
+  // TODO Approve Mentor Logic
+}]);
+
 appControllers.controller('RequestingPeriodController', ['$scope', '$http', function($scope, $http) {
   var open = {};
   $.ajax({

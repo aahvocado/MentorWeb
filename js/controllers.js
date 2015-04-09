@@ -481,6 +481,7 @@ appControllers.controller('ApproveMentorController', ['$scope', '$http', functio
         data: {'username': username}
       });
     });
+    $scope.go('/homescreen');
   };
 }]);
 

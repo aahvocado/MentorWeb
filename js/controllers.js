@@ -463,8 +463,17 @@ appControllers.controller('ApproveMentorController', ['$scope', '$http', functio
       $scope.mentors = data;
       $scope.$apply();
     }
-    // WOOOOOO
   });
+
+  $scope.approve = function() {
+    var usernames = []
+    $scope.mentors.forEach(function(element) {
+      if (element.newapprove) {
+        usernames.push(element.username);
+      }
+    });
+    console.log(usernames);
+  };
 }]);
 
 appControllers.controller('RequestingPeriodController', ['$scope', '$http', function($scope, $http) {

@@ -221,6 +221,14 @@ appControllers.controller('HomeController', ['$scope', '$http', '$location', fun
       description: "Open and close the requesting period for mentors",
       meta: "Meta",
       link: "#/requestingPeriod"
+    },
+    {
+      // TODO: create image
+      image: "/images/wireframe/image.png",
+      title: "Approve Mentors",
+      description: "Approve registered users to mentor students",
+      meta: "Meta",
+      link: "#/approveMentors"
     }];
   }
 

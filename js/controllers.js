@@ -480,14 +480,12 @@ appControllers.controller('ApproveMentorController', ['$scope', '$http', functio
         usernames.push(element.username);
       }
     });
-    usernames.forEach(function(username) {
-      $.ajax({
-        url: "api/approveMentor",
-        dataType: "json",
-        async: true,
-        type: 'POST',
-        data: {'username': username}
-      });
+    $.ajax({
+      url: "api/approveMentor",
+      dataType: "json",
+      async: true,
+      type: 'POST',
+      data: {'usernames': usernames}
     });
     $scope.go('/homescreen');
   };

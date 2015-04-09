@@ -375,11 +375,13 @@
 		echo json_encode($result);
 	}
 
-	function approveMentor($mentor) {
-		$mentor = mysql_real_escape_string($mentor);
-		$dbQuery = sprintf("UPDATE Mentor SET approved = 1 WHERE Mentor.username = '%s'", $mentor);
-		$result = getDBResultsArray($dbQuery);
-		echo json_encode($result);
+	function approveMentor($mentors) {
+		foreach ($mentors as $mentor) {
+			$mentor = mysql_real_escape_string($mentor);
+			$dbQuery = sprintf("UPDATE Mentor SET approved = 1 WHERE Mentor.username = '%s'", $mentor);
+			$result = getDBResultsArray($dbQuery);
+			echo json_encode($result);
+		}
 	}
 
 	function addMentorLoop($mentor) {

@@ -822,3 +822,6 @@ div#trigger-requesting-period {
 .kindling .name.color.ng-binding {
   position: initial;
 }
+.user-profile.message.ui {
+  z-index: 1;
+}

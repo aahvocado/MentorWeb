@@ -16,7 +16,7 @@
       die();
     }
 
-    return $result[$colName];
+    return $result["settingValue"];
   }
 
   function postMaxMenteesPerMentor($newMax) {

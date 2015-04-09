@@ -512,6 +512,7 @@ appControllers.controller('RequestingPeriodController', ['$scope', '$http', func
 
 appControllers.controller('SetMentorMaxController', ['$scope', '$http', function($scope, $http) {
   var max = {};
+  var min = {};
   $.ajax({
     url: "api/mentorMax",
     dataType: "json",
@@ -522,10 +523,20 @@ appControllers.controller('SetMentorMaxController', ['$scope', '$http', function
 	  $scope.maxNumber = max;
     }
   });
+  $.ajax({
+    url: "api/minMentorMax",
+    dataType: "json",
+    async: false,
+    type: 'GET',
+    success: function(data) {
+      min = data;
+	  $scope.minNumber = min;
+    }
+  });
 
   $scope.notification = function() {
   	var newMaxVal = $('#max_number').val();
-  	if(newMaxVal == ''){
+  	if(newMaxVal == '' || newMaxVal < $scope.minNumber){
   		alert("Note: you must enter a value for the new max");
   	}
   	else{

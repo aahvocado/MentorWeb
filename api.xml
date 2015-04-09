@@ -75,12 +75,12 @@
 		<index>
 			<description><![CDATA[Return a list of mentors]]></description>
 
-			 <action file='db.php'><![CDATA[approveMentor($_REST['username']);]]></action>
+			 <action file='db.php'><![CDATA[approveMentor($_POST['username']);]]></action>
 		</index>
 		<post>
 			<description><![CDATA[Return a list of mentors]]></description>
 
-			 <action file='db.php'><![CDATA[approveMentor($_REST['username']);]]></action>
+			 <action file='db.php'><![CDATA[approveMentor($_POST['username']);]]></action>
 		</post>
 	</command>
 

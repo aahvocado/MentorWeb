@@ -472,7 +472,15 @@ appControllers.controller('ApproveMentorController', ['$scope', '$http', functio
         usernames.push(element.username);
       }
     });
-    console.log(usernames);
+    usernames.forEach(function(username) {
+      $.ajax({
+        url: "api/approveMentor",
+        dataType: "json",
+        async: true,
+        type: 'POST',
+        data: {'username': username}
+      });
+    });
   };
 }]);
 

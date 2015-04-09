@@ -454,7 +454,17 @@ appControllers.controller('WishListController', ['$scope', '$http', function($sc
 }]);
 
 appControllers.controller('ApproveMentorController', ['$scope', '$http', function($scope, $http) {
-  // TODO Approve Mentor Logic
+  $scope.mentors = []
+  $.ajax({
+    url: "api/listUnapprovedMentors",
+    dataType: "json",
+    async: true,
+    success: function(data) {
+      $scope.mentors = data;
+      $scope.$apply();
+    }
+    // WOOOOOO
+  });
 }]);
 
 appControllers.controller('RequestingPeriodController', ['$scope', '$http', function($scope, $http) {

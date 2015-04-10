@@ -323,22 +323,7 @@
 	 }
 
 	 function listMentors() {
-		$dbQuery = "SELECT * FROM USER
-													JOIN Mentor
-														ON  USER.username = Mentor.username
-													JOIN Mentor_Breadth_Track
-														ON Mentor_Breadth_Track.username = Mentor.username
-													JOIN Mentor_BME_Organization
-														ON Mentor_BME_Organization.username = Mentor.username
-													JOIN Mentor_Tutor_Teacher_Program
-														ON Mentor_Tutor_Teacher_Program.username = Mentor.username
-													JOIN Mentor_BME_Academic_Experience
-														ON Mentor_BME_Academic_Experience.username = Mentor.username
-													JOIN Mentor_International_Experience
-														ON Mentor_International_Experience.username = Mentor.username
-													JOIN Mentor_Career_Dev_Program
-														ON Mentor_Career_Dev_Program.username = Mentor.username
-													WHERE Mentor.username = USER.username"; // breadth_track, student_year, career_dev_program, future_plans, Mentor_BME_Academic_Experience,
+		$dbQuery = "SELECT * FROM USER JOIN Mentor ON USER.username = Mentor.username JOIN Mentor_Breadth_Track ON Mentor_Breadth_Track.username = Mentor.username JOIN Mentor_BME_Organization ON Mentor_BME_Organization.username = Mentor.username JOIN Mentor_Tutor_Teacher_Program ON Mentor_Tutor_Teacher_Program.username = Mentor.username JOIN Mentor_BME_Academic_Experience ON Mentor_BME_Academic_Experience.username = Mentor.username JOIN Mentor_International_Experience ON Mentor_International_Experience.username = Mentor.username JOIN Mentor_Career_Dev_Program ON Mentor_Career_Dev_Program.username = Mentor.username WHERE Mentor.username = USER.username AND (SELECT COUNT(*) FROM Matches WHERE Mentor.username = mentor_user) < (SELECT settingValue FROM GlobalSettings where settingName = 'MaxMenteesPerMentor')"; // breadth_track, student_year, career_dev_program, future_plans, Mentor_BME_Academic_Experience,
 		$result = getDBResultsArray($dbQuery);
 		echo json_encode($result);
 	}

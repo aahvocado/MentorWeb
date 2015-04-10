@@ -1016,23 +1016,15 @@
 	function getWishlistContents() {
 		global $_USER;
 		$dbQueryWishlist = sprintf("SELECT * FROM Wishlist
-										JOIN Mentor
-											ON  Wishlist.mentor = Mentor.username
-										JOIN USER
-											ON Mentor.username = USER.username
-										JOIN Mentor_Breadth_Track
-											ON Mentor_Breadth_Track.username = Mentor.username
-										JOIN Mentor_BME_Organization
-											ON Mentor_BME_Organization.username = Mentor.username
-										JOIN Mentor_Tutor_Teacher_Program
-											ON Mentor_Tutor_Teacher_Program.username = Mentor.username
-										JOIN Mentor_BME_Academic_Experience
-											ON Mentor_BME_Academic_Experience.username = Mentor.username
-										JOIN Mentor_International_Experience
-											ON Mentor_International_Experience.username = Mentor.username
-										JOIN Mentor_Career_Dev_Program
-											ON Mentor_Career_Dev_Program.username = Mentor.username
-										WHERE Wishlist.mentee = '%s'", $_USER['uid']);
+		JOIN Mentor ON  Wishlist.mentor = Mentor.username
+		JOIN USER ON Mentor.username = USER.username
+		JOIN Mentor_Breadth_Track ON Mentor_Breadth_Track.username = Mentor.username
+		JOIN Mentor_BME_Organization ON Mentor_BME_Organization.username = Mentor.username
+		JOIN Mentor_Tutor_Teacher_Program ON Mentor_Tutor_Teacher_Program.username = Mentor.username
+		JOIN Mentor_BME_Academic_Experience ON Mentor_BME_Academic_Experience.username = Mentor.username
+		JOIN Mentor_International_Experience ON Mentor_International_Experience.username = Mentor.username
+		JOIN Mentor_Career_Dev_Program ON Mentor_Career_Dev_Program.username = Mentor.username
+		WHERE Wishlist.mentee = '%s' AND (SELECT COUNT(*) FROM Matches WHERE Wishlist.mentor = mentor_user) < (SELECT settingValue FROM GlobalSettings where settingName = 'MaxMenteesPerMentor')", $_USER['uid']);
 		$result=getDBResultsArray($dbQueryWishlist);
 		header("Content-type: application/json");
 		echo json_encode($result);

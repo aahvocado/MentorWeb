@@ -1,0 +1,99 @@
+<section class="user-profile page">
+
+	<div class="user-profile message-wrapper">
+		<div class="user-profile header">
+			<h1>Mentee Profiles</h1>
+		</div>
+
+		<div class="view">
+			<div class="user-profile message ui" ng-repeat="mentee in mentees">
+				<!-- upper profile stuff -->
+				<div class="user-profile personal ui grid">
+					<div class="six wide column" id="name">
+						<div class="item">
+							<div class="menu-text2">Full Name</div>
+							<div class="menu-text">{{mentee.first_name + " " + mentee.last_name}}</div>
+						</div>
+					</div>
+
+					<div class="six wide column">
+						<div class="item">
+							<div class="menu-text2">Phone</div>
+							<div class="menu-text">{{mentee.phone_num}}</div>
+						</div>
+						<div class="item">
+							<div class="menu-text2">Email</div>
+							<div class="menu-text">{{mentee.email}}</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="ui divider"></div>
+
+				<!-- track, focus, etc stuff -->
+				<div class="user-profile ui grid">
+					<div class="seven wide column">
+				    <div class="user-profile ui vertical fluid">
+							<div class="item">
+								<div class="menu-text2">Breadth Track</div>
+								<div class="menu-text">{{mentee.breadth_track}}</div>
+							</div>
+
+							<div class="item">
+								<div class="menu-text2">Depth Focus</div>
+								<div class="menu-text">{{mentee.depth_focus}}</div>
+							</div>
+
+							<div class="item">
+								<div class="menu-text2">Gender</div>
+								<div class="menu-text">{{mentee.gender}}</div>
+							</div>
+
+							<div class="item">
+								<!-- <div class="menu-text2">Student Year</div>
+								<div class="menu-text">{{mentee.studentYear}}</div> -->
+							</div>
+						</div>
+					</div>
+
+					<div class="eight wide column">
+						<div class="user-profile ui vertical fluid">
+							<div class="item">
+								<div class="menu-text2">Career Development</div>
+								<div class="menu-text">{{mentee.career_dev_program1}}</div>
+							</div>
+
+							<div class="item">
+								<div class="menu-text2">Future Plans</div>
+								<div class="menu-text">{{mentee.post_grad_plan}}</div>
+							</div>
+
+							<div class="item">
+								<div class="menu-text2">Academic International Experience</div>
+								<div class="menu-text">{{mentee.international_experience1}}</div>
+							</div>
+
+							<div class="item">
+								<div class="menu-text2">Expected Graduation</div>
+								<div class="menu-text">{{mentee.expec_graduation}}</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="ui divider"></div>
+
+				<!-- extra bits of information stuff -->
+				<div class="user-info extra ">
+					<div class="menu-text2">Organizations, Extracurricular Activities, Interests, Skills, etc</div>
+					<div class="menu-text">{{mentee.extra_info}}</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<!-- 	<div id="reset-button" class="ui toggle negative button" ng-click="reset()">
+    Reset
+  </div> -->
+
+</section>

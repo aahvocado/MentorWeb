@@ -200,9 +200,9 @@
 	</command>
 	
 	<command id='mentorStatus' security='public'>
-		<description><![CDATA[Returns wether or not a mentor can take on a mentee or not.]]></description>
+		<description><![CDATA[Returns whether a mentor can take on a mentee.]]></description>
 		<get>
-			<action file='db/db.php'><![CDATA[mentorHasSpace($_REST['mentorStatus']);]]></action>
+			<action file='db/mentor_maximum.php'><![CDATA[mentorHasSpace($_REST['mentorStatus']);]]></action>
 		</get>
 	</command>
 </api>

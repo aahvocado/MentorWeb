@@ -67,4 +67,13 @@
     $minMenteesPerMentor = calcMinMaxMenteesPerMentor();
     print($minMenteesPerMentor);
   }
+
+
+  function mentorHasSpace($username){
+    $countHasName = sprintf("SELECT TRUE FROM Mentor WHERE Mentor.username = '%s'
+      AND (SELECT COUNT(*) FROM Matches WHERE username = mentor_user) < (SELECT settingValue FROM GlobalSettings where settingName = 'MaxMenteesPerMentor')", $username);
+    $result = mysql_num_rows(mysql_query($countHasName));
+    header("Content-type: application/json");
+    echo json_encode($result == 1);
+  }
 ?>

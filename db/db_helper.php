@@ -148,4 +148,10 @@
         
         return $dbResultsAffected;
     }
+
+    function userIsAdmin($userId) {
+        $dbQuery = "SELECT username FROM Admin WHERE username = '$userId'";
+        $result = getDBResultsArray($dbQuery);
+        return !empty($result);
+    }
 ?>

@@ -823,5 +823,5 @@ div#trigger-requesting-period {
   position: initial;
 }
 .user-profile.message.ui {
-  width: 300px;
+  z-index: 1;
 }

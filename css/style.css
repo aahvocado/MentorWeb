@@ -822,7 +822,6 @@ div#trigger-requesting-period {
 .kindling .name.color.ng-binding {
   position: initial;
 }
-
 .approve-mentors.page table {
   width: 50%;
   margin: 0 auto;
@@ -838,4 +837,7 @@ div#trigger-requesting-period {
 .approve-mentors.page button {
    position: absolute;
    left: 25%;
+}
+.user-profile.message.ui {
+  z-index: 1;
 }

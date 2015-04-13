@@ -8,7 +8,7 @@
 		<description><![CDATA[This simple API welcomes users to the homepage]]></description>
 
 		<index>
-			<action file='db.php'><![CDATA[welcome();]]></action>
+			<action file='db/db.php'><![CDATA[welcome();]]></action>
 		</index>
 	</command>
 
@@ -18,24 +18,24 @@
 		<index>
 			<description><![CDATA[Return a list of mentors]]></description>
 
-			 <action file='db.php'><![CDATA[listMentor();]]></action>
+			 <action file='db/db.php'><![CDATA[listMentor();]]></action>
 		</index>
 
 		<get>
 			<description><![CDATA[This is how to retreive informatio on a single mentor]]></description>
-			<action file='db.php'><![CDATA[getMentor($_REST['mentor']);]]></action>
+			<action file='db/db.php'><![CDATA[getMentor($_REST['mentor']);]]></action>
 		</get>
 
 		<post>
 			<description><![CDATA[This is how new mentors submit the registration form to create a new profile]]></description>
 
-			<action file='db.php'><![CDATA[addMentor();]]></action>
+			<action file='db/db.php'><![CDATA[addMentor();]]></action>
 		</post>
 
 		<put>
 			<description><![CDATA[This is how you can update a mentor to put in their alias]]></description>
 			
-			<action file='db.php'><![CDATA[updateMentor();]]></action>  <!--right now will only do alias... inside () was previously: $_REST['comment'],$_POST['commentText'] -->
+			<action file='db/db.php'><![CDATA[updateMentor();]]></action>  <!--right now will only do alias... inside () was previously: $_REST['comment'],$_POST['commentText'] -->
 		</put>
 	</command>
 
@@ -45,7 +45,7 @@
 		<index>
 			<description><![CDATA[Return a list of mentors]]></description>
 
-			 <action file='db.php'><![CDATA[listMentors();]]></action>
+			 <action file='db/db.php'><![CDATA[listMentors();]]></action>
 		</index>
 	</command>
 
@@ -55,7 +55,7 @@
 		<index>
 			<description><![CDATA[Return a list of mentors]]></description>
 
-			 <action file='db.php'><![CDATA[listUnapprovedMentors();]]></action>
+			 <action file='db/db.php'><![CDATA[listUnapprovedMentors();]]></action>
 		</index>
 	</command>
 
@@ -65,7 +65,7 @@
 		<index>
 			<description><![CDATA[Return a list of mentors]]></description>
 
-			 <action file='db.php'><![CDATA[listApprovedMentors();]]></action>
+			 <action file='db/db.php'><![CDATA[listApprovedMentors();]]></action>
 		</index>
 	</command>
 
@@ -75,12 +75,12 @@
 		<index>
 			<description><![CDATA[Return a list of mentors]]></description>
 
-			 <action file='db.php'><![CDATA[approveMentor($_POST['usernames']);]]></action>
+			 <action file='db/db.php'><![CDATA[approveMentor($_POST['usernames']);]]></action>
 		</index>
 		<post>
 			<description><![CDATA[Return a list of mentors]]></description>
 
-			 <action file='db.php'><![CDATA[approveMentor($_POST['usernames']);]]></action>
+			 <action file='db/db.php'><![CDATA[approveMentor($_POST['usernames']);]]></action>
 		</post>
 	</command>
 
@@ -88,11 +88,11 @@
 		<description><![CDATA[Manages the aliases in the system.]]></description>
 		<get>
 			<description><![CDATA[Lists the aliases in the system.]]></description>
-			<action file='db.php'><![CDATA[listAliasNames($_REST['alias']);]]></action>
+			<action file='db/db.php'><![CDATA[listAliasNames($_REST['alias']);]]></action>
 		</get>
 		<put>
 			<description><![CDATA[Adds an alias to the system.]]></description>
-			<action file='db.php'><![CDATA[inputAliasName($_REST['alias']);]]></action>
+			<action file='db/db.php'><![CDATA[inputAliasName($_REST['alias']);]]></action>
 		</put>
 	</command>
 
@@ -102,13 +102,13 @@
 		<index>
 			<description><![CDATA[Return a list of mentees]]></description>
 
-			 <action file='db.php'><![CDATA[listMentee();]]></action>
+			 <action file='db/db.php'><![CDATA[listMentee();]]></action>
 		</index>
 
 		<post>
 			<description><![CDATA[This is how new mentees submit the registration form to create a new profile.]]></description>
 
-			<action file='db.php'><![CDATA[addMentee();]]></action>
+			<action file='db/db.php'><![CDATA[addMentee();]]></action>
 		</post>
 	</command>
 
@@ -116,11 +116,11 @@
 		<description><![CDATA[Deletes the current user in the database.]]></description>
 
 		<index>
-			<action file='db.php'><![CDATA[resetUser();]]></action>
+			<action file='db/db.php'><![CDATA[resetUser();]]></action>
 		</index>
 
 		<get>
-			<action file='db.php'><![CDATA[resetUser();]]></action>
+			<action file='db/db.php'><![CDATA[resetUser();]]></action>
 		</get>
 	</command>
 		
@@ -129,11 +129,11 @@
 		<description><![CDATA[Gets the mentor that matches the currently logged in user.]]></description>
 
 		<index>
-			<action file='db.php'><![CDATA[getMenteeMatch();]]></action>
+			<action file='db/db.php'><![CDATA[getMenteeMatch();]]></action>
 		</index>
 
 		<get>
-			<action file='db.php'><![CDATA[getMenteeMatch();]]></action>
+			<action file='db/db.php'><![CDATA[getMenteeMatch();]]></action>
 		</get>
 	</command>
 
@@ -141,36 +141,36 @@
 		<description><![CDATA[Matches a mentor with the currently logged in user.]]></description>
 
 		<index>
-			<action file='db.php'><![CDATA[chooseMentor();]]></action>
+			<action file='db/db.php'><![CDATA[chooseMentor();]]></action>
 		</index>
 
 		<post>
-			<action file='db.php'><![CDATA[chooseMentor();]]></action>
+			<action file='db/db.php'><![CDATA[chooseMentor();]]></action>
 		</post>
 	</command>
 
 	<command id='genFauxUsers' security='protected'>
 		<description><![CDATA[Bulk adds users to the system.]]></description>
 		<post>
-			<action file='db.php'><![CDATA[genFauxUsers($_POST['userData']);]]></action>
+			<action file='db/db.php'><![CDATA[genFauxUsers($_POST['userData']);]]></action>
 		</post>
 	</command>
 
 	<command id='genFauxMentors' security='protected'>
 		<description><![CDATA[Bulk adds mentors to the database.]]></description>
 		<post>
-			<action file='db.php'><![CDATA[genFauxMentors();]]></action>
+			<action file='db/db.php'><![CDATA[genFauxMentors();]]></action>
 		</post>
 	</command>
 
 	<command id='deleteMentors' security='protected'>
 		<description><![CDATA[Deletes a mentor from the database.]]></description>
 		<index>
-			<action file='db.php'><![CDATA[deleteMentors();]]></action>
+			<action file='db/db.php'><![CDATA[deleteMentors();]]></action>
 		</index>
 
 		<put>
-			<action file='db.php'><![CDATA[deleteMentors();]]></action>
+			<action file='db/db.php'><![CDATA[deleteMentors();]]></action>
 		</put>
 	</command>
 
@@ -178,7 +178,7 @@
 		<index>
 			<description><![CDATA[Displays the type (e.g. mentor, mentee, etc.) of the current user.]]></description>
 			
-			<action file='db.php'><![CDATA[getUserType();]]></action>
+			<action file='db/db.php'><![CDATA[getUserType();]]></action>
 		</index>
 	</command>
 
@@ -186,11 +186,11 @@
 		<description><![CDATA[Manages the request period. If open, then mentees can request mentors.]]></description>
 			
 		<index>
-			<action file='db.php'><![CDATA[getDefaultPeriodStatus();]]></action>
+			<action file='db/db.php'><![CDATA[getDefaultPeriodStatus();]]></action>
 		</index>
 
 		<post>
-			<action file='db.php'><![CDATA[putDefaultPeriodStatus($_POST['isOpen']);]]></action>
+			<action file='db/db.php'><![CDATA[putDefaultPeriodStatus($_POST['isOpen']);]]></action>
 		</post>
 	</command>
 
@@ -198,19 +198,46 @@
 		<description><![CDATA[Manages the wishlist. Can get a list of mentors for a wishlist and add and remove.]]></description>
 			
 		<index>
-			<action file='db.php'><![CDATA[getWishlistContents();]]></action>
+			<action file='db/db.php'><![CDATA[getWishlistContents();]]></action>
 		</index>
 			
 		<get>
-			<action file='db.php'><![CDATA[getWishlistContents();]]></action>
+			<action file='db/db.php'><![CDATA[getWishlistContents();]]></action>
 		</get>
 
 		<post>
-			<action file='db.php'><![CDATA[addWishlistMentor($_POST['username']);]]></action>
+			<action file='db/db.php'><![CDATA[addWishlistMentor($_POST['username']);]]></action>
 		</post>
 
 		<delete>
-			<action file='db.php'><![CDATA[removeWishlistMentor($_REST['wishlist']);]]></action>
+			<action file='db/db.php'><![CDATA[removeWishlistMentor($_REST['wishlist']);]]></action>
 		</delete>
+	</command>
+
+	<command id='mentorMax' security='public'>
+		<description><![CDATA[Manages the value of the maximum mentees per mentor setting.]]></description>
+			
+		<index>
+			<action file='db/mentor_maximum.php'><![CDATA[getMaxMenteesPerMentor();]]></action>
+		</index>
+
+		<post>
+			<action file='db/mentor_maximum.php'><![CDATA[postMaxMenteesPerMentor($_POST['newMax']);]]></action>
+		</post>
+	</command>
+
+	<command id='minMentorMax' security='public'>
+		<description><![CDATA[Gets the minimum allowed value for the maximum mentees per mentor.]]></description>
+			
+		<index>
+			<action file='db/mentor_maximum.php'><![CDATA[getMinMaxMenteesPerMentor();]]></action>
+		</index>
+	</command>
+	
+	<command id='mentorStatus' security='public'>
+		<description><![CDATA[Returns whether a mentor can take on a mentee.]]></description>
+		<get>
+			<action file='db/mentor_maximum.php'><![CDATA[mentorHasSpace($_REST['mentorStatus']);]]></action>
+		</get>
 	</command>
 </api>

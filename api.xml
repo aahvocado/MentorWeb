@@ -198,4 +198,11 @@
 			<action file='db/mentor_maximum.php'><![CDATA[getMinMaxMenteesPerMentor();]]></action>
 		</index>
 	</command>
+	
+	<command id='mentorStatus' security='public'>
+		<description><![CDATA[Returns wether or not a mentor can take on a mentee or not.]]></description>
+		<get>
+			<action file='db/db.php'><![CDATA[mentorHasSpace($_REST['mentorStatus']);]]></action>
+		</get>
+	</command>
 </api>

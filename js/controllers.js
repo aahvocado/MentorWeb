@@ -331,7 +331,22 @@ appControllers.controller('SearchController', ['$scope', '$http', function($scop
     });
   }
   $scope.notification = function() {
-    $('#mentor-note').dimmer('toggle');
+  	// check for mentor being full first
+  	$.ajax({
+	      url: "api/mentorStatus/" + $scope.miniProfileData.username, 
+	      async: true,
+	      type: 'GET',
+	      success: function(result) {
+		if(result){
+			$('#mentor-note').dimmer('toggle');
+		}
+		else{
+			alert("It appears that this mentor is no longer available, please select another one.");
+		}
+	      },
+	    });
+  	
+    //$('#mentor-note').dimmer('toggle');
   }
   $scope.chooseMentor = function() {
     $scope.$parent.myMentor = $scope.miniProfileData;
@@ -417,7 +432,21 @@ appControllers.controller('WishListController', ['$scope', '$http', function($sc
     $scope.miniProfileData = user;
   }
   $scope.notification = function() {
-    $('#mentor-note').dimmer('toggle');
+  	// check for mentor being full first
+  	$.ajax({
+	      url: "api/mentorStatus/" + $scope.miniProfileData.username, 
+	      async: true,
+	      type: 'GET',
+	      success: function(result) {
+		if(result){
+			$('#mentor-note').dimmer('toggle');
+		}
+		else{
+			alert("It appears that this mentor is no longer available, please select another one.");
+		}
+	      },
+	    });
+    //$('#mentor-note').dimmer('toggle');
   }
   $scope.removeFromWishlist = function() {
     $scope.miniProfileData.favorited = "";

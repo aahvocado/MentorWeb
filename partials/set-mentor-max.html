@@ -1,0 +1,35 @@
+<section class="requesting-period page">
+
+	
+	<div class="field">
+	  <label>Minimum # you are allowed to set to: {{minNumber}}</label></br>
+	  <label>Max #</label>
+	  <input id="max_number" ng-model="form.mnum" placeholder="{{maxNumber}}" type="text"></br>
+	</div>
+    <div id="trigger-requesting-period" class="ui toggle button" ng-click="notification()">
+        Update Maximum
+    </div>
+
+    <div id="mentor-note" class="ui page dimmer" ng-click="noteHeight()">
+      <div class="ui info message note-message">
+        <i class="close icon" ng-click="notification()"></i>
+        <div class="title">
+          Update Maximum
+        </div>
+        <div class="back-strip">
+          <div class="text-message">
+            Are you sure you want update the maximum mentee to mentor ratio? {{explanation}}
+          </div>
+        </div>
+        <div class="ui options">
+          <div class="ui Negative medium button" ng-click="notification()">
+            Cancel
+          </div>
+          <div class="ui positive medium button" ng-click="triggerSetMax(max_number)">
+            Yes
+          </div>
+        </div>
+      </div>
+    </div>
+
+</section>

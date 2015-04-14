@@ -1,0 +1,59 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MentorWeb</title>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="css/isotope-style.css">
+
+  <!-- SemanticUI -->
+  <link rel="stylesheet" href="css/semanticui/semantic.css">
+  <!-- custom style sheet -->
+  <link rel="stylesheet" href="css/style.css">
+  <!-- google fonts -->
+  <link href='http://fonts.googleapis.com/css?family=Francois+One' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+
+</head>
+<body ng-app="myApp" ng-controller="mainController">
+
+  <div class="background-holder">
+    <div id="background"></div>
+  </div>
+
+  <nav ng-controller="HeaderController">
+    <div ng-include src="'partials/header.html'"></div>
+  </nav>
+
+  <!--[if lt IE 7]>
+      <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+  <![endif]-->
+
+  <!--[if lt IE 9]>
+      <script src="scripts/vendor/es5-shim.min.js"></script>
+      <script src="scripts/vendor/json3.min.js"></script>
+  <![endif]-->
+
+  <script src="js/jquery-2.1.0.min.js"></script>
+
+  <script src="lib/angular/angular.min.js"></script>
+  <script src="lib/angular/angular-route.min.js"></script>
+  <script src="lib/angular/angular-resource.min.js"></script>
+  <script src="lib/angular/angular-animate.min.js"></script>
+  <script src="lib/isotope/jquery.isotope.min.js"></script>
+  <script src="lib/angular-isotope/angular-isotope.js"></script>
+
+  <script src="js/config.js"></script>
+  <script src="js/semanticui/semantic.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/controllers.js"></script>
+
+  <!-- daniel's test stuff -->
+  <script src="js/jquery.backstretch.min.js"></script>
+
+  <div class="main" ng-view></div>
+  <div class="footer"></div>
+
+</body>
+</html>

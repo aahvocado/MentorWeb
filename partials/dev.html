@@ -1,0 +1,115 @@
+<section class="user-profile page">
+
+	<div class="user-profile message-wrapper">
+		<div class="user-profile header">
+	   		<h1>Development Hub</h1>
+		</div>
+
+		<div class="view">
+			<div class="user-profile message ui">
+				<!-- upper profile stuff -->
+				<div class="user-profile personal ui grid">
+					<div class="four wide column">
+						<!-- <div class="kindling" ng-class="myMentor.color">
+			        <a class="like ui corner label">
+			          <i class="star icon" ng-class="myMentor.favorited"></i>
+			        </a>
+			        <div class="name color">{{myMentor.color}}</div>
+			        <div class="name adj">{{myMentor.adj}}</div>
+			        <div class="name animal">{{myMentor.animal}}</div>
+			      </div> -->
+			    </div>
+
+					<div class="six wide column" id="name">
+						<div class="item">
+							<!-- <div class="menu-text2">Full Name</div>
+							<div class="menu-text">{{myMentor.firstName}} {{myMentor.lastName}}</div> -->
+						</div>
+					</div>
+
+					<div class="six wide column">
+						<div class="item">
+							<!-- <div class="menu-text2">Phone</div>
+							<div class="menu-text">{{myMentor.phone}}</div> -->
+						</div>
+						<div class="item">
+							<!-- <div class="menu-text2">Email</div>
+							<div class="menu-text">{{myMentor.email}}</div> -->
+						</div>
+					</div>
+				</div>
+
+				<div class="ui divider"></div>
+
+				<!-- track, focus, etc stuff -->
+				<div class="user-profile ui grid">
+					<div class="seven wide column">
+				    <div class="user-profile ui vertical fluid">
+							<div class="item">
+								<div class="menu-text2">Gen Faux Mentors, 120</div>
+								<div id="gen-mentors-button" class="ui toggle negative button" ng-click="postMentors()">
+							    Gen Mentors
+							  </div>
+							  <div id="delete-mentors-button" class="ui toggle negative button" ng-click="deleteMentors()">
+							    Delete Mentors
+							  </div>
+							  <div class="menu-text2">Delete current user</div>
+							  <div id="resset-button" class="ui toggle negative button" ng-click="reset()">
+							    Delete
+							  </div>
+							</div>
+
+							<div class="item">
+								<div class="menu-text2">Depth Focus</div>
+								<div class="menu-text">{{myMentor.depthFocus}}</div>
+							</div>
+
+							<div class="item">
+								<div class="menu-text2">Gender</div>
+								<div class="menu-text">{{myMentor.gender}}</div>
+							</div>
+
+							<div class="item">
+								<div class="menu-text2">Student Year</div>
+								<div class="menu-text">{{myMentor.studentYear}}</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="eight wide column">
+						<div class="user-profile ui vertical fluid">
+							<div class="item">
+								<div class="menu-text2">Career Development</div>
+								<div class="menu-text">{{myMentor.careerDevelopment}}</div>
+							</div>
+
+							<div class="item">
+								<div class="menu-text2">Future Plans</div>
+								<div class="menu-text">{{myMentor.futurePlans}}</div>
+							</div>
+
+							<div class="item">
+								<div class="menu-text2">Academic International Experience</div>
+								<div class="menu-text">{{myMentor.academicIntExp}}</div>
+							</div>
+
+							<div class="item">
+								<div class="menu-text2">Expected Graduation</div>
+								<div class="menu-text">{{myMentor.expectedGraduation}}</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="ui divider"></div>
+
+				<!-- extra bits of information stuff -->
+				<div class="user-info extra ">
+					<div class="menu-text2">Organizations, Extracurricular Activities, Interests, Skills, etc</div>
+					<div class="menu-text">{{myMentor.extraInfo}}</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</section>

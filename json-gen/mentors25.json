@@ -1,0 +1,1702 @@
+[
+  {
+    "first_name": "Carol",
+    "last_name": "Hartman",
+    "username": "chartman",
+    "color": "Pink",
+    "adj": "Bright",
+    "animal": "Lion",
+    "alias": "Pink Bright Lion",
+    "email": "chartman@gatech.edu",
+    "phone": 8465743548,
+    "pref_communication": "Phone",
+    "opt_in": 0,
+    "approvedb_by": "NULL",
+    "depth_focus": "Cardiovascular-systems",
+    "post_grad_plan": "Work in industry",
+    "post_grad_plan_desc": "Study study study",
+    "expec_graduation": "Fall 2015",
+    "transfer_from_outside": "<TypeError: Object #<Object> has no method 'nrandom'>",
+    "institution_name": "Georgia State University",
+    "transfer_from_inside": 1,
+    "prev_major": "Computational Media",
+    "international_student": 0,
+    "first_gen_college_student": 0,
+    "live_before_tech": "New York",
+    "live_on_campus": 1,
+    "undergrad_research": 1,
+    "undergrad_research_desc": "Biomedical Tissue Adaptation",
+    "home_country": "China",
+    "personal_hobby": "Rock Climbing",
+    "gender": "male",
+    "other_major": "Computer Science",
+    "breadth_track": [
+      {
+        "name": "Minor",
+        "desc": "Descripton1"
+      }
+    ],
+    "bme_organization": [
+      {
+        "name": "Medical Device Entrepreneurship Association (MDEA)",
+        "desc": "description2"
+      }
+    ],
+    "tutor_teacher_program": [
+      {
+        "name": "BMED 1300 Co-Facilitator",
+        "desc": "description2"
+      }
+    ],
+    "bme_academ_exp": [
+      {
+        "name": "Multidisciplinary Capstone Design Course",
+        "desc": "description2"
+      }
+    ],
+    "international_experience": [
+      {
+        "name": "Volunteer Abroad",
+        "desc": "descripton1"
+      }
+    ],
+    "career_dev_program": [
+      {
+        "name": "Internship",
+        "desc": "description2"
+      }
+    ]
+  },
+  {
+    "first_name": "Lane",
+    "last_name": "Clayton",
+    "username": "lclayton",
+    "color": "Aqua",
+    "adj": "Brave",
+    "animal": "Robin",
+    "alias": "Aqua Brave Robin",
+    "email": "lclayton@gatech.edu",
+    "phone": 9894023927,
+    "pref_communication": "Phone",
+    "opt_in": 0,
+    "approvedb_by": "NULL",
+    "depth_focus": "Biomaterials",
+    "post_grad_plan": "Work in industry",
+    "post_grad_plan_desc": "Study study study",
+    "expec_graduation": "Fall 2015",
+    "transfer_from_outside": "<TypeError: Object #<Object> has no method 'nrandom'>",
+    "institution_name": "Georgia Institute of Technology",
+    "transfer_from_inside": 0,
+    "prev_major": "Computational Media",
+    "international_student": 0,
+    "first_gen_college_student": 1,
+    "live_before_tech": "Duluth",
+    "live_on_campus": 1,
+    "undergrad_research": 1,
+    "undergrad_research_desc": "Biomedical Tissue Adaptation",
+    "home_country": "China",
+    "personal_hobby": "Biking",
+    "gender": "female",
+    "other_major": "Computer Science",
+    "breadth_track": [
+      {
+        "name": "Research",
+        "desc": "Descripton1"
+      }
+    ],
+    "bme_organization": [
+      {
+        "name": "Medical Device Entrepreneurship Association (MDEA)",
+        "desc": "descripton1"
+      }
+    ],
+    "tutor_teacher_program": [
+      {
+        "name": "BMED 1300 Co-Facilitator",
+        "desc": "description2"
+      }
+    ],
+    "bme_academ_exp": [
+      {
+        "name": "Design Expo",
+        "desc": "description2"
+      }
+    ],
+    "international_experience": [
+      {
+        "name": "International Plan",
+        "desc": "description2"
+      }
+    ],
+    "career_dev_program": [
+      {
+        "name": "Shadowing in a Medical Environment",
+        "desc": "description2"
+      }
+    ]
+  },
+  {
+    "first_name": "Bowman",
+    "last_name": "Crosby",
+    "username": "bcrosby",
+    "color": "Navy",
+    "adj": "Brave",
+    "animal": "Panda",
+    "alias": "Navy Brave Panda",
+    "email": "bcrosby@gatech.edu",
+    "phone": 8194212511,
+    "pref_communication": "Email",
+    "opt_in": 1,
+    "approvedb_by": "NULL",
+    "depth_focus": "Biomechanics",
+    "post_grad_plan": "Work in industry",
+    "post_grad_plan_desc": "Graduate School",
+    "expec_graduation": "Spring 2014",
+    "transfer_from_outside": "<TypeError: Object #<Object> has no method 'nrandom'>",
+    "institution_name": "Georgia State University",
+    "transfer_from_inside": 1,
+    "prev_major": "Architecture",
+    "international_student": 1,
+    "first_gen_college_student": 1,
+    "live_before_tech": "Los Angeles",
+    "live_on_campus": 1,
+    "undergrad_research": 1,
+    "undergrad_research_desc": "Vitamin Effect on Cognition",
+    "home_country": "United States",
+    "personal_hobby": "Rock Climbing",
+    "gender": "female",
+    "other_major": "Architecture",
+    "breadth_track": [
+      {
+        "name": "Research",
+        "desc": "Description2"
+      }
+    ],
+    "bme_organization": [
+      {
+        "name": "Biomedical Engineering Society (BMES)",
+        "desc": "descripton1"
+      }
+    ],
+    "tutor_teacher_program": [
+      {
+        "name": "PLUS Leader (Center for Academic Success)",
+        "desc": "descripton1"
+      }
+    ],
+    "bme_academ_exp": [
+      {
+        "name": "Multidisciplinary Capstone Design Course",
+        "desc": "description2"
+      }
+    ],
+    "international_experience": [
+      {
+        "name": "Volunteer Abroad",
+        "desc": "description2"
+      }
+    ],
+    "career_dev_program": [
+      {
+        "name": "Shadowing in a Medical Environment",
+        "desc": "description2"
+      }
+    ]
+  },
+  {
+    "first_name": "Meredith",
+    "last_name": "Macias",
+    "username": "mmacias",
+    "color": "Maroon",
+    "adj": "Graceful",
+    "animal": "Hawk",
+    "alias": "Maroon Graceful Hawk",
+    "email": "mmacias@gatech.edu",
+    "phone": 9175452445,
+    "pref_communication": "Phone",
+    "opt_in": 0,
+    "approvedb_by": "NULL",
+    "depth_focus": "Cardiovascular-systems",
+    "post_grad_plan": "Work in industry",
+    "post_grad_plan_desc": "Graduate School",
+    "expec_graduation": "Spring 2015",
+    "transfer_from_outside": "<TypeError: Object #<Object> has no method 'nrandom'>",
+    "institution_name": "Georgia State University",
+    "transfer_from_inside": 1,
+    "prev_major": "Computational Media",
+    "international_student": 1,
+    "first_gen_college_student": 0,
+    "live_before_tech": "Los Angeles",
+    "live_on_campus": 0,
+    "undergrad_research": 1,
+    "undergrad_research_desc": "Vitamin Effect on Cognition",
+    "home_country": "China",
+    "personal_hobby": "Biking",
+    "gender": "female",
+    "other_major": "Computational Media",
+    "breadth_track": [
+      {
+        "name": "Research",
+        "desc": "Descripton1"
+      }
+    ],
+    "bme_organization": [
+      {
+        "name": "Biomedical Engineering Society (BMES)",
+        "desc": "description2"
+      }
+    ],
+    "tutor_teacher_program": [
+      {
+        "name": "PLUS Leader (Center for Academic Success)",
+        "desc": "description2"
+      }
+    ],
+    "bme_academ_exp": [
+      {
+        "name": "The Clinical Observation and Design Experience (CODE) Course (BMED 4813)",
+        "desc": "descripton1"
+      }
+    ],
+    "international_experience": [
+      {
+        "name": "Volunteer Abroad",
+        "desc": "description2"
+      }
+    ],
+    "career_dev_program": [
+      {
+        "name": "Co-op",
+        "desc": "descripton1"
+      }
+    ]
+  },
+  {
+    "first_name": "Ayala",
+    "last_name": "Torres",
+    "username": "atorres",
+    "color": "Forest",
+    "adj": "Graceful",
+    "animal": "Raven",
+    "alias": "Forest Graceful Raven",
+    "email": "atorres@gatech.edu",
+    "phone": 9394852225,
+    "pref_communication": "Email",
+    "opt_in": 1,
+    "approvedb_by": "NULL",
+    "depth_focus": "Medical-imaging",
+    "post_grad_plan": "Work in industry",
+    "post_grad_plan_desc": "Graduate School",
+    "expec_graduation": "Fall 2014",
+    "transfer_from_outside": "<TypeError: Object #<Object> has no method 'nrandom'>",
+    "institution_name": "Georgia State University",
+    "transfer_from_inside": 1,
+    "prev_major": "Computer Science",
+    "international_student": 0,
+    "first_gen_college_student": 0,
+    "live_before_tech": "Duluth",
+    "live_on_campus": 0,
+    "undergrad_research": 0,
+    "undergrad_research_desc": "Biomedical Tissue Adaptation",
+    "home_country": "China",
+    "personal_hobby": "Biking",
+    "gender": "female",
+    "other_major": "Architecture",
+    "breadth_track": [
+      {
+        "name": "Minor",
+        "desc": "Description2"
+      }
+    ],
+    "bme_organization": [
+      {
+        "name": "BMED Futures",
+        "desc": "descripton1"
+      }
+    ],
+    "tutor_teacher_program": [
+      {
+        "name": "Undergraduate Grader or Teaching Assistant for a BME Course",
+        "desc": "descripton1"
+      }
+    ],
+    "bme_academ_exp": [
+      {
+        "name": "The Clinical Observation and Design Experience (CODE) Course (BMED 4813)",
+        "desc": "description2"
+      }
+    ],
+    "international_experience": [
+      {
+        "name": "International Plan",
+        "desc": "descripton1"
+      }
+    ],
+    "career_dev_program": [
+      {
+        "name": "Shadowing in a Medical Environment",
+        "desc": "description2"
+      }
+    ]
+  },
+  {
+    "first_name": "Velasquez",
+    "last_name": "Harrison",
+    "username": "vharrison",
+    "color": "Maroon",
+    "adj": "Fantastic",
+    "animal": "Lemur",
+    "alias": "Maroon Fantastic Lemur",
+    "email": "vharrison@gatech.edu",
+    "phone": 9015933779,
+    "pref_communication": "Email",
+    "opt_in": 0,
+    "approvedb_by": "NULL",
+    "depth_focus": "Cardiovascular-systems",
+    "post_grad_plan": "Work in industry",
+    "post_grad_plan_desc": "Study study study",
+    "expec_graduation": "Fall 2014",
+    "transfer_from_outside": "<TypeError: Object #<Object> has no method 'nrandom'>",
+    "institution_name": "Georgia State University",
+    "transfer_from_inside": 0,
+    "prev_major": "Computer Science",
+    "international_student": 1,
+    "first_gen_college_student": 0,
+    "live_before_tech": "Boston",
+    "live_on_campus": 0,
+    "undergrad_research": 1,
+    "undergrad_research_desc": "Vitamin Effect on Cognition",
+    "home_country": "China",
+    "personal_hobby": "Rock Climbing",
+    "gender": "male",
+    "other_major": "Computational Media",
+    "breadth_track": [
+      {
+        "name": "Pre-health",
+        "desc": "Description2"
+      }
+    ],
+    "bme_organization": [
+      {
+        "name": "Biomedical Engineering Society (BMES)",
+        "desc": "descripton1"
+      }
+    ],
+    "tutor_teacher_program": [
+      {
+        "name": "Ad Hoc Tutoring (That You Arranged on Your Own)",
+        "desc": "descripton1"
+      }
+    ],
+    "bme_academ_exp": [
+      {
+        "name": "The Clinical Observation and Design Experience (CODE) Course (BMED 4813)",
+        "desc": "descripton1"
+      }
+    ],
+    "international_experience": [
+      {
+        "name": "International Plan",
+        "desc": "description2"
+      }
+    ],
+    "career_dev_program": [
+      {
+        "name": "Shadowing in a Medical Environment",
+        "desc": "descripton1"
+      }
+    ]
+  },
+  {
+    "first_name": "Virgie",
+    "last_name": "Pennington",
+    "username": "vpennington",
+    "color": "Midnight",
+    "adj": "Careful",
+    "animal": "Lemur",
+    "alias": "Midnight Careful Lemur",
+    "email": "vpennington@gatech.edu",
+    "phone": 8245922878,
+    "pref_communication": "Email",
+    "opt_in": 0,
+    "approvedb_by": "NULL",
+    "depth_focus": "Medical-imaging",
+    "post_grad_plan": "Graduate School",
+    "post_grad_plan_desc": "Study study study",
+    "expec_graduation": "Spring 2014",
+    "transfer_from_outside": "<TypeError: Object #<Object> has no method 'nrandom'>",
+    "institution_name": "Georgia Institute of Technology",
+    "transfer_from_inside": 0,
+    "prev_major": "Computer Science",
+    "international_student": 0,
+    "first_gen_college_student": 1,
+    "live_before_tech": "Duluth",
+    "live_on_campus": 1,
+    "undergrad_research": 1,
+    "undergrad_research_desc": "Vitamin Effect on Cognition",
+    "home_country": "China",
+    "personal_hobby": "Rock Climbing",
+    "gender": "female",
+    "other_major": "Computational Media",
+    "breadth_track": [
+      {
+        "name": "Pre-health",
+        "desc": "Descripton1"
+      }
+    ],
+    "bme_organization": [
+      {
+        "name": "Alpha Eta Mu (AEMB)",
+        "desc": "description2"
+      }
+    ],
+    "tutor_teacher_program": [
+      {
+        "name": "PLUS Leader (Center for Academic Success)",
+        "desc": "descripton1"
+      }
+    ],
+    "bme_academ_exp": [
+      {
+        "name": "Multidisciplinary Capstone Design Course",
+        "desc": "description2"
+      }
+    ],
+    "international_experience": [
+      {
+        "name": "Volunteer Abroad",
+        "desc": "descripton1"
+      }
+    ],
+    "career_dev_program": [
+      {
+        "name": "Internship",
+        "desc": "description2"
+      }
+    ]
+  },
+  {
+    "first_name": "Cherry",
+    "last_name": "Carr",
+    "username": "ccarr",
+    "color": "Golden",
+    "adj": "Kind",
+    "animal": "Eagle",
+    "alias": "Golden Kind Eagle",
+    "email": "ccarr@gatech.edu",
+    "phone": 9905493473,
+    "pref_communication": "Email",
+    "opt_in": 0,
+    "approvedb_by": "NULL",
+    "depth_focus": "Biomaterials",
+    "post_grad_plan": "Work in industry",
+    "post_grad_plan_desc": "Graduate School",
+    "expec_graduation": "Spring 2015",
+    "transfer_from_outside": "<TypeError: Object #<Object> has no method 'nrandom'>",
+    "institution_name": "Georgia State University",
+    "transfer_from_inside": 0,
+    "prev_major": "Computational Media",
+    "international_student": 1,
+    "first_gen_college_student": 1,
+    "live_before_tech": "Boston",
+    "live_on_campus": 1,
+    "undergrad_research": 0,
+    "undergrad_research_desc": "Vitamin Effect on Cognition",
+    "home_country": "China",
+    "personal_hobby": "Soccer",
+    "gender": "male",
+    "other_major": "Architecture",
+    "breadth_track": [
+      {
+        "name": "Certifcate",
+        "desc": "Descripton1"
+      }
+    ],
+    "bme_organization": [
+      {
+        "name": "BMED Futures",
+        "desc": "description2"
+      }
+    ],
+    "tutor_teacher_program": [
+      {
+        "name": "Tutoring in BME with a Student Organization",
+        "desc": "description2"
+      }
+    ],
+    "bme_academ_exp": [
+      {
+        "name": "The Clinical Observation and Design Experience (CODE) Course (BMED 4813)",
+        "desc": "description2"
+      }
+    ],
+    "international_experience": [
+      {
+        "name": "Work Abroad",
+        "desc": "descripton1"
+      }
+    ],
+    "career_dev_program": [
+      {
+        "name": "Co-op",
+        "desc": "description2"
+      }
+    ]
+  },
+  {
+    "first_name": "Barker",
+    "last_name": "Quinn",
+    "username": "bquinn",
+    "color": "Teal",
+    "adj": "Calm",
+    "animal": "Deer",
+    "alias": "Teal Calm Deer",
+    "email": "bquinn@gatech.edu",
+    "phone": 9924142452,
+    "pref_communication": "Phone",
+    "opt_in": 0,
+    "approvedb_by": "NULL",
+    "depth_focus": "Neuroengineering",
+    "post_grad_plan": "Graduate School",
+    "post_grad_plan_desc": "Study study study",
+    "expec_graduation": "Spring 2015",
+    "transfer_from_outside": "<TypeError: Object #<Object> has no method 'nrandom'>",
+    "institution_name": "Georgia Institute of Technology",
+    "transfer_from_inside": 1,
+    "prev_major": "Computer Science",
+    "international_student": 0,
+    "first_gen_college_student": 0,
+    "live_before_tech": "Duluth",
+    "live_on_campus": 1,
+    "undergrad_research": 1,
+    "undergrad_research_desc": "Vitamin Effect on Cognition",
+    "home_country": "China",
+    "personal_hobby": "Biking",
+    "gender": "female",
+    "other_major": "Computer Science",
+    "breadth_track": [
+      {
+        "name": "Minor",
+        "desc": "Descripton1"
+      }
+    ],
+    "bme_organization": [
+      {
+        "name": "Medical Device Entrepreneurship Association (MDEA)",
+        "desc": "description2"
+      }
+    ],
+    "tutor_teacher_program": [
+      {
+        "name": "PLUS Leader (Center for Academic Success)",
+        "desc": "description2"
+      }
+    ],
+    "bme_academ_exp": [
+      {
+        "name": "The Clinical Observation and Design Experience (CODE) Course (BMED 4813)",
+        "desc": "descripton1"
+      }
+    ],
+    "international_experience": [
+      {
+        "name": "Work Abroad",
+        "desc": "descripton1"
+      }
+    ],
+    "career_dev_program": [
+      {
+        "name": "Internship",
+        "desc": "description2"
+      }
+    ]
+  },
+  {
+    "first_name": "Ollie",
+    "last_name": "Mcneil",
+    "username": "omcneil",
+    "color": "Aqua",
+    "adj": "Jolly",
+    "animal": "Raven",
+    "alias": "Aqua Jolly Raven",
+    "email": "omcneil@gatech.edu",
+    "phone": 9015173582,
+    "pref_communication": "Email",
+    "opt_in": 0,
+    "approvedb_by": "NULL",
+    "depth_focus": "Biomaterials",
+    "post_grad_plan": "Work in industry",
+    "post_grad_plan_desc": "Study study study",
+    "expec_graduation": "Spring 2014",
+    "transfer_from_outside": "<TypeError: Object #<Object> has no method 'nrandom'>",
+    "institution_name": "Georgia State University",
+    "transfer_from_inside": 1,
+    "prev_major": "Computational Media",
+    "international_student": 1,
+    "first_gen_college_student": 1,
+    "live_before_tech": "Marietta",
+    "live_on_campus": 0,
+    "undergrad_research": 1,
+    "undergrad_research_desc": "Vitamin Effect on Cognition",
+    "home_country": "India",
+    "personal_hobby": "Rock Climbing",
+    "gender": "male",
+    "other_major": "Computational Media",
+    "breadth_track": [
+      {
+        "name": "Pre-health",
+        "desc": "Description2"
+      }
+    ],
+    "bme_organization": [
+      {
+        "name": "Pioneer",
+        "desc": "description2"
+      }
+    ],
+    "tutor_teacher_program": [
+      {
+        "name": "BMED 1300 Co-Facilitator",
+        "desc": "description2"
+      }
+    ],
+    "bme_academ_exp": [
+      {
+        "name": "The Clinical Observation and Design Experience (CODE) Course (BMED 4813)",
+        "desc": "descripton1"
+      }
+    ],
+    "international_experience": [
+      {
+        "name": "Work Abroad",
+        "desc": "descripton1"
+      }
+    ],
+    "career_dev_program": [
+      {
+        "name": "Shadowing in a Medical Environment",
+        "desc": "descripton1"
+      }
+    ]
+  },
+  {
+    "first_name": "Winnie",
+    "last_name": "Grimes",
+    "username": "wgrimes",
+    "color": "Silver",
+    "adj": "Brainy",
+    "animal": "Hawk",
+    "alias": "Silver Brainy Hawk",
+    "email": "wgrimes@gatech.edu",
+    "phone": 9514013520,
+    "pref_communication": "Email",
+    "opt_in": 1,
+    "approvedb_by": "NULL",
+    "depth_focus": "Biomaterials",
+    "post_grad_plan": "Graduate School",
+    "post_grad_plan_desc": "Graduate School",
+    "expec_graduation": "Spring 2015",
+    "transfer_from_outside": "<TypeError: Object #<Object> has no method 'nrandom'>",
+    "institution_name": "Georgia State University",
+    "transfer_from_inside": 1,
+    "prev_major": "Computational Media",
+    "international_student": 0,
+    "first_gen_college_student": 1,
+    "live_before_tech": "Marietta",
+    "live_on_campus": 0,
+    "undergrad_research": 0,
+    "undergrad_research_desc": "Biomedical Tissue Adaptation",
+    "home_country": "China",
+    "personal_hobby": "Biking",
+    "gender": "male",
+    "other_major": "Computational Media",
+    "breadth_track": [
+      {
+        "name": "Minor",
+        "desc": "Descripton1"
+      }
+    ],
+    "bme_organization": [
+      {
+        "name": "BMED Futures",
+        "desc": "descripton1"
+      }
+    ],
+    "tutor_teacher_program": [
+      {
+        "name": "PLUS Leader (Center for Academic Success)",
+        "desc": "description2"
+      }
+    ],
+    "bme_academ_exp": [
+      {
+        "name": "Multidisciplinary Capstone Design Course",
+        "desc": "descripton1"
+      }
+    ],
+    "international_experience": [
+      {
+        "name": "Volunteer Abroad",
+        "desc": "descripton1"
+      }
+    ],
+    "career_dev_program": [
+      {
+        "name": "Shadowing in a Medical Environment",
+        "desc": "description2"
+      }
+    ]
+  },
+  {
+    "first_name": "Hickman",
+    "last_name": "Livingston",
+    "username": "hlivingston",
+    "color": "Pink",
+    "adj": "Delightful",
+    "animal": "Owl",
+    "alias": "Pink Delightful Owl",
+    "email": "hlivingston@gatech.edu",
+    "phone": 9474872162,
+    "pref_communication": "Phone",
+    "opt_in": 1,
+    "approvedb_by": "NULL",
+    "depth_focus": "Biomechanics",
+    "post_grad_plan": "Work in industry",
+    "post_grad_plan_desc": "Graduate School",
+    "expec_graduation": "Fall 2014",
+    "transfer_from_outside": "<TypeError: Object #<Object> has no method 'nrandom'>",
+    "institution_name": "Georgia State University",
+    "transfer_from_inside": 1,
+    "prev_major": "Architecture",
+    "international_student": 1,
+    "first_gen_college_student": 0,
+    "live_before_tech": "Duluth",
+    "live_on_campus": 1,
+    "undergrad_research": 1,
+    "undergrad_research_desc": "Vitamin Effect on Cognition",
+    "home_country": "China",
+    "personal_hobby": "Soccer",
+    "gender": "male",
+    "other_major": "Architecture",
+    "breadth_track": [
+      {
+        "name": "Research",
+        "desc": "Descripton1"
+      }
+    ],
+    "bme_organization": [
+      {
+        "name": "Pioneer",
+        "desc": "description2"
+      }
+    ],
+    "tutor_teacher_program": [
+      {
+        "name": "PLUS Leader (Center for Academic Success)",
+        "desc": "descripton1"
+      }
+    ],
+    "bme_academ_exp": [
+      {
+        "name": "Multidisciplinary Capstone Design Course",
+        "desc": "descripton1"
+      }
+    ],
+    "international_experience": [
+      {
+        "name": "Research Abroad",
+        "desc": "descripton1"
+      }
+    ],
+    "career_dev_program": [
+      {
+        "name": "Shadowing in a Medical Environment",
+        "desc": "description2"
+      }
+    ]
+  },
+  {
+    "first_name": "Kirkland",
+    "last_name": "Wallace",
+    "username": "kwallace",
+    "color": "Salmon",
+    "adj": "Brainy",
+    "animal": "Kangaroo",
+    "alias": "Salmon Brainy Kangaroo",
+    "email": "kwallace@gatech.edu",
+    "phone": 8575533937,
+    "pref_communication": "Email",
+    "opt_in": 1,
+    "approvedb_by": "NULL",
+    "depth_focus": "Biomaterials",
+    "post_grad_plan": "Graduate School",
+    "post_grad_plan_desc": "Graduate School",
+    "expec_graduation": "Spring 2015",
+    "transfer_from_outside": "<TypeError: Object #<Object> has no method 'nrandom'>",
+    "institution_name": "Georgia Institute of Technology",
+    "transfer_from_inside": 1,
+    "prev_major": "Computational Media",
+    "international_student": 1,
+    "first_gen_college_student": 0,
+    "live_before_tech": "New York",
+    "live_on_campus": 0,
+    "undergrad_research": 1,
+    "undergrad_research_desc": "Biomedical Tissue Adaptation",
+    "home_country": "China",
+    "personal_hobby": "Soccer",
+    "gender": "female",
+    "other_major": "Computer Science",
+    "breadth_track": [
+      {
+        "name": "Minor",
+        "desc": "Descripton1"
+      }
+    ],
+    "bme_organization": [
+      {
+        "name": "Alpha Eta Mu (AEMB)",
+        "desc": "description2"
+      }
+    ],
+    "tutor_teacher_program": [
+      {
+        "name": "Tutoring in BME with a Student Organization",
+        "desc": "description2"
+      }
+    ],
+    "bme_academ_exp": [
+      {
+        "name": "The Clinical Observation and Design Experience (CODE) Course (BMED 4813)",
+        "desc": "description2"
+      }
+    ],
+    "international_experience": [
+      {
+        "name": "Research Abroad",
+        "desc": "description2"
+      }
+    ],
+    "career_dev_program": [
+      {
+        "name": "Co-op",
+        "desc": "descripton1"
+      }
+    ]
+  },
+  {
+    "first_name": "Mccray",
+    "last_name": "Mcknight",
+    "username": "mmcknight",
+    "color": "Golden",
+    "adj": "Bright",
+    "animal": "Raven",
+    "alias": "Golden Bright Raven",
+    "email": "mmcknight@gatech.edu",
+    "phone": 8855652925,
+    "pref_communication": "Phone",
+    "opt_in": 1,
+    "approvedb_by": "NULL",
+    "depth_focus": "Neuroengineering",
+    "post_grad_plan": "Work in industry",
+    "post_grad_plan_desc": "Study study study",
+    "expec_graduation": "Spring 2015",
+    "transfer_from_outside": "<TypeError: Object #<Object> has no method 'nrandom'>",
+    "institution_name": "Georgia State University",
+    "transfer_from_inside": 1,
+    "prev_major": "Computational Media",
+    "international_student": 0,
+    "first_gen_college_student": 1,
+    "live_before_tech": "Boston",
+    "live_on_campus": 1,
+    "undergrad_research": 0,
+    "undergrad_research_desc": "Vitamin Effect on Cognition",
+    "home_country": "United States",
+    "personal_hobby": "Biking",
+    "gender": "male",
+    "other_major": "Computer Science",
+    "breadth_track": [
+      {
+        "name": "Pre-health",
+        "desc": "Description2"
+      }
+    ],
+    "bme_organization": [
+      {
+        "name": "Engineering World Health (EWH)",
+        "desc": "description2"
+      }
+    ],
+    "tutor_teacher_program": [
+      {
+        "name": "Tutoring in BME with a Student Organization",
+        "desc": "descripton1"
+      }
+    ],
+    "bme_academ_exp": [
+      {
+        "name": "The Clinical Observation and Design Experience (CODE) Course (BMED 4813)",
+        "desc": "descripton1"
+      }
+    ],
+    "international_experience": [
+      {
+        "name": "International Plan",
+        "desc": "descripton1"
+      }
+    ],
+    "career_dev_program": [
+      {
+        "name": "Shadowing in a Medical Environment",
+        "desc": "description2"
+      }
+    ]
+  },
+  {
+    "first_name": "Maldonado",
+    "last_name": "Kaufman",
+    "username": "mkaufman",
+    "color": "Midnight",
+    "adj": "Delightful",
+    "animal": "Lion",
+    "alias": "Midnight Delightful Lion",
+    "email": "mkaufman@gatech.edu",
+    "phone": 9715192126,
+    "pref_communication": "Phone",
+    "opt_in": 1,
+    "approvedb_by": "NULL",
+    "depth_focus": "Biomaterials",
+    "post_grad_plan": "Work in industry",
+    "post_grad_plan_desc": "Graduate School",
+    "expec_graduation": "Spring 2014",
+    "transfer_from_outside": "<TypeError: Object #<Object> has no method 'nrandom'>",
+    "institution_name": "Georgia State University",
+    "transfer_from_inside": 1,
+    "prev_major": "Computer Science",
+    "international_student": 1,
+    "first_gen_college_student": 0,
+    "live_before_tech": "Duluth",
+    "live_on_campus": 0,
+    "undergrad_research": 1,
+    "undergrad_research_desc": "Vitamin Effect on Cognition",
+    "home_country": "China",
+    "personal_hobby": "Biking",
+    "gender": "male",
+    "other_major": "Computer Science",
+    "breadth_track": [
+      {
+        "name": "Pre-health",
+        "desc": "Descripton1"
+      }
+    ],
+    "bme_organization": [
+      {
+        "name": "BMED Futures",
+        "desc": "descripton1"
+      }
+    ],
+    "tutor_teacher_program": [
+      {
+        "name": "PLUS Leader (Center for Academic Success)",
+        "desc": "description2"
+      }
+    ],
+    "bme_academ_exp": [
+      {
+        "name": "Inventure Prize",
+        "desc": "description2"
+      }
+    ],
+    "international_experience": [
+      {
+        "name": "Research Abroad",
+        "desc": "description2"
+      }
+    ],
+    "career_dev_program": [
+      {
+        "name": "Co-op",
+        "desc": "description2"
+      }
+    ]
+  },
+  {
+    "first_name": "Audrey",
+    "last_name": "Pope",
+    "username": "apope",
+    "color": "Salmon",
+    "adj": "Brave",
+    "animal": "Robin",
+    "alias": "Salmon Brave Robin",
+    "email": "apope@gatech.edu",
+    "phone": 9845192922,
+    "pref_communication": "Email",
+    "opt_in": 1,
+    "approvedb_by": "NULL",
+    "depth_focus": "Neuroengineering",
+    "post_grad_plan": "Work in industry",
+    "post_grad_plan_desc": "Graduate School",
+    "expec_graduation": "Spring 2015",
+    "transfer_from_outside": "<TypeError: Object #<Object> has no method 'nrandom'>",
+    "institution_name": "Georgia Institute of Technology",
+    "transfer_from_inside": 1,
+    "prev_major": "Architecture",
+    "international_student": 1,
+    "first_gen_college_student": 0,
+    "live_before_tech": "New York",
+    "live_on_campus": 1,
+    "undergrad_research": 0,
+    "undergrad_research_desc": "Vitamin Effect on Cognition",
+    "home_country": "China",
+    "personal_hobby": "Biking",
+    "gender": "female",
+    "other_major": "Computer Science",
+    "breadth_track": [
+      {
+        "name": "Minor",
+        "desc": "Descripton1"
+      }
+    ],
+    "bme_organization": [
+      {
+        "name": "Medical Device Entrepreneurship Association (MDEA)",
+        "desc": "descripton1"
+      }
+    ],
+    "tutor_teacher_program": [
+      {
+        "name": "Ad Hoc Tutoring (That You Arranged on Your Own)",
+        "desc": "descripton1"
+      }
+    ],
+    "bme_academ_exp": [
+      {
+        "name": "The Clinical Observation and Design Experience (CODE) Course (BMED 4813)",
+        "desc": "description2"
+      }
+    ],
+    "international_experience": [
+      {
+        "name": "Research Abroad",
+        "desc": "description2"
+      }
+    ],
+    "career_dev_program": [
+      {
+        "name": "Shadowing in a Medical Environment",
+        "desc": "description2"
+      }
+    ]
+  },
+  {
+    "first_name": "Clements",
+    "last_name": "Neal",
+    "username": "cneal",
+    "color": "Pink",
+    "adj": "Brave",
+    "animal": "Raven",
+    "alias": "Pink Brave Raven",
+    "email": "cneal@gatech.edu",
+    "phone": 8905103469,
+    "pref_communication": "Phone",
+    "opt_in": 1,
+    "approvedb_by": "NULL",
+    "depth_focus": "Biomaterials",
+    "post_grad_plan": "Graduate School",
+    "post_grad_plan_desc": "Study study study",
+    "expec_graduation": "Spring 2015",
+    "transfer_from_outside": "<TypeError: Object #<Object> has no method 'nrandom'>",
+    "institution_name": "Georgia State University",
+    "transfer_from_inside": 1,
+    "prev_major": "Computational Media",
+    "international_student": 0,
+    "first_gen_college_student": 0,
+    "live_before_tech": "Boston",
+    "live_on_campus": 1,
+    "undergrad_research": 1,
+    "undergrad_research_desc": "Vitamin Effect on Cognition",
+    "home_country": "China",
+    "personal_hobby": "Biking",
+    "gender": "female",
+    "other_major": "Architecture",
+    "breadth_track": [
+      {
+        "name": "Certifcate",
+        "desc": "Descripton1"
+      }
+    ],
+    "bme_organization": [
+      {
+        "name": "BMED Futures",
+        "desc": "descripton1"
+      }
+    ],
+    "tutor_teacher_program": [
+      {
+        "name": "PLUS Leader (Center for Academic Success)",
+        "desc": "description2"
+      }
+    ],
+    "bme_academ_exp": [
+      {
+        "name": "Design Expo",
+        "desc": "descripton1"
+      }
+    ],
+    "international_experience": [
+      {
+        "name": "International Plan",
+        "desc": "description2"
+      }
+    ],
+    "career_dev_program": [
+      {
+        "name": "Co-op",
+        "desc": "descripton1"
+      }
+    ]
+  },
+  {
+    "first_name": "Hall",
+    "last_name": "Barlow",
+    "username": "hbarlow",
+    "color": "Salmon",
+    "adj": "Delightful",
+    "animal": "Panda",
+    "alias": "Salmon Delightful Panda",
+    "email": "hbarlow@gatech.edu",
+    "phone": 8915563533,
+    "pref_communication": "Phone",
+    "opt_in": 1,
+    "approvedb_by": "NULL",
+    "depth_focus": "Neuroengineering",
+    "post_grad_plan": "Work in industry",
+    "post_grad_plan_desc": "Graduate School",
+    "expec_graduation": "Fall 2014",
+    "transfer_from_outside": "<TypeError: Object #<Object> has no method 'nrandom'>",
+    "institution_name": "Georgia State University",
+    "transfer_from_inside": 1,
+    "prev_major": "Computer Science",
+    "international_student": 0,
+    "first_gen_college_student": 0,
+    "live_before_tech": "Boston",
+    "live_on_campus": 0,
+    "undergrad_research": 1,
+    "undergrad_research_desc": "Vitamin Effect on Cognition",
+    "home_country": "Spain",
+    "personal_hobby": "Soccer",
+    "gender": "female",
+    "other_major": "Architecture",
+    "breadth_track": [
+      {
+        "name": "Certifcate",
+        "desc": "Descripton1"
+      }
+    ],
+    "bme_organization": [
+      {
+        "name": "Engineering World Health (EWH)",
+        "desc": "descripton1"
+      }
+    ],
+    "tutor_teacher_program": [
+      {
+        "name": "1 On 1 Tutoring",
+        "desc": "description2"
+      }
+    ],
+    "bme_academ_exp": [
+      {
+        "name": "The Clinical Observation and Design Experience (CODE) Course (BMED 4813)",
+        "desc": "descripton1"
+      }
+    ],
+    "international_experience": [
+      {
+        "name": "Work Abroad",
+        "desc": "descripton1"
+      }
+    ],
+    "career_dev_program": [
+      {
+        "name": "Co-op",
+        "desc": "description2"
+      }
+    ]
+  },
+  {
+    "first_name": "Barbara",
+    "last_name": "Reyes",
+    "username": "breyes",
+    "color": "Maroon",
+    "adj": "Brainy",
+    "animal": "Bear",
+    "alias": "Maroon Brainy Bear",
+    "email": "breyes@gatech.edu",
+    "phone": 8064892360,
+    "pref_communication": "Email",
+    "opt_in": 0,
+    "approvedb_by": "NULL",
+    "depth_focus": "Biomechanics",
+    "post_grad_plan": "Work in industry",
+    "post_grad_plan_desc": "Study study study",
+    "expec_graduation": "Spring 2014",
+    "transfer_from_outside": "<TypeError: Object #<Object> has no method 'nrandom'>",
+    "institution_name": "Georgia State University",
+    "transfer_from_inside": 1,
+    "prev_major": "Architecture",
+    "international_student": 0,
+    "first_gen_college_student": 1,
+    "live_before_tech": "New York",
+    "live_on_campus": 0,
+    "undergrad_research": 1,
+    "undergrad_research_desc": "Vitamin Effect on Cognition",
+    "home_country": "Spain",
+    "personal_hobby": "Soccer",
+    "gender": "male",
+    "other_major": "Computational Media",
+    "breadth_track": [
+      {
+        "name": "Minor",
+        "desc": "Description2"
+      }
+    ],
+    "bme_organization": [
+      {
+        "name": "Engineering World Health (EWH)",
+        "desc": "description2"
+      }
+    ],
+    "tutor_teacher_program": [
+      {
+        "name": "Tutoring in BME with a Student Organization",
+        "desc": "description2"
+      }
+    ],
+    "bme_academ_exp": [
+      {
+        "name": "Multidisciplinary Capstone Design Course",
+        "desc": "descripton1"
+      }
+    ],
+    "international_experience": [
+      {
+        "name": "Work Abroad",
+        "desc": "description2"
+      }
+    ],
+    "career_dev_program": [
+      {
+        "name": "Co-op",
+        "desc": "description2"
+      }
+    ]
+  },
+  {
+    "first_name": "Stark",
+    "last_name": "Jacobs",
+    "username": "sjacobs",
+    "color": "Rose",
+    "adj": "Good",
+    "animal": "Lion",
+    "alias": "Rose Good Lion",
+    "email": "sjacobs@gatech.edu",
+    "phone": 9024323056,
+    "pref_communication": "Email",
+    "opt_in": 1,
+    "approvedb_by": "NULL",
+    "depth_focus": "Biomaterials",
+    "post_grad_plan": "Work in industry",
+    "post_grad_plan_desc": "Graduate School",
+    "expec_graduation": "Fall 2014",
+    "transfer_from_outside": "<TypeError: Object #<Object> has no method 'nrandom'>",
+    "institution_name": "Georgia State University",
+    "transfer_from_inside": 1,
+    "prev_major": "Computational Media",
+    "international_student": 1,
+    "first_gen_college_student": 1,
+    "live_before_tech": "Los Angeles",
+    "live_on_campus": 0,
+    "undergrad_research": 0,
+    "undergrad_research_desc": "Biomedical Tissue Adaptation",
+    "home_country": "Spain",
+    "personal_hobby": "Biking",
+    "gender": "female",
+    "other_major": "Computational Media",
+    "breadth_track": [
+      {
+        "name": "Minor",
+        "desc": "Description2"
+      }
+    ],
+    "bme_organization": [
+      {
+        "name": "Alpha Eta Mu (AEMB)",
+        "desc": "description2"
+      }
+    ],
+    "tutor_teacher_program": [
+      {
+        "name": "Ad Hoc Tutoring (That You Arranged on Your Own)",
+        "desc": "descripton1"
+      }
+    ],
+    "bme_academ_exp": [
+      {
+        "name": "Design Expo",
+        "desc": "description2"
+      }
+    ],
+    "international_experience": [
+      {
+        "name": "Work Abroad",
+        "desc": "descripton1"
+      }
+    ],
+    "career_dev_program": [
+      {
+        "name": "Co-op",
+        "desc": "descripton1"
+      }
+    ]
+  },
+  {
+    "first_name": "Ruthie",
+    "last_name": "Terry",
+    "username": "rterry",
+    "color": "Pink",
+    "adj": "Kind",
+    "animal": "Deer",
+    "alias": "Pink Kind Deer",
+    "email": "rterry@gatech.edu",
+    "phone": 8295782683,
+    "pref_communication": "Phone",
+    "opt_in": 0,
+    "approvedb_by": "NULL",
+    "depth_focus": "Cardiovascular-systems",
+    "post_grad_plan": "Graduate School",
+    "post_grad_plan_desc": "Graduate School",
+    "expec_graduation": "Spring 2015",
+    "transfer_from_outside": "<TypeError: Object #<Object> has no method 'nrandom'>",
+    "institution_name": "Georgia State University",
+    "transfer_from_inside": 0,
+    "prev_major": "Computer Science",
+    "international_student": 0,
+    "first_gen_college_student": 0,
+    "live_before_tech": "Boston",
+    "live_on_campus": 0,
+    "undergrad_research": 0,
+    "undergrad_research_desc": "Vitamin Effect on Cognition",
+    "home_country": "India",
+    "personal_hobby": "Biking",
+    "gender": "female",
+    "other_major": "Architecture",
+    "breadth_track": [
+      {
+        "name": "Pre-health",
+        "desc": "Description2"
+      }
+    ],
+    "bme_organization": [
+      {
+        "name": "Alpha Eta Mu (AEMB)",
+        "desc": "descripton1"
+      }
+    ],
+    "tutor_teacher_program": [
+      {
+        "name": "Tutoring in BME with a Student Organization",
+        "desc": "description2"
+      }
+    ],
+    "bme_academ_exp": [
+      {
+        "name": "Design Expo",
+        "desc": "descripton1"
+      }
+    ],
+    "international_experience": [
+      {
+        "name": "Work Abroad",
+        "desc": "description2"
+      }
+    ],
+    "career_dev_program": [
+      {
+        "name": "Co-op",
+        "desc": "descripton1"
+      }
+    ]
+  },
+  {
+    "first_name": "Rowland",
+    "last_name": "Michael",
+    "username": "rmichael",
+    "color": "Navy",
+    "adj": "Careful",
+    "animal": "Robin",
+    "alias": "Navy Careful Robin",
+    "email": "rmichael@gatech.edu",
+    "phone": 8404653617,
+    "pref_communication": "Phone",
+    "opt_in": 1,
+    "approvedb_by": "NULL",
+    "depth_focus": "Medical-imaging",
+    "post_grad_plan": "Graduate School",
+    "post_grad_plan_desc": "Study study study",
+    "expec_graduation": "Fall 2014",
+    "transfer_from_outside": "<TypeError: Object #<Object> has no method 'nrandom'>",
+    "institution_name": "Georgia Institute of Technology",
+    "transfer_from_inside": 0,
+    "prev_major": "Computational Media",
+    "international_student": 1,
+    "first_gen_college_student": 0,
+    "live_before_tech": "Los Angeles",
+    "live_on_campus": 0,
+    "undergrad_research": 1,
+    "undergrad_research_desc": "Biomedical Tissue Adaptation",
+    "home_country": "Spain",
+    "personal_hobby": "Biking",
+    "gender": "female",
+    "other_major": "Architecture",
+    "breadth_track": [
+      {
+        "name": "Pre-health",
+        "desc": "Description2"
+      }
+    ],
+    "bme_organization": [
+      {
+        "name": "Medical Device Entrepreneurship Association (MDEA)",
+        "desc": "description2"
+      }
+    ],
+    "tutor_teacher_program": [
+      {
+        "name": "Undergraduate Grader or Teaching Assistant for a BME Course",
+        "desc": "description2"
+      }
+    ],
+    "bme_academ_exp": [
+      {
+        "name": "Design Expo",
+        "desc": "description2"
+      }
+    ],
+    "international_experience": [
+      {
+        "name": "Study Abroad",
+        "desc": "descripton1"
+      }
+    ],
+    "career_dev_program": [
+      {
+        "name": "Internship",
+        "desc": "descripton1"
+      }
+    ]
+  },
+  {
+    "first_name": "Gail",
+    "last_name": "Fuller",
+    "username": "gfuller",
+    "color": "Navy",
+    "adj": "Bright",
+    "animal": "Kangaroo",
+    "alias": "Navy Bright Kangaroo",
+    "email": "gfuller@gatech.edu",
+    "phone": 9734742974,
+    "pref_communication": "Email",
+    "opt_in": 0,
+    "approvedb_by": "NULL",
+    "depth_focus": "Medical-imaging",
+    "post_grad_plan": "Work in industry",
+    "post_grad_plan_desc": "Graduate School",
+    "expec_graduation": "Spring 2015",
+    "transfer_from_outside": "<TypeError: Object #<Object> has no method 'nrandom'>",
+    "institution_name": "Georgia State University",
+    "transfer_from_inside": 1,
+    "prev_major": "Architecture",
+    "international_student": 1,
+    "first_gen_college_student": 1,
+    "live_before_tech": "New York",
+    "live_on_campus": 0,
+    "undergrad_research": 1,
+    "undergrad_research_desc": "Vitamin Effect on Cognition",
+    "home_country": "Spain",
+    "personal_hobby": "Rock Climbing",
+    "gender": "male",
+    "other_major": "Computer Science",
+    "breadth_track": [
+      {
+        "name": "Certifcate",
+        "desc": "Descripton1"
+      }
+    ],
+    "bme_organization": [
+      {
+        "name": "Alpha Eta Mu (AEMB)",
+        "desc": "descripton1"
+      }
+    ],
+    "tutor_teacher_program": [
+      {
+        "name": "BMED 1300 Co-Facilitator",
+        "desc": "description2"
+      }
+    ],
+    "bme_academ_exp": [
+      {
+        "name": "The Clinical Observation and Design Experience (CODE) Course (BMED 4813)",
+        "desc": "description2"
+      }
+    ],
+    "international_experience": [
+      {
+        "name": "Volunteer Abroad",
+        "desc": "description2"
+      }
+    ],
+    "career_dev_program": [
+      {
+        "name": "Co-op",
+        "desc": "description2"
+      }
+    ]
+  },
+  {
+    "first_name": "Best",
+    "last_name": "Hurst",
+    "username": "bhurst",
+    "color": "Silver",
+    "adj": "Calm",
+    "animal": "Hawk",
+    "alias": "Silver Calm Hawk",
+    "email": "bhurst@gatech.edu",
+    "phone": 9825433927,
+    "pref_communication": "Phone",
+    "opt_in": 0,
+    "approvedb_by": "NULL",
+    "depth_focus": "Neuroengineering",
+    "post_grad_plan": "Graduate School",
+    "post_grad_plan_desc": "Study study study",
+    "expec_graduation": "Fall 2015",
+    "transfer_from_outside": "<TypeError: Object #<Object> has no method 'nrandom'>",
+    "institution_name": "Georgia Institute of Technology",
+    "transfer_from_inside": 0,
+    "prev_major": "Computational Media",
+    "international_student": 0,
+    "first_gen_college_student": 1,
+    "live_before_tech": "Duluth",
+    "live_on_campus": 1,
+    "undergrad_research": 0,
+    "undergrad_research_desc": "Vitamin Effect on Cognition",
+    "home_country": "Spain",
+    "personal_hobby": "Biking",
+    "gender": "female",
+    "other_major": "Computer Science",
+    "breadth_track": [
+      {
+        "name": "Minor",
+        "desc": "Descripton1"
+      }
+    ],
+    "bme_organization": [
+      {
+        "name": "Pioneer",
+        "desc": "descripton1"
+      }
+    ],
+    "tutor_teacher_program": [
+      {
+        "name": "Undergraduate Grader or Teaching Assistant for a BME Course",
+        "desc": "description2"
+      }
+    ],
+    "bme_academ_exp": [
+      {
+        "name": "Multidisciplinary Capstone Design Course",
+        "desc": "description2"
+      }
+    ],
+    "international_experience": [
+      {
+        "name": "Work Abroad",
+        "desc": "description2"
+      }
+    ],
+    "career_dev_program": [
+      {
+        "name": "Shadowing in a Medical Environment",
+        "desc": "descripton1"
+      }
+    ]
+  },
+  {
+    "first_name": "Moon",
+    "last_name": "Padilla",
+    "username": "mpadilla",
+    "color": "Rose",
+    "adj": "Good",
+    "animal": "Hawk",
+    "alias": "Rose Good Hawk",
+    "email": "mpadilla@gatech.edu",
+    "phone": 9565732325,
+    "pref_communication": "Phone",
+    "opt_in": 1,
+    "approvedb_by": "NULL",
+    "depth_focus": "Biomechanics",
+    "post_grad_plan": "Graduate School",
+    "post_grad_plan_desc": "Graduate School",
+    "expec_graduation": "Fall 2015",
+    "transfer_from_outside": "<TypeError: Object #<Object> has no method 'nrandom'>",
+    "institution_name": "Georgia Institute of Technology",
+    "transfer_from_inside": 0,
+    "prev_major": "Architecture",
+    "international_student": 0,
+    "first_gen_college_student": 1,
+    "live_before_tech": "Duluth",
+    "live_on_campus": 1,
+    "undergrad_research": 1,
+    "undergrad_research_desc": "Vitamin Effect on Cognition",
+    "home_country": "United States",
+    "personal_hobby": "Soccer",
+    "gender": "male",
+    "other_major": "Computer Science",
+    "breadth_track": [
+      {
+        "name": "Minor",
+        "desc": "Descripton1"
+      }
+    ],
+    "bme_organization": [
+      {
+        "name": "Biomedical Engineering Society (BMES)",
+        "desc": "description2"
+      }
+    ],
+    "tutor_teacher_program": [
+      {
+        "name": "PLUS Leader (Center for Academic Success)",
+        "desc": "descripton1"
+      }
+    ],
+    "bme_academ_exp": [
+      {
+        "name": "Design Expo",
+        "desc": "descripton1"
+      }
+    ],
+    "international_experience": [
+      {
+        "name": "Study Abroad",
+        "desc": "description2"
+      }
+    ],
+    "career_dev_program": [
+      {
+        "name": "Shadowing in a Medical Environment",
+        "desc": "descripton1"
+      }
+    ]
+  }
+]

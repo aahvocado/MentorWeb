@@ -1,0 +1,114 @@
+{"color": [{
+				"hex": "#8B008B", 
+				"name": "Magenta"
+			}, {
+				"hex": "#DA614E", 
+				"name": "Auburn"
+			}, {
+				"hex": "#87CEFA", 
+				"name": "Aqua"
+			}, {
+				"hex": "#5B9C64",
+				"name": "Emerald"
+			}, {
+				"hex": "#FFDF00",
+				"name": "Golden"
+			}, {
+				"hex": "#9576B5",
+				"name": "Purple"
+			}, {
+				"hex": "#FFA07A",
+				"name": "Coral"
+			}, {
+				"hex": "#CCCCFF",
+				"name": "Lilac"
+			}, {
+				"hex": "#3A53A4",
+				"name": "Navy"
+			}, {
+				"hex": "#3AB09E",
+				"name": "Teal"
+			}, {
+				"hex": "#DE6FA1",
+				"name": "Pink"
+			}, {
+				"hex": "#FF7E00",
+				"name": "Orange"
+			}, {
+				"hex": "#B03060",
+				"name": "Maroon"
+			}, {
+				"hex": "#4F7942",
+				"name": "Forest"
+			}, {
+				"hex": "#191970",
+				"name": "Midnight"
+			}, {
+				"hex": "#C0C0C0",
+				"name": "Silver"
+			}] 
+}, 
+{"adjective": ["Academic",
+				"Accountable",
+				"Assertive",
+				"Brilliant", 
+				"Brave",
+				"Bright",
+				"Calm",
+				"Careful",
+				"Charming",
+				"Cheerful",
+				"Clever",
+				"Delightful",
+				"Fantastic",
+				"Genteel",
+				"Genuine",
+				"Graceful",
+				"Jolly",
+				"Kind",
+				"Lively",
+				"Objective",
+				"Ornate",
+				"Peaceful",
+				"Perfect",
+				"Righteous",
+				"Studious",
+				"Wise",
+				"Witty"
+				]
+}, 
+{"animal": ["Bat",
+			"Bear",
+			"Cougar",
+			"Deer",
+			"Eagle",
+			"Goldfish",
+			"Gorilla",
+			"Hawk",
+			"Iguana",
+			"Jaguar",
+			"Jellyfish",
+			"Kangaroo",
+			"Lemur",
+			"Leopluradon",
+			"Lion",
+			"Mammoth",
+			"Manatee",
+			"Owl",
+			"Panda",
+			"Panther",
+			"Penguin",
+			"Platypus",
+			"Pterodactyl",
+			"Raven",
+			"Robin",
+			"Seal",
+			"Sparrow",
+			"Tiger",
+			"Turtle",
+			"Unicorn",
+			"Wolf",
+			"Wombat"]
+}
+
+

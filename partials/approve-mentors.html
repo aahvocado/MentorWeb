@@ -1,0 +1,21 @@
+<section class="approve-mentors page">
+
+		<div class="view">
+			<form>
+				<table>
+					<tr>
+						<td>Name</td>
+						<td>GT Username</td>
+						<td>Approve</td>
+					</tr>
+					<tr ng-repeat="mentor in mentors">
+						<td>{{mentor.first_name}} {{mentor.last_name}}</td>
+						<td>{{mentor.username}}</td>
+						<td><input type="checkbox" name="{{mentor.username}}" ng-model="mentor.newapprove"></td>
+					</tr>
+				</table>
+				<button type="submit" ng-click="approve()">Approve Mentors</button>
+			</form>
+		</div>
+
+</section>

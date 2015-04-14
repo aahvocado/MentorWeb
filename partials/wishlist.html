@@ -1,0 +1,130 @@
+
+<section class="wishlist page" ng-hide="show_full_profile">
+
+<div class="view">   
+			<div class="isotope-container ui">
+        <!-- Test tube rim -->
+<!--         <div class="isotope-tttl">
+          <img src="images/TestTubeTopLeft.png">
+        </div>
+        <div class="isotope-tttr">
+           <img src="images/TestTubeTopRight.png">
+        </div> -->
+
+                  <!-- Stamps for bottom of test tube -->
+<!--           <div id="stamp" class="corner-stamp stamp bottom-left "></div>
+<div id="stamp" class="corner-stamp stamp bottom-right "></div> -->
+        <!-- track by user.index -->
+        <!-- ISOTOPECONTAINER -->
+        <ul id="isotopeContainer" isotope-container ng-cloak class="ng-cloak">
+          <li ng-repeat="user in userData" isotope-item class="kindling {{user.alias.split(' ')[0]}} {{user.alias.split(' ')[1]}} {{user.alias.split(' ')[2]}} {{user.breadth_track}} {{user.depth_focus}} {{user.gender}} {{user.pref_communication}}" ng-click="miniProfileSet(user)">
+            <a class="like ui corner label">
+              <i class="star icon" ng-class="user.favorited"></i>
+            </a>
+             <div class="name color">{{user.alias.split(" ")[0]}}</div>
+             <div class="name adj">{{user.alias.split(" ")[1]}}</div>
+             <div class="name animal">{{user.alias.split(" ")[2]}}</div>
+             <!-- <div class="weight" date="{{x.date}}">{{x.date | date}}</div> -->
+             <!-- <div class="number" user-id={{user.index}} number="{{user.index}}">{{user.index}}</div> -->
+          </li>
+
+
+
+
+
+        </ul>
+	    </div>
+
+			<div class="mentor-profile ui menu" ng-model="miniProfileData">
+        <div class="content ui item">
+          <!-- <div class="name">Name: {{miniProfileData.firstName + " " + miniProfileData.lastName}}</div>
+          <p>Email: {{miniProfileData.email}}</p> -->
+          <div class="p-pic">
+            <div class="kindling" ng-class="miniProfileData.alias.split(' ')[0]">
+              <a class="like ui corner label">
+                <i class="star icon" ng-class="miniProfileData.favorited"></i>
+              </a>
+              <div class="name color">{{miniProfileData.alias.split(" ")[0]}}</div>
+              <div class="name adj">{{miniProfileData.alias.split(" ")[1]}}</div>
+              <div class="name animal">{{miniProfileData.alias.split(" ")[2]}}</div>
+            </div>
+          </div>
+
+          <div class="p-label">Breadth track</div>
+          <div class="breadth-track p-field"> {{miniProfileData.breadth_track}}</div>
+          <div class="p-label">Depth focus</div>
+          <div class="depth-focus p-field"> {{miniProfileData.depth_focus}}</div>
+          <div class="p-label">Gender</div>
+          <div class="gender p-field"> {{miniProfileData.gender}}</div>
+          <div class="p-label">Academic International Experience</div>
+          <div class="academic-int-exp p-field"> {{miniProfileData.international_experience1}}</div>
+          <div class="p-label">Future Plans</div>
+          <div class="future-plans p-field"> {{miniProfileData.post_grad_plan}}</div>
+
+          <div class="profile-link">
+            <a ng-click="showFull(miniProfileData)">See full profile >></a>
+          </div>
+
+          <!-- <div ng-bind-html="wishButton"></div> -->
+
+          <div id="wishlist-remove-button" class="ui toggle button" ng-click="removeFromWishlist()">
+            Remove
+          </div>
+          <div id="wishlist-choose-mentor" class="ui toggle button" ng-click="notification()" ng-if="chooseAvailable">
+            Choose as my Mentor
+          </div>
+
+        </div>
+			</div>
+
+    <div id="mentor-note" class="ui page dimmer" ng-click="noteHeight()">
+      <div class="ui info message note-message">
+        <i class="close icon" ng-click="notification()"></i>
+        <div class="title">
+          Mentor Confirmation
+        </div>
+        <div class="back-strip">
+          <div class="kindling" ng-class="miniProfileData.alias.split(' ')[0]">
+              <a class="like ui corner label">
+                <i class="star icon" ng-class="miniProfileData.favorited"></i>
+              </a>
+              <div class="name color">{{miniProfileData.alias.split(" ")[0]}}</div>
+             <div class="name adj">{{miniProfileData.alias.split(" ")[1]}}</div>
+             <div class="name animal">{{miniProfileData.alias.split(" ")[2]}}</div>
+          </div>
+          <div class="text-message">
+            Are you sure you want to select this person as your official mentor?
+          </div>
+        </div>
+        <div class="ui options">
+          <div class="ui Negative medium button" ng-click="notification()">
+            Cancel
+          </div>
+          <div class="ui positive medium button" ng-click="chooseMentor()">
+            Yes
+          </div>
+        </div>
+      </div>
+    </div>
+
+	</div>
+
+  <script>
+    var removeItem = function(elem) {
+      if (!Array.prototype.filter) return;
+      var s=angular.element('#isotopeContainer').scope();
+      var number = $(elem).find(".number").attr("number");
+      var items = s.xList.filter(function( obj ) {
+        return +obj.number != +number;
+      });
+      s.$apply(s.xList = items);
+    };
+  </script>
+</section>
+
+<section class="user-profile page" ng-show="show_full_profile" style="padding-bottom: 5em;">
+  <div ng-include src="'partials/user-profile.html'"></div>
+  <div class="user-profile message ui" style="top: 6em;">
+    <a ng-click="hideFull()">&lt;&lt; Hide full profile</a>
+  </div>
+</section>

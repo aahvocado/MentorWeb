@@ -1,0 +1,299 @@
+
+<section class="searchmentors page" ng-hide="show_full_profile">
+
+<div class="view">
+  <div id="filter-menu" opt-filter-menu ok-key="filter" class="ui vertical menu">
+  <div class="item">
+    <div class="ui small icon input">
+      <input id="filterTextInput" ok-text-input ng-model="query" placeholder="Search for mentors" autofocus>
+      <i class="search icon"></i>
+    </div>
+  </div>
+  <label class="filter-label ui">Filter by:</label>
+  <div  class="ui basic vertical accordion menu">
+    
+    <div class="ui item">
+      <label class="title">
+        <i class="dropdown icon"></i>
+        Breadth track
+      </label>
+      <div ok-filter-group="breadth-track" ok-filter-type="multi" class="active content">
+        <div class="ui form">
+          <div class="grouped inline fields">
+            <div class="field">
+              <div class="ui checkbox checkbox">
+                <input type="checkbox" name="pre-health">
+                <label ok-sel=".Pre-health">Pre-Health</label>
+              </div>
+            </div>
+            <div class="field">
+              <div class="ui checkbox checkbox">
+                <input type="checkbox" name="research">
+                <label ok-sel=".Research">Research</label>
+              </div>
+            </div>
+            <div class="field">
+              <div class="ui checkbox checkbox">
+                <input type="checkbox" name="minor">
+                <label ok-sel=".Minor">Minor</label>
+              </div>
+            </div>
+            <div class="field">
+              <div class="ui checkbox checkbox">
+                <input type="checkbox" name="certificate">
+                <label ok-sel=".Certificate">Certificate</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ui item">
+      <label class="title">
+        <i class="dropdown icon"></i>
+        Depth Focus
+      </label>
+      <div ok-filter-group="depth-focus" ok-filter-type="multi" class="active content">
+        <div class="ui form">
+          <div class="grouped inline fields">
+            <div class="field">
+              <div class="ui checkbox checkbox">
+                <input type="checkbox" name="neuroengineering">
+                <label ok-sel=".Neuroengineering">Neuroengineering</label>
+              </div>
+            </div>
+            <div class="field">
+              <div class="ui checkbox checkbox">
+                <input type="checkbox" name="cardiovascular-systems">
+                <label ok-sel=".Cardiovascular-systems">Cardiovascular Systems</label>
+              </div>
+            </div>
+            <div class="field">
+              <div class="ui checkbox checkbox">
+                <input type="checkbox" name="biomechanics">
+                <label ok-sel=".Biomechanics">Biomechanics</label>
+              </div>
+            </div>
+            <div class="field">
+              <div class="ui checkbox checkbox">
+                <input type="checkbox" name="biomaterials">
+                <label ok-sel=".Biomaterials">Biomaterials</label>
+              </div>
+            </div>
+            <div class="field">
+              <div class="ui checkbox checkbox">
+                <input type="checkbox" name="medical-imaging">
+                <label ok-sel=".Medical-imaging">Medical Imaging</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ui item">
+      <label class="title">
+        <i class="dropdown icon"></i>
+          Gender
+      </label>
+      <div ok-filter-group="comm-method" class="content active">
+        <div class="ui form">
+          <div class="grouped inline fields">
+            <div class="field">
+              <div class="ui radio checkbox">
+                <input type="radio" name="female" ></input>
+                <label ok-sel=".Female">Female</label>
+              </div>
+            </div>
+            <div class="field">
+              <div class="ui radio checkbox">
+                <input type="radio" name="male" ></input>
+                <label ok-sel=".Male">Male</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  	<div class="ui item">
+		  <div class="title">
+		    <i class="dropdown icon"></i>
+		    Communication Method
+		  </div>
+		  <div ok-filter-group="comm-method" class="content">
+		    <div class="ui form">
+				  <div class="grouped inline fields">
+				    <div class="field">
+				      <div class="ui radio checkbox">
+				        <input type="radio" name="comm-methods" ></input>
+				        <label ok-sel=".Phone">Phone</label>
+				      </div>
+				    </div>
+				    <div class="field">
+				      <div class="ui radio checkbox">
+				        <input type="radio" name="comm-methods" ></input>
+				        <label ok-sel=".Email">Email</label>
+				      </div>
+				    </div>
+				  </div>
+				</div>
+		  </div>
+		</div>
+		<div class="ui item">
+		  <div class="title">
+		    <i class="dropdown icon"></i>
+		    Other Functions
+		  </div>
+		  <div ok-filter-group="num" class="content">
+        <div class="ui buttons">
+			    <button type='button' class='ui button' ok-sel="greaterThan50">> 20</button>
+          <button type='button' class='ui button' ok-sel="even">Even</button>
+        </div>
+		  </div>
+		</div>
+		<div class="ui item">
+			<div class="title">
+		    <i class="dropdown icon"></i>
+		    Colors
+		  </div>
+			<div ok-filter-group="color" class="content">
+		  	<div class="ui buttons">
+          <button type='button' class='ui button' ok-sel=".color-1">color 1</button>
+          <button type='button' class='ui button' ok-sel=".color-2">color 2</button>
+          <button type='button' class='ui button' ok-sel=".color-3">color 3</button>
+          <button type='button' class='ui button' ok-sel=".color-4">color 4</button>
+      	</div>
+      </div>
+		</div>
+	</div>
+</div>
+
+   
+			<div class="isotope-container ui">
+        <!-- Test tube rim -->
+<!--         <div class="isotope-tttl">
+          <img src="images/TestTubeTopLeft.png">
+        </div>
+        <div class="isotope-tttr">
+           <img src="images/TestTubeTopRight.png">
+        </div> -->
+
+                  <!-- Stamps for bottom of test tube -->
+<!--           <div id="stamp" class="corner-stamp stamp bottom-left "></div>
+<div id="stamp" class="corner-stamp stamp bottom-right "></div> -->
+        <!-- track by user.index -->
+        <!-- ISOTOPECONTAINER -->
+        <ul id="isotopeContainer" isotope-container ng-cloak class="ng-cloak">
+          <li ng-repeat="user in userData" isotope-item class="kindling {{user.alias.split(' ')[0]}} {{user.alias.split(' ')[1]}} {{user.alias.split(' ')[2]}} {{user.breadth_track}} {{user.depth_focus}} {{user.gender}} {{user.pref_communication}}" ng-click="miniProfileSet(user)">
+            <a class="like ui corner label">
+              <i class="star icon" ng-class="user.favorited"></i>
+            </a>
+             <div class="name color">{{user.alias.split(" ")[0]}}</div>
+             <div class="name adj">{{user.alias.split(" ")[1]}}</div>
+             <div class="name animal">{{user.alias.split(" ")[2]}}</div>
+             <!-- <div class="weight" date="{{x.date}}">{{x.date | date}}</div> -->
+             <!-- <div class="number" user-id={{user.index}} number="{{user.index}}">{{user.index}}</div> -->
+          </li>
+
+<!--           <li id="extra" isotope-item class="kindling email">
+             <div class="symbol">Aa</div>
+             <div class="number" number="20">20</div>
+          </li> -->
+        </ul>
+	    </div>
+
+			<div class="mentor-profile ui menu" ng-model="miniProfileData">
+        <div class="content ui item">
+          <!-- <div class="name">Name: {{miniProfileData.firstName + " " + miniProfileData.lastName}}</div>
+          <p>Email: {{miniProfileData.email}}</p> -->
+          <div class="p-pic">
+            <div class="kindling" ng-class="miniProfileData.alias.split(' ')[0]">
+              <a class="like ui corner label">
+                <i class="star icon" ng-class="miniProfileData.favorited"></i>
+              </a>
+              <div class="name color">{{miniProfileData.alias.split(" ")[0]}}</div>
+             <div class="name adj">{{miniProfileData.alias.split(" ")[1]}}</div>
+             <div class="name animal">{{miniProfileData.alias.split(" ")[2]}}</div>
+            </div>
+          </div>
+
+          <div class="p-label">Breadth track</div>
+          <div class="breadth-track p-field"> {{miniProfileData.breadth_track}}</div>
+          <div class="p-label">Depth focus</div>
+          <div class="depth-focus p-field"> {{miniProfileData.depth_focus}}</div>
+          <div class="p-label">Gender</div>
+          <div class="gender p-field"> {{miniProfileData.gender}}</div>
+          <div class="p-label">Academic International Experience</div>
+          <div class="academic-int-exp p-field"> {{miniProfileData.international_experience1}}</div>
+          <div class="p-label">Future Plans</div>
+          <div class="future-plans p-field"> {{miniProfileData.post_grad_plan}}</div>
+
+          <div class="profile-link">
+            <a ng-click="showFull(miniProfileData)">See full profile >></a>
+          </div>
+
+          <!-- <div ng-bind-html="wishButton"></div> -->
+
+          <div id="wishlist-add-button" class="ui toggle button" ng-click="wishButton.fn()">
+            {{wishButton.contentText}}
+          </div>
+          <br>
+          <div id="wishlist-choose-mentor" class="ui toggle button" ng-click="notification()" ng-if="chooseAvailable">
+            Choose as my Mentor
+          </div>
+
+        </div>
+			</div>
+		</div>
+
+    <div id="mentor-note" class="ui page dimmer" ng-click="noteHeight()">
+      <div class="ui info message note-message">
+        <i class="close icon" ng-click="notification()"></i>
+        <div class="title">
+          Mentor Confirmation
+        </div>
+        <div class="back-strip">
+          <div class="kindling" ng-class="miniProfileData.alias.split(' ')[0]">
+              <a class="like ui corner label">
+                <i class="star icon" ng-class="miniProfileData.favorited"></i>
+              </a>
+              <div class="name color">{{miniProfileData.alias.split(" ")[0]}}</div>
+             <div class="name adj">{{miniProfileData.alias.split(" ")[1]}}</div>
+             <div class="name animal">{{miniProfileData.alias.split(" ")[2]}}</div>
+          </div>
+          <div class="text-message">
+            Are you sure you want to select this person as your official mentor?
+          </div>
+        </div>
+        <div class="ui options">
+          <div class="ui Negative medium button" ng-click="notification()">
+            Cancel
+          </div>
+          <div class="ui positive medium button" ng-click="chooseMentor()">
+            Yes
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <script>
+    var removeItem = function(elem) {
+      if (!Array.prototype.filter) return;
+      var s=angular.element('#isotopeContainer').scope();
+      var number = $(elem).find(".number").attr("number");
+      var items = s.xList.filter(function( obj ) {
+        return +obj.number != +number;
+      });
+      s.$apply(s.xList = items);
+    };
+  </script>
+</section>
+
+<section class="user-profile page" ng-show="show_full_profile" style="padding-bottom: 5em;">
+  <div ng-include src="'partials/user-profile.html'"></div>
+  <div class="user-profile message ui" style="top: 6em;">
+    <a ng-click="hideFull()">&lt;&lt; Hide full profile</a>
+  </div>
+</section>
